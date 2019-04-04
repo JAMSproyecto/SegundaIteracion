@@ -1,0 +1,30 @@
+
+body{
+    font-family: 'Nunito', sans-serif;
+    color: #34495e;
+  
+}
+
+
+.wrapper{
+    display: table;
+    line-height: 30px;
+    table-layout: fixed;
+   
+    margin: 60px auto;
+}
+
+
+
+.titulo{
+    margin: 58px auto;
+    width: 400px;
+    font-size: 40px;
+    /* padding: 5px; */
+}
+
+
+
+
+
+

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>MEP</title>
+    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/headerCentro.css" />
+    <link rel="stylesheet" href="./css/footer.css">
+
+</head>
+
+<body>
+        <header>
+                <div class="column__arriba">
+                    <nav class="menu__arriba">
+                        <ul>
+                            <li>
+							    <a href="perfil_admin.html">
+							        <i class="fas fa-hand-point-left"></i>
+							    </a>
+							</li>
+                            <li><a class="btn_top modificar" href="#">Modificar Perfil</a>
+                            </li>
+                            <li> <a class="btn_top contrasenia" href="#">Cambiar contraseña</a></li>
+                            <li> <a class="btn_top notificacioness" href="#">Notificaciones</a></li>
+							<li>
+								<a id="lblNombreUsuario" href="javascript:void(0);"></a>
+							</li>
+                            <li>
+                                <a id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar sesi&oacute;n</a>
+                                    
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="column__abajo">
+                    <div class="contenedor">
+                        <div class="logo">
+                            <img src="imgs/logo_mep.png" class="imagen_mep">
+                        </div>
+                        <nav class="menu__abajo">
+                            <ul>
+                                <span>|</span>
+                                <li><a class="centros" href="#">Centros Educativos</a>
+                                    <ul>
+                                        <li><a href="registrarCentroEducativo.html">Registrar centro educativo</a></li>
+                                        <li><a href="listaCEdu.html">Lista de centros educativos</a></li>
+        
+                                        <li><a href="#">Aprobar/Rechazar centro educativo</a></li>
+                                        <li><a href="#"> Suspender/Reactivar centro educativo </a></li>
+                                    </ul>
+                                </li>
+                                <span>|</span>
+                                <li>
+                                    <a class="calificaciones" href="#">Calificaciones</a>
+                                    <ul>
+                                        <li><a href="#">Calificar un centro educativo</a></li>
+                                        <li><a href="#">Registrar un rubro</a></li>
+                                        <li><a href="#">Lista de rubros</a></li>
+                                        <li><a href="#"> Ver Calificación de centros </a></li>
+                                    </ul>
+        
+                                </li>
+        
+                                <span>|</span>
+                                <li><a class="utiles" href="#">Útiles</a>
+                                    <ul>
+                                        <li><a href="registrar_articulos.html">Registrar artículos</a></li>
+                                        <li><a href="listar_articulos.html">Listar  artículos</a></li>
+                                        <li><a href="registrar_lista_utiles.html">Registrar lista de útiles</a></li>
+                                        <li><a href="listar_lista_utiles.html">Listar útiles</a></li>
+                                    </ul>
+                                </li>
+                                <span>|</span>
+                                <li><a class="padres" href="#">Usuarios padres de familia</a>
+                                    <ul>
+                                        <li><a href="listar_padres.html">Lista de padres de familia</a></li>
+        
+                                    </ul>
+        
+                                </li>
+                                <span>|</span>
+        
+                                <li><a class="utiles" href="#"> Etiquetas de búsqueda</a>
+                                    <ul>
+                                        <li><a class="subtitulos" href="#">Registrar etiquetas</a></li>
+                                        <li><a class="subtitulos" href="#">Listar etiquetas</a>
+                                        </li>
+                                    </ul>
+        
+                                </li>
+                                <span>|</span>
+                                <li><a class="utiles" href="#"> Preguntas frecuentes</a>
+                                    <ul>
+                                        <li><a class="subtitulos" href="registrarPreguntaFrecuenteGeneral.html">Registrar
+                                                FAQ</a></li>
+                                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Listar
+                                                FAQ</a></li>
+                                        <li><a class="subtitulos" href="#">Listar FAQ</a>
+                                           
+                                        </li>
+                                    </ul>
+                                </li>
+        
+                                </li>
+                                <span>|</span>
+        
+                                <li>
+                                    <a class="reporte">Reportes</a>
+                                    <ul>
+                                        <li><a href="#">Ranking:Padres de familia</a></li>
+                                        <li><a href="#">Ranking:MEP</a></li>
+                                        <li><a href="#">Visitas a centros educativos</a></li>
+                                        <li><a href="#">Bitacora transacional</a></li>
+                                    </ul>
+                                </li>
+                                <span>|</span>
+        
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+    <div class="text_center">
+        <h1>Registro de centros educativos</h1>
+    </div>
+    <main class="formulario">
+        <section   id="informacionGeneral">
+
+            <div class="text_center">
+                <h2>Informaci&oacute;n general</h2>
+            </div>
+
+            <div class="datos_izq text_center">
+
+                <div class="text_center">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtNombreComercial">Nombre comercial:</label>
+                    <input id="txtNombreComercial" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtCedulaJuridica">C&eacute;dula jur&iacute;dica:</label>
+                    <input id="txtCedulaJuridica" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtCorreoCentro">Correo electr&oacute;nico:</label>
+                    <input id="txtCorreoCentro" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtAnnoFundacion">A&ntilde;o de fundaci&oacute;n:</label>
+                    <input id="txtAnnoFundacion" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="fotoCentroEdu">Foto:</label>
+                    <div id="fotoCentroEduArrastrar" class="fotoCentroEdu mb_15">
+                        <div class="fotoCentroEdu__Previa text_center"><img id="fotoCentroEduPrevia" alt=" "
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </div>
+                        <div class="text_center mb_15"><span id="pesoFotoCentroEdu"></span></div>
+                        <div class="text_center">
+                            <div class="fotoCentroEdu__archivo">
+                                <button>Buscar...</button>
+                                <input id="fotoCentroEdu" type="file" accept=".jpg,.jpeg,.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="datos_der text_center">
+
+                <div class="text_center">
+                    <label for="txtTelefonoCentro">Tel&eacute;fono:</label>
+                    <input id="txtTelefonoCentro" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtFax">Fax:</label>
+                    <input id="txtFax" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="sltTipoInstitucion">Tipo de instituci&oacute;n:</label>
+                    <select id="sltTipoInstitucion">
+                        <option value="" disabled selected>Seleccione el tipo de instituci&oacute;n...</option>
+                        <option value="Pública">P&uacute;blica</option>
+                        <option value="Privada">Privada</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltNiveles">Oferta acad&eacute;mica:</label>
+                    <p>Puede seleccionar una o m&aacute;s</p>
+                    <select id="sltNiveles" multiple>
+                        <option value="Preescolar">Preescolar</option>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Superior">Superior</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="txtResenna">Rese&ntilde;a hist&oacute;rica:</label>
+                    <textarea id="txtResenna"></textarea>
+                </div>
+            </div>
+
+        </section>
+        <div>
+            <hr class="estilo1">
+        </div>
+        <section id="direccion">
+            <div class="text_center">
+                <h2>Direcci&oacute;n</h2>
+            </div>
+            <div class="datos_izq text_center">
+                <div class="text_center">
+                    <label for="sltProvincia">Provincia:</label>
+                    <select id="sltProvincia">
+                        <option value="" disabled selected>Seleccione una provincia...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltCanton">Cant&oacute;n:</label>
+                    <select id="sltCanton">
+                        <option value="" disabled selected>Seleccione un cant&oacute;n...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltDistrito">Distrito:</label>
+                    <select id="sltDistrito">
+                        <option value="" disabled selected>Seleccione un distrito...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="txtDirSennas">Direcci&oacute;n con se&ntilde;as:</label>
+                    <textarea id="txtDirSennas"></textarea>
+                </div>
+            </div>
+            <div class="datos_der text_center">
+                <div class="text_center">
+                    <label for="contenedorMapa">Ubicaci&oacute;n:</label>
+                    <!-- Si se pone class no se muestra el mapa -->
+                    <div id="contenedorMapa"
+                        style="width: 80%; height: 240px;border: 1px dashed #565656; background: #f1f1f1; margin:0 auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+            <hr class="estilo1">
+        </div>
+        <section id="contacto">
+            <div class="text_center">
+                <h2>Contacto</h2>
+            </div>
+            <div class="datos_izq text_center">
+                <div class="text_center">
+                    <label for="txtPrimerNombre">Primer nombre:</label>
+                    <input id="txtPrimerNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtSegundoNombre">Segundo nombre:</label>
+                    <input id="txtSegundoNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtPrimerApellido">Primer apellido:</label>
+                    <input id="txtPrimerApellido" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtSegundoApellido">Segundo apellido:</label>
+                    <input id="txtSegundoApellido" type="text">
+                </div>
+            </div>
+            <div class="datos_der text_center">
+
+                <div class="text_center">
+                    <label for="txtCorreoContacto">Correo electr&oacute;nico:</label>
+                    <input id="txtCorreoContacto" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtIdentificacionContacto">Identificaci&oacute;n:</label>
+                    <input id="txtIdentificacionContacto" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtDepartamentoContacto">Departamento:</label>
+                    <input id="txtDepartamentoContacto" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtTelefonoContacto">Tel&eacute;fono:</label>
+                    <input id="txtTelefonoContacto" type="number">
+                </div>
+            </div>
+        </section>
+        <div class="mb_15">
+            <hr class="estilo1">
+        </div>
+
+
+
+
+    </main>
+
+    <div class="mb_15 text_center">
+        <button class="btn btn--amarillo" id="btnRegistrar">Registrar</button>
+    </div>
+
+        <div class="paginador">
+            <div class="paginador__contenido">
+                <a class="derecha" href="perfil_centro.html">
+                    <i class="fas fa-arrow-circle-left fa-lg"></i>
+                    <p>Perfil</p>
+                </a>
+                <a class="izquierda" href="listaCEdu.html">
+                    <i class="fas fa-arrow-circle-right fa-lg"></i>
+                    <p>Lista de centros educativos</p>
+                </a>
+            </div>
+        </div>
+
+
+    <script src="./js/controlador_nav.js"></script>
+	
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+    <!-- Mapas -->
+    <script charset="utf-8" src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript"></script>
+    <script charset="utf-8" src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <!-- /Mapas -->
+
+    <!-- Promise -->
+    <script src="./js/promise/es6-promise.min.js"></script>
+    <script src="./js/promise/es6-promise.auto.min.js"></script>
+    <!-- /Promise -->
+
+    <script src="./js/general.js"></script>
+    <script src="./js/funciones_autenticacion.js"></script>
+    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+    <script src="./js/direccionUbicacion/controlador.js"></script>
+
+    <script src="./js/servicio_registro_cedu.js"></script>
+    <script src="./js/controlador_registro_cedu.js"></script>
+</body>
+
+</html>

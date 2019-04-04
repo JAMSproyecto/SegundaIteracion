@@ -1,0 +1,31 @@
+section.top10 {
+  display: flow-root;
+  padding-bottom: 45px;
+}
+
+section.top10 .datos_izq,
+section.top10 .datos_der {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 48%;
+}
+
+section.top10 .datos_izq {
+  float: left;
+  text-align: right;
+}
+
+section.top10 .datos_der {
+  float: right;
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  section.top10 .datos_izq,
+  section.top10 .datos_der {
+    display: block;
+    width: 100%;
+  }
+}
+

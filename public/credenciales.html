@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEP</title>
+    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel=" stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/iniciar_sesion.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+
+<body>
+    <section class="bloque__credenciales">
+        <nav class="imagen__principal">
+            <a href="#">
+                <img src="imgs/logo_mep.png" class="imagen_mep">
+            </a>
+        </nav>
+
+        <h1>Verificaci&oacute;n de credenciales</h1>
+        <h3>Por favor ingrese el pin que ha recibido en su correo electrónico</h3>
+
+        <form class="verificacion__credenciales">
+            <div class="text_center">
+                <label for="input_pin">Pin de Validación</label>
+                <input type="text" id="input_pin">
+            </div>
+            <div class="text_center">
+                <label for="txt_contrasena">Crear contraseña</label>
+                <input type="password" id="txt_contrasena">
+            </div>
+            <div class="text_center">
+                <label for="txt_contrasena2">Confirmaci&oacute;n de contraseña</label>
+                <input type="password" id="txt_contrasena2">
+            </div>
+
+            <div class="text_center">
+                <button type="button" class="btn btn__verificar" id="boton_registrar">Verificar</button>
+            </div>
+        </form>
+        </div>
+
+    </section>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="./js/funciones_autenticacion.js"></script>
+<script src="./js/servicio_verificar_credenciales.js"></script>
+<script src="./js/controlador_verificar_credenciales.js"></script>
+
+
+</html>

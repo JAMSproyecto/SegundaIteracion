@@ -1,0 +1,9 @@
+#calendario{
+    background: red;
+    width: 900px;
+    margin: auto;
+}
+
+.bloque_calendario{
+    background: red;
+}

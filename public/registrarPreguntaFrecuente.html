@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEP</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="imgs/favicon.ico">
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="css/headerCentro.css" />
+    <link rel="stylesheet" href="css/formularios.css" />
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/tablas.css" />
+</head>
+
+<body>
+    <header>
+        <div class="column__arriba">
+            <nav class="menu__arriba">
+                <ul>
+                    <li> <a href="perfil_centro.html"><i class="fas fa-hand-point-left"></i></a></li>
+                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
+                    <li>
+                        <a id="lblNombreUsuario" href="javascript:void(0);"></a>
+                    </li>
+                    <li><a id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar
+                            sesi&oacute;n</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="column__abajo">
+            <div class="contenedor">
+                <div class="logo">
+                    <img src="imgs/logo_mep.png" class="imagen_mep">
+                </div>
+                <nav class="menu__abajo">
+                        <ul>
+    
+                            <span>|</span>
+                            <li>
+                                <a class="calificaciones" href="#">Modificar perfil</a>
+                                <ul>
+                                    <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
+                                    <li><a class="subtitulos" href="#">Ubicación</a></li>
+                                    <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
+                                    <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
+                                    <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
+                                </ul>
+    
+                            </li>
+                            <span>|</span>
+                            <li><a class="centros" href="#">Actividad</a>
+                                <ul>
+                                    <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
+                                    <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
+    
+                                </ul>
+                            </li>
+                            <span>|</span>
+                            <li><a class="centros" href="#">Noticias</a>
+                                <ul>
+                                    <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
+                                    <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
+    
+                                </ul>
+                            </li>
+                            <span>|</span>
+                            <li><a class="utiles" href="#"> Útiles</a>
+                                <ul>
+                                    <li>
+                                        <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
+                                            útiles</a></li>
+    
+                                    <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <span>|</span>
+                            <li><a class="utiles" href="#"> Citas</a>
+                                <ul>
+                                    <li>
+                                        <a class="subtitulos" href="lista_citas.html">listar citas
+                                        </a></li>
+    
+    
+                                </ul>
+                            </li>
+                            <span>|</span>
+                            <li>
+                                <a class="reporte">Reportes</a>
+                                <ul>
+                                    <li><a class="subtitulos" href="#">Ranking anual</a></li>
+                                </ul>
+                            </li>
+                            <span>|</span>
+                            <li>
+                                <a class="reporte">Preguntas frecuentes</a>
+                                <ul>
+                                    <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a></li>
+                                    <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                                </ul>
+                            </li>
+                            <span>|</span>
+                        </ul>
+                    </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="text_center">
+            <h1 class="titulo__principal">Registro de pregunta frecuente</h1>
+        </div>
+        <section class="bloque__principal" id="preguntaFrecuente">
+            <div class="formulario-preguntaFrecuente">
+                <div class="text_center">
+                    <label for="txt_pregunta">Pregunta</label>
+                    <input type="text" id="txt_pregunta" />
+                </div>
+
+                <div class="text_center">
+                    <label for="txt_respuesta">Respuesta</label>
+                    <textarea type="text" id="txt_respuesta"></textarea>
+                </div>
+            </div>
+        </section>
+
+        </section>
+        <div class="formulario-boton">
+            <button type="button" class="btn--amarillo" id="btn" >Registrar</button>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+    <script src="./js/controlador_nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/servicio_preguntaFrecuente.js"></script>
+    <script src="js/controlador_preguntaFrecuente.js"></script>
+</body>
+
+</html>

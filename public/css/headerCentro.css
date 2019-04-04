@@ -1,0 +1,195 @@
+body{
+    font-family: 'Yantramanav', sans-serif;
+}
+header{
+ 
+    width: 100%;
+}
+
+header .column__arriba{
+    background: #17c0eb;
+    display: flow-root;
+    padding: 20px;
+    width: 100%;
+   
+}
+     
+.menu__arriba{
+    float: right
+}
+
+.menu__arriba  ul{
+        display: table;
+}
+
+.menu__arriba  ul li{
+        display: table-cell;
+    }
+
+.menu__arriba ul li a{
+        background: #17c0eb;
+        text-decoration: none;
+        margin: 10px;
+        color:#fff;
+    }
+
+.menu__arriba .sesion {
+            background: #f1c40f;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 36px;
+           /* background: #2980b9;*/
+            text-decoration: none;
+            font-weight: 700;
+
+    }
+
+/*final estilos menu arriba*/
+
+/*estilos menu abajo*/
+
+header .column__abajo{
+    background: #f9f9f9; 
+     padding: 10px 0;
+     display: flow-root;
+
+}
+
+header .contenedor{
+    padding: 0px 58px;
+    width: 100%;
+}
+
+
+/*final estilos menu abajo*/
+
+.menu__abajo{
+    float: right;
+    margin-top: 18px;
+    font-size: 15px;
+    margin-right: 80px;
+}
+
+.menu__abajo > ul{
+   display: table;
+}
+
+.menu__abajo > ul >  li{
+    list-style: none;
+    padding: 0px 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.menu__abajo > ul > li > a{
+    text-decoration: none;
+    color: #2c3e50; 
+ 
+}
+
+.menu__abajo li {
+    position: relative;
+}
+
+
+.menu__abajo li>  ul {
+    background-color: #FAFAFA;
+    /*background-color:#B3E5FC;*/
+
+    clip: rect(0,0,0,0);
+
+   width: 270px;
+   padding: 5px 0px;
+    position: absolute;
+}
+
+.menu__abajo li ul li{
+    padding: 5px 7px;
+    list-style: none;
+}
+
+
+.menu__abajo li:hover > ul{
+    clip: auto;
+}
+
+
+
+
+
+.menu__abajo li ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #2d3436;
+    font-weight: 900px;
+  
+ 
+}
+
+.menu__abajo > ul >  li:hover >  a{
+background: #FAFAFA;
+padding: 10px;
+
+
+  
+}
+
+.menu__abajo li  > ul >  li:hover >  a{
+    border-bottom: 2px solid #17c0eb;
+    color:#17c0eb;
+    font-weight: 500;
+}
+/*final menu abajo*/
+
+
+
+
+
+.logo{
+    float: left;
+}
+
+.logo img{
+    width: 80px;
+   
+
+}
+
+.columna__derecha img{
+    border-radius: 130px;
+    width: 90px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.fa-hand-point-left:hover{
+
+
+color: #f1c40f;
+}
+
+
+/*fin de estilos header*/
+
+.sesion{
+    -webkit-transition-duration: 0.5s;
+}
+
+.btn_top:hover{
+    border-bottom: 2px solid #f0932b;
+    padding-bottom: 5px;
+}
+
+
+.sesion:hover{
+    background: #009432;
+    color:#fff;
+    border-radius: 10px;
+ 
+}
+
+
+
+
+
+

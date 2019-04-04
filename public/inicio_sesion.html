@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEP</title>
+    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="css/reset.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/iniciar_sesion.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section class="bloque__iniciar-sesion">
+            <nav class="imagen__principal">
+                <a href="#">
+                    <img src="imgs/logo_mep.png" class="imagen_mep">
+                </a>
+            </nav>
+
+
+            <form class="formulario_iniciar_sesion">
+                <div>
+                    <h3>Iniciar sesión</h3>
+                </div>
+                <div class="controlador">
+                    <label for="txt_correo">Correo electrónico</label>
+                    <input type="email" id="input_usuario">
+                </div>
+                <div class="controlador">
+                    <label for="txt_contrasenna">Contraseña</label>
+                    <input type="password" id="txt_contrasenna">
+                </div>
+                <div class="controlador">
+                        <button type="button"  class="btn" id="boton_ingresar">Iniciar sesión</button>
+                    </div>
+                
+            </form>
+            
+        </section>
+d
+    </main>
+
+
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="js/funciones_autenticacion.js"></script>
+<script src="js/servicio_inicio_sesion.js"></script>
+<script src="js/controlador_inicio_sesion.js"></script>
+
+</html>

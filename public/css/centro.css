@@ -1,0 +1,399 @@
+
+.header__centro{
+    margin-bottom: 0px;
+}
+
+/*carrusel*/
+main{
+    margin: 0px;
+    padding:0px;
+}
+
+.titulo_centro_educativo{
+    color: #34495e;
+    font-size: 29px;
+    padding-top: 33px;
+    text-align: center;
+    /* border-bottom: 2px solid; */
+ 
+    margin-bottom: 17px;
+   
+}
+
+.boton__citas{
+   
+        margin: 30px auto;
+        width: 900px;
+}
+
+.slider {
+	margin: auto;
+	overflow: hidden;
+}
+
+.slider ul {
+ 
+    display: flex;
+    /* padding: 0; */
+    width: 500%;
+    animation: cambio 20s infinite alternate linear;
+    height: 500px;
+}
+
+.slider li {
+	width: 100%;
+	list-style: none;
+}
+
+.slider img {
+	width: 100%;
+}
+
+@keyframes cambio {
+	0% {margin-left: 0;}
+	20% {margin-left: 0;}
+	
+	25% {margin-left: -100%;}
+	45% {margin-left: -100%;}
+	
+	50% {margin-left: -200%;}
+	70% {margin-left: -200%;}
+	
+	75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+    75% {margin-left: -300%;}
+	100% {margin-left: -300%;}
+}
+
+
+
+/*fin de carrusel*/
+
+
+
+.menu__editar-oferta{
+    position: relative;
+    left: 70%;
+    color: #17c0eb;
+    top: 29px;
+}
+
+.menu__editar-oferta a{
+    color: #17c0eb;
+    text-decoration: none;
+}
+
+
+
+/*fin oferta academica*/
+.menu__editar{
+    position: relative;
+    left: 90%;
+    color: #17c0eb;
+}
+
+
+.fat{
+    position: relative;
+    left: 49px;
+    /* width: 20px; */
+    font-size: 22px;
+    color: #17c0eb;
+}
+
+.fat:hover{
+    color: #34495e
+}
+.menu__editar a{
+    text-decoration: none;
+    color: #17c0eb;
+}
+
+.bloque__comentarios{
+    width: 1345px;
+    margin:  auto;
+    /*background: #17c0eb;*/
+   /* background:  #ffb142;*/
+   background: #81C784;
+    padding: 20px;
+  
+}
+
+
+.contenedor__tabla{
+    display: table;
+}
+
+
+
+.bloque__comentarios h2{
+
+       /* color: #17c0eb; */
+       font-size: 21px;
+       font-weight: 600;
+       margin-top: 0px;
+     color:#fff;
+     margin-bottom: 51px;
+     font-size: 29px;
+}
+
+.titulo__comentarios{
+    text-align: center;   
+}
+
+
+.tabla__servicios{
+    width: 1110px;
+    margin: auto;
+}
+
+.titulo_oferta{
+    text-align: center;
+}
+
+.titulo__servicios{
+    text-align: center;
+    margin-bottom: 10px;
+    /* margin-top: 92px; */
+
+}
+.titulo__secundario {
+    font-size: 29px;
+    /* background: red; */
+    width: 457px;
+    margin: auto;
+    /* border-bottom: 2px solid; */
+    color: #34495e
+}
+
+
+
+.faq{
+    font-size: 25px;
+    color:#fff;
+    background: #17c0eb;
+    padding: 5px;
+border-radius: 20px;
+}
+
+.fa-flask,
+.fa-mug-hot,
+.fa-user-nurse,
+.fa-bus,
+.fa-user-friends,
+.fa-futbol,
+.fa-book,
+.fa-music
+{
+    padding: 10px;
+   
+}
+ 
+.servicio p{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 19px;
+
+}
+
+.servicio {
+    border: 1px solid #2d3436;
+    width: 250px;
+    box-shadow: 0 0 3px #78909C;
+    margin: 10px;
+    display: inline-block;
+    /* border-radius: 12px; */
+    background: #fff;
+   
+}
+
+.servicio span {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 19px;
+}
+.comentario{
+    background: #fff;
+    width: 237px;
+    box-shadow: 7px 8px 11px #78909C;
+    bottom: 67px;
+    background: #fff;
+    position: relative;
+    /* top: 20px; */
+    left: 130px;
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    /* color: #000; */
+    font-weight: 800;
+    display: inline-block;
+    margin: 8px;
+}
+
+
+.star-rating a {
+    display: inline-block;
+    color: #95a5a6;
+    font-size: 23px;
+    text-decoration: none;
+  }
+  .star-rating:hover a {
+    color: #f39c12; /* amarillo (seleccionado) */
+  }
+    .star-rating:hover a:hover ~ a {
+      color: #95a5a6; /* gris (normal) */
+    }
+
+    .star-rating a:focus {
+        color: #f39c12; 
+    }
+.servicio:hover{
+    box-shadow: 0 0 10px #78909C
+}
+
+
+
+.ser__transporte,
+.ser__deportes,
+.ser__biblioteca,
+.ser__musica,
+.ser__estudio,
+.ser__laboratorio,
+.ser__cafeteria,
+.ser__enfermeria{
+    padding: 24px 30px;
+  
+}
+
+.preescolar,
+.primaria,
+.secundaria{
+    display: table-cell;
+    padding: 20px;
+}
+
+
+.preescolar p,
+.primaria p,
+.secundaria p{
+text-align: center;
+font-size: 30px;
+}
+
+.contenedor__tabla{
+    margin: 50px auto;
+    width: 1000px;
+}
+
+.oferta__academica{
+    display: table;
+}
+
+
+.tabla__noticias,
+.tabla__actividad{
+    background: #f9f9f9;
+    margin-bottom: 25px;
+}
+.secundaria img{
+    width: 300px;
+}
+
+.preescolar img{
+    width: 309px;
+}
+
+
+.primaria img,
+.secundaria img{
+    width: 300px;
+}
+/*carrusel noticias*/
+
+
+
+.bloque_noticias{
+    width: 900px;
+    margin: 150px auto;
+}
+
+
+
+
+.noticias__uno p{
+    text-align: center;
+    font-family: 'Cinzel', serif; 
+  
+
+}
+
+
+.noticia{
+    border: 1px solid #2d3436;
+    width: 212px;
+    box-shadow: 0 0 3px #78909C;
+    margin: 10px;
+    /* padding: 50px 20px; */
+    display: inline-block;
+    border-radius: 12px;
+    height: 200px;
+    background: #fff;
+    text-align: center;
+    padding: 10px;
+  
+
+}
+
+.contenedor__noticias,
+.contenedor__actividades{
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.noticia  strong{
+   
+    font-size: 24px;
+    text-transform: uppercase;
+    /* text-align: center; */
+    /* margin-top: 44px; */
+    /* padding-top: 44px; */
+}
+
+.actividad,
+.noticia{
+    border: 1px solid #2d3436;
+    width: 212px;
+    box-shadow: 0 0 3px #78909C;
+    margin: 10px;
+    /* padding: 50px 20px; */
+    display: inline-block;
+    border-radius: 12px;
+    height: 200px;
+ background: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.tabla__actividad h2,
+.tabla__noticias h2{
+    color: #17c0eb;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+#calendario{
+    width: 920px;
+    margin: 20px auto;
+}
+button.fc-button{
+    background: #17C0EB !important;
+    box-shadow: 0 0 10px #78909C !important;
+    min-width: none;
+    min-height: none;
+}
+.fc-day-header{
+    text-transform: capitalize !important;
+}

@@ -1,0 +1,227 @@
+/* Estilos para las tablas con datatables */
+
+.tabla__responsive {
+    box-sizing: border-box;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    padding: 0 30px;
+}
+
+.tabla, .tabla td, .tabla th {
+    box-sizing: border-box;
+}
+
+.tabla {
+    margin: 0 auto .755em;
+    clear: both;
+    border: 1px solid rgb(222, 226, 230);
+    border-bottom-width: 0;
+    border-spacing: 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-collapse: separate;
+    padding: 0;
+    width: 100%;
+}
+
+.tabla td + td,
+.tabla th + th {
+    border-left: 1px solid rgb(222, 226, 230);
+}
+
+.tabla td,
+.tabla th {
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    font-weight: 500;
+}
+
+.tabla thead th,
+.tabla thead tr td,
+.tabla tbody th,
+.tabla tbody tr td {
+    border-bottom: 1px solid rgb(222, 226, 230);
+
+}
+
+.tabla tfoot tr th,
+.tabla tfoot tr td {
+    border-top: 1px solid rgb(222, 226, 230);
+}
+
+
+.tabla tfoot tr td {
+    border-bottom: none;
+}
+
+.tabla tfoot tr th {
+    border-top: none;
+    border-bottom: 1px solid rgb(222, 226, 230);
+}
+
+.tabla td:first-child {
+    border-left: none;
+}
+
+.tabla td:last-child {
+    border-right: none;
+}
+
+
+.tabla thead + tr td,
+.tabla tr + tr td,
+.tabla tfoot td {
+    border-top: none;
+}
+
+.tabla thead th:first-child {
+    -moz-border-radius-topleft: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border-left: none;
+}
+
+.tabla thead th:last-child {
+    -moz-border-radius-topright: 4px;
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-right: none;
+}
+
+.tabla tfoot td:first-child {
+    -moz-border-radius-bottomleft: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.tabla tfoot td:last-child {
+    -moz-border-radius-bottomright: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* ------------------------------------------------------------------- */
+
+
+.tabla tfoot th,
+.tabla thead th {
+    font-weight: 700;
+}
+
+.tabla thead td:active,
+.tabla thead th:active {
+    outline: 0;
+}
+
+.tabla thead td,
+.tabla thead th,
+.tabla tfoot td,
+.tabla tfoot th {
+    padding: 12px 10px 9px;
+}
+
+.tabla tbody td,
+.tabla tbody th {
+    padding: 5px 10px;
+}
+
+.tabla thead tr.cabecera--celeste th {
+    background-color: #17c0eb;
+    color: #fff;
+}
+
+.tabla > tbody > tr:nth-of-type(odd),
+.tabla tbody tr:not(:nth-of-type(odd)) td {
+    background-color: #fff;
+}
+
+.tabla.tabla__rayada > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+.tabla input.icon-buscar {
+    height: 25px;
+    text-align: center;
+    padding: 3px 0;
+    font: inherit;
+    font-size: 14px;
+    font-family: 'Font Awesome\ 5 Free', serif;
+    /*min-width: 90px;*/
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.tabla input.icon-buscar:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.tabla input.icon-buscar::placeholder {
+    color: #a8a9aa;
+    opacity: 1;
+}
+
+
+.tabla select:not([size]):not([multiple]) {
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 991px) {
+    .tabla th {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .tabla th {
+        white-space: nowrap;
+    }
+}
+
+
+/* Para dataTables */
+
+table.dataTable thead td, 
+table.dataTable thead th {
+    padding: 10px 6px;
+}
+
+table.dataTable.no-footer {
+    /*border-bottom: 1px solid #ddd;*/
+    border-bottom: 1px solid transparent;
+}
+
+.dataTables_wrapper .dataTables_filter {
+
+    float: left;
+    text-align: left;
+
+}
+
+.dataTables_wrapper .dataTables_length {
+    float: right;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+

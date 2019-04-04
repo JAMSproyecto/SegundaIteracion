@@ -1,0 +1,106 @@
+.formulario_iniciar_sesion{
+  
+
+}
+
+
+.formulario_iniciar_sesion h3{
+    font-size: 30px;
+    text-align: center;
+}
+
+.formulario_iniciar_sesion label{
+    color: #2c3e50;
+    font-size: 16px;
+    margin-bottom: 5px;
+
+}
+
+.formulario_iniciar_sesion input{
+    display: block;
+    padding: 5px 24px;
+    /* border: 0px; */
+    /* border-radius: 5px; */
+    margin-top: 6px;
+
+    
+}
+
+.bloque__credenciales .imagen__principal{
+    float: left;
+    width: 480px;
+    padding-top: 14%;
+}
+
+.bloque__credenciales{
+    display: flow-root;
+    width: 1062px;
+    margin: 110px auto;
+}
+
+.bloque__credenciales h1{
+    font-size: 33px;
+    margin: 0px 0 17px;
+    text-align: center;
+}
+.verificacion__credenciales{
+    width: 500px;
+    /* margin-left: 7px; */
+    /* padding-left: 33px; */
+}
+.bloque__credenciales h3{
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.bloque__iniciar-sesion
+{
+    display: flow-root;
+    width: 1000px;
+    margin: 150px auto;
+}
+.imagen__principal{
+    float: left;
+    width: 480px;
+    padding-top: 35px;
+}
+
+
+.formulario_iniciar_sesion,
+.verificacion__credenciales{
+    float: right;
+    margin-top: 36px;
+    border: 1px solid;
+    background: #ecf0f1;
+    padding: 50px;
+}
+
+
+.controlador input{
+    padding: 10px 58px;
+}
+
+
+.btn{
+    width: 100%;
+    border-radius: 4px;
+    background-color: #0652DD;
+    color: white;
+  padding: 15px 0px;
+  border: 0px;
+}
+
+.btn:hover{
+background: #0D47A1;
+
+}
+
+div{
+    margin-bottom: 20px;
+}
+
+.btn__verificar{
+    background: #0D47A1;
+    padding: 10px 58px;
+}

@@ -1,0 +1,120 @@
+
+.columna__izquierda-cita{
+    background: #dfe6e9;
+ 
+}
+
+.columna__contenedor-izquierdo{
+    padding: 0px 49px;
+    position: relative;
+    /* bottom: -10px; */
+    top: 34px;   
+}
+
+.formulario-cita label{
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 21px;
+    width: 105px;
+}
+
+.formulario-cita input{
+    padding: 11px 45px;
+    border: 0px;
+    border-radius: 4px;
+}
+
+.datos{
+    margin-bottom: 26px;
+}
+
+.controlador{
+    position: relative;
+    display: inline-block;
+}
+
+.controlador .fas{
+    position: absolute;
+    left: 10px;
+    top: 10px;   
+}
+
+.columna__derecha-cita{
+    background: #81b43e;
+    padding: -4rem 1rem 0;
+    color: #fff;
+    position: relative;
+    right: 65px;
+    top: 30px;
+    box-shadow: 12px 14px 6px #bdc3c7;
+    padding: 10px;
+}
+
+
+.columna__contenedor{
+    padding-top: 13px;
+}
+
+
+.cita{
+    display: table;
+    margin: auto;
+    width: 100px;
+}
+
+.fecha,
+.hora 
+{
+    display: table-cell;
+    padding: 0px 27px;
+}
+
+.frm__motivo{
+    margin: auto;
+    width: 350px;
+    margin-top: 25px;
+}
+
+.cita label, 
+.frm__motivo label, 
+.informacion label{
+    display: block;
+    font-size: 20px;
+    
+}
+
+.cita input{
+    padding: 2px 14px;
+}
+
+.comentario{
+    margin-top: 20px;
+}
+
+.comentario textarea{
+    height: 150px;
+    width: 100%;
+   
+}
+
+.celda{
+    display: table-cell;
+    padding-right: 10px;
+}
+
+.formulario-boton{
+    width: 200px;
+    margin: auto;
+    padding: 50px;
+}
+
+.btn_registrar{
+    padding: 10px 39px;
+    font-size: 15px;
+}
+
+.formulario-cita .error_input, 
+.columna__contenedor .error_input {
+    border: 1px solid red;
+}
+

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>MEP</title>
+    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/headerCentro.css" />
+    <link rel="stylesheet" href="./css/footer.css">
+
+</head>
+
+    <header>
+        <div class="column__arriba">
+            <nav class="menu__arriba">
+                <div class="colum__abajo">
+                    <nav class="menu__registrarse">
+                        <ul>
+                            <li> <a class="registrarse" href="index.html">P&aacute;gina principal</a></li>
+                            <li><a href="registro_padres.html">Registrarse como padre de familia</a></li>
+                            <li>
+							<a class="btn btn--amarillo" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>
+							</li>
+                        </ul>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="text_center">
+        <h1>Registro de centros educativos</h1>
+    </div>
+    <main class="formulario">
+        <section id="informacionGeneral">
+
+            <div class="text_center">
+                <h2>Informaci&oacute;n general</h2>
+            </div>
+
+            <div class="datos_izq text_center">
+
+                <div class="text_center">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtNombreComercial">Nombre comercial:</label>
+                    <input id="txtNombreComercial" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtCedulaJuridica">C&eacute;dula jur&iacute;dica:</label>
+                    <input id="txtCedulaJuridica" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtCorreoCentro">Correo electr&oacute;nico:</label>
+                    <input id="txtCorreoCentro" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtAnnoFundacion">A&ntilde;o de fundaci&oacute;n:</label>
+                    <input id="txtAnnoFundacion" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="fotoCentroEdu">Foto:</label>
+                    <div id="fotoCentroEduArrastrar" class="fotoCentroEdu mb_15">
+                        <div class="fotoCentroEdu__Previa text_center"><img id="fotoCentroEduPrevia" alt=" "
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </div>
+                        <div class="text_center mb_15"><span id="pesoFotoCentroEdu"></span></div>
+                        <div class="text_center">
+                            <div class="fotoCentroEdu__archivo">
+                                <button>Buscar...</button>
+                                <input id="fotoCentroEdu" type="file" accept=".jpg,.jpeg,.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="datos_der text_center">
+
+                <div class="text_center">
+                    <label for="txtTelefonoCentro">Tel&eacute;fono:</label>
+                    <input id="txtTelefonoCentro" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtFax">Fax:</label>
+                    <input id="txtFax" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="sltTipoInstitucion">Tipo de instituci&oacute;n:</label>
+                    <select id="sltTipoInstitucion">
+                        <option value="" disabled selected>Seleccione el tipo de instituci&oacute;n...</option>
+                        <option value="Pública">P&uacute;blica</option>
+                        <option value="Privada">Privada</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltNiveles">Oferta acad&eacute;mica:</label>
+                    <p>Puede seleccionar una o m&aacute;s</p>
+                    <select id="sltNiveles" multiple>
+                        <option value="Preescolar">Preescolar</option>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Superior">Superior</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="txtResenna">Rese&ntilde;a hist&oacute;rica:</label>
+                    <textarea id="txtResenna"></textarea>
+                </div>
+            </div>
+
+        </section>
+        <div>
+            <hr class="estilo1">
+        </div>
+        <section id="direccion">
+            <div class="text_center">
+                <h2>Direcci&oacute;n</h2>
+            </div>
+            <div class="datos_izq text_center">
+                <div class="text_center">
+                    <label for="sltProvincia">Provincia:</label>
+                    <select id="sltProvincia">
+                        <option value="" disabled selected>Seleccione una provincia...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltCanton">Cant&oacute;n:</label>
+                    <select id="sltCanton">
+                        <option value="" disabled selected>Seleccione un cant&oacute;n...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="sltDistrito">Distrito:</label>
+                    <select id="sltDistrito">
+                        <option value="" disabled selected>Seleccione un distrito...</option>
+                    </select>
+                </div>
+                <div class="text_center">
+                    <label for="txtDirSennas">Direcci&oacute;n con se&ntilde;as:</label>
+                    <textarea id="txtDirSennas"></textarea>
+                </div>
+            </div>
+            <div class="datos_der text_center">
+                <div class="text_center">
+                    <label for="contenedorMapa">Ubicaci&oacute;n:</label>
+                    <!-- Si se pone class no se muestra el mapa -->
+                    <div id="contenedorMapa"
+                        style="width: 80%; height: 240px;border: 1px dashed #565656; background: #f1f1f1; margin:0 auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+            <hr class="estilo1">
+        </div>
+        <section id="contacto">
+            <div class="text_center">
+                <h2>Contacto</h2>
+            </div>
+            <div class="datos_izq text_center">
+                <div class="text_center">
+                    <label for="txtPrimerNombre">Primer nombre:</label>
+                    <input id="txtPrimerNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtSegundoNombre">Segundo nombre:</label>
+                    <input id="txtSegundoNombre" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtPrimerApellido">Primer apellido:</label>
+                    <input id="txtPrimerApellido" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtSegundoApellido">Segundo apellido:</label>
+                    <input id="txtSegundoApellido" type="text">
+                </div>
+            </div>
+            <div class="datos_der text_center">
+
+                <div class="text_center">
+                    <label for="txtCorreoContacto">Correo electr&oacute;nico:</label>
+                    <input id="txtCorreoContacto" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtIdentificacionContacto">Identificaci&oacute;n:</label>
+                    <input id="txtIdentificacionContacto" type="number">
+                </div>
+                <div class="text_center">
+                    <label for="txtDepartamentoContacto">Departamento:</label>
+                    <input id="txtDepartamentoContacto" type="text">
+                </div>
+                <div class="text_center">
+                    <label for="txtTelefonoContacto">Tel&eacute;fono:</label>
+                    <input id="txtTelefonoContacto" type="number">
+                </div>
+            </div>
+        </section>
+
+<div class="text_center mb_15">
+            <hr class="estilo1">
+        </div>
+    
+    <div class="text_center mb_15">
+        <button class="btn btn--amarillo" id="btnRegistrar">Registrar</button>
+    </div>
+
+</main>
+
+
+    <footer>
+        <div class="footer__cuerpo">
+            <div class="footer__flex">
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Contacto</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                            22-24-66-88</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-fax"></i> Fax:
+                            29-53-55-22</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                            educacion@ucenfotec.com</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Direcci&oacute;n</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
+                            Jos&eacute;,
+                            Barrio Cristo
+                            Rey</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24,
+                            calle
+                            12</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Citas</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="far fa-calendar-alt"></i> Agendar</a></li>
+                </ul>
+                <section class="footer__social__seccion footer__flex">
+                    <span class="footer__social__traslapar footer__social__conectate">
+                        Conectate <span class="footer__social__pequeno">con</span> nosotros
+                    </span>
+                    <span class="footer__social__traslapar footer__social__iconos__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
+                                class="fab fa-twitter-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
+                    </span>
+                </section>
+                <section class="footer__inferior__seccion footer__flex">
+                    <div class="footer__inferior__envoltura">
+                        <i class="fa fa-copyright"></i> 2019
+                        <address class="footer__direccion__compania">JAMS</address>
+                        <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
+                    </div>
+                    <div class="footer__inferior__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
+                            class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+    <!-- Mapas -->
+    <script charset="utf-8" src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript"></script>
+    <script charset="utf-8" src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript"></script>
+    <script charset="utf-8" type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <!-- /Mapas -->
+
+
+    <!-- Promise -->
+    <script src="./js/promise/es6-promise.min.js"></script>
+    <script src="./js/promise/es6-promise.auto.min.js"></script>
+    <!-- /Promise -->
+
+    <script src="./js/general.js"></script>
+    <script src="./js/funciones_autenticacion.js"></script>
+    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+    <script src="./js/direccionUbicacion/controlador.js"></script>
+
+    <script src="./js/servicio_registro_cedu.js"></script>
+    <script src="./js/controlador_registro_cedu.js"></script>
+
+    </body>
+
+</html>

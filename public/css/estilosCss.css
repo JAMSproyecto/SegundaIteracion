@@ -1,0 +1,152 @@
+
+body{
+    font-family: 'Nunito', sans-serif;
+  
+    margin: 0px;
+}
+
+
+
+/*estilos menu izquierdo*/
+.menu-derecho{
+    float: right;
+    margin-top: 12px;
+    
+}
+
+
+.menu-derecho > ul{
+   display: table;
+
+}
+
+.menu-derecho > ul >  li{
+    list-style: none;
+    padding: 0px 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.menu-derecho > ul > li > a{
+    text-decoration: none;
+    color: #2c3e50;
+  
+  
+}
+
+.menu-derecho li {
+    position: relative;
+}
+
+
+.menu-derecho li ul {
+    background: #FFF;
+    border: 1px solid #9a9b9b;
+    clip: rect(0,0,0,0);
+    left: 50%;
+    min-width: 105px;
+    padding-left: 10px;
+    width: 250px;
+    position: absolute;
+    transform: translate(-50%, 10px);
+}
+
+.menu-derecho li ul li{
+    padding: 5px 13px;
+    list-style: none;
+}
+.menu-derecho li:hover > ul{
+    clip: auto;
+    margin-top: 10px;
+}
+.menu-derecho ul ul ul {
+    left: 100%;
+    margin: 0;
+    top: 0;
+    transform: none;
+}
+
+
+
+.menu-derecho li ul li a {
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.menu-derecho > ul >  li:hover >  a{
+
+    background-color:  #f0932b;
+    padding: 10px;
+    color: #fff;
+}
+
+
+.lista_centros{
+    width: 900px;
+    /* margin: 100px auto; */
+    margin: auto;
+    padding-top: 37px;
+}
+
+
+
+.lista_centros .grey {
+    background: #f9f9f9;
+    height: 400px;
+    padding: 15px 35px;
+    margin-top: 20px;
+    text-align: center;
+    /* color: #353b48; */
+    width: 935px;
+}
+
+
+
+
+.grey strong{
+   /* border-bottom: 2px solid; */
+   
+    color: #607D8B;
+    font-size: 20px;
+}
+
+#tbl_centro{
+    margin-top: 37px;
+ 
+    width: 947px;
+}
+
+
+#tbl_centro th{
+      /* border: 3px solid #fff; */
+      background: #03A9F4;
+      padding: 7px;
+      color: #fff;
+      /* margin: 13px; */
+      width: 100px;
+  }
+  
+  .bloque_derecho {
+    float: right;
+    margin-top: 12px;
+    
+}
+
+.bloque_izquierdo {
+    float: left;
+    margin-top: 12px;
+    
+}
+
+.tbl_centro_edu{
+    margin-top: 37px;
+ 
+    width: 947px;
+    /* border: 3px solid #fff; */
+    background: #03A9F4;
+    padding: 7px;
+    color: #fff;
+    /* margin: 13px; */
+    width: 100px;
+}
