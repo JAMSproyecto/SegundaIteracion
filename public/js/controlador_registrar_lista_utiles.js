@@ -3,7 +3,7 @@
 const input_tipo = document.querySelector('#txt_tipo');
 const input_nombre = document.querySelector('#txt_nombre');
 const input_anno = document.querySelector('#txt_anno');
-
+const label_tipo = document.querySelector('#label_tipo');
 
 const boton_crear = document.querySelector('#btn_agregar');
 
@@ -60,18 +60,16 @@ window.onload = () => {
     let tipoUsuario = sessionStorage.getItem('tipoUsuario');
 
     if (null !== tipoUsuario) {
-        console.log('tipoUsuario', tipoUsuario);
+        
             if (tipoUsuario === 'SuperAdmin') {
                 
                 input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
-                input_tipo.selectedIndex=1;
-            input_tipo.disabled = true;
+                input_tipo.selectedIndex=0;
+                
             }
            if (tipoUsuario === 'CentroEducativo') {
-                
-            input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="centro_educativo">Centro Educativo</option>';
-            input_tipo.selectedIndex=1;
-            input_tipo.disabled = true;
+            input_tipo.remove();    
+            input_tipo.selectedIndex=2;        
         }
     }else{
         console.error('No se encontró el tipo de usuario');

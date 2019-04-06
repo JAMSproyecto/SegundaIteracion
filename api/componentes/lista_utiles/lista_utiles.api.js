@@ -3,6 +3,7 @@
 const model_utiles = require('./lista_utiles.model');
 const model_cedu = require('../centro_educativo/centroEducativo.model');
 
+
 module.exports.registrar = (req, res) =>{
     let lista_utiles_nuevo = new model_utiles(
         {
