@@ -25,12 +25,12 @@
                 <ul>
                     <li>
                         <button id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar
-                            sesi&oacute;n</a>
+                            sesión</a>
                     </li>
                 </ul>
             </nav>
         </div>
-    </header>
+  
 
         <div class="column__abajo">
             <div class="contenedor">
@@ -59,114 +59,14 @@
         </div>
     </header>
 
-    <section class="lista_centros">
-        <div class=" grey padres">
-            <h2>Datos Personales</h2>
-            <div class="bloque_izquierdo">
-                <img src="./imgs/profile.jpg" alt="">
-            </div>
-            <div class="bloque_derecho">
-                <div class="nombre">
-                    <strong>
-                        Nombre del Padre:
-                    </strong>
-                    <span id="nombre_completo_padre"></span>
-                </div>
-                <div class="correo">
-                    <strong>
-                        Correo padre:
-                    </strong>
-                    <span id="correo_padre"></span>
-                </div>
-
-                <div class="telefono">
-                    <strong>
-                        Telefono del Padre:
-                    </strong>
-                    <span id="telefono_padre"></span>
-
-
-                </div>
-                <div class="cedula">
-                    <strong>
-                        Cedula:
-                    </strong>
-                    <span id="identificacion_padre"></span>
-
-                </div>
-                <div class="provincia">
-                    <strong>
-                        Provincia:
-                    </strong>
-                    <span id="provincia_padre"></span>
-
-                </div>
-
-                <div class="canton">
-                    <strong>
-                        Cantón:
-                    </strong>
-                    <span id="canton_padre"></span>
-
-                </div>
-                <div class="distrito">
-
-                    <strong>
-                        Distrito:
-                    </strong>
-                    <span id="distrito_padre"></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </section>
     <section>
-
-        <div class=" centros">
-            <h2>Lista de centros educativos</h2>
-            <div class="tabla__responsive">
-                <table class="tabla tabla__rayada" id="tblCentrosEducativos">
-                    <thead class="cabecera--celeste">
-                        <tr>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Provincia</th>
-                            <th>Cantón</th>
-                            <th>Distrito</th>
-                            <th>Dirección</th>
-                            <th>Calificación</th>
-                            <th>Calificación MEP</th>
-                            <th>Perfil</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
+            <div class="text__center">
+                    <form id="busqueda_localizacion"></form>
             </div>
-        </div>
-    </section>
 
-    <section>
-        <div class="grey atrasados">
-            <h2>Lista de favoritos</h2>
-            <table id="tbl_centro">
-                <thead>
-                    <tr>
-                        <th>Nombre del Centro</th>
-                        <th>Correo</th>
-                        <th>Ubicación</th>
-                        <th>Tipo (publica o privada)</th>
-                        <th>Oferta Académica (publica o privada)</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-        </div>
 
     </section>
+
     <footer>
         <div class="footer__cuerpo">
             <div class="footer__flex">
@@ -175,7 +75,7 @@
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                                class="fa fas fa-phone"></i> Teléfono:
                             22-24-66-88</a></li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
                                 class="fa fas fa-fax"></i> Fax:
@@ -240,16 +140,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <script src="js/servicio_perfil_padres.js"></script>
-    <script src="js/controlador_perfil_padre.js"></script>
-
     <script src="./js/general.js"></script>
 
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controladorListar.js"></script>
-    <script src="./js/servicio_listar_cedu.js"></script>
-    <script src="./js/controlador_listar_cedu.js"></script>
     <script src="./js/controlador_cerrar_sesion.js"></script>
+
+
+    <script src="./js/servicio_busqueda_centro.js"></script>
+    <script src="./js/controlador_busqueda_centros.js"></script>
 
 </body>
 

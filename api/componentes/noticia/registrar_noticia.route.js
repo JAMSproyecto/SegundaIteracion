@@ -7,7 +7,7 @@ router.param('idCentro', function(req,res, next, pidCentro){
     req.body.idCentro = pidCentro;
 
     next();
-    }
+    } 
 
 );
 

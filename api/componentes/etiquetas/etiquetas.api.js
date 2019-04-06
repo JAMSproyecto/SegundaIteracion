@@ -1,31 +1,34 @@
 'use strict';
+
 const model_etiqueta = require('./etiquetas.model');
 
-//función para registrar una etiqueta
-module.exports.registrar = (req,res) => {
-    let etiqueta_nuevo = new  model_etiqueta(
+
+module.exports.registrar_etiqueta = (req, res) =>{
+    let etiqueta = new model_etiqueta(
         {
-        nombre : req.body.nombre,
+            nombre : req.body.nombre
         }
     );
+     
+    etiqueta.save(
+        function(error){
+            if(error){
+                res.json(
+                    {
+                        success : false,
+                        msg : `No se puede guardar la etiqueta, ocurrió el siguiente error ${error}`
+                    }
+                )
+            }else{
 
-etiqueta_nuevo.save(
-    function(error){
-        if (error){
-            res.json(
-                {
-                    success : false,
-                    msg : `No se pudo guardar la etiqueta, ocurrio el siguiente error ${error} `
-                }
-            )
-        } else {
-            res.json(
-                {
-                    success : true,
-                    msg :  `se registro la etiqueta de forma correcta`
-                }
-            )
-        };
-    }
-);
+                res.json(
+                    {
+                        success : true,
+                        msg : `Se registró la etiqueta de forma correcta`
+                    }
+                )
+            }
+        }
+
+    );
 };

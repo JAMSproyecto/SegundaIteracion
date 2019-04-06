@@ -269,7 +269,6 @@ module.exports.validar_credenciales = (req, res) => {
                                         }
                                     };
 
-
                                 } else {
                                     responder = {
                                         success: false,
@@ -282,7 +281,6 @@ module.exports.validar_credenciales = (req, res) => {
                                     message: 'El usuario no existe'
                                 };
                             }
-
 
                             break;
                         default :

@@ -8,7 +8,7 @@ let schema_noticia = new mongoose.Schema(
         noticia : {type : String, required: true},
         autor : {type: String, required: false},
         fecha : {type: String, required: true},
-        informacion : {type : String, required : true}
+        informacion : {type : String, required : true} 
     }
 );
 
