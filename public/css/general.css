@@ -1294,6 +1294,9 @@ display: inherit;
 .invisible {
     display: none;
 }
+.ocultar{
+    visibility: hidden;
+}
 
 
 

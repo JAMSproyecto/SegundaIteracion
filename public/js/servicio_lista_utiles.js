@@ -1,6 +1,6 @@
 'use strict';
 
-let registrar_lista_utiles = (ptipo, panno, pnombre) => {
+let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
   let request = $.ajax({
     url: "http://localhost:4000/api/registrar_lista_utiles",
@@ -108,9 +108,9 @@ let buscar_por_id = (id) => {
 
   request.done(function (res) {
     lista = res.lista;
-
+    
   });
-
+  
   request.fail(function (jqXHR, textStatus) {
 
   });

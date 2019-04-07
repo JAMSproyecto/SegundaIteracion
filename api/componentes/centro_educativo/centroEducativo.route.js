@@ -19,6 +19,10 @@ Router.route('/obtener_todos_centro_educativo').get((req, res) => {
 Router.route('/obtener_perfil_centro_educativo/:id').get((req, res) => {
     RegistrarCEduApi.obtener_perfil_centro_educativo(req, res);
 });
+//Creado por johan
+Router.route('/obtener_lista_todos_centro_educativo').get((req, res) => {
+    RegistrarCEduApi.obtener_lista_todos_centro_educativo(req, res);
+});
 
 module.exports = Router;
 

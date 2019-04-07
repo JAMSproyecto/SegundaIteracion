@@ -1,7 +1,7 @@
 'use strict';
 
 const tabla = document.querySelector('#tbl_lista_utiles tbody');
-
+const titulo = document.querySelector('#titulo');
 
 function ver_info_lista() {
     let id_lista = this.dataset.codigo;
@@ -22,6 +22,7 @@ let mostrar_datos = () => {
     let lista_utiles = response.coleccion_utiles;
     let nombre = response.nombreCentro;
     if (response.success == true) {
+        titulo.innerHTML = nombre;
         for (let i = 0; i < lista_utiles.length; i++) {
             let fila = tabla.insertRow();
             let boton_agregar = document.createElement('button');
@@ -41,10 +42,8 @@ let mostrar_datos = () => {
             boton_ver.addEventListener('click', ver_info_lista);
             boton_agregar.addEventListener('click', seleccionar_lista);
 
-            fila.insertCell().innerHTML = lista_utiles[i]["tipo"];
             fila.insertCell().innerHTML = lista_utiles[i]["nombre"];
             fila.insertCell().innerHTML = lista_utiles[i]["anno"];
-            fila.insertCell().innerHTML = nombre;
             fila.insertCell().appendChild(boton_ver);
             fila.insertCell().appendChild(boton_agregar);
 

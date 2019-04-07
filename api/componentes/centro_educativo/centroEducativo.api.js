@@ -181,6 +181,34 @@ module.exports.obtener_perfil_centro_educativo = (req, res) => {
         });
 };
 
+//Creado pot Johan
+
+module.exports.obtener_lista_todos_centro_educativo = async (req, res) => {
+    try {
+        const mostrarColumnas = {}; //{ _id: 0 };
+
+        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion nombre').sort({_id: 'desc'});
+        if (!!Object.keys(resultado).length) {
+            res.json({
+                success: true,
+                message: resultado
+            });
+        } else {
+            res.json({
+                success: false,
+                message: 'No se encontraron datos'
+            });
+        }
+    } catch (err) {
+        console.log(Tiza.bold.yellow.bgBlack('Error:'));
+        console.log(Tiza.bold.yellow.bgBlack(err));
+        res.json({
+            success: false,
+            message: 'Error al obtener los centros educativos'
+        });
+    }
+};
+
 
 
 
