@@ -77,6 +77,10 @@ let seleccionar_articulos =() =>{
       type: 'success',
       title: 'Artículos registrados',
       text: 'Todos los artículos fueron registrados con éxito'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'ver_articulos_lista_utiles.html';
+      };
     });
   }
   

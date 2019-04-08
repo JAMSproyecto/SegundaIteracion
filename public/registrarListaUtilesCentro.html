@@ -103,14 +103,20 @@
                     <div class="text_center">
                         <label for="txt_tipo" id="label_tipo"></label>
                         <select id="txt_tipo">
-                           
+                        
                         </select>
                     </div>
-                    
+                    <div class="text_center" >
+                            <input list = "lista" id="lista_centros">
+                            <datalist id="lista">
+    
+                            </datalist>
+                    </div>
                     <div class="text_center">
                         <label for="txt_nombre">Nombre</label>
                         <input type="text" id="txt_nombre">
                     </div>
+
                     <div class="text_center">
                         <label for="txt_anno">Año</label>
                         <input type="text" id="txt_anno">
@@ -206,12 +212,13 @@
                 </div>
             </footer>
 
-        <script src="./js/controlador_nav.js"></script>
-        <script src="./js/sweetalert2.all.min.js"></script>
-        <script src="./js/jquery-3.3.1.min.js"></script>
-        <script src="./js/servicio_listar_cedu.js"></script>
-        <script src="./js/servicio_lista_utiles.js"></script>
-        <script src="./js/controlador_registrar_lista_utiles.js"></script>
+            <script src="./js/controlador_nav.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+                <script src="js/servicio_listar_cedu.js"></script>
+            <script src="js/servicio_lista_utiles.js"></script>
+            <script src="js/controlador_registrar_lista_utiles.js"></script>
 
     </body>
 

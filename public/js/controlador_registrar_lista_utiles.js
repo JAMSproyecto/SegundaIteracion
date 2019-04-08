@@ -3,11 +3,12 @@
 const input_tipo = document.querySelector('#txt_tipo');
 const input_nombre = document.querySelector('#txt_nombre');
 const input_anno = document.querySelector('#txt_anno');
-const label_tipo = document.querySelector('#label_tipo');
 const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
+const label_centro = document.querySelector('#label_centro');
 input_centros.classList.add('ocultar');
+label_centro.classList.add('ocultar');
 
 let response = obtener_lista_utiles();
 
@@ -17,7 +18,12 @@ const boton_crear = document.querySelector('#btn_agregar');
 let validar = () => {
     let error = false;
 
-
+    if (input_tipo.value == '') {
+        error = true;
+        input_tipo.classList.add('error_input');
+    } else {
+        input_tipo.classList.remove('error_input');
+    }
 
     if (input_nombre.value == '') {
         error = true;
@@ -36,8 +42,6 @@ let validar = () => {
 
     return error;
 };
-
-
 
 let obtener_datos = () => {
 
@@ -58,6 +62,7 @@ let obtener_datos = () => {
 
 boton_crear.addEventListener('click', obtener_datos);
 
+
 window.onload = () => {
 
     let tipoUsuario = sessionStorage.getItem('tipoUsuario');
@@ -69,34 +74,41 @@ window.onload = () => {
             input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
             cargarCEdu();
-            let nombre = response.coleccion_utiles[0]['nombre'];
-            titulo_centro.innerHTML = nombre;
-
+            titulo_centro.innerHTML = 'MEP';
             input_tipo.addEventListener('change', mostrar_centros);
-
-
         }
         if (tipoUsuario === 'CentroEducativo') {
-            
-            input_tipo.selectedIndex = 2;
+            input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
+            input_tipo.selectedIndex = 0;
             input_tipo.remove();
-
-            
             let nombre = response.nombreCentro;
-
             titulo_centro.innerHTML = nombre;
         }
     } else {
         console.error('No se encontró el tipo de usuario');
     }
 };
+
+
+
+
 function mostrar_centros(){
     if(this.value != 'centro_educativo'){
         input_centros.classList.add('ocultar');
+        label_centro.classList.add('ocultar');
+        sessionStorage.setItem('id', '1999')
     }else{
         input_centros.classList.remove('ocultar');
+        label_centro.classList.remove('ocultar');
+        input_centros.addEventListener('change', obtener_codigo_centro);
     }
 };
+
+function obtener_codigo_centro(){
+    sessionStorage.setItem('id', this.value)
+}
+
+
 let cargarCEdu = () => {
     listarCEdu_todo((pSuccess, pMessage) => {
         if (pSuccess) {
@@ -106,13 +118,10 @@ let cargarCEdu = () => {
                     opcion.value = obj['_id'];
                     opcion.textContent = obj['nombre']
                     lista_centros.appendChild(opcion);
-
-
                 });
-
-
-
             };
         }
     })
 };
+
+

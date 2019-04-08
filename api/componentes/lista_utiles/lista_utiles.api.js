@@ -134,3 +134,40 @@ module.exports.buscar_por_id = (req, res) => {
         
     )
 };
+
+
+module.exports.obtener_todos_general = (req, res) =>{
+    
+    model_utiles.find().then(
+        function (utiles){
+            const cantidad = Object.keys(utiles).length;
+            
+            if (cantidad > 0) {
+                console.log(utiles[0].codigo);
+                model_cedu.findOne({ _id: utiles[0].codigo}).then(
+                    (centro) =>{
+                        
+                        res.json(
+                            {
+                                success : true,
+                                coleccion_utiles : utiles,
+                                nombreCentro: centro.nombre
+                            }
+                        )
+                    }
+
+                )
+                
+                
+            } else {
+                res.json(
+                    {
+                        success : false,
+                        coleccion_utiles : `no se encontraron lista de útiles registrados`
+                    }
+                )
+            }
+        }
+        
+    )
+};

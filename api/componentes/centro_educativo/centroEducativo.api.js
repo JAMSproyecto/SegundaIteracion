@@ -210,5 +210,25 @@ module.exports.obtener_lista_todos_centro_educativo = async (req, res) => {
 };
 
 
-
-
+module.exports.buscar_por_id = (req, res) => {
+    ModelRegistrarCEdu.find({_id : req.body.id }).then(
+        function (centro){
+            if (centro) {
+                res.json(
+                    {
+                        success : true,
+                        centro : centro
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : false,
+                        centro : `no se encontraron lista de útiles registrados`
+                    }
+                )
+            }
+        }
+        
+    )
+};
