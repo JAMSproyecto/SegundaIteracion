@@ -48,6 +48,7 @@ let mostrar_datos = () => {
             if (tipoUsuario === 'SuperAdmin') {
                 let centro = buscar_centro_por_id(lista_utiles[i]['codigo']);
                 th_centro.classList.remove('ocultar');
+                titulo.innerHTML = 'MEP';
                 if(centro[0].nombre){
                     fila.insertCell().innerHTML = centro[0].nombre;
                 }else{
