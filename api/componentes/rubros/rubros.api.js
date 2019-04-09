@@ -71,3 +71,4 @@ module.exports.actualizar_Rubros = function(req, res){
     
     );
 };
+

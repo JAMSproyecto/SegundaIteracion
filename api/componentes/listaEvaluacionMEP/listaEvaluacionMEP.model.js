@@ -5,8 +5,13 @@ const NombreTabla = 'lista_rubros_';
 
 let schema_listaRubros = new mongoose.Schema(
     {
-        id: { type: mongoose.Schema.Types.Number, require: true, index: true },
-        rubro: { type: String, require: true }
+        id_Admin: {type : String, required : true},
+        rubros: [
+            {
+                rubros : {type : String},
+                estado : {type: Boolean}
+            }
+        ]
     }
 );
 

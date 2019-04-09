@@ -87,7 +87,7 @@ let listar_rubros = () => {
 
 let actualizar_rubro = (prubro, pid) => {
   let request = $.ajax({
-    url: "http://localhost:4000/api/actualizar_Padre",
+    url: "http://localhost:4000/api/actualizar_Rubro",
     method: "POST",
     data: {
       rubro: prubro,
@@ -143,14 +143,14 @@ let actualizar_rubro = (prubro, pid) => {
   });
 };
 
-let agregar_rubro = (pid_lista_rubros, particulo_seleccionado) => {
+let agregar_rubro = (pid, prubro_seleccionado) => {
 
   let request = $.ajax({
     url: "http://localhost:4000/api/agregar_Rubros",
     method: "POST",
     data: {
-      id_lista_rubros: pid_lista_rubros,
-      articulo_seleccionado: particulo_seleccionado
+      id_Admin: pid,
+      rubro_seleccionado: prubro_seleccionado
     },
     dataType: "json", 
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -158,6 +158,20 @@ let agregar_rubro = (pid_lista_rubros, particulo_seleccionado) => {
 
   request.done(function (msg) {
 
+    if (msg.success){
+      swal.fire({
+        type: 'success',
+        title: 'Rubros registrados',
+        text: msg.msg
+      });
+    } else {
+      swal.fire({
+        type: 'error',
+        title: 'Artículo no enviada',
+        text: msg.msg
+      });
+    }
+   
   });
 
   request.fail(function (jqXHR, textStatus) {

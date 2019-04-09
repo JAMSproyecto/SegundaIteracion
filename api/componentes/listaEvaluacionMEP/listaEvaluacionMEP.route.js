@@ -14,3 +14,13 @@ router.route('/agregar_Rubros')
         );
 
         module.exports = router;
+
+        router.route('/crear_Lista')
+        .post(
+            function(req, res)
+            {
+             lista_rubros_api.crear_Lista(req, res);
+            }
+        );
+
+        module.exports = router;

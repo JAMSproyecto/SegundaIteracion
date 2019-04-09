@@ -30,21 +30,12 @@ input_filtrar.addEventListener('keyup', mostrar_datos);
 mostrar_datos();
 
  
-
+ 
 let seleccionar_rubros =() =>{
-  let id_lista_rubros = sessionStorage.getItem('id');
 
-  console.log(id_lista_rubros);
-
+  let id_admin = sessionStorage.getItem('id');
+console.log(id_admin);
   let rubros_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
-
-  
-  for (let i = 0; i < rubros_seleccionados.length; i++) {
-
-      agregar_rubro(id_lista_rubros, rubros_seleccionados[i].value);
-      rubros_seleccionados[i].checked = false;
-      rubros_seleccionados[i].disabled =true;
-    }
 
   if(rubros_seleccionados.length <= 0){
     swal.fire({
@@ -53,11 +44,13 @@ let seleccionar_rubros =() =>{
       text: 'Debe de seleccionar al menos un rubro a evaluar'
     });
   }else{
-    swal.fire({
-      type: 'success',
-      title: 'Rubros registrados',
-      text: 'Todos los rubros fueron registrados con éxito'
-    });
+    for (let i = 0; i < rubros_seleccionados.length; i++) {
+
+      agregar_rubro(id_admin, rubros_seleccionados[i].value);
+      console.log(rubros_seleccionados[i].value);
+      rubros_seleccionados[i].checked = false;
+      rubros_seleccionados[i].disabled =true;
+    }
   }
 
  
