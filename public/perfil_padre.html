@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilosCss.css" />
     <link rel="stylesheet" href="./css/headerCentro.css">
-   
+
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="./css/tablas.css" />
-    <link rel="stylesheet" href="./css/footer.css"/>
+    <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/estilosPadres.css" />
 
 </head>
@@ -30,8 +30,8 @@
                 </ul>
             </nav>
         </div>
-  
-
+    </header>
+    <header>
         <div class="column__abajo">
             <div class="contenedor">
                 <div class="contenedor">
@@ -42,7 +42,7 @@
                         <ul>
                             <span>|</span>
                             <li>
-                                <a class="reporte" href="./actualizarDatosPadre.html">Modificar Perfil</a>
+                                <a class="reporte">Modificar Perfil</a>
                             </li>
                             <span>|</span>
                             <li>
@@ -58,43 +58,80 @@
             </div>
         </div>
     </header>
-
     <main>
+        <section class="lista_centros">
+            <div class=" grey padres">
+                <h2>Datos Personales</h2>
+                <div class="bloque_izquierdo">
+                    <img src="./imgs/profile.jpg" alt="">
+                </div>
+                <div class="bloque_derecho">
+                    <div class="nombre">
+                        <strong>
+                            Nombre del Padre:
+                        </strong>
+                        <span id="nombre_completo_padre"></span>
+                    </div>
+                    <div class="nombre">
+                        <strong>
+                            Apellido del Padre:
+                        </strong>
+                        <span id="apellido_padre"></span>
+                    </div>
 
-        <section>
-            <div class="text__center">
-                <h1 class="titulo__principal">Centros educativos</h1>
-            </div>
-            <div class="tabla__responsive">
-                <table class="tabla tabla__rayada" id="tblCentrosEducativos">
-                    <thead>
-                        <tr class="cabecera--celeste">
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Provincia</th>
-                            <th>Cant&oacute;n</th>
-                            <th>Distrito</th>
-                            <th>Direcci&oacute;n</th>
-                            <th>Calificaci&oacute;n</th>
-                            <th>Calificaci&oacute;n MEP</th>
-                            <th>Perfil</th>
-                        </tr>
-                        <tr>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Provincia</th>
-                            <th>Cant&oacute;n</th>
-                            <th>Distrito</th>
-                            <th>Direcci&oacute;n</th>
-                            <th>Calificaci&oacute;n</th>
-                            <th>Calificaci&oacute;n MEP</th>
-                            <th>Perfil</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+                    <div class="correo">
+                        <strong>
+                            Correo padre:
+                        </strong>
+                        <span id="correo_padre"></span>
+                    </div>
+
+                    <div class="telefono">
+                        <strong>
+                            Telefono del Padre:
+                        </strong>
+                        <span id="telefono_padre"></span>
+                    </div>
+
+                    <div class="cedula">
+                        <strong>
+                            Cedula:
+                        </strong>
+                        <span id="identificacion_padre"></span>
+                    </div>
+
+                    <div class="provincia">
+                        <strong>
+                            Provincia:
+                        </strong>
+                        <span id="provincia_padre"></span>
+                    </div>
+
+                    <div class="canton">
+                        <strong>
+                            Cantón:
+                        </strong>
+                        <span id="canton_padre"></span>
+                    </div>
+
+                    <div class="distrito">
+                        <strong>
+                            Distrito:
+                        </strong>
+                        <span id="distrito_padre"></span>
+                        </p>
+                    </div>
+
+                    <div class="distrito">
+                        <strong>
+                            Edad:
+                        </strong>
+                        <span id="edad_padre"></span>
+                        </p>
+                    </div>
+                </div>
         </section>
+        <button id="btn_modificar_datos">Modificar Perfil</button>
     </main>
 
     <footer>
@@ -105,7 +142,7 @@
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-phone"></i> Teléfono:
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
                             22-24-66-88</a></li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
                                 class="fa fas fa-fax"></i> Fax:
@@ -165,20 +202,22 @@
             </div>
         </div>
     </footer>
-
-    <script src="./js/controlador_nav.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <script src="./js/general.js"></script>
-
-    <script src="./js/controlador_cerrar_sesion.js"></script>
-
-    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
-    <script src="./js/direccionUbicacion/controladorListar.js"></script>
-    <script src="./js/servicio_listar_cedu.js"></script>
-    <script src="./js/controlador_listar_cedu.js"></script>
-    <script src="./js/controlador_cerrar_sesion.js"></script>
 </body>
+
+<script src="./js/controlador_nav.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="js/servicio_perfil_padres.js"></script>
+<script src="js/controlador_perfil_padre.js"></script>
+
+<script src="./js/general.js"></script>
+
+<script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+<script src="./js/direccionUbicacion/controladorListar.js"></script>
+
+<script src="./js/controlador_cerrar_sesion.js"></script>
+
+<script src="js/controlador_actualizar_padres.js"></script>
 
 </html>

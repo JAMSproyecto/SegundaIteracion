@@ -136,6 +136,8 @@ app.use('/api', preguntasFrecuentes);
 const noticias = require('./componentes/noticia/registrar_noticia.route');
 app.use('/api', noticias);
 
+const etiquetas = require ('./componentes/etiquetas/etiquetas.route');
+app.use('/api', etiquetas);
 
 
 

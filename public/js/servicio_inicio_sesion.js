@@ -21,7 +21,6 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
     sessionStorage.setItem('nombreUsuario', response.message.nombreUsuario);
     sessionStorage.setItem('correo', pusuario);
     sessionStorage.setItem('id', response.message.id);
-    console.log(response.message.id);
 	
 	if('undefined' !== typeof response.message.nombreInstitucion){
 		sessionStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
