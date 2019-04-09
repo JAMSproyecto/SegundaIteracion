@@ -1,7 +1,8 @@
 'uset strict';
 const cita_modelo = require('./citas.model');
 const nodemailer = require('nodemailer');
-const cedu_model = require('../centro_educativo/centroEducativo.model');
+const Moment = require('moment');
+//const cedu_model = require('../centro_educativo/centroEducativo.model');
 
 
 /*funcion para mandar correo al padre*/
@@ -17,7 +18,7 @@ let transporter = nodemailer.createTransport({
 /*funcion para registrar nueva cita*/
 module.exports.registrar = (req, res) => {
 
-
+    let fecha = Moment(req.body.Fecha);
     
     let nueva_cita = new cita_modelo(
         {
@@ -25,7 +26,7 @@ module.exports.registrar = (req, res) => {
             Apellidos: req.body.Apellidos,
             Telefono: req.body.Telefono,
             Correo: req.body.Correo,
-            Fecha: req.body.Fecha,
+            Fecha: fecha.format('DD-MM-YYYY'),
             Hora: req.body.Hora,
             Motivo: req.body.Motivo,
             Comentario: req.body.Comentario,
