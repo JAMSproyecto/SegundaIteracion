@@ -134,6 +134,7 @@
     <main>
         <section>
             <h1 class="titulo__principal">Lista de útiles</h1>
+            <h2 class="titulo__principal" id="titulo"></h2>
             <div class="wrapper">
                 <div class="bloque__filtro">
                     <label for="txt_filtrar">Filtrar</label>
@@ -143,10 +144,9 @@
                     <table id="tbl_lista_utiles">
                         <thead>
                             <tr>
+                                <th id="th_centro">Centro educativo</th>
                                 <th>Nombre</th>
-                                <th>Tipo</th>
                                 <th>Año</th>
-                                <th>Institución Educativa</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -247,6 +247,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/servicio_listar_cedu.js"></script>
     <script src="js/servicio_lista_utiles.js"></script>
     <script src="js/controlador_listar_lista_utiles.js"></script>
 

@@ -76,7 +76,15 @@ let seleccionar_articulos =() =>{
     swal.fire({
       type: 'success',
       title: 'Artículos registrados',
+
+      text: 'Todos los artículos fueron registrados con éxito'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'ver_articulos_lista_utiles.html';
+      };
+
       text: 'Los artículos fueron registrados correctamente'
+
     });
   }
   

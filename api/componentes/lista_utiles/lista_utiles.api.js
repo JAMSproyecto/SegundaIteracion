@@ -3,6 +3,7 @@
 const model_utiles = require('./lista_utiles.model');
 const model_cedu = require('../centro_educativo/centroEducativo.model');
 
+
 module.exports.registrar = (req, res) =>{
     let lista_utiles_nuevo = new model_utiles(
         {
@@ -43,6 +44,7 @@ module.exports.obtener_todos = (req, res) =>{
             const cantidad = Object.keys(utiles).length;
             
             if (cantidad > 0) {
+                console.log(utiles[0].codigo);
                 model_cedu.findOne({ _id: utiles[0].codigo}).then(
                     (centro) =>{
                         
@@ -125,6 +127,43 @@ module.exports.buscar_por_id = (req, res) => {
                     {
                         success : false,
                         coleccion_utiles : `No se encontraron listas de útiles registradas`
+                    }
+                )
+            }
+        }
+        
+    )
+};
+
+
+module.exports.obtener_todos_general = (req, res) =>{
+    
+    model_utiles.find().then(
+        function (utiles){
+            const cantidad = Object.keys(utiles).length;
+            
+            if (cantidad > 0) {
+                console.log(utiles[0].codigo);
+                model_cedu.findOne({ _id: utiles[0].codigo}).then(
+                    (centro) =>{
+                        
+                        res.json(
+                            {
+                                success : true,
+                                coleccion_utiles : utiles,
+                                nombreCentro: centro.nombre
+                            }
+                        )
+                    }
+
+                )
+                
+                
+            } else {
+                res.json(
+                    {
+                        success : false,
+                        coleccion_utiles : `no se encontraron lista de útiles registrados`
                     }
                 )
             }
