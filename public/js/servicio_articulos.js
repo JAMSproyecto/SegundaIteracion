@@ -18,15 +18,14 @@ let registrar_articulo = (pnombre, pdescripcion) => {
         {
             swal.fire({
                 type: 'success',
-                title: 'articulo enviado',
-                text: 'el registro fue éxitoso'
+                title: 'El artículo fue registrado de forma exitosa'
               });
         });
     
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
           type: 'error',
-          title: 'Articulo no enviado',
+          title: 'El artículo no fue registrado',
           text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
       });

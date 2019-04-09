@@ -43,10 +43,10 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `No se logro guardar los datos ${error}`
+                        msg: `No se pudo guardar la etiqueta, ocurrió el siguiente error ${error} `
+                    });
 
-                    }
-                );
+                  
 
             } else {
                 /*envio el correo de confirmacion al padre*/
@@ -109,7 +109,7 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `Registro exitoso`
+                        msg: `La cita se registró correctamente`
                     }
                 );
             }
@@ -135,7 +135,7 @@ module.exports.listar_todos = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        comentarios: 'No se encontraron citas'
+                        comentarios: 'No se encontraron citas registradas'
                     }
                 )
             }
@@ -165,7 +165,7 @@ module.exports.obtener_citasCentro = (req, res) =>{
             res.json(
                 {
                     success: false,
-                    citas: 'No se encontraron citas'
+                    citas: 'No se encontraron citas registradas'
                 }
             )
         }

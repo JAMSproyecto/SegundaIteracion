@@ -24,7 +24,7 @@ let obtener_Contrasena = () => {
         let contrasena = Input_Contrasenna.value;
         registrar_contrasena(contrasena);
     } else {
-        mostrarAlerta('El pin de validación debe de ser ingresado');
+        mostrarAlerta('Favor ingresar el pin de validación');
     }
 };
 

@@ -69,14 +69,14 @@ let seleccionar_articulos =() =>{
   if(error || articulos_seleccionados.length <= 0){
     swal.fire({
       type: 'warning',
-      title: 'Uno o más artículos no fueron registrados o seleccionados',
-      text: 'Verifique los campos señalados en rojo o seleccione los artículos deseados'
+      title: 'Los artículos no fueron registrados de forma correcta',
+      text: 'Favor completar los espacios señalados en rojo'
     });
   }else{
     swal.fire({
       type: 'success',
       title: 'Artículos registrados',
-      text: 'Todos los artículos fueron registrados con éxito'
+      text: 'Los artículos fueron registrados correctamente'
     });
   }
   

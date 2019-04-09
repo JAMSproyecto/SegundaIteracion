@@ -17,7 +17,7 @@ module.exports.verificar_credenciales = async (arr, res) => {
             if (resultado['activo'] === true) {
                 res.json({
                     success: true,
-                    message: 'El pin ingresado ya fué validado con éxito'
+                    message: 'Se ha ingresado el pin de forma correcta'
                 });
             } else {
 //Si se encontró el pin y no está activo, entonces inserte la contraseña:
@@ -28,7 +28,7 @@ module.exports.verificar_credenciales = async (arr, res) => {
 
                 ModelUsuarios.updateOne(Filtro, NuevosValores, (err) => {
                     if (err) {
-                        console.log(Tiza.bold.yellow.bgBlack('Ocurrió un error al guardar la contraseña: ' + err));
+                        console.log(Tiza.bold.yellow.bgBlack('No se pudo guardar la etiqueta, ocurrio el siguiente error' + err));
                         res.json({
                             success: false,
                             message: 'Error al guardar la contraseña'
@@ -36,7 +36,7 @@ module.exports.verificar_credenciales = async (arr, res) => {
                     } else {
                         res.json({
                             success: true,
-                            message: 'La contraseña se guardó exitosamente'
+                            message: 'La contraseña se registró correctamente'
                         });
                     }
                 });

@@ -47,8 +47,8 @@ let obtener_datos = () =>{
     } else {
         swal.fire({
             type: 'warning',
-            title: 'La lista de útiles no fue enviada',
-            text: 'Por favor revise los campos resaltados'
+            title: 'El articulo no fue registrado de manera correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         });
     }
 };
@@ -63,13 +63,13 @@ window.onload = () => {
         console.log('tipoUsuario', tipoUsuario);
             if (tipoUsuario === 'SuperAdmin') {
                 
-                input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
+                input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro educativo</option>';
                 input_tipo.selectedIndex=1;
             input_tipo.disabled = true;
             }
            if (tipoUsuario === 'CentroEducativo') {
                 
-            input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="centro_educativo">Centro Educativo</option>';
+            input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="centro_educativo">Centro educativo</option>';
             input_tipo.selectedIndex=1;
             input_tipo.disabled = true;
         }

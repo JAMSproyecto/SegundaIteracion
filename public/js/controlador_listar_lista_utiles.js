@@ -28,7 +28,7 @@ let mostrar_datos = () => {
             let boton_ver = document.createElement('button');
 
             boton_agregar.type = 'button';
-            boton_agregar.textContent = 'Agregar Artículos';
+            boton_agregar.textContent = 'Agregar artículos';
             boton_agregar.dataset.codigo = lista_utiles[i]['_id'];
             boton_agregar.classList.add('btn_tabla');
             

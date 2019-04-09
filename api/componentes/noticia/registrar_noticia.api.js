@@ -30,7 +30,7 @@ module.exports.registrar_noticia = (req, res) =>{
                 res.json(
                     {
                         success : true,
-                        msg : `Se registró noticia de forma correcta`
+                        msg : `Se registró la noticia de forma correcta`
                     }
                 )
             }

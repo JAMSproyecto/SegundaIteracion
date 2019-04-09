@@ -226,16 +226,16 @@ let obtener_datos = () => {
                         let edadHijo4 = edad_hijo4.value;
                         registrar_padre(nombre, segundoNombre, apellido, segundoApellido, tipoIdentificacion, numIdentificacion, nacionalidad, fechaNacimiento, numCel, numCasa, email, provincia, canton, distrito, direccion, cantidadHijos, nombreHijo, edadHijo, nombreHijo2, edadHijo2, nombreHijo3, edadHijo3, nombreHijo4, edadHijo4);
                 } else {
-                    mostrarAlerta('Por favor revise los campos resaltados en la sección de dirección');
+                    mostrarAlerta('Favor completar los espacios señalados en rojo en la sección de dirección');
                 }
             } else {
-                mostrarAlerta('Por favor revise los campos resaltados en la sección de datos de contacto');
+                mostrarAlerta('Favor completar los espacios señalados en rojos en la sección de datos de contacto');
             }
         } else {
             mostrarAlerta('El usuario debe de ser mayor de edad');
         }
     } else {
-        mostrarAlerta('Por favor revise los campos resaltados en la sección de datos generales');
+        mostrarAlerta('Favor completar los espacios señalados en rojos en la sección de datos generales');
     }
 };
 

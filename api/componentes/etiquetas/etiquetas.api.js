@@ -15,14 +15,14 @@ etiqueta_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar la etiqueta, ocurrio el siguiente error ${error} `
+                    msg : `No se pudo guardar la etiqueta, ocurrió el siguiente error ${error} `
                 }
             )
         } else {
             res.json(
                 {
                     success : true,
-                    msg :  `se registro la etiqueta de forma correcta`
+                    msg :  `Se registró la etiqueta de forma correcta`
                 }
             )
         };

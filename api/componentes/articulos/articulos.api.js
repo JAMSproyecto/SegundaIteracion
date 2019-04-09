@@ -17,7 +17,7 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
             fecha: ObtenerFecha.get() || ''
         });
         let guardarAccion = await bitacora_nuevo.save();
-        console.log(`Se registró en la bitácora: ${pAccion}`);
+        console.log(`Se han registrado los datos en la bitácora: ${pAccion}`);
     } catch (err) {
         console.log(`Error al registrar en la bitácora '${pAccion}':`);
         console.log(err.message);
@@ -46,7 +46,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar el articulo, ocurrio el siguiente error ${error} `
+                    msg : `No se pudo guardar el artículo, ocurrio el siguiente error ${error} `
                 }
             );
         } else {
@@ -56,7 +56,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : true,
-                    msg :  `se registro el articulo de forma correcta`
+                    msg :  `Se ha registrado el artículo de forma correcta`
                 }
             );
         }
@@ -79,7 +79,7 @@ module.exports.listar_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        articulos : `no se encontraron artilos registrados`
+                        articulos : `No se encontraron artículos registrados`
                     }
                 )
             }
@@ -104,7 +104,7 @@ module.exports.buscar_por_id = (req, res) => {
                 res.json(
                     {
                         success : false,
-                        articulo : `no se encontraron artículos registrados`
+                        articulo : `No se encontraron artículos registrados`
                     }
                 )
             }
