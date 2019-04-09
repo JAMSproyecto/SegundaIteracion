@@ -56,8 +56,8 @@ let obtener_datos = () => {
     } else {
         swal.fire({
             type: 'warning',
-            title: 'La lista de útiles no fue enviada',
-            text: 'Por favor revise los campos resaltados'
+            title: 'El articulo no fue registrado de manera correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         });
     }
 };
@@ -71,6 +71,7 @@ window.onload = () => {
 
     if (null !== tipoUsuario) {
 
+
         if (tipoUsuario === 'SuperAdmin') {
             input_tipo.classList.remove('ocultar');
             input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
@@ -78,6 +79,20 @@ window.onload = () => {
             cargarCEdu();
             titulo_centro.innerHTML = 'MEP';
             input_tipo.addEventListener('change', mostrar_centros);
+
+        console.log('tipoUsuario', tipoUsuario);
+            if (tipoUsuario === 'SuperAdmin') {
+                
+                input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro educativo</option>';
+                input_tipo.selectedIndex=1;
+            input_tipo.disabled = true;
+            }
+           if (tipoUsuario === 'CentroEducativo') {
+                
+            input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="centro_educativo">Centro educativo</option>';
+            input_tipo.selectedIndex=1;
+            input_tipo.disabled = true;
+
         }
         if (tipoUsuario === 'CentroEducativo') {
             input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';

@@ -25,19 +25,19 @@ module.exports.registrar_PreguntaFrecuente_CentroEducativo = (req, res) =>{
 
     preguntaFrecuente.save( (error)=>{
         if(error){
-            console.log(`Fracaso al registrar pregunta frecuente ${error}`);
+            console.log(`No se pudo guardar la pregunta frecuente, ocurrió el siguiente error ${error} `); 
 
             res.json({
                 exito: false,
-                msg: 'Fracaso al registrar pregunta frecuente'
+                msg: 'No se logró registrar pregunta frecuente'
             });
         }
         else{
-            console.log(`Exito al registrar pregunta frecuente ${error}`);
+            console.log(`La pregunta frecuente se registró correctamente `);
 
             res.json({
                 exito: true,
-                msg: 'Éxito al registrar pregunta frecuente'
+                msg: 'La pregunta frecuente se registró correctamente'
             });
         }
     });
@@ -104,19 +104,19 @@ module.exports.registrar_PreguntaFrecuente_General = (req, res) =>{
 
     preguntaFrecuente.save( (error)=>{
         if(error){
-            console.log(`Fracaso al registrar pregunta frecuente ${error}`);
+            console.log(`No se pudo guardar la pregunta frecuente, ocurrió el siguiente error ${error}`);
 
             res.json({
                 exito: false,
-                msg: 'Fracaso al registrar pregunta frecuente'
+                msg: 'No se pudo registrar pregunta frecuente'
             });
         }
         else{
-            console.log(`Exito al registrar pregunta frecuente ${error}`);
+            console.log(`Se ha registrado la pregunta frecuente de forma correcta`);
 
             res.json({
                 exito: true,
-                msg: 'Éxito al registrar pregunta frecuente'
+                msg: 'Se ha registrado la pregunta frecuente de forma correcta'
             });
         }
     });

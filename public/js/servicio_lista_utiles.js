@@ -37,7 +37,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
   request.fail(function (jqXHR, textStatus) {
     swal.fire({
       type: 'error',
-      title: 'lista de utiles no enviada',
+      title: 'La lista de utiles no fue registrada',
       text: 'Ocurrió un error inesperado, por favor intente de nuevo'
     });
   });
@@ -114,7 +114,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
   request.fail(function (jqXHR, textStatus) {
     swal.fire({
       type: 'error',
-      title: 'Artículo no enviada',
+      title: 'El artículo no registrado',
       text: 'Ocurrió un error inesperado, por favor intente de nuevo'
     });
   });

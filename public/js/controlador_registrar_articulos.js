@@ -36,8 +36,8 @@ let obtener_datos = () => {
     } else {
         swal.fire({
             type: 'warning',
-            title: 'El articulo no fue enviado',
-            text: 'Por favor revise los campos resaltados'
+            title: 'El articulo no fue guardado de manera correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         });
     }
 };  

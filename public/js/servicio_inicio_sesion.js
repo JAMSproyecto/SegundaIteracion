@@ -21,7 +21,6 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
     sessionStorage.setItem('nombreUsuario', response.message.nombreUsuario);
     sessionStorage.setItem('correo', pusuario);
     sessionStorage.setItem('id', response.message.id);
-    console.log(response.message.id);
 	
 	if('undefined' !== typeof response.message.nombreInstitucion){
 		sessionStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
@@ -32,7 +31,7 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
   });
 
   peticion.fail(jqXHR => {
-    console.error('Ocurri&oacute; un error inesperado, por favor intente de nuevo');
+    console.error('Ocurrió un error inesperado, por favor intente de nuevo');
   });
 
   return respuesta;

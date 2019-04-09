@@ -90,8 +90,8 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'Validación Incorrecta',
-            text: 'Por favor revise los espacios resaltados en rojo'
+            title: 'La actividad no fue registrada de forma correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         }
         )
     }

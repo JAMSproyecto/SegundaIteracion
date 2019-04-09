@@ -1,7 +1,6 @@
 'use strict';
 
-let registrar_noticia = (pidCentro, ptema, pnoticia, pautor, pfecha, 
-    pinformacion) => {
+let registrar_noticia = (pidCentro, ptema, pnoticia, pautor, pfecha, pinformacion) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_noticia",
         method: "POST",
@@ -12,7 +11,7 @@ let registrar_noticia = (pidCentro, ptema, pnoticia, pautor, pfecha,
             autor: pautor,
             fecha: pfecha,
             informacion: pinformacion
-
+ 
         },
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8'

@@ -153,7 +153,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontraron datos'
+                message: 'No se encontraron centros educativos'
             });
         }
     } catch (err) {

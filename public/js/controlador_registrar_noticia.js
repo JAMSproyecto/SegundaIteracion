@@ -5,9 +5,7 @@ const input_autor = document.querySelector('#txt_autor');
 const input_fecha = document.querySelector('#txt_fecha');
 const input_informacion = document.querySelector('#txt_informacion');
 
-const boton_enviar = document.querySelector('#btn_enviar');
-
-
+const boton_enviar = document.querySelector('#btn_enviar'); 
 
 let validar = () => {
 
@@ -65,8 +63,8 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'Validación Incorrecta',
-            text: 'Por favor revise los espacios resaltados en rojo'
+            title: 'La noticia no fue registrada de manera correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         }
         )
     }

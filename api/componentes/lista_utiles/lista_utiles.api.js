@@ -21,14 +21,14 @@ lista_utiles_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar la lista de utiles, ocurrio el siguiente error ${error}`
+                    msg : `No se pudo guardar la lista de útiles, ocurrió el siguiente error ${error}`
                 }
             )
         } else {
             res.json(
                 {
                     success : true,
-                    msg : `se registro la lista de utiles de forma correcta`
+                    msg : `Se registró la lista de útiles de forma correcta`
                 }
             )
         }
@@ -64,7 +64,7 @@ module.exports.obtener_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `no se encontraron lista de útiles registrados`
+                        coleccion_utiles : `No se encontraron listas de útiles registradas`
                     }
                 )
             }
@@ -82,7 +82,7 @@ module.exports.agregar_articulos = (req, res) =>{
         {
             $push:
             {
-                'articulos':
+                'artículos':
                 {
                   codigo: req.body.codigo_articulo,
                   cantidad : req.body.cantidad  
@@ -95,14 +95,14 @@ module.exports.agregar_articulos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo guardar el articulo, ocurrio el siguiente error ${error}`
+                        msg : `No se pudo guardar el artículo, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se registro el articulo con exito `
+                        msg : `Se registró el artículo con éxito `
                     }
                 )
             }
@@ -126,7 +126,7 @@ module.exports.buscar_por_id = (req, res) => {
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `no se encontraron lista de útiles registrados`
+                        coleccion_utiles : `No se encontraron listas de útiles registradas`
                     }
                 )
             }

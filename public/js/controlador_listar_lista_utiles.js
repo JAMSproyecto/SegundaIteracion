@@ -48,7 +48,7 @@ let mostrar_datos = () => {
 
             //se crea el boton dinamico para agregar articulos a la lista de útiles
             boton_agregar.type = 'button';
-            boton_agregar.textContent = 'Agregar Artículos';
+            boton_agregar.textContent = 'Agregar artículos';
             boton_agregar.dataset.codigo = lista_utiles[i]['_id'];
             boton_agregar.classList.add('btn_tabla');
             

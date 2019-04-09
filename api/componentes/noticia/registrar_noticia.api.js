@@ -4,7 +4,7 @@ const model_registrar_noticia = require('./registrar_noticia.model');
 
 
 module.exports.registrar_noticia = (req, res) =>{
-    let noticia_nueva = new model_registrar_noticia(
+    let noticia_nueva = new model_registrar_noticia( 
         {
             idCentro : req.body.idCentro,
             tema : req.body.tema,
@@ -30,7 +30,7 @@ module.exports.registrar_noticia = (req, res) =>{
                 res.json(
                     {
                         success : true,
-                        msg : `Se registró noticia de forma correcta`
+                        msg : `Se registró la noticia de forma correcta`
                     }
                 )
             }
