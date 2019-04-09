@@ -75,3 +75,26 @@ module.exports.agregar_Rubros = (req, res) =>{
     );
 };
 
+module.exports.listar_rubros_seleccionados = (req ,res) =>{
+    const filtros = {id_Admin: req.body.id_Admin};
+    model_listaMEP.find(filtros).then(
+        function(listaRubros){
+            if(listaRubros.length > 0){
+                res.json(
+                    {
+                        success: true,
+                        msg: listaRubros
+                    }
+                )
+            }else{
+                res.json(
+                    {
+                        success: false,
+                        msg: 'No se encontraron rubros'
+                    }
+                )
+            }
+        }
+
+    )
+};
