@@ -7,8 +7,10 @@ const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
 const label_centro = document.querySelector('#label_centro');
+input_tipo.classList.add('ocultar');
 input_centros.classList.add('ocultar');
 label_centro.classList.add('ocultar');
+
 
 let response = obtener_lista_utiles();
 
@@ -70,7 +72,7 @@ window.onload = () => {
     if (null !== tipoUsuario) {
 
         if (tipoUsuario === 'SuperAdmin') {
-
+            input_tipo.classList.remove('ocultar');
             input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
             cargarCEdu();
@@ -80,7 +82,7 @@ window.onload = () => {
         if (tipoUsuario === 'CentroEducativo') {
             input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
-            input_tipo.remove();
+            input_tipo.classList.add('ocultar');
             let nombre = response.nombreCentro;
             titulo_centro.innerHTML = nombre;
         }
@@ -89,9 +91,7 @@ window.onload = () => {
     }
 };
 
-
-
-
+  
 function mostrar_centros(){
     if(this.value != 'centro_educativo'){
         input_centros.classList.add('ocultar');
@@ -105,7 +105,8 @@ function mostrar_centros(){
 };
 
 function obtener_codigo_centro(){
-    sessionStorage.setItem('id', this.value)
+    sessionStorage.setItem('id', this.dataset.value);
+    
 }
 
 
@@ -116,7 +117,8 @@ let cargarCEdu = () => {
                 pMessage.forEach(obj => {
                     let opcion = document.createElement('option');
                     opcion.value = obj['_id'];
-                    opcion.textContent = obj['nombre']
+                   
+                    opcion.textContent = obj['nombre'];
                     lista_centros.appendChild(opcion);
                 });
             };
