@@ -82,7 +82,7 @@ let buscar_articulo_por_id = (id) =>{
 };
 
 //funcion para actualizar articulo
-let actualizar_articulo = (pid,pnombre, pdescripcion) => {
+let actualizar_articulo = (pid,pnombre,pdescripcion) => {
 
   let request = $.ajax({
       url: "http://localhost:4000/api/actualizar_articulo",
@@ -101,10 +101,14 @@ let actualizar_articulo = (pid,pnombre, pdescripcion) => {
           swal.fire({
               type: 'success',
               title: 'El artículo fue actualizado de forma exitosa'
-            });
-      });
-  
-  request.fail(function (jqXHR, textStatus) {
+              
+            }).then((result) => {
+              if (result.value) {
+                  window.location.href = 'listar_articulos.html';
+            }
+      })
+    });    
+    request.fail(function (jqXHR, textStatus) {
       swal.fire({
         type: 'error',
         title: 'El artículo no fue actualizado',
@@ -112,3 +116,4 @@ let actualizar_articulo = (pid,pnombre, pdescripcion) => {
       });
     });
 };
+
