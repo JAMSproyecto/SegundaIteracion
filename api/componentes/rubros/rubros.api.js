@@ -6,8 +6,8 @@ const model_registrar_rubro = require('./rubros.model');
 module.exports.registrar_Rubro = (req, res) =>{
     let rubro_nuevo = new model_registrar_rubro( 
         {
-            rubro : req.body.rubro
-
+            rubro : req.body.rubro,
+            valor : 5
         }
     );
     

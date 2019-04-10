@@ -9,7 +9,7 @@ const noticias = listar_todas_noticias(idCentro);
 
 let mostrar_datos = () =>{
     
-    let filtros = input_filtrar.value;
+    let filtros = input_filtrar.value; 
     tabla.innerHTML = '';
    
     for (let i = 0; i < noticias.length; i++){
