@@ -23,6 +23,7 @@ let mostrar_datos = () =>{
         input_seleccionar.type = 'checkbox';
         input_seleccionar.value = rubros[i]['_id'];
         fila.insertCell().appendChild(input_seleccionar);
+
       }  
     }
 };
@@ -34,7 +35,7 @@ mostrar_datos();
 let seleccionar_rubros =() =>{
 
   let id_admin = sessionStorage.getItem('id');
-console.log(id_admin);
+
   let rubros_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
 
   if(rubros_seleccionados.length <= 0){
