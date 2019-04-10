@@ -90,8 +90,8 @@ let mostrar_datos = () => {
         swal.fire(
             {
                 type: 'warning',
-                title: 'Datos  Incompletos',
-                text: 'Por favor, revise los campos resaltados en rojo'
+                title: 'La cita no fue registrada de manera correcta',
+                text: 'Favor completar los espacios señalados en rojo'
             }
         );
 

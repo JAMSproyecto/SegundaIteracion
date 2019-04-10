@@ -3,123 +3,129 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MEP</title>
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    <link rel="stylesheet" href="imgs/favicon.ico">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/estilosCss.css" />
     <link rel="stylesheet" href="./css/headerCentro.css">
-    <link rel="stylesheet" href="./css/tablas.css">
-    <link rel="stylesheet" href="./css/footer.css">
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="./css/tablas.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/estilosPadres.css" />
 
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="column__arriba">
             <nav class="menu__arriba">
                 <ul>
-
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-                    <li><a class="sesion" href="#"><button id="boton_cerrar">Cerrar sesión</button></a></li>
+                    <li>
+                        <button id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar
+                            sesión</a>
+                    </li>
                 </ul>
             </nav>
         </div>
+    </header>
+    <header>
         <div class="column__abajo">
             <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
+                <div class="contenedor">
+                    <div class="logo">
+                        <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </div>
+                    <nav class="menu-derecho">
+                        <ul>
+                            <span>|</span>
+                            <li>
+                                <a class="reporte">Modificar Perfil</a>
+                            </li>
+                            <span>|</span>
+                            <li>
+                                <a class="calificaciones" href="#">Cambiar Contraseña</a>
+                            </li>
+                            <span>|</span>
+                            <li>
+                                <a class="centros" href="#">Centros Educativos</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav class="menu__abajo">
-                    <ul>
-
-                        <span>|</span>
-                        <li>
-                            <a class="calificaciones" href="#">Modificar perfil</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                            </ul>
-
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Actividad</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Noticias</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
-                                <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Útiles</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="registrar_lista_utiles.html">Registrar lista de
-                                        útiles</a></li>
-
-                                <li><a class="subtitulos" href="listar_lista_utiles.html">Ver lista de útiles</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Reportes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Ranking anual</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
     <main>
-        <section>
-            <h1 id="titulo2" class="titulo"></h1>
-            <h2 id="titulo" class="titulo"></h2>
-            <div class="wrapper">
-
-                <div class="contenedor_tabla">
-                    <div class="bloque__filtro">
-                        <label for="txt_filtrar">Filtrar</label>
-                        <input type="text" id="txt_filtrar">
-                        <a href="listar_lista_utiles.html">Regresar</a>
-                    </div>
-                    <table id="tbl_articulos">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+        <section class="lista_centros">
+            <div class=" grey padres">
+                <h2>Datos Personales</h2>
+                <div class="bloque_izquierdo">
+                    <img src="./imgs/profile.jpg" alt="">
                 </div>
+                <div class="bloque_derecho">
+                    <div class="nombre">
+                        <strong>
+                            Nombre del Padre:
+                        </strong>
+                        <span id="nombre_completo_padre"></span>
+                    </div>
 
-            </div>
+                    <div class="correo">
+                        <strong>
+                            Correo padre:
+                        </strong>
+                        <span id="correo_padre"></span>
+                    </div>
 
+                    <div class="telefono">
+                        <strong>
+                            Telefono del Padre:
+                        </strong>
+                        <span id="telefono_padre"></span>
+                    </div>
+
+                    <div class="cedula">
+                        <strong>
+                            Cedula:
+                        </strong>
+                        <span id="identificacion_padre"></span>
+                    </div>
+
+                    <div class="provincia">
+                        <strong>
+                            Provincia:
+                        </strong>
+                        <span id="provincia_padre"></span>
+                    </div>
+
+                    <div class="canton">
+                        <strong>
+                            Cantón:
+                        </strong>
+                        <span id="canton_padre"></span>
+                    </div>
+
+                    <div class="distrito">
+                        <strong>
+                            Distrito:
+                        </strong>
+                        <span id="distrito_padre"></span>
+                        </p>
+                    </div>
+
+                    <div class="distrito">
+                        <strong>
+                            Edad:
+                        </strong>
+                        <span id="edad_padre"></span>
+                        </p>
+                    </div>
+                </div>
         </section>
-
+        <button id="btn_modificar_datos">Modificar Perfil</button>
     </main>
 
     <footer>
@@ -190,15 +196,22 @@
             </div>
         </div>
     </footer>
-
-    <script src="./js/controlador_nav.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="js/servicio_articulos.js"></script>
-    <script src="js/servicio_lista_utiles.js"></script>
-    <script src="js/controlador_ver_articulos_lista_utiles.js"></script>
-
 </body>
+
+<script src="./js/controlador_nav.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="js/servicio_perfil_padres.js"></script>
+<script src="js/controlador_perfil_padre.js"></script>
+
+<script src="./js/general.js"></script>
+
+<script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+<script src="./js/direccionUbicacion/controladorListar.js"></script>
+
+<script src="./js/controlador_cerrar_sesion.js"></script>
+
+<script src="js/controlador_actualizar_padres.js"></script>
 
 </html>

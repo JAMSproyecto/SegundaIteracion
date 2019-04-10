@@ -1,6 +1,6 @@
 'use strict';
 
-let registrar_lista_utiles = (ptipo, panno, pnombre) => {
+let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
   let request = $.ajax({
     url: "http://localhost:4000/api/registrar_lista_utiles",
@@ -24,7 +24,12 @@ let registrar_lista_utiles = (ptipo, panno, pnombre) => {
 
     }).then((result) => {
       if (result.value) {
-        window.location.href = 'listar_lista_utiles.html';
+        let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+        if(tipoUsuario === 'SuperAdmin'){
+          window.location.href = 'listar_lista_utiles.html';
+        }else{
+          window.location.href = 'listaUtilescentroEducativo.html';
+        }
       }
     })
   });
@@ -32,7 +37,7 @@ let registrar_lista_utiles = (ptipo, panno, pnombre) => {
   request.fail(function (jqXHR, textStatus) {
     swal.fire({
       type: 'error',
-      title: 'lista de utiles no enviada',
+      title: 'La lista de utiles no fue registrada',
       text: 'Ocurrió un error inesperado, por favor intente de nuevo'
     });
   });
@@ -44,6 +49,29 @@ let obtener_lista_utiles = () => {
   let id_usuario = sessionStorage.getItem('id');
   let request = $.ajax({
     url: "http://localhost:4000/api/listar_lista_utiles/" + id_usuario,
+    method: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    coleccion_utiles = res;
+
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+  return coleccion_utiles;
+
+};
+let obtener_lista_utiles_todos = () => {
+  let coleccion_utiles = [];
+  let request = $.ajax({
+    url: "http://localhost:4000/api/listar_lista_utiles_todos",
     method: "GET",
     data: {
     },
@@ -75,7 +103,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
       codigo_articulo: pcodigo_articulo,
       cantidad: pcantidad
     },
-    dataType: "json",
+    dataType: "json", 
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
   });
 
@@ -86,7 +114,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
   request.fail(function (jqXHR, textStatus) {
     swal.fire({
       type: 'error',
-      title: 'Artículo no enviada',
+      title: 'El artículo no registrado',
       text: 'Ocurrió un error inesperado, por favor intente de nuevo'
     });
   });
@@ -108,11 +136,35 @@ let buscar_por_id = (id) => {
 
   request.done(function (res) {
     lista = res.lista;
-
+    
   });
-
+  
   request.fail(function (jqXHR, textStatus) {
 
   });
   return lista;
+};
+
+let buscar_centro_por_id = (id) => {
+  let centro = [];
+
+  let request = $.ajax({
+    url: "http://localhost:4000/api/obtener_centro_por_id/" + id,
+    type: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    centro = res.centro;
+    
+  });
+  
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+  return centro;
 };

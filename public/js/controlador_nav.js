@@ -47,7 +47,7 @@ let controlar_sesion = () => {
                 break;
 
             default:
-                console.log('Cerrando sesión porque el tipo de usuario es desconocido');
+                console.log('Usuario desconocido. Cerrando sesión');
                 cerrar_sesion(true);
                 break;
         }

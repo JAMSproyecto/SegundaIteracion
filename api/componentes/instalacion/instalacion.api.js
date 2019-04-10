@@ -130,7 +130,7 @@ module.exports.instalacion = async (req, res) => {
                 } else {
                     respuesta.push({
                         success: true,
-                        message: 'Los niveles ya están instalados'
+                        message: 'Los niveles fueron instalados correctamente'
                     });
                 }
             }

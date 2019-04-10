@@ -42,10 +42,10 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `No se logro guardar los datos ${error}`
+                        msg: `No se pudo guardar la etiqueta, ocurrió el siguiente error ${error} `
+                    });
 
-                    }
-                );
+                  
 
             } else {
                 /*envio el correo de confirmacion al padre*/
@@ -108,7 +108,7 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `Registro exitoso`
+                        msg: `La cita se registró correctamente`
                     }
                 );
             }
@@ -116,7 +116,6 @@ module.exports.registrar = (req, res) => {
     );
 }
 /*fin de funcion de registro de nueva cita*/
-
 
 /**
  * obtener_citasCentro

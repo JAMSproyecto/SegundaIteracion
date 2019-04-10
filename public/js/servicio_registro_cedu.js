@@ -40,8 +40,8 @@ let registrarCentroEducativo = (pNombre, pNombreComercial, pCedulaJuridica, pCor
             if (res.success) {
                 swal.fire({
                     type: 'success',
-                    title: 'Éxito',
-                    html: 'El centro educativo se registr&oacute; correctamente',
+                    title: 'Registro exitoso',
+                    html: 'El centro educativo se registrado de forma correcta',
                     onAfterClose: function () {
                         window.location.replace("credenciales.html");
                     }
@@ -76,7 +76,7 @@ let registrarCentroEducativo = (pNombre, pNombreComercial, pCedulaJuridica, pCor
         swal.fire({
             type: 'error',
             title: 'El centro educativo no puede ser registrado',
-            html: 'Ocurri&oacute; un error inesperado, por favor intente de nuevo'
+            html: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
     });
 };

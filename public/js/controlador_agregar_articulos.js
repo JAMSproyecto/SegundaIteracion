@@ -40,7 +40,7 @@ mostrar_datos();
 
 
 //función seleccionar los artículos que se quieren 
-let seleccionar_articulos =() =>{
+let seleccionar_rubro =() =>{
   let id_lista = localStorage.getItem('lista');
   let articulos_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
   console.log(articulos_seleccionados);
@@ -69,14 +69,22 @@ let seleccionar_articulos =() =>{
   if(error || articulos_seleccionados.length <= 0){
     swal.fire({
       type: 'warning',
-      title: 'Uno o más artículos no fueron registrados o seleccionados',
-      text: 'Verifique los campos señalados en rojo o seleccione los artículos deseados'
+      title: 'Los artículos no fueron registrados de forma correcta',
+      text: 'Favor completar los espacios señalados en rojo'
     });
   }else{
     swal.fire({
       type: 'success',
       title: 'Artículos registrados',
+
       text: 'Todos los artículos fueron registrados con éxito'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'ver_articulos_lista_utiles.html';
+      };
+
+      text: 'Los artículos fueron registrados correctamente'
+
     });
   }
   
