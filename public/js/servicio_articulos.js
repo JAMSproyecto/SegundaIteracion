@@ -82,7 +82,7 @@ let buscar_articulo_por_id = (id) =>{
 };
 
 //funcion para actualizar articulo
-let registrar_articulo = (pid,pnombre, pdescripcion) => {
+let actualizar_articulo = (pid,pnombre, pdescripcion) => {
 
   let request = $.ajax({
       url: "http://localhost:4000/api/actualizar_articulo",
