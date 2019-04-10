@@ -40,7 +40,7 @@ mostrar_datos();
 
 
 //función seleccionar los artículos que se quieren 
-let seleccionar_articulos =() =>{
+let seleccionar_rubro =() =>{
   let id_lista = localStorage.getItem('lista');
   let articulos_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
   console.log(articulos_seleccionados);

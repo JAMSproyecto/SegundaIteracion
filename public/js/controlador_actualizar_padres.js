@@ -125,15 +125,8 @@ let actualizar_datos = () => {
     let edadHijo3 = edad_hijo3.value;
     let nombreHijo4 = nombre_hijo4.value;
     let edadHijo4 = edad_hijo4.value;
-    actualizar_padre(nombre, segundoNombre, apellido, segundoApellido, tipoIdentificacion, numIdentificacion, nacionalidad, fechaNacimiento, numCel, numCasa, email, provincia, canton, distrito, direccion, cantidadHijos, nombreHijo, edadHijo, nombreHijo2, edadHijo2, nombreHijo3, edadHijo3, nombreHijo4, edadHijo4);
+    actualizar_padre(nombre, segundoNombre, apellido, segundoApellido, tipoIdentificacion, numIdentificacion, nacionalidad, fechaNacimiento, numCel, numCasa, email, provincia, canton, distrito, direccion, cantidadHijos, nombreHijo, edadHijo, nombreHijo2, edadHijo2, nombreHijo3, edadHijo3, nombreHijo4, edadHijo4, _id);
 
 };
-
-let obtenerEdad = (pFecha) =>{
-    return Math.floor( (new Date() - new Date(pFecha).getTime() ) / 3.15576e+10 );
-};
-
-
-
 
 boton_actualizar.addEventListener('click', actualizar_datos);
