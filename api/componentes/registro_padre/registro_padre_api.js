@@ -202,22 +202,17 @@ console.log(filtros);
         }
     )
 };
-/*
-module.exports.buscar_informacion_padre = function(req, res){
-    Model_Registro_Padre.findOne({correo : req.body.correo}).then(
-        function(usuarioInfoPadre){
-            if(usuarioInfoPadre){
-                res.json(
-                {
-                    success: true,
-                    correo : usuarioInfoPadre
-                }
-                );
-            }else{
-                res.send('No se encontró el padre de familia');
-            }
 
+module.exports.actualizar = function(req, res){
+   
+    Model_Registro_Padre.findByIdAndUpdate(req.body.id, { $set: req.body },
+        function (error){
+            if(error){
+                res.json({success : false , msg : 'No se pudo actualizar la información del usuario'});
+            }else{
+                res.json({success: true , msg : 'El usuario se actualizó con éxito'});
+            }
         }
-    )
-};
-*/
+    
+    );
+}

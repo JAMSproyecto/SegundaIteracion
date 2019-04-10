@@ -68,7 +68,7 @@ let mostrar_datos = () => {
         }
         )
     }
-    else {
+    else { 
 
         let idCentro = sessionStorage.getItem("id");
         let tema = input_tema.value;

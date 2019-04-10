@@ -82,6 +82,7 @@ window.onload = () => {
 
         }
          
+
         if (tipoUsuario === 'CentroEducativo') {
             input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
@@ -108,7 +109,7 @@ function mostrar_centros(){
 };
 
 function obtener_codigo_centro(){
-    sessionStorage.setItem('id', this.dataset.value);
+    sessionStorage.setItem('id', this.value);
     
 };
 

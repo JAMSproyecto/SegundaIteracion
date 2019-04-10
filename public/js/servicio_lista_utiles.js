@@ -103,7 +103,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
       codigo_articulo: pcodigo_articulo,
       cantidad: pcantidad
     },
-    dataType: "json",
+    dataType: "json", 
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
   });
 
