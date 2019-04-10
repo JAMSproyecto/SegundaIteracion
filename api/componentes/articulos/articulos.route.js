@@ -36,4 +36,13 @@ router.route('/buscar_articulo_por_id/:id')
                 }
             );
 
+//para actualizar 
+router.route('/actualizar_articulo')
+    .post(
+        function(req, res){
+            articulo_api.actualizar(req,res);
+        }
+    );
+
 module.exports = router;
+

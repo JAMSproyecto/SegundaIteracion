@@ -80,8 +80,9 @@ window.onload = () => {
             titulo_centro.innerHTML = 'MEP';
             input_tipo.addEventListener('change', mostrar_centros);
 
-        
-        } 
+        }
+         
+
         if (tipoUsuario === 'CentroEducativo') {
             input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
@@ -110,7 +111,7 @@ function mostrar_centros(){
 function obtener_codigo_centro(){
     sessionStorage.setItem('id', this.value);
     
-}
+};
 
 
 let cargarCEdu = () => {
@@ -128,5 +129,3 @@ let cargarCEdu = () => {
         }
     })
 };
-
-

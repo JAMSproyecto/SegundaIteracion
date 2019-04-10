@@ -20,6 +20,7 @@ let mostrar_datos = () =>{
     //se inserta el nombre de la base de datos dinamicamente 
     titulo2.innerHTML = lista[0]['nombre'];
     titulo.innerHTML = lista[0]['anno'];
+    
     /*llamar al servicio de articulos funcion buscar articulo por id y pasarle
       el id del articulo que viene en lista[0]['articulos'][i]['_id']*/
       let articulo = buscar_articulo_por_id(lista[0]['articulos'][i]['codigo']);

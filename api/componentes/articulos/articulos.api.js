@@ -112,3 +112,40 @@ module.exports.buscar_por_id = (req, res) => {
         
     )
 };
+
+//función para actualizar los articulos 
+module.exports.actualizar = (req,res) => {
+    let articulo_nuevo = new  model_articulo(
+        {
+        nombre : req.body.nombre,
+        descripcion : req.body.descripcion
+        }
+    );
+
+
+articulo_nuevo.save(
+     function(error){
+        if (error){
+			
+			const log = insertarBitacora('CentroEducativo', `Error al actualizar el artículo: ${req.body.nombre} | ${error}`);
+			
+            res.json(
+                {
+                    success : false,
+                    msg : `No se pudo actualizar el artículo, ocurrio el siguiente error ${error} `
+                }
+            );
+        } else {
+			
+			const log = insertarBitacora('CentroEducativo', `Se actualizo el artículo: ${req.body.nombre} - ${req.body.descripcion}`);
+			
+            res.json(
+                {
+                    success : true,
+                    msg :  `Se ha actualizado el artículo de forma correcta`
+                }
+            );
+        }
+    }
+);
+};
