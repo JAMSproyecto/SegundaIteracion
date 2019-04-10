@@ -29,4 +29,5 @@ function actualizar (){
     let descripcion = input_descripcion.value;
 
     actualizar_articulo(id_articulo,nombre,descripcion);
+    
 };
