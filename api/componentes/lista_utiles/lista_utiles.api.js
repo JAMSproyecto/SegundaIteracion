@@ -82,7 +82,7 @@ module.exports.agregar_articulos = (req, res) =>{
         {
             $push:
             {
-                'artículos':
+                'articulos':
                 {
                   codigo: req.body.codigo_articulo,
                   cantidad : req.body.cantidad  
