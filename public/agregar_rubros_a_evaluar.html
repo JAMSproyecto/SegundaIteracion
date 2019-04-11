@@ -121,7 +121,7 @@
     </header>
     <main>
         <section>
-            <h1 class="titulo__principal">Agregar rubros a la lista de evaluación del MEP</h1>
+            <h1 class="titulo__principal">Rubros activos en lista</h1>
             <div class="wrapper">
                 <div class="bloque__filtro">
                     <label for="txt_filtrar">Filtrar</label>
@@ -132,7 +132,7 @@
                         <thead>
                             <tr>
                                 <th>Rubro</th>
-                                <th>Agregar</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,13 +140,31 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
         </section>
-        <div class="bloque__boton">
-                <button type="button" class="btn" id="btn_agregar">Agregar</button>
+
+        <section>
+            <h1 class="titulo__principal">Rubros inactivos en lista</h1>
+            <div class="wrapper">
+                <div class="bloque__filtro">
+                    <label for="txt_filtrar_inactivos">Filtrar</label>
+                    <input type="text" id="txt_filtrar_inactivos">
+                </div>
+                <div class="contenedor_tabla">
+                    <table id="tbl_rubros_inactivos">
+                        <thead>
+                            <tr>
+                                <th>Rubro</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </section>
 			
         <div class="paginador">
             <div class="paginador__contenido">

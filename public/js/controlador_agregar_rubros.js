@@ -1,60 +1,62 @@
 'use strict';
 
 const tabla = document.querySelector('#tbl_rubros tbody');
+const tabla_inactivos = document.querySelector('#tbl_rubros_inactivos tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
-const boton_agregar = document.querySelector('#btn_agregar');
+const input_filtrar_inactivos = document.querySelector('#txt_filtrar_inactivos');
 
 let rubros = listar_rubros();
 
 
-let mostrar_datos = () =>{ 
+let mostrar_datos = () => {
 
-    let filtro = input_filtrar.value;
+  let filtro = input_filtrar.value;
+  let filtro_inactivos = input_filtrar_inactivos.value;
 
-    tabla.innerHTML = '';
+  tabla.innerHTML = '';
+  tabla_inactivos.innerHTML = '';
 
-    for (let i = 0; i < rubros.length; i++) {
+  for (let i = 0; i < rubros.length; i++) {
+
+    if (rubros[i]['estado'] == 'Activo') {
       if ((rubros[i]['rubro'].toLowerCase().includes(filtro.toLowerCase()))) {
         let fila = tabla.insertRow();
         fila.insertCell().innerHTML = rubros[i]['rubro'];
 
-        let input_seleccionar = document.createElement('input');
+        let boton_desactivar = document.createElement('a');
+        boton_desactivar.innerHTML = '<i class="fas fa-minus"></i>';
+        boton_desactivar.dataset.id_rubro = rubros[i]['_id'];
+        fila.insertCell().appendChild(boton_desactivar);
+        boton_desactivar.addEventListener('click', function () {
+          desactivar_rubro(this.dataset.id_rubro);
+          rubros = listar_rubros();
+          mostrar_datos();
+          
+        })
+      }
+    } else {
+      if ((rubros[i]['rubro'].toLowerCase().includes(filtro_inactivos.toLowerCase()))) {
+        let fila_inactivos = tabla_inactivos.insertRow();
+        fila_inactivos.insertCell().innerHTML = rubros[i]['rubro'];
 
-        input_seleccionar.type = 'checkbox';
-        input_seleccionar.value = rubros[i]['_id'];
-        fila.insertCell().appendChild(input_seleccionar);
-
-      }  
-    }
-};
-input_filtrar.addEventListener('keyup', mostrar_datos);
-mostrar_datos();
-
- 
- 
-let seleccionar_rubros =() =>{
-
-  let id_admin = sessionStorage.getItem('id');
-
-  let rubros_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
-
-  if(rubros_seleccionados.length <= 0){
-    swal.fire({
-      type: 'warning',
-      title: 'Error de selección',
-      text: 'Debe de seleccionar al menos un rubro a evaluar'
-    });
-  }else{
-    for (let i = 0; i < rubros_seleccionados.length; i++) {
-
-      agregar_rubro(id_admin, rubros_seleccionados[i].value);
-      console.log(rubros_seleccionados[i].value);
-      rubros_seleccionados[i].checked = false;
-      rubros_seleccionados[i].disabled =true;
+        let boton_activar = document.createElement('a');
+        boton_activar.innerHTML = '<i class="fas fa-plus"></i>';
+        boton_activar.dataset.id_rubro = rubros[i]['_id'];
+        fila_inactivos.insertCell().appendChild(boton_activar);
+        boton_activar.addEventListener('click', function () {
+          activar_rubro(this.dataset.id_rubro);
+          rubros = listar_rubros();
+          mostrar_datos();
+          
+        })
+      }
     }
   }
-
- 
 };
 
-btn_agregar.addEventListener('click', seleccionar_rubros);
+input_filtrar.addEventListener('keyup', mostrar_datos);
+input_filtrar_inactivos.addEventListener('keyup', mostrar_datos);
+mostrar_datos();
+
+
+
