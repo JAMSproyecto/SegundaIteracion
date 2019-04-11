@@ -25,7 +25,6 @@ router.route('/registrar_cita')
 router.route('/obtener_citasCentro/:id')
     .get(
         function(req, res){
-            console.log(req);
            citas_api.obtener_citasCentro(req, res);
         }
     )
