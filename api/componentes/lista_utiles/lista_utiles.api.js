@@ -10,8 +10,8 @@ module.exports.registrar = (req, res) =>{
             codigo : req.body.codigo,
             tipo : req.body.tipo,
             nombre : req.body.nombre,
-            anno : req.body.anno
-            
+            anno : req.body.anno,
+            estado : 'Activo'
         }
     );
 
@@ -38,7 +38,6 @@ lista_utiles_nuevo.save(
 
 
 module.exports.obtener_todos = (req, res) =>{
-    
     model_utiles.find({codigo : req.body.codigo}).then(
         function (utiles){
             const cantidad = Object.keys(utiles).length;

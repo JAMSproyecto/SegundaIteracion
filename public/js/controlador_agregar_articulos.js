@@ -40,15 +40,13 @@ mostrar_datos();
 
 
 //función seleccionar los artículos que se quieren 
-let seleccionar_rubro =() =>{
+let seleccionar_articulos =() =>{
   let id_lista = localStorage.getItem('lista');
   let articulos_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
   console.log(articulos_seleccionados);
   let error =false;
 
-  
   for (let i = 0; i < articulos_seleccionados.length; i++) {
-   
     //se accede a ala celda de la cantidad (padre al hijo )
     let input_cantidad = articulos_seleccionados[i].parentNode.previousSibling.firstChild;
     if (input_cantidad.value == '' || input_cantidad.value <= 0) {
@@ -80,11 +78,14 @@ let seleccionar_rubro =() =>{
       text: 'Todos los artículos fueron registrados con éxito'
     }).then((result) => {
       if (result.value) {
-        window.location.href = 'ver_articulos_lista_utiles.html';
+        let tipo_usuario = sessionStorage.getItem('tipoUsuario');
+        if (tipo_usuario === 'SuperAdmin') {
+          window.location.href = 'ver_articulos_lista_utiles_admin.html';
+        } else {
+          window.location.href = 'ver_articulos_lista_utiles.html';
+        }
       };
-
       text: 'Los artículos fueron registrados correctamente'
-
     });
   }
   

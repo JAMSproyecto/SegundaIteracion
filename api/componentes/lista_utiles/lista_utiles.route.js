@@ -32,6 +32,7 @@ router.route('/listar_lista_utiles/:codigo')
             lista_utiles_api.obtener_todos(req, res);
             }
         );
+        
 router.route('/listar_lista_utiles_todos')
 .get(
     function(req, res)

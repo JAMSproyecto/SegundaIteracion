@@ -4,7 +4,9 @@ const tabla = document.querySelector('#tbl_lista_utiles tbody');
 const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 const th_centro = document.querySelector('#th_centro');
-th_centro.classList.add('ocultar');
+if (sessionStorage.getItem('tipoUsuario') === 'SuperAdmin') {
+    th_centro.classList.add('ocultar');
+}
 
 
 function ver_info_lista() {
@@ -32,7 +34,17 @@ function seleccionar_lista() {
 let mostrar_datos = () => {
     let filtro = input_filtrar.value;
     tabla.innerHTML = '';
-    let response = obtener_lista_utiles_todos();
+    let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+    let response = [];
+
+    if (null !== tipoUsuario) {
+        if (tipoUsuario === 'SuperAdmin') {
+            response = obtener_lista_utiles_todos();
+        }else{
+            response = obtener_lista_utiles();
+        }
+    }
+   
     let lista_utiles = response.coleccion_utiles;
     let nombre = response.nombreCentro;
     if (response.success == true) {
@@ -72,6 +84,7 @@ let mostrar_datos = () => {
                     fila.insertCell().innerHTML = centro[0].nombre;
                 }else{
                     fila.insertCell().innerHTML = 'MEP';
+                    
                 }  
             };
 
