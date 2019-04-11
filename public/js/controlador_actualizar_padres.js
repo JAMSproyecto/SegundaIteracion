@@ -33,21 +33,21 @@ const boton_actualizar = document.querySelector('#boton_registrar');
 
 let _id = sessionStorage.getItem('id');
 
-let infoPadre = buscar_padre(_id);
+let infoPadres = buscar_padre(_id);
 
-if (infoPadre) {
+if (infoPadres) {
 
-    txt_nombre.value = infoPadre['nombre'];
-    txt_segundo_nombre.value = infoPadre['segundoNombre'];
-    txt_apellido.value = infoPadre['apellido'];
-    txt_segundo_apellido.value = infoPadre['segundoApellido'];
-    lbl_tipo_id.value = infoPadre['tipoIdentificacion'];
-    num_identidad.value = infoPadre['numIdentificacion'];
-    txt_nacionalidad.value = infoPadre['nacionalidad'];
-    fecha_nacimiento.value = infoPadre['fechaNacimiento'];
-    num_cel.value = infoPadre['numCel'];
-    num_casa.value = infoPadre['numCasa'];
-    email_correo.value = infoPadre['correo'];
+    txt_nombre.value = infoPadres['nombre'];
+    txt_segundo_nombre.value = infoPadres['segundoNombre'];
+    txt_apellido.value = infoPadres['apellido'];
+    txt_segundo_apellido.value = infoPadres['segundoApellido'];
+    lbl_tipo_id.value = infoPadres['tipoIdentificacion'];
+    num_identidad.value = infoPadres['numIdentificacion'];
+    txt_nacionalidad.value = infoPadres['nacionalidad'];
+    fecha_nacimiento.value = infoPadres['fechaNacimiento'];
+    num_cel.value = infoPadres['numCel'];
+    num_casa.value = infoPadres['numCasa'];
+    email_correo.value = infoPadres['correo'];
     
 
     //Esto no anda bien aún
@@ -125,15 +125,8 @@ let actualizar_datos = () => {
     let edadHijo3 = edad_hijo3.value;
     let nombreHijo4 = nombre_hijo4.value;
     let edadHijo4 = edad_hijo4.value;
-    actualizar_padre(nombre, segundoNombre, apellido, segundoApellido, tipoIdentificacion, numIdentificacion, nacionalidad, fechaNacimiento, numCel, numCasa, email, provincia, canton, distrito, direccion, cantidadHijos, nombreHijo, edadHijo, nombreHijo2, edadHijo2, nombreHijo3, edadHijo3, nombreHijo4, edadHijo4);
+    actualizar_padre(nombre, segundoNombre, apellido, segundoApellido, tipoIdentificacion, numIdentificacion, nacionalidad, fechaNacimiento, numCel, numCasa, email, provincia, canton, distrito, direccion, cantidadHijos, nombreHijo, edadHijo, nombreHijo2, edadHijo2, nombreHijo3, edadHijo3, nombreHijo4, edadHijo4, _id);
 
 };
-
-let obtenerEdad = (pFecha) =>{
-    return Math.floor( (new Date() - new Date(pFecha).getTime() ) / 3.15576e+10 );
-};
-
-
-
 
 boton_actualizar.addEventListener('click', actualizar_datos);

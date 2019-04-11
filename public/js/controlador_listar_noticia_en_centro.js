@@ -6,7 +6,7 @@ let id_centro = sessionStorage.getItem('padreVerPerfilCEdu');
 const noticias = listar_todas_noticias(id_centro);
 
 let mostrar_datos = () => {
-    div_noticias.innerHTML = '';
+    div_noticias.innerHTML = ''; 
     if (noticias) {
         if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
            

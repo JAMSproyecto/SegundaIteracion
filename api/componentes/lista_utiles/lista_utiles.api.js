@@ -75,8 +75,8 @@ module.exports.obtener_todos = (req, res) =>{
 
 
 module.exports.agregar_articulos = (req, res) =>{
-
-    model_utiles.update(
+console.log(req.body.id_lista);
+    model_utiles.findByIdAndUpdate(
         { _id : req.body.id_lista},
 
         {
