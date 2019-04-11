@@ -39,11 +39,11 @@ let enviarDatos = () => {
     }
 
     if (c1.length < 6) {
-        mostrarAlerta('Contraseña muy corta', Input_Contrasenna);
+        mostrarAlerta('La contraseña es muy corta', Input_Contrasenna);
         return false;
     } else {
         if (c1.length > 8) {
-            mostrarAlerta('Contraseña muy larga', Input_Contrasenna);
+            mostrarAlerta('La contraseña es muy larga', Input_Contrasenna);
             return false;
         } else {
             Input_Contrasenna.classList.remove('error_input');
@@ -52,11 +52,11 @@ let enviarDatos = () => {
 
 
     if (c2.length < 6) {
-        mostrarAlerta('Contraseña muy corta', Input_Contrasenna2);
+        mostrarAlerta('La contraseña es muy corta', Input_Contrasenna2);
         return false;
     } else {
         if (c2.length > 8) {
-            mostrarAlerta('Contraseña muy larga', Input_Contrasenna2);
+            mostrarAlerta('La contraseña es muy larga', Input_Contrasenna2);
             return false;
         } else {
             Input_Contrasenna2.classList.remove('error_input');
@@ -85,7 +85,7 @@ let enviarDatos = () => {
     } else {
         Input_Contrasenna.classList.add('error_input');
         Input_Contrasenna2.classList.add('error_input');
-        mostrarAlerta('Las contraseñas deben de coincidir');
+        mostrarAlerta('Las contraseñas no coinciden');
         return false;
     }
 

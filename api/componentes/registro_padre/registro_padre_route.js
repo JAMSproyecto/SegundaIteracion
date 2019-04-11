@@ -34,14 +34,12 @@ router.route('/listar_Padres')
         }
     ); 
 
-    
-
- /*   router.route('/buscar_informacion_padre/:correo')
-    .get(
+    router.route('/actualizar_Padre')
+    .post(
         function (req, res) {
-            registro_Padre_Api.buscar_informacion_padre(req, res);
+            registro_Padre_Api.actualizar(req, res);
         }
-    ); 
-*/
+    );
+    
 
 module.exports = router;

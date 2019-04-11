@@ -3,6 +3,7 @@
 const model_utiles = require('./lista_utiles.model');
 const model_cedu = require('../centro_educativo/centroEducativo.model');
 
+
 module.exports.registrar = (req, res) =>{
     let lista_utiles_nuevo = new model_utiles(
         {
@@ -20,14 +21,14 @@ lista_utiles_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar la lista de utiles, ocurrio el siguiente error ${error}`
+                    msg : `No se pudo guardar la lista de útiles, ocurrió el siguiente error ${error}`
                 }
             )
         } else {
             res.json(
                 {
                     success : true,
-                    msg : `se registro la lista de utiles de forma correcta`
+                    msg : `Se registró la lista de útiles de forma correcta`
                 }
             )
         }
@@ -43,6 +44,7 @@ module.exports.obtener_todos = (req, res) =>{
             const cantidad = Object.keys(utiles).length;
             
             if (cantidad > 0) {
+                console.log(utiles[0].codigo);
                 model_cedu.findOne({ _id: utiles[0].codigo}).then(
                     (centro) =>{
                         
@@ -62,7 +64,7 @@ module.exports.obtener_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `no se encontraron lista de útiles registrados`
+                        coleccion_utiles : `No se encontraron listas de útiles registradas`
                     }
                 )
             }
@@ -73,8 +75,8 @@ module.exports.obtener_todos = (req, res) =>{
 
 
 module.exports.agregar_articulos = (req, res) =>{
-
-    model_utiles.update(
+console.log(req.body.id_lista);
+    model_utiles.findByIdAndUpdate(
         { _id : req.body.id_lista},
 
         {
@@ -93,14 +95,14 @@ module.exports.agregar_articulos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo guardar el articulo, ocurrio el siguiente error ${error}`
+                        msg : `No se pudo guardar el artículo, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se registro el articulo con exito `
+                        msg : `Se registró el artículo con éxito `
                     }
                 )
             }
@@ -120,6 +122,43 @@ module.exports.buscar_por_id = (req, res) => {
                         lista : lista
                     }
                 )
+            } else {
+                res.json(
+                    {
+                        success : false,
+                        coleccion_utiles : `No se encontraron listas de útiles registradas`
+                    }
+                )
+            }
+        }
+        
+    )
+};
+
+
+module.exports.obtener_todos_general = (req, res) =>{
+    
+    model_utiles.find().then(
+        function (utiles){
+            const cantidad = Object.keys(utiles).length;
+            
+            if (cantidad > 0) {
+                console.log(utiles[0].codigo);
+                model_cedu.findOne({ _id: utiles[0].codigo}).then(
+                    (centro) =>{
+                        
+                        res.json(
+                            {
+                                success : true,
+                                coleccion_utiles : utiles,
+                                nombreCentro: centro.nombre
+                            }
+                        )
+                    }
+
+                )
+                
+                
             } else {
                 res.json(
                     {

@@ -17,7 +17,7 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
             fecha: ObtenerFecha.get() || ''
         });
         let guardarAccion = await bitacora_nuevo.save();
-        console.log(`Se registró en la bitácora: ${pAccion}`);
+        console.log(`Se han registrado los datos en la bitácora: ${pAccion}`);
     } catch (err) {
         console.log(`Error al registrar en la bitácora '${pAccion}':`);
         console.log(err.message);
@@ -32,7 +32,8 @@ module.exports.registrar = (req,res) => {
     let articulo_nuevo = new  model_articulo(
         {
         nombre : req.body.nombre,
-        descripcion : req.body.descripcion
+        descripcion : req.body.descripcion,
+        estado : 'Activo'
         }
     );
 
@@ -46,7 +47,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar el articulo, ocurrio el siguiente error ${error} `
+                    msg : `No se pudo guardar el artículo, ocurrio el siguiente error ${error} `
                 }
             );
         } else {
@@ -56,7 +57,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : true,
-                    msg :  `se registro el articulo de forma correcta`
+                    msg :  `Se ha registrado el artículo de forma correcta`
                 }
             );
         }
@@ -79,14 +80,13 @@ module.exports.listar_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        articulos : `no se encontraron artilos registrados`
+                        articulos : `No se encontraron artículos registrados`
                     }
                 )
             }
         }
     )
 };
-
 
 //función para obtener articulos esprecificos por medio del id unico 
 module.exports.buscar_por_id = (req, res) => {
@@ -104,11 +104,61 @@ module.exports.buscar_por_id = (req, res) => {
                 res.json(
                     {
                         success : false,
-                        articulo : `no se encontraron artículos registrados`
+                        articulo : `No se encontraron artículos registrados`
                     }
                 )
             }
         }
         
+    )
+};
+
+//función para actualizar los articulos 
+module.exports.actualizar = function(req, res){
+   
+    model_articulo.findByIdAndUpdate(req.body.id, { $set: req.body },
+        function (error){
+            if(error){
+                res.json({success : false , msg : 'No se pudo actualizar el artículo'});
+            }else{
+                res.json({success: true , msg : 'El artículo se actualizó con éxito'});
+            }
+        }
+    
+    );
+};
+
+module.exports.activar_desactivar = function(req, res){
+    let estado ='';
+
+    if(req.body.estado == 'Activo'){
+        estado = 'Inactivo';
+    }else{
+        estado = 'Activo';
+    }
+    model_articulo.findByIdAndUpdate(req.body.id, {$set: { 
+        estado: estado 
+      }},
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo activar el inmueble '});
+            }else{
+                res.json({success: true ,msg: 'El inmueble se activó con éxito'}); 
+            }
+        }
+    )
+};
+
+module.exports.eliminar_articulo = function(req, res){
+    console.log(req.body.id);
+    model_articulo.findByIdAndRemove(req.body.id,
+
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar el artículo'});
+            }else{
+                res.json({success: true ,msg: 'El articulo se eliminó con éxito'}); 
+            }
+        }
     )
 };

@@ -63,12 +63,12 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'Validación Incorrecta',
-            text: 'Por favor revise los espacios resaltados en rojo'
+            title: 'La noticia no fue registrada de manera correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         }
         )
     }
-    else {
+    else { 
 
         let idCentro = sessionStorage.getItem("id");
         let tema = input_tema.value;

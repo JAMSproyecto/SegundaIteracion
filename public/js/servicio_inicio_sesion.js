@@ -31,7 +31,7 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
   });
 
   peticion.fail(jqXHR => {
-    console.error('Ocurri&oacute; un error inesperado, por favor intente de nuevo');
+    console.error('Ocurrió un error inesperado, por favor intente de nuevo');
   });
 
   return respuesta;

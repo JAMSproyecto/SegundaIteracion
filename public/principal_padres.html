@@ -42,7 +42,7 @@
                         <ul>
                             <span>|</span>
                             <li>
-                                <a class="reporte">Modificar Perfil</a>
+                                <a class="reporte" href="./perfil_padre.html">Ver Perfil</a>
                             </li>
                             <span>|</span>
                             <li>
@@ -59,13 +59,43 @@
         </div>
     </header>
 
-    <section>
+    <main>
+
+        <section>
             <div class="text__center">
-                    <form id="busqueda_localizacion"></form>
+                <h1 class="titulo__principal">Centros educativos</h1>
             </div>
-
-
-    </section>
+            <div class="tabla__responsive">
+                <table class="tabla tabla__rayada" id="tblCentrosEducativos">
+                    <thead>
+                        <tr class="cabecera--celeste">
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Provincia</th>
+                            <th>Cant&oacute;n</th>
+                            <th>Distrito</th>
+                            <th>Direcci&oacute;n</th>
+                            <th>Calificaci&oacute;n</th>
+                            <th>Calificaci&oacute;n MEP</th>
+                            <th>Perfil</th>
+                        </tr>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Provincia</th>
+                            <th>Cant&oacute;n</th>
+                            <th>Distrito</th>
+                            <th>Direcci&oacute;n</th>
+                            <th>Calificaci&oacute;n</th>
+                            <th>Calificaci&oacute;n MEP</th>
+                            <th>Perfil</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer__cuerpo">
@@ -142,14 +172,13 @@
 
     <script src="./js/general.js"></script>
 
-    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
-    <script src="./js/direccionUbicacion/controladorListar.js"></script>
     <script src="./js/controlador_cerrar_sesion.js"></script>
 
-
-    <script src="./js/servicio_busqueda_centro.js"></script>
-    <script src="./js/controlador_busqueda_centros.js"></script>
-
+    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+    <script src="./js/direccionUbicacion/controladorListar.js"></script>
+    <script src="./js/servicio_listar_cedu.js"></script>
+    <script src="./js/controlador_listar_cedu.js"></script>
+    <script src="./js/controlador_cerrar_sesion.js"></script>
 </body>
 
 </html>

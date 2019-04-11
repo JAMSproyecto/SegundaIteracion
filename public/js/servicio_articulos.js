@@ -18,15 +18,14 @@ let registrar_articulo = (pnombre, pdescripcion) => {
         {
             swal.fire({
                 type: 'success',
-                title: 'articulo enviado',
-                text: 'el registro fue éxitoso'
+                title: 'El artículo fue registrado de forma exitosa'
               });
         });
     
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
           type: 'error',
-          title: 'Articulo no enviado',
+          title: 'El artículo no fue registrado',
           text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
       });
@@ -80,4 +79,86 @@ let buscar_articulo_por_id = (id) =>{
 
   });
   return articulo;
+};
+
+//funcion para actualizar articulo
+let actualizar_articulo = (pid,pnombre,pdescripcion) => {
+
+  let request = $.ajax({
+      url: "http://localhost:4000/api/actualizar_articulo",
+      method: "POST",
+      data:{
+          id : pid,
+          nombre : pnombre,
+          descripcion : pdescripcion
+      },
+       dataType: "json",
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+  });
+
+  request.done(function (msg)
+      {
+          swal.fire({
+              type: 'success',
+              title: 'El artículo fue actualizado de forma exitosa'
+              
+            }).then((result) => {
+              if (result.value) {
+                  window.location.href = 'listar_articulos.html';
+            }
+      })
+    });    
+    request.fail(function (jqXHR, textStatus) {
+      swal.fire({
+        type: 'error',
+        title: 'El artículo no fue actualizado',
+        text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+      });
+    });
+};
+
+//funcio para activar o desactivar articulos 
+let  activar_desactivar = (id, estado) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/activar_desactivar_articulo" ,
+    type: "POST",
+    data: {
+      id : id,
+      estado : estado
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
+
+//función para eliminar artículos 
+let  eliminar_articulo = (id) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_articulo/"+id ,
+    type: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
 };
