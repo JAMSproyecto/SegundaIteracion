@@ -32,7 +32,8 @@ module.exports.registrar = (req,res) => {
     let articulo_nuevo = new  model_articulo(
         {
         nombre : req.body.nombre,
-        descripcion : req.body.descripcion
+        descripcion : req.body.descripcion,
+        estado : 'Activo'
         }
     );
 
@@ -87,7 +88,6 @@ module.exports.listar_todos = (req, res) =>{
     )
 };
 
-
 //función para obtener articulos esprecificos por medio del id unico 
 module.exports.buscar_por_id = (req, res) => {
     //se envian por parametro el id del articulo que se quiere encontrar 
@@ -114,38 +114,51 @@ module.exports.buscar_por_id = (req, res) => {
 };
 
 //función para actualizar los articulos 
-module.exports.actualizar = (req,res) => {
-    let articulo_nuevo = new  model_articulo(
-        {
-        nombre : req.body.nombre,
-        descripcion : req.body.descripcion
+module.exports.actualizar = function(req, res){
+   
+    model_articulo.findByIdAndUpdate(req.body.id, { $set: req.body },
+        function (error){
+            if(error){
+                res.json({success : false , msg : 'No se pudo actualizar el artículo'});
+            }else{
+                res.json({success: true , msg : 'El artículo se actualizó con éxito'});
+            }
         }
+    
     );
+};
 
+module.exports.activar_desactivar = function(req, res){
+    let estado ='';
 
-articulo_nuevo.save(
-     function(error){
-        if (error){
-			
-			const log = insertarBitacora('CentroEducativo', `Error al actualizar el artículo: ${req.body.nombre} | ${error}`);
-			
-            res.json(
-                {
-                    success : false,
-                    msg : `No se pudo actualizar el artículo, ocurrio el siguiente error ${error} `
-                }
-            );
-        } else {
-			
-			const log = insertarBitacora('CentroEducativo', `Se actualizo el artículo: ${req.body.nombre} - ${req.body.descripcion}`);
-			
-            res.json(
-                {
-                    success : true,
-                    msg :  `Se ha actualizado el artículo de forma correcta`
-                }
-            );
-        }
+    if(req.body.estado == 'Activo'){
+        estado = 'Inactivo';
+    }else{
+        estado = 'Activo';
     }
-);
+    model_articulo.findByIdAndUpdate(req.body.id, {$set: { 
+        estado: estado 
+      }},
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo activar el inmueble '});
+            }else{
+                res.json({success: true ,msg: 'El inmueble se activó con éxito'}); 
+            }
+        }
+    )
+};
+
+module.exports.eliminar_articulo = function(req, res){
+    console.log(req.body.id);
+    model_articulo.findByIdAndRemove(req.body.id,
+
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar el artículo'});
+            }else{
+                res.json({success: true ,msg: 'El articulo se eliminó con éxito'}); 
+            }
+        }
+    )
 };

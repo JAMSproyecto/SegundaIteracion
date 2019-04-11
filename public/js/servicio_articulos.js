@@ -117,3 +117,48 @@ let actualizar_articulo = (pid,pnombre,pdescripcion) => {
     });
 };
 
+//funcio para activar o desactivar articulos 
+let  activar_desactivar = (id, estado) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/activar_desactivar_articulo" ,
+    type: "POST",
+    data: {
+      id : id,
+      estado : estado
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
+
+//función para eliminar artículos 
+let  eliminar_articulo = (id) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_articulo/"+id ,
+    type: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
