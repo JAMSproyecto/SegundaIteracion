@@ -25,7 +25,9 @@ let post_registrarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativo
                     title: 'Los datos fueron guardados exitosamente',
                     text: 'Nos comunicaremos con usted tan pronto como sea posible'
                 }
-            );
+            ).then((resultado)=>{
+                window.location.replace('listarPreguntasFrecuentes.html');
+            });
         } else {
             swal.fire(
                 {
@@ -91,15 +93,7 @@ let get_ListarPreguntasFrecuentes = (tabla_PreguntaFrecuente, idCentro) => {
                     
                 cell.innerHTML = pregunta.respuesta;
     
-                row.appendChild(cell);
-
-                //Acciones
-                // cell = document.createElement('td');
-                    
-                // cell.innerHTML = '<>';
-    
-                // row.appendChild(cell);
-    
+                row.appendChild(cell);    
     
                 //Filtros
                 
@@ -151,7 +145,9 @@ let post_registrarPreguntaFrecuenteGeneral = (pPregunta, pRespuesta) => {
                     title: 'Los datos fueron guardados exitosamente',
                     text: 'Nos comunicaremos con usted tan pronto como sea posible'
                 }
-            );
+            ).then((resultado)=>{
+                window.location.replace('listarPreguntasFrecuentesGenerales.html');
+            });
         } else {
             swal.fire(
                 {

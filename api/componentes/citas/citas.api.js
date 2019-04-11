@@ -21,7 +21,6 @@ module.exports.registrar = (req, res) => {
     
     let nueva_cita = new cita_modelo(
         {
-            idCentro : req.body.idCentro,
             Nombre: req.body.Nombre,
             Apellidos: req.body.Apellidos,
             Telefono: req.body.Telefono,
@@ -118,34 +117,6 @@ module.exports.registrar = (req, res) => {
 }
 /*fin de funcion de registro de nueva cita*/
 
-/*funcion de listar citas*/
-module.exports.listar_todos = (req, res) => {
-
-    cita_modelo.find({codigo : req.body.codigo}).then(
-        function (citas) {
-            if (citas.length > 0) {
-                
-                res.json(
-                    {
-                        success: true,
-                        citas: citas
-                    }
-                )
-            } else {
-                res.json(
-                    {
-                        success: false,
-                        comentarios: 'No se encontraron citas registradas'
-                    }
-                )
-            }
-        }
-
-    )
-};
-/*fin de funcion listar citas*/
-
-
 /**
  * obtener_citasCentro
  * @param req Parametro de petición de cliente
@@ -153,7 +124,7 @@ module.exports.listar_todos = (req, res) => {
  *  
  */
 module.exports.obtener_citasCentro = (req, res) =>{
-    cita_modelo.find({Centro_asociado : req.body.idCentro}).then(function (citas) {
+    cita_modelo.find({Centro_asociado : req.body.id}).then(function (citas) {
         if (citas.length > 0) {
             res.json(
                 {
@@ -164,8 +135,7 @@ module.exports.obtener_citasCentro = (req, res) =>{
         } else {
             res.json(
                 {
-                    success: false,
-                    citas: 'No se encontraron citas registradas'
+                    success: false
                 }
             )
         }

@@ -1,11 +1,5 @@
 'use strict';
-/**
- * <div class="actividad">
-                    <strong class="nombre__actividad"></strong>
-                    <p class="fecha__actividad"></p>
-                    <p class="hora__actividad"></p>
-                </div>
- */
+
 let crearActividades = (perfil) => {
     let actividades = listar_todas_actividades();
 
