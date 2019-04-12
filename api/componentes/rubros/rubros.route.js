@@ -45,4 +45,11 @@ router.route('/activar_Rubros')
     }
 );
 
+router.route('/eliminar_Rubros')
+.post(
+    function(req , res){
+        registro_rubro_api.eliminar(req, res);
+    }
+);
+
 module.exports = router;

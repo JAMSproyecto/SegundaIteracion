@@ -7,7 +7,6 @@ const input_filtrar_inactivos = document.querySelector('#txt_filtrar_inactivos')
 
 let rubros = listar_rubros();
 
-
 let mostrar_datos = () => {
 
   let filtro = input_filtrar.value;
@@ -39,10 +38,81 @@ let mostrar_datos = () => {
         let fila_inactivos = tabla_inactivos.insertRow();
         fila_inactivos.insertCell().innerHTML = rubros[i]['rubro'];
 
+        let fila_iconos = fila_inactivos.insertCell();
+
         let boton_activar = document.createElement('a');
         boton_activar.innerHTML = '<i class="fas fa-plus"></i>';
         boton_activar.dataset.id_rubro = rubros[i]['_id'];
-        fila_inactivos.insertCell().appendChild(boton_activar);
+
+        let boton_editar = document.createElement('a');
+        boton_editar.innerHTML = '<i class="fas fa-edit"></i>';
+        boton_editar.dataset.id_rubro = rubros[i]['_id'];
+
+        let boton_eliminar = document.createElement('a');
+        boton_eliminar.innerHTML= '<i class="fas fa-trash-alt"></i>';
+        boton_eliminar.dataset.id_rubro = rubros [i]['_id'];
+
+        fila_iconos.appendChild(boton_editar);
+        boton_editar.addEventListener('click', function() {
+          Swal.fire({
+            title: 'Realice los cambios necesarios',
+            input: 'text',
+            inputValue: rubros[i]['rubro'],
+            showCancelButton: true,
+            inputValidator: (value) => {
+              if (!value) {
+                return 'Por favor ingrese algún dato'
+              }else{
+                actualizar_rubro(value, this.dataset.id_rubro);
+              }
+            }
+          })
+          
+          rubros = listar_rubros(),
+          mostrar_datos() 
+        }
+        )
+
+        fila_iconos.appendChild(boton_eliminar);
+        boton_eliminar.addEventListener('click', function(){
+ 
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false,
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: '¿Está seguro que desea eliminar el rubro?',
+            text: "No podrás revertir el cambio",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No',
+            reverseButtons: true
+          }).then((value) => {
+            if (value.value) {
+              swalWithBootstrapButtons.fire(
+                'Eliminado',
+                'El rubro ha sido eliminado',
+                'success')  
+                eliminar_rubro(value, this.dataset.id_rubro);
+              
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'El rubro no ha sido eliminado',
+                'error'
+              )
+            }
+          })
+        })
+
+        fila_iconos.appendChild(boton_activar);
         boton_activar.addEventListener('click', function () {
           activar_rubro(this.dataset.id_rubro);
           rubros = listar_rubros();
