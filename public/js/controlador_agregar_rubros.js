@@ -7,6 +7,7 @@ const input_filtrar_inactivos = document.querySelector('#txt_filtrar_inactivos')
 
 let rubros = listar_rubros();
 
+
 let mostrar_datos = () => {
 
   let filtro = input_filtrar.value;
@@ -39,6 +40,7 @@ let mostrar_datos = () => {
         fila_inactivos.insertCell().innerHTML = rubros[i]['rubro'];
 
         let fila_iconos = fila_inactivos.insertCell();
+
 
         let boton_activar = document.createElement('a');
         boton_activar.innerHTML = '<i class="fas fa-plus"></i>';
@@ -75,38 +77,22 @@ let mostrar_datos = () => {
 
         fila_iconos.appendChild(boton_eliminar);
         boton_eliminar.addEventListener('click', function(){
- 
-          const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false,
-          })
-          
-          swalWithBootstrapButtons.fire({
-            title: '¿Está seguro que desea eliminar el rubro?',
-            text: "No podrás revertir el cambio",
+          Swal.fire({
+            title: '¿Estas seguro de eliminar el rubro?',
+            text: "Los cambios no serán revertidos",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Si',
-            cancelButtonText: 'No',
-            reverseButtons: true
-          }).then((value) => {
-            if (value.value) {
-              swalWithBootstrapButtons.fire(
-                'Eliminado',
-                'El rubro ha sido eliminado',
-                'success')  
-                eliminar_rubro(value, this.dataset.id_rubro);
-              
-            } else if (
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelado',
-                'El rubro no ha sido eliminado',
-                'error'
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'No, deseo regresar',
+            confirmButtonText: 'Si, estoy seguro'
+          }).then((result) => {
+            if (result.value) {
+              eliminar_rubro(this.dataset.id_rubro);
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
               )
             }
           })
@@ -117,7 +103,6 @@ let mostrar_datos = () => {
           activar_rubro(this.dataset.id_rubro);
           rubros = listar_rubros();
           mostrar_datos();
-          
         })
       }
     }

@@ -102,7 +102,7 @@ module.exports.activar = function(req, res){
 
 
 module.exports.eliminar = function(req, res){
-    modelo_inmueble.findByIdAndRemove(req.body.id,
+    model_registrar_rubro.findByIdAndRemove(req.body.id,
         function(error){
             if(error){
                 res.json({success: false ,msg: 'No se pudo eliminar el inmueble '});
