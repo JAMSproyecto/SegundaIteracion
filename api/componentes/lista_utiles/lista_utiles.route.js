@@ -57,4 +57,22 @@ router.route('/buscar_lista_id/:id')
                 }
             );
 
+//end point para eliminar articulos de la lista de utiles 
+router.route('/eliminar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.eliminar_articulo_lista(req, res);
+                }
+            );
+
+//end point para modificar articulos de la lista de utiles 
+router.route('/modificar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.modificar_articulo_lista(req, res);
+                }
+            );
+
 module.exports = router;

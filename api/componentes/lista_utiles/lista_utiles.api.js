@@ -134,7 +134,7 @@ module.exports.buscar_por_id = (req, res) => {
     )
 };
 
-
+//obtener todas las lista de utiles 
 module.exports.obtener_todos_general = (req, res) =>{
     
     model_utiles.find().then(
@@ -169,4 +169,77 @@ module.exports.obtener_todos_general = (req, res) =>{
         }
         
     )
+};
+
+//funcion para eliminar articulos de la lista 
+module.exports.eliminar_articulo_lista = function(req, res){
+    console.log('lista', req.body.id_lista)
+    console.log('articulo',  req.body.id_articulo)
+    model_utiles.updateOne(
+        { _id : req.body.id_lista},
+
+        {
+            $pull:
+            {
+                'articulos':
+                {
+                    
+                  codigo: req.body.id_articulo
+                }
+            }
+
+        },
+        function(error){
+            if (error) {
+                res.json(
+                    {
+                        success : false,
+                        msg : `No se pudo rliminar el artículo, ocurrió el siguiente error ${error}`
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : true,
+                        msg : `Se eliminó el artículo con éxito `
+                    }
+                )
+            }
+        }
+    );
+};
+
+//funcion para modificar articulos de la lista 
+module.exports.modificar_articulo_lista = function(req, res){
+    console.log('lista', req.body.id_lista)
+    console.log('articulo',  req.body.id_articulo)
+    model_utiles.findOneAndUpdate(
+        { _id : req.body.id_lista, "articulos.codigo" :req.body.id_articulo},
+
+        {
+            $set:
+            {
+                'articulos.$.cantidad': req.body.cantidad
+                
+            }
+
+        },
+        function(error){
+            if (error) {
+                res.json(
+                    {
+                        success : false,
+                        msg : `No se pudo modificar el artículo, ocurrió el siguiente error ${error}`
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : true,
+                        msg : `Se modificó el artículo con éxito `
+                    }
+                )
+            }
+        }
+    );
 };
