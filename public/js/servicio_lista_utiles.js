@@ -92,7 +92,7 @@ let obtener_lista_utiles_todos = () => {
 
 };
 
-
+//agregar articulos a la lista de utiles 
 let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
 
   let request = $.ajax({
@@ -167,4 +167,55 @@ let buscar_centro_por_id = (id) => {
 
   });
   return centro;
+};
+
+//función para eliminar artículos de la lista útiles
+let  eliminar_articulo_de_lista_utiles = (id_art) => {
+  let id_lista = localStorage.getItem('lista');
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_articulo_lista_utiles" ,
+    type: "POST",
+    data: {
+      id_lista : id_lista,
+      id_articulo : id_art
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
+
+//función para modificar los aericulos de la lista de utiles 
+let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
+  let id_lista = localStorage.getItem('lista');
+  let request = $.ajax({
+    url: "http://localhost:4000/api/modificar_articulo_lista_utiles" ,
+    type: "POST",
+    data: {
+      id_lista : id_lista,
+      id_articulo : id_art,
+      cantidad : pcantidad
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
 };

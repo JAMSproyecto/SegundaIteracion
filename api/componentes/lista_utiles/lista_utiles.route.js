@@ -32,6 +32,7 @@ router.route('/listar_lista_utiles/:codigo')
             lista_utiles_api.obtener_todos(req, res);
             }
         );
+        
 router.route('/listar_lista_utiles_todos')
 .get(
     function(req, res)
@@ -53,6 +54,24 @@ router.route('/buscar_lista_id/:id')
                 function(req, res)
                 {
                 lista_utiles_api.buscar_por_id(req, res);
+                }
+            );
+
+//end point para eliminar articulos de la lista de utiles 
+router.route('/eliminar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.eliminar_articulo_lista(req, res);
+                }
+            );
+
+//end point para modificar articulos de la lista de utiles 
+router.route('/modificar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.modificar_articulo_lista(req, res);
                 }
             );
 

@@ -9,6 +9,7 @@ let schema_utiles = new mongoose.Schema(
         tipo: {type :String, required : true},
         nombre : {type : String, required : true},
         anno : {type : String, required : false},
+        estado : {type : String, required : true},
         articulos : [
             {
                 codigo : {type : String},

@@ -19,6 +19,7 @@ let articulo = buscar_articulo_por_id(id_articulo);
 let mostrar_datos = () =>{    
   input_nombre.value = articulo[0]['nombre'];
   input_descripcion.value = articulo[0]['descripcion'];  
+  
 };
 
 btn_actualizar.addEventListener('click' ,actualizar);
@@ -29,5 +30,5 @@ function actualizar (){
     let descripcion = input_descripcion.value;
 
     actualizar_articulo(id_articulo,nombre,descripcion);
-    
+
 };

@@ -162,3 +162,4 @@ let  eliminar_articulo = (id) => {
   });
 
 };
+
