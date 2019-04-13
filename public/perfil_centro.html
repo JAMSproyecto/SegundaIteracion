@@ -11,221 +11,250 @@
         href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
     <link rel="stylesheet" href="./css/centro.css" />
-    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/general.css" />
 </head>
 
 <body>
-    <header class="header__centro">
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <ul>
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+                <div class="bloqueHeader__nombreInstitucion">
+                    <div class="bloqueHeader__iconolateral">
+                        <span onclick="openNav()">&#9776</span>
+                    </div>
 
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-                    <li><button class="btn btn--amarillo" id="boton_cerrar">Cerrar sesión</button></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="column__abajo">
-            <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
+                    <div class="bloqueHeader__logo">
+                        <img src="imgs/logo_mep.png" class="imagen_mep">
+                    </div>
+                    <div class="bloqueHeader__institucion">
+                        <span> Nuestra Institucion</span>
+                    </div>
                 </div>
-                <nav class="menu__abajo">
-                    <ul>
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
 
-                        <span>|</span>
-                        <li>
-                            <a class="calificaciones" href="#">Modificar perfil</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                            </ul>
-
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Actividad</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Noticias</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
-                                <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Útiles</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
-                                        útiles</a></li>
-
-                                <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Citas</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="lista_citas.html">listar citas
-                                    </a></li>
-
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Reportes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Ranking anual</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Preguntas frecuentes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a></li>
-                                <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                    </ul>
-                </nav>
+                <div class="bloqueHeader__btnCerrar">
+                    <button type="button" id="boton_cerrar" class=" btn--amarillo">Cerrar
+                        sesi&oacute;n</button></li>
+                </div>
             </div>
         </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+                <span>Les da la bienvenida</span>
+            </div>
+        </div>
+        <div class="bloqueHeader__imagen">
+            <div>
+                <img src="./imgs/colegiosion1.jpg">
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a class="menuArriba__btn contrasenia" href="#">Cambiar Contraseña</a></li>
+                </li>
+                <li>
+                    <a class="calificaciones" href="#">Modificar perfil</a></li>
+                <li><a class="centros" href="#">Actividad</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a>
+                        </li>
+                        <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
+                    </ul>
+                </li>
+                <li><a class="centros" href="#">Noticias</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
+                    </ul>
+                </li>
+                <li><a class="utiles" href="#"> Útiles</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
+                                útiles</a></li>
+
+                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de
+                                útiles</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="#"> Citas</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="lista_citas.html">listar citas
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="reporte">Reportes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="#">Ranking anual</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </header>
 
+    <main id =main>
+        <div class="bloqueResenna">
+            <h2 class="bloqueResenna__titulo">Reseña Historica</h2>
+            <div class="bloqueResenna__imagen">
+               <form action="/perfil_centro" method="POST" enctype="multipart/form-data">
+                   <input type="file" id="resenna_img">
+                   <button type="submit">
 
-    <div class="slider">
-        <ul class="slides">
-            <li>
-                <img src="./imgs/aulas/imagen9.png" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen3.jpg" alt="">
-            </li>
-            <li>
-                <img src="./imgs/imagen3.jpg" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen4.png" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen6.jpg" alt="">
-            </li>
-
-        </ul>
-    </div>
+                    Cargar
+                   </button>
 
 
-
-    </section>
-    <section class="bloque__descripcion">
-        <div class="contenedor__servicios">
-            <h1 class="titulo_centro_educativo">Escuela Marisa Learning Center</h1>
-            <div class="titulo__servicios">
-                <h2 class="titulo__secundario">Nuestros servicios</h2>
+               </form>
             </div>
-            <div class="tabla__servicios">
-                <div class="fila__arriba">
-                    <div class="ser__cafeteria servicio">
-                        <i class="fas faq fa-mug-hot"></i>
-                        <span>Cafetería</span>
-                    </div>
-                    <div class="ser__enfermeria servicio">
-                        <i class="fas faq  fa-user-nurse"></i>
-                        <span>Enfermería</span>
-                    </div>
-                    <div class="ser__transporte servicio">
-                        <span><i class="fas faq  fa-bus"></i></span>
-                        <span>Transporte</span>
-                    </div>
-                    <div class="ser__estudio servicio">
-                        <i class="fas faq fa-user-friends"></i>
-                        <span>Excursiones</span>
-                    </div>
+            <div class="bloqueResenna__parrafo">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s</p>
+                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                    survived not only five centuries,</p>
+                <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s</p>
+            </div>
+        </div>
+        <!---  <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="./imgs/aulas/imagen9.png" alt="">
+                </li>
+                <li>
+                    <img src="./imgs/aulas/imagen3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./imgs/imagen3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./imgs/aulas/imagen4.png" alt="">
+                </li>
+                <li>
+                    <img src="./imgs/aulas/imagen6.jpg" alt="">
+                </li>
+
+            </ul>
+        </div>--->
+
+        <section class="bloque__descripcion">
+            <div class="contenedor__servicios">
+
+                <div class="titulo__servicios">
+                    <h2 class="titulo__secundario">Nuestros servicios</h2>
                 </div>
-                <div class="fila__abajo">
-                    <div class="ser__laboratorio servicio">
-                        <i class="fas faq fa-flask"></i>
-                        <span>Laboratorio</span>
+                <div class="tabla__servicios">
+                    <div class="fila__arriba">
+                        <div class="ser__cafeteria servicio">
+                            <i class="fas faq fa-mug-hot"></i>
+                            <span>Cafetería</span>
+                        </div>
+                        <div class="ser__enfermeria servicio">
+                            <i class="fas faq  fa-user-nurse"></i>
+                            <span>Enfermería</span>
+                        </div>
+                        <div class="ser__transporte servicio">
+                            <span><i class="fas faq  fa-bus"></i></span>
+                            <span>Transporte</span>
+                        </div>
+                        <div class="ser__estudio servicio">
+                            <i class="fas faq fa-user-friends"></i>
+                            <span>Excursiones</span>
+                        </div>
                     </div>
-                    <div class="ser__deportes servicio">
-                        <i class="fas faq fa-futbol"></i>
-                        <span>Deportes</span>
+                    <div class="fila__abajo">
+                        <div class="ser__laboratorio servicio">
+                            <i class="fas faq fa-flask"></i>
+                            <span>Laboratorio</span>
+                        </div>
+                        <div class="ser__deportes servicio">
+                            <i class="fas faq fa-futbol"></i>
+                            <span>Deportes</span>
+                        </div>
+                        <div class="ser__biblioteca servicio">
+                            <i class="fas faq fa-book"></i>
+                            <span>Biblioteca</span>
+                        </div>
+                        <div class="ser__musica servicio">
+                            <i class="fas faq fa-music"></i>
+                            <span>Música</span>
+                        </div>
                     </div>
-                    <div class="ser__biblioteca servicio">
-                        <i class="fas faq fa-book"></i>
-                        <span>Biblioteca</span>
+
+                </div>
+            </div>
+            </div>
+            <div class="tabla__oferta">
+                <div class="contenedor__tabla">
+                    <div class="titulo_oferta">
+                        <h2 class="titulo__secundario">Oferta académica</h2>
                     </div>
-                    <div class="ser__musica servicio">
-                        <i class="fas faq fa-music"></i>
-                        <span>Música</span>
-                    </div>
+                    <div class="oferta__academica">
+                        <div class="preescolar">
+                            <img src="./imgs/Niños-felices.png" />
+
+                            <p>Prescolar</p>
+                        </div>
+                        <div class="primaria">
+                            <img src="./imgs/primariajpg.jpg" />
+                            <p>Primaria</p>
+                        </div>
+                        <div class="secundaria">
+                            <img src="./imgs/secundaria.jpeg" />
+                            <p>Secundaria</p>
+                        </div>
+        </section>
+        <div class="tabla__actividad">
+            <div class="contenedor__actividades">
+                <h2 class="titulo">Noticias</h2>
+            </div>
+            <div id="tabla__noticias" class="contenedor__noticias">
+                <div class="contenedor__noticias">
+
                 </div>
 
             </div>
         </div>
-        </div>
-        <div class="tabla__oferta">
-            <div class="contenedor__tabla">
-                <div class="titulo_oferta">
-                    <h2 class="titulo__secundario">Oferta académica</h2>
+
+        <div class="tabla__actividad">
+
+            <div class="contenedor__actividades">
+                <h2 class="titulo">Actividades</h2>
+                <div class="contenedor__actividad">
+
                 </div>
-                <div class="oferta__academica">
-                    <div class="preescolar">
-                        <img src="./imgs/Niños-felices.png" />
-
-                        <p>Prescolar</p>
-                    </div>
-                    <div class="primaria">
-                        <img src="./imgs/primariajpg.jpg" />
-                        <p>Primaria</p>
-                    </div>
-                    <div class="secundaria">
-                        <img src="./imgs/secundaria.jpeg" />
-                        <p>Secundaria</p>
-                    </div>
-    </section>
-    <div class="tabla__actividad">
-        <div class="contenedor__actividades">
-            <h2 class="titulo">Noticias</h2>
-        </div>
-        <div id="tabla__noticias" class="contenedor__noticias">
-            <div class="contenedor__noticias">
 
             </div>
-
         </div>
-    </div>
-
-    <div class="tabla__actividad">
-
-        <div class="contenedor__actividades">
-            <h2 class="titulo">Actividades</h2>
-            <div class="contenedor__actividad">
+        <div class="my-rating"></div>
+        <div class="bloque_calendario">
+            <div id="calendario">
 
             </div>
-
         </div>
-    </div>
-    <div class="bloque_calendario">
-        <div id="calendario">
-
-        </div>
-    </div>
     </main>
 </body>
 
@@ -294,31 +323,41 @@
                         class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
                 </div>
             </section>
+            <div class="my-rating"></div>
         </div>
     </div>
 </footer>
 
 
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 <script src="./js/controlador_nav.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="./js/carrusel.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 
 <script src="./js/fullcalendar/core/main.min.js"></script>
 <script src="./js/fullcalendar/daygrid/main.min.js"></script>
 <script src="./js/fullcalendar/core/locales-all.min.js"></script>
-
+<script src="./js/controlador_comentarios.js"></script>
+<script src="js/servicio_perfil_cedu.js"></script>
 <script src="./js/servicios_cita.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/servicio_registrar_noticia.js"></script>
 <script src="js/controlador_listar_noticia_en_centro.js"></script>
 <script src="./js/servicio_registrar_actividad.js"></script>
-<script src="js/servicio_perfil_cedu.js"></script>
+<script src="./js/controlador_extrellas.js"></script>
 <script src="js/controlador_perfil_cedu.js"></script>
+<script src="./js/menuLateral.js"></script>
 
+<script src="https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js" type="text/javascript"></script>
+<script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script src="js/servicio_imagen.js"></script>
+
+</body>
 
 </html>
