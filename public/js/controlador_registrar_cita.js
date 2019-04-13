@@ -129,13 +129,6 @@ window.onload = () => {
     });
 };
 
-let getFecha = () => {
-    const InputDatepicker = document.querySelector('#fecha');
-    alert(InputDatepicker.value);
-
-};
-
-
 
 
 

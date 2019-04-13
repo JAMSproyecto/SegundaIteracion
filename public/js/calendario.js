@@ -1,10 +1,13 @@
+
 let crearCalendario = (id) => {
     let arregloCitas = listar_citas(id);
     let eventos = [];
     for (let i = 0; i < arregloCitas.length; i++) {
+        let fechaParse = moment(`${arregloCitas[i].Fecha} ${arregloCitas[i].Hora}`, 'DD-MM-YYYY hh:mm');
+
         let evento = {
             title: arregloCitas[i].Motivo,
-            start: `${arregloCitas[i].Fecha}T${arregloCitas[i].Hora}`
+            start: fechaParse.toISOString()
         }
         eventos.push(evento);
     }
