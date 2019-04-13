@@ -31,6 +31,9 @@ let controlar_sesion = () => {
 
                 break;
             case 'centroeducativo':
+                if (lblNombreUsuario) {
+                    lblNombreUsuario.innerHTML = sessionStorage.getItem('nombreInstitucion') || '';
+                }
 
                 break;
             case 'padrefamilia':
