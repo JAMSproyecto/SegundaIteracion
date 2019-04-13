@@ -6,14 +6,16 @@ let cargarDataTable = () => {
 	
 	//Nota: en esta función (cargarDataTable) no se utilizan funciones de flecha al propio para poder usar this.
 	
-	$('#tblCentrosEducativos thead tr:eq(1) th').each(function() {
+	$('#tblCentrosEducativos thead tr:eq(1) th:not(.sinFiltro)').each(function() {
 		let titulo = $(this).text();
-        $(this).html('<input type="text" class="icon-buscar" placeholder="&#xf0b0;__" value="" >');
+        $(this).html('<input type="text" class="icon-buscar" placeholder="" value="" >');
     });
 	
 	let tablaDatos = $('#tblCentrosEducativos').DataTable({
 		language: {
-			sSearch: 'Filtrar'
+			sSearch: 'Filtrar',
+			sZeroRecords: 'No se encontraron centros educativos filtrados',
+			sEmptyTable: 'No se encontraron centros educativos'
 		},
         paging: false,
 		orderCellsTop: true,
@@ -24,7 +26,7 @@ let cargarDataTable = () => {
         bFilter: true,
         searching: true,
         bSort: true,
-        order: [[7, 'desc'],[6, 'desc']],
+        order: [[4, 'desc'],[3, 'desc']],
 		dom: '<f><t>'
     });
 	
@@ -49,14 +51,7 @@ let cargarCEdu = () => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
                 pMessage.forEach(obj => {
-                    let tr_fila = tablaCuerpo.insertRow();
-						
-						if(obj['fotoCentro'] && obj['fotoCentro'].length > 0){
-							tr_fila.insertCell().innerHTML = '<img alt=" " src="'+obj['fotoCentro']+'">';
-						}else{
-							tr_fila.insertCell().innerHTML = '';
-						}
-						
+                    let tr_fila = tablaCuerpo.insertRow();						
 						
 						if(obj['nombreComercial'] && obj['nombreComercial'].length > 0){
 							tr_fila.insertCell().innerHTML = obj['nombreComercial'];
@@ -68,26 +63,15 @@ let cargarCEdu = () => {
 						
 						if(obj['direccion']){
 						let provincia = '';
-						let canton = '';
-						let distrito = '';
 						let direccion = '';
 					    obj['direccion'].forEach(obj2 => {
 							provincia = obtenerProvinciaPorID(obj2['idProvincia']);
-							canton = obtenerCantonPorID(obj2['idCanton']);
-							distrito = obtenerDistritoPorID(obj2['idDistrito']);
-							
 							direccion = obj2['sennas'];
 						});
 							
-							
-							
 							tr_fila.insertCell().innerHTML = provincia;
-							tr_fila.insertCell().innerHTML = canton;
-							tr_fila.insertCell().innerHTML = distrito;
 							tr_fila.insertCell().innerHTML = direccion;
 						}else{
-						    tr_fila.insertCell().innerHTML = '';
-						    tr_fila.insertCell().innerHTML = '';
 						    tr_fila.insertCell().innerHTML = '';
 						    tr_fila.insertCell().innerHTML = '';
 						}
