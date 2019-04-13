@@ -4,6 +4,7 @@ const tabla = document.querySelector('#tbl_rubros tbody');
 const tabla_inactivos = document.querySelector('#tbl_rubros_inactivos tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 const input_filtrar_inactivos = document.querySelector('#txt_filtrar_inactivos');
+let cantidad_activos = 0;
 
 let rubros = listar_rubros();
 
@@ -12,6 +13,9 @@ let mostrar_datos = () => {
 
   let filtro = input_filtrar.value;
   let filtro_inactivos = input_filtrar_inactivos.value;
+
+  cantidad_activos = 1;
+
 
   tabla.innerHTML = '';
   tabla_inactivos.innerHTML = '';
@@ -31,8 +35,9 @@ let mostrar_datos = () => {
           desactivar_rubro(this.dataset.id_rubro);
           rubros = listar_rubros();
           mostrar_datos();
-          
-        })
+         
+        });
+        cantidad_activos++;
       }
     } else {
       if ((rubros[i]['rubro'].toLowerCase().includes(filtro_inactivos.toLowerCase()))) {
@@ -51,11 +56,11 @@ let mostrar_datos = () => {
         boton_editar.dataset.id_rubro = rubros[i]['_id'];
 
         let boton_eliminar = document.createElement('a');
-        boton_eliminar.innerHTML= '<i class="fas fa-trash-alt"></i>';
-        boton_eliminar.dataset.id_rubro = rubros [i]['_id'];
+        boton_eliminar.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        boton_eliminar.dataset.id_rubro = rubros[i]['_id'];
 
         fila_iconos.appendChild(boton_editar);
-        boton_editar.addEventListener('click', function() {
+        boton_editar.addEventListener('click', function () {
           Swal.fire({
             title: 'Realice los cambios necesarios',
             input: 'text',
@@ -64,19 +69,19 @@ let mostrar_datos = () => {
             inputValidator: (value) => {
               if (!value) {
                 return 'Por favor ingrese algún dato'
-              }else{
+              } else {
                 actualizar_rubro(value, this.dataset.id_rubro);
               }
             }
           })
-          
+
           rubros = listar_rubros(),
-          mostrar_datos() 
+            mostrar_datos()
         }
         )
 
         fila_iconos.appendChild(boton_eliminar);
-        boton_eliminar.addEventListener('click', function(){
+        boton_eliminar.addEventListener('click', function () {
           Swal.fire({
             title: '¿Estas seguro de eliminar el rubro?',
             text: "Los cambios no serán revertidos",
@@ -90,8 +95,8 @@ let mostrar_datos = () => {
             if (result.value) {
               eliminar_rubro(this.dataset.id_rubro);
               Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Eliminado',
+                'El rubro ha sido eliminado',
                 'success'
               )
             }
@@ -100,7 +105,7 @@ let mostrar_datos = () => {
 
         fila_iconos.appendChild(boton_activar);
         boton_activar.addEventListener('click', function () {
-          activar_rubro(this.dataset.id_rubro);
+          activar_rubro(this.dataset.id_rubro, cantidad_activos);
           rubros = listar_rubros();
           mostrar_datos();
         })
