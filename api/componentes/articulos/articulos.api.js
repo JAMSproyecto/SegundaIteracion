@@ -141,9 +141,9 @@ module.exports.activar_desactivar = function(req, res){
       }},
         function(error){
             if(error){
-                res.json({success: false ,msg: 'No se pudo activar el inmueble '});
+                res.json({success: false ,msg: 'No se pudo activar el artículo '});
             }else{
-                res.json({success: true ,msg: 'El inmueble se activó con éxito'}); 
+                res.json({success: true ,msg: 'El artículo se activó con éxito'}); 
             }
         }
     )

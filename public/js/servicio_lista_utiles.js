@@ -228,7 +228,7 @@ let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
     data: {
       id_lista : id_lista,
       nombre : pnombre,
-      panno : panno
+      anno : panno
     },
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -245,3 +245,48 @@ let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
 
 };
 
+//funcio para activar o desactivar lista de utiles 
+let  activar_desactivar_lista = (id, estado) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/activar_desactivar_lista_utiles" ,
+    type: "POST",
+    data: {
+      id : id,
+      estado : estado
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
+
+//función para eliminar lista de útiles
+let  eliminar_lista = (id) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_lista_utiles/"+id ,
+    type: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
