@@ -55,25 +55,48 @@ let mostrar_datos = () => {
                 
           
             let fila = tabla.insertRow();
-            let boton_agregar = document.createElement('button');
-            let boton_ver = document.createElement('button');
+            let boton_agregar = document.createElement('a');
+            let boton_ver = document.createElement('a');
+            let btn_modificar = document.createElement('a');
 
             //se crea el boton dinamico para agregar articulos a la lista de útiles
-            boton_agregar.type = 'button';
-            boton_agregar.textContent = 'Agregar artículos';
+            boton_agregar.classList.add('fas','fa-plus');
             boton_agregar.dataset.codigo = lista_utiles[i]['_id'];
-            boton_agregar.classList.add('btn_tabla');
+           
             
             //se crea el boton dinamino para ver la los articulos ya agregados en la lista de utiles 
-            boton_ver.type = 'button';
-            boton_ver.textContent = 'Ver'
+            boton_ver.classList.add('fas' ,'fa-search');
             boton_ver.dataset.codigo = lista_utiles[i]['_id'];
-            boton_ver.classList.add('btn_tabla');
+            
 
+            //se crea el boton para modificar la lista de utiles 
+            btn_modificar.classList.add('fas', 'fa-pencil-alt');
+            btn_modificar.dataset.id_lista = lista_utiles[i]['_id'];
+           
             //se llama a la función para ver los articuos de una lista de utiles 
             boton_ver.addEventListener('click', ver_info_lista);
             //se llama a la función para agregar articulos a una lista de utiles 
             boton_agregar.addEventListener('click', seleccionar_lista);
+
+            //se llama a la funcion para modificar la lista de utiles 
+            btn_modificar.addEventListener('click', function(){
+                
+                Swal.fire({
+                    title: 'Realice los cambios necesarios',
+                    html : `<input id="swal-input1" class="swal2-input" value = "${lista_utiles[i]['nombre']}">`+
+                    `<input id="swal-input2" class="swal2-input" value = "${lista_utiles[i]['anno']}">`,
+                    
+                    showCancelButton: true,
+                    preConfirm: () => {
+                        
+                        modificar_lista_utiles(this.dataset.id_lista, document.getElementById('swal-input1').value, document.getElementById('swal-input2').value);
+                        
+                        mostrar_datos(); 
+                    }
+                    
+                    
+                  })
+            });    
 
             let tipoUsuario = sessionStorage.getItem('tipoUsuario');
             if (tipoUsuario === 'SuperAdmin') {
@@ -90,8 +113,10 @@ let mostrar_datos = () => {
 
             fila.insertCell().innerHTML = lista_utiles[i]["nombre"];
             fila.insertCell().innerHTML = lista_utiles[i]["anno"];
-            fila.insertCell().appendChild(boton_ver);
             fila.insertCell().appendChild(boton_agregar);
+            fila.insertCell().appendChild(boton_ver);
+            fila.insertCell().appendChild(btn_modificar);
+            
         }
     }
     }
@@ -99,3 +124,4 @@ let mostrar_datos = () => {
 };
 input_filtrar.addEventListener('keyup', mostrar_datos);
 mostrar_datos();
+

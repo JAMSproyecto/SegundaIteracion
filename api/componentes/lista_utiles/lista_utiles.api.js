@@ -243,3 +243,38 @@ module.exports.modificar_articulo_lista = function(req, res){
         }
     );
 };
+
+//funcion para modificar la lista lista de utiles
+module.exports.modificar_lista_utiles = function(req, res){
+    console.log('lista', req.body.id_lista)
+    model_utiles.findOneAndUpdate(
+        { _id : req.body.id_lista},
+    
+        {
+            $set:
+            {
+                nombre : req.body.nombre,
+                anno: req.body.anno
+                
+            }
+
+        },
+        function(error){
+            if (error) {
+                res.json(
+                    {
+                        success : false,
+                        msg : `No se pudo modificar la lista de utiles, ocurrió el siguiente error ${error}`
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : true,
+                        msg : `Se modificó la lista de utiles con éxito `
+                    }
+                )
+            }
+        }
+    );
+};
