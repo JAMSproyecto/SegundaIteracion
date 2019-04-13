@@ -43,15 +43,17 @@ router.route('/actualizar_articulo')
             articulo_api.actualizar(req,res);
         }
     );
-
-    router.route('/activar_desactivar_articulo')
+    
+//para activar o desactivar artículos
+router.route('/activar_desactivar_articulo')
     .post(
         function(req, res){
             articulo_api.activar_desactivar(req,res);
         }
     );
 
-    router.route('/eliminar_articulo/:id')
+//para eliminar articulos 
+router.route('/eliminar_articulo/:id')
             .get(
                 function(req, res){
                  articulo_api.eliminar_articulo(req, res);

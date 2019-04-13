@@ -90,7 +90,7 @@ let mostrar_datos = () => {
                     preConfirm: () => {
                         
                         modificar_lista_utiles(this.dataset.id_lista, document.getElementById('swal-input1').value, document.getElementById('swal-input2').value);
-                        
+                       
                         mostrar_datos(); 
                     }
                     
@@ -117,6 +117,35 @@ let mostrar_datos = () => {
             fila.insertCell().appendChild(boton_ver);
             fila.insertCell().appendChild(btn_modificar);
             
+              
+             //se agrego el boton para eliminar lista de útiles
+            let btn_eliminar = document.createElement('a');
+            btn_eliminar.dataset.id_lista =lista_utiles[i]['_id'];
+            btn_eliminar.classList.add('fas' ,'fa-trash-alt');
+            //se llama a la función para eliminar lista de útiles
+            btn_eliminar.addEventListener('click',eliminar_lista_utiles);
+            fila.insertCell().appendChild(btn_eliminar);
+
+             //se agrega la fila para meter los botones 
+             let celda_estado = fila.insertCell();
+             //para mostrar el  boton de activo o desactivo en la misma celda 
+             if (lista_utiles[i]['estado'] === 'Activo') {
+                 //se agregro el boton para desactivar 
+                 let btn_desactivar = document.createElement('a');
+                 btn_desactivar.classList.add('fas','fa-user-check');
+                 btn_desactivar.dataset.id_lista = lista_utiles[i]['_id'];
+                 btn_desactivar.dataset.estado = lista_utiles[i]['estado'];
+                 btn_desactivar.addEventListener('click',activar_desactivar_lista_utiles);
+                 celda_estado.appendChild(btn_desactivar);
+               }else{
+                 //se agrego el boton para activar 
+                 let btn_activar = document.createElement('a');
+                 btn_activar.classList.add('fas','fa-user-minus');
+                 btn_activar.dataset.id_lista = lista_utiles[i]['_id'];
+                 btn_activar.dataset.estado = lista_utiles[i]['estado'];
+                 btn_activar.addEventListener('click',activar_desactivar_lista_utiles);
+                 celda_estado.appendChild(btn_activar);
+               }
         }
     }
     }
@@ -125,3 +154,14 @@ let mostrar_datos = () => {
 input_filtrar.addEventListener('keyup', mostrar_datos);
 mostrar_datos();
 
+//función de activar o desactivar lista de utiles 
+function activar_desactivar_lista_utiles(){
+    activar_desactivar_lista(this.dataset.id_lista, this.dataset.estado);
+    mostrar_datos();
+  };
+
+//función de eliminar lista de útiles 
+function eliminar_lista_utiles(){
+    eliminar_lista(this.dataset.id_lista);
+    mostrar_datos();
+  };

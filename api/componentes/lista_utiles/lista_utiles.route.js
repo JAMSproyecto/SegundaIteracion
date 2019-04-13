@@ -83,4 +83,20 @@ router.route('/modificar_lista_utiles')
                  lista_utiles_api.modificar_lista_utiles(req, res);
                 }
             );
+//para activar y desactivar lista de utiles 
+router.route('/activar_desactivar_lista_utiles')
+            .post(
+                function(req, res){
+                    lista_utiles_api.activar_desactivar(req,res);
+                }
+            );
+
+//para eliminar lista de útiles 
+router.route('/eliminar_lista_utiles/:id')
+            .get(
+                function(req, res){
+                 lista_utiles_api.eliminar_lista(req, res);
+                }
+            );
+
 module.exports = router;
