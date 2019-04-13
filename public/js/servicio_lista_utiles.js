@@ -6,7 +6,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
     url: "http://localhost:4000/api/registrar_lista_utiles",
     method: "POST",
     data: {
-      codigo : sessionStorage.getItem('id'),
+      codigo : localStorage.getItem('id'),
       tipo: ptipo,
       nombre: pnombre,
       anno: panno
@@ -24,7 +24,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
     }).then((result) => {
       if (result.value) {
-        let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+        let tipoUsuario = localStorage.getItem('tipoUsuario');
         if(tipoUsuario === 'SuperAdmin'){
           window.location.href = 'listar_lista_utiles.html';
         }else{
@@ -46,7 +46,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
 let obtener_lista_utiles = () => {
   let coleccion_utiles = [];
-  let id_usuario = sessionStorage.getItem('id');
+  let id_usuario = localStorage.getItem('id');
   let request = $.ajax({
     url: "http://localhost:4000/api/listar_lista_utiles/" + id_usuario,
     method: "GET",

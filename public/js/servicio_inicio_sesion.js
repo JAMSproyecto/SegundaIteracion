@@ -16,16 +16,20 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
 
   peticion.done(response => {
     respuesta = response.success;
-    sessionStorage.setItem('conectado', response.success);
-    sessionStorage.setItem('tipoUsuario', response.message.tipoUsuario);
-    sessionStorage.setItem('nombreUsuario', response.message.nombreUsuario);
-    sessionStorage.setItem('correo', pusuario);
-    sessionStorage.setItem('id', response.message.id);
+	
+	//Limpiamos localStorage:
+	localStorage.clear();
+	
+    localStorage.setItem('conectado', response.success);
+    localStorage.setItem('tipoUsuario', response.message.tipoUsuario);
+    localStorage.setItem('nombreUsuario', response.message.nombreUsuario);
+    localStorage.setItem('correo', pusuario);
+    localStorage.setItem('id', response.message.id);
 	
 	if('undefined' !== typeof response.message.nombreInstitucion){
-		sessionStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
+		localStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
 	}else{
-		sessionStorage.setItem('nombreInstitucion', '');
+		localStorage.setItem('nombreInstitucion', '');
 	}
 	
   });

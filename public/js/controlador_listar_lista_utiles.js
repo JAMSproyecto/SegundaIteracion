@@ -4,13 +4,13 @@ const tabla = document.querySelector('#tbl_lista_utiles tbody');
 const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 const th_centro = document.querySelector('#th_centro');
-if (sessionStorage.getItem('tipoUsuario') === 'SuperAdmin') {
+if (localStorage.getItem('tipoUsuario') === 'SuperAdmin') {
     th_centro.classList.add('ocultar');
 }
 
 
 function ver_info_lista() {
-    let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;
     localStorage.setItem('lista', id_lista);
     if (tipoUsuario === 'SuperAdmin') {
@@ -21,7 +21,7 @@ function ver_info_lista() {
 };
 
 function seleccionar_lista() {
-    let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;
     localStorage.setItem('lista', id_lista);
     if (tipoUsuario === 'SuperAdmin') {
@@ -34,7 +34,7 @@ function seleccionar_lista() {
 let mostrar_datos = () => {
     let filtro = input_filtrar.value;
     tabla.innerHTML = '';
-    let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
     let response = [];
 
     if (null !== tipoUsuario) {
@@ -98,7 +98,7 @@ let mostrar_datos = () => {
                   })
             });    
 
-            let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+            let tipoUsuario = localStorage.getItem('tipoUsuario');
             if (tipoUsuario === 'SuperAdmin') {
                 let centro = buscar_centro_por_id(lista_utiles[i]['codigo']);
                 th_centro.classList.remove('ocultar');

@@ -87,6 +87,7 @@ if(ordenar === true){
 };
 
 window.onload = () => {
+	 localStorage.clear();
      cargarCEdu('tblCentrosEducativosPub', true, false);
      cargarCEdu('tblCentrosEducativosPriv', true, true);
 };

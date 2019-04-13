@@ -28,32 +28,32 @@ let obtener_Datos = () => {
         let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
         if (usuarioAceptado) {
 
-            const tipoUsuario = sessionStorage.getItem('tipoUsuario');
+            const tipoUsuario = localStorage.getItem('tipoUsuario');
 
             if ('undefined' !== typeof tipoUsuario && null !== tipoUsuario) {
 
                 const elTipoUsuario = tipoUsuario.toLowerCase();
-                const ocupaRedireccion = sessionStorage.getItem('quienIniciaSesion');
+                const ocupaRedireccion = localStorage.getItem('quienIniciaSesion');
 
                 //switch para calquier cosa que no sea redireccionar (excepto el default).
                 switch (elTipoUsuario) {
                     case 'superadmin':
                         break;
                     case 'centroeducativo':
-                        sessionStorage.setItem('padreVerPerfilCEdu', sessionStorage.getItem('id'));
+                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
                         break;
                     case 'padrefamilia':
-                        sessionStorage.setItem('idBuscarPadre', sessionStorage.getItem('id'));
+                        localStorage.setItem('idBuscarPadre', localStorage.getItem('id'));
                         break;
                     default:
-                        sessionStorage.clear();
+                        localStorage.clear();
                         console.error('Tipo de usuario desconocido');
                         location.replace('inicio_sesion.html');
                         break;
                 }
 
                 if (null !== ocupaRedireccion) {
-                    sessionStorage.removeItem('quienIniciaSesion');
+                    localStorage.removeItem('quienIniciaSesion');
                     const aDonde = decodeURIComponent(ocupaRedireccion);
                     location.replace(aDonde);
                 } else {
@@ -74,7 +74,7 @@ let obtener_Datos = () => {
 
                 }
             } else {
-                sessionStorage.clear();
+                localStorage.clear();
                 mostrarAlerta('Error de sesión');
                 location.replace('inicio_sesion.html');
             }
@@ -113,6 +113,7 @@ if (Boton_Ingresar) {
 
 
 window.onload = () => {
+	localStorage.clear();
     if (Input_Usuario) {
         Input_Usuario.select();
         Input_Usuario.focus();

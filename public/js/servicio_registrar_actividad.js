@@ -56,12 +56,12 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
 let listar_todas_actividades = () => {
     let actividades_arreglo = [];
     let idCentro;
-    switch(sessionStorage.getItem('tipoUsuario').toLowerCase()){
+    switch(localStorage.getItem('tipoUsuario').toLowerCase()){
         case 'centroeducativo':
-            idCentro = sessionStorage.getItem('id');
+            idCentro = localStorage.getItem('id');
             break;
         case 'padrefamilia':
-            idCentro = sessionStorage.getItem('padreVerPerfilCEdu');
+            idCentro = localStorage.getItem('padreVerPerfilCEdu');
             break;
         default:
         break;

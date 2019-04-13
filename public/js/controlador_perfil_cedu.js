@@ -37,13 +37,13 @@ let crearActividades = (perfil) => {
 window.addEventListener('load', () => {
     let id;
 
-    switch (sessionStorage.getItem("tipoUsuario").toLowerCase()) {
+    switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
         case 'padrefamilia':
-            id = sessionStorage.getItem('padreVerPerfilCEdu')
+            id = localStorage.getItem('padreVerPerfilCEdu')
             break;
 
         case 'centroeducativo':
-            id = sessionStorage.getItem('id');
+            id = localStorage.getItem('id');
             break;
 
         default:
