@@ -2,7 +2,6 @@
 
 const botonCerrarSesion = document.querySelector('#boton_cerrar');
 const lblNombreUsuario = document.querySelector('#lblNombreUsuario');
-const enlaces = document.querySelectorAll('#menu-derecho a');
 
 let conectado = localStorage.getItem('conectado');
 
@@ -40,12 +39,6 @@ let controlar_sesion = () => {
 
 
                 localStorage.setItem('padreDesdeAdmin', false);
-
-                if (enlaces) {
-                    enlaces[0].classList.add('ocultar');
-                    enlaces[1].classList.add('ocultar');
-                    enlaces[2].classList.add('ocultar');
-                }
 
                 break;
 
