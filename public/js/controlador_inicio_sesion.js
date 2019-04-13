@@ -17,14 +17,35 @@ let mostrarAlerta = (mensaje) => {
     });
 };
 
+let validarBlancos = (pusuario, pcontrasenna) => {
+    if (pusuario === '') {
+        Input_Usuario.classList.add('error_input');
+		Input_Usuario.select();
+		Input_Usuario.focus();
+		return true;
+    } else {
+        Input_Usuario.classList.remove('error_input');
+    }
+
+    if (pcontrasenna === '') {
+        Input_Contrasenna.classList.add('error_input');
+		Input_Contrasenna.select();
+		Input_Contrasenna.focus();
+		return true;
+    } else {
+        Input_Contrasenna.classList.remove('error_input');
+    }
+	
+    return false;
+};
 
 let obtener_Datos = () => {
-    let usuario = Input_Usuario.value;
-    let contrasenna = Input_Contrasenna.value;
+    let usuario = Input_Usuario.value.trim();
+    let contrasenna = Input_Contrasenna.value.trim();
 
-    let errorBlancos = validar(usuario, contrasenna);
+    let errorBlancos = validarBlancos(usuario, contrasenna);
 
-    if (!errorBlancos) {
+    if (errorBlancos == false) {
         let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
         if (usuarioAceptado) {
 
@@ -82,30 +103,9 @@ let obtener_Datos = () => {
         } else {
             mostrarAlerta('El nombre de usuario o la contraseña son incorrectos');
         }
-    } else {
-        mostrarAlerta('Por favor ingrese el usuario y la contraseña');
     }
 };
 
-let validar = (pusuario, pcontrasenna) => {
-    let error = false;
-
-    if (pusuario == '') {
-        error = true;
-        input_usuario.classList.add('error_input');
-    } else {
-        input_usuario.classList.remove('error_input');
-    }
-
-    if (pcontrasenna == '') {
-        error = true;
-        txt_contrasenna.classList.add('error_input');
-    } else {
-        txt_contrasenna.classList.remove('error_input');
-    }
-
-    return error;
-};
 
 if (Boton_Ingresar) {
     Boton_Ingresar.addEventListener('click', obtener_Datos);
@@ -113,7 +113,6 @@ if (Boton_Ingresar) {
 
 
 window.onload = () => {
-	localStorage.clear();
     if (Input_Usuario) {
         Input_Usuario.select();
         Input_Usuario.focus();
