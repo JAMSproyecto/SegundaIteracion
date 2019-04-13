@@ -75,4 +75,12 @@ router.route('/modificar_articulo_lista_utiles')
                 }
             );
 
+//end point para modificar la lista de utiles 
+router.route('/modificar_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.modificar_lista_utiles(req, res);
+                }
+            );
 module.exports = router;

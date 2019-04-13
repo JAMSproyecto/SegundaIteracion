@@ -219,3 +219,29 @@ let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
   });
 
 };
+
+//funcion para modificar el nombre de la lista de utiles  
+let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
+  let request = $.ajax({
+    url: "http://localhost:4000/api/modificar_lista_utiles" ,
+    type: "POST",
+    data: {
+      id_lista : id_lista,
+      nombre : pnombre,
+      panno : panno
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};
+
