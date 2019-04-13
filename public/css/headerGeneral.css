@@ -1,0 +1,211 @@
+/*cambio de los nombre de las clases del header*/
+/*    opacity: .6;*/
+
+.bloqueHeader{
+    width: 100%;
+}
+
+
+.bloqueHeader .bloqueHeader__filaArriba{
+    background-color: #179bd7;
+    display: flow-root;
+    width: 100%;
+}
+
+
+.bloqueHeader .bloqueHeader__nombreInstitucion{
+    background: #ff6000 none repeat scroll 0 0;
+    color: #fff;
+    /* display: block; */
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: -500px;
+    padding: 16px 6px 9px 546px;
+    position: relative;
+    margin-right: 21px;
+    width: 55%;
+}
+
+.bloqueHeader .bloqueHeader__nombreInstitucion::after{
+    border-left: 16px solid #ff6000;
+    border-top: 71px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline;
+    float: right;
+    position: absolute;
+    right: -16px;
+    bottom: 0;
+}
+
+.bloqueHeader .bloqueHeader__iconolateral span{
+    float: left;
+    padding: 6px;
+    font-size: 24px;
+}
+
+
+
+
+.bloqueHeader .bloqueHeader__logo{
+    float: left;
+}
+
+.bloqueHeader .bloqueHeader__logo img{
+    width: 68px;
+    margin: 0px 11px;
+}
+
+
+.bloqueHeader  .bloqueHeader__institucion span{
+        font-size: 17px;
+        font-weight: bold;
+        padding-top: 10px;
+        margin: 0px;
+        color: #fff;
+    }
+    
+
+.bloqueHeader .bloqueHeader__nombreCed span{
+    font-weight: bold;
+    float: left;
+    padding: 21px 0px;
+    color: #fff;
+    font-size: 17px;
+}
+
+.bloqueHeader .bloqueHeader__btnCerrar{
+    float: right;
+}
+
+.bloqueHeader__filaAbajo{
+background: #253b80 none repeat scroll 0 0;
+padding: 20px;
+}
+
+
+.bloqueHeader .bloqueHeader__contenedorAbajo{
+    width: 1005px;
+    color: #fff;
+    /* margin: 20px auto; */
+    margin: auto;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+
+
+
+
+
+
+.bloqueHeader__menuLateral li>  ul {
+    background-color: #FAFAFA;
+    /*background-color:#B3E5FC;*/ 
+   padding: 5px 0px;
+ 
+}
+
+.bloqueHeader__menuLateral li ul li{
+    padding: 5px 7px;
+    list-style: none;
+}
+
+
+
+.bloqueHeader__menuLateral  li  > ul >  li:hover >  a{
+    color:#17c0eb;
+}
+
+
+
+/*final menu abajo*/
+
+.bloqueHeader__cursor{
+    float: left;
+    font-size: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #253b80;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .nav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .nav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .nav {padding-top: 15px;}
+    .nav a {font-size: 18px;}
+  }
+
+
+  
+.bloqueResenna{
+    background: #fff;
+    display: flow-root;
+    box-shadow: 0 0 2px #cfcfcf;
+}
+
+
+.bloqueResenna .bloqueResenna__imagen{
+    float: left;
+}
+
+
+.bloqueResenna .bloqueResenna__parrafo{
+    float: right;
+}
+
+
+
+
+
+.fa-user-cog{
+    color:#fff;
+    float: left;
+}
+
+
+
+
+body .mainCentro{
+    padding: 0px;
+    margin: 0px;
+}
+
