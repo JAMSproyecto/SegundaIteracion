@@ -62,7 +62,7 @@ let mostrar_datos = () => {
       let btn_eliminar = document.createElement('a');
       btn_eliminar.dataset.id_articulo = articulo[0]['_id'];
       btn_eliminar.href = '#';
-      btn_eliminar.classList.add('fas', 'fa-minus');
+      btn_eliminar.classList.add('fas', 'fa-trash-alt');
       btn_eliminar.addEventListener('click', eliminar_articulos);
       fila.insertCell().appendChild(btn_eliminar);
     }
