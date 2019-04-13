@@ -91,6 +91,7 @@ module.exports.listar_todos = (req, res) =>{
 //función para obtener articulos esprecificos por medio del id unico 
 module.exports.buscar_por_id = (req, res) => {
     //se envian por parametro el id del articulo que se quiere encontrar 
+    console.log(req.body.id);
     model_articulo.find({_id : req.body.id }).then(
         function (articulo){
             if (articulo) {
@@ -128,6 +129,7 @@ module.exports.actualizar = function(req, res){
     );
 };
 
+//para activar y desactivar 
 module.exports.activar_desactivar = function(req, res){
     let estado ='';
 
@@ -149,6 +151,7 @@ module.exports.activar_desactivar = function(req, res){
     )
 };
 
+//para eliminar articulos 
 module.exports.eliminar_articulo = function(req, res){
     console.log(req.body.id);
     model_articulo.findByIdAndRemove(req.body.id,

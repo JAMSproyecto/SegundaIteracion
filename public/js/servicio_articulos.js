@@ -59,7 +59,7 @@ let obtener_articulos = () =>{
 //función para buscar los articulos por medio del id de mongo
 let buscar_articulo_por_id = (id) =>{
   let articulo = [];
-
+  
   let request = $.ajax({
     url: "http://localhost:4000/api/buscar_articulo_por_id/" +id ,
     type: "GET",
@@ -132,7 +132,23 @@ let  activar_desactivar = (id, estado) => {
   });
 
   request.done(function (res) {
-    
+    if (estado === 'Activo') {
+      swal.fire({
+        type: 'success',
+        title: 'El artículo fue desactivado'
+      }).then((result) => {
+        if (result.value) {
+      }
+  })
+    }else{
+      swal.fire({
+        type: 'success',
+        title: 'El artículo fue activado'
+      }).then((result) => {
+        if (result.value) {
+      }
+  })
+    }
   });
 
   request.fail(function (jqXHR, textStatus) {
@@ -154,7 +170,13 @@ let  eliminar_articulo = (id) => {
   });
 
   request.done(function (res) {
-    
+    swal.fire({
+      type: 'success',
+      title: 'El artículo fue eliminado de forma exitosa'
+    }).then((result) => {
+      if (result.value) {
+    }
+})
   });
 
   request.fail(function (jqXHR, textStatus) {

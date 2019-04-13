@@ -123,7 +123,6 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
 
 let buscar_por_id = (id) => {
   let lista = [];
-
   let request = $.ajax({
     url: "http://localhost:4000/api/buscar_lista_id/" + id,
     type: "GET",
@@ -145,6 +144,7 @@ let buscar_por_id = (id) => {
   return lista;
 };
 
+//para buscar centro por id 
 let buscar_centro_por_id = (id) => {
   let centro = [];
 

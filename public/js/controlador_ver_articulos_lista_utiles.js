@@ -95,9 +95,6 @@ function eliminar_articulos() {
       )
     }
   })
-
-
-
 };
 
 

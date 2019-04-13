@@ -30,6 +30,7 @@ function seleccionar_lista() {
         window.location.href = 'agregar_articulos_cedu.html';
     }
 };
+ 
 
 let mostrar_datos = () => {
     let filtro = input_filtrar.value;
@@ -59,28 +60,23 @@ let mostrar_datos = () => {
             let boton_ver = document.createElement('a');
             let btn_modificar = document.createElement('a');
 
-            //se crea el boton dinamico para agregar articulos a la lista de útiles
+            //se crea el boton para agregar articulos a la lista de útiles
             boton_agregar.classList.add('fas','fa-plus');
             boton_agregar.dataset.codigo = lista_utiles[i]['_id'];
-           
-            
-            //se crea el boton dinamino para ver la los articulos ya agregados en la lista de utiles 
-            boton_ver.classList.add('fas' ,'fa-search');
-            boton_ver.dataset.codigo = lista_utiles[i]['_id'];
-            
-
-            //se crea el boton para modificar la lista de utiles 
-            btn_modificar.classList.add('fas', 'fa-pencil-alt');
-            btn_modificar.dataset.id_lista = lista_utiles[i]['_id'];
-           
-            //se llama a la función para ver los articuos de una lista de utiles 
-            boton_ver.addEventListener('click', ver_info_lista);
             //se llama a la función para agregar articulos a una lista de utiles 
             boton_agregar.addEventListener('click', seleccionar_lista);
 
+            //se crea el boton  para ver la los articulos ya agregados en la lista de utiles 
+            boton_ver.classList.add('fas' ,'fa-search');
+            boton_ver.dataset.codigo = lista_utiles[i]['_id'];
+            //se llama a la función para ver los articuos de una lista de utiles 
+            boton_ver.addEventListener('click', ver_info_lista);
+            
+             //se crea el boton para modificar la lista de utiles 
+             btn_modificar.classList.add('fas', 'fa-pencil-alt');
+             btn_modificar.dataset.id_lista = lista_utiles[i]['_id'];
             //se llama a la funcion para modificar la lista de utiles 
             btn_modificar.addEventListener('click', function(){
-                
                 Swal.fire({
                     title: 'Realice los cambios necesarios',
                     html : `<input id="swal-input1" class="swal2-input" value = "${lista_utiles[i]['nombre']}">`+
@@ -88,13 +84,9 @@ let mostrar_datos = () => {
                     
                     showCancelButton: true,
                     preConfirm: () => {
-                        
                         modificar_lista_utiles(this.dataset.id_lista, document.getElementById('swal-input1').value, document.getElementById('swal-input2').value);
-                       
                         mostrar_datos(); 
                     }
-                    
-                    
                   })
             });    
 
@@ -126,7 +118,7 @@ let mostrar_datos = () => {
             btn_eliminar.addEventListener('click',eliminar_lista_utiles);
             fila.insertCell().appendChild(btn_eliminar);
 
-             //se agrega la fila para meter los botones 
+             //función para activar o desactivar 
              let celda_estado = fila.insertCell();
              //para mostrar el  boton de activo o desactivo en la misma celda 
              if (lista_utiles[i]['estado'] === 'Activo') {
@@ -162,6 +154,25 @@ function activar_desactivar_lista_utiles(){
 
 //función de eliminar lista de útiles 
 function eliminar_lista_utiles(){
-    eliminar_lista(this.dataset.id_lista);
-    mostrar_datos();
+    Swal.fire({
+        title: '¿Está seguro que desea eliminar la lista de útiles?',
+        text: "Ésta acción no se puede revertir",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, estoy seguro!'
+      }).then((result) => {
+        if (result.value) {
+            eliminar_lista(this.dataset.id_lista);
+            lista_utiles = response.coleccion_utiles;
+            mostrar_datos();
+          Swal.fire(
+            '¡Artículo eliminado!',
+            'La lista ya no posee éste artículo',
+            'success'
+          )
+        }
+      })
+ 
   };
