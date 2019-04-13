@@ -1,7 +1,7 @@
 'use strict';
 
 const div_noticias = document.querySelector('#tabla__noticias');
-let id_centro = sessionStorage.getItem('padreVerPerfilCEdu');
+let id_centro = localStorage.getItem('padreVerPerfilCEdu');
 
 const noticias = listar_todas_noticias(id_centro);
 

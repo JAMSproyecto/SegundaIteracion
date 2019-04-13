@@ -43,7 +43,7 @@ let mostrar_datos = () => {
     }
     else { 
 
-        let idCentro = sessionStorage.getItem("id");
+        let idCentro = localStorage.getItem("id");
         let tema = input_tema.value;
         let informacion = input_informacion.value;
         registrar_noticia(idCentro, tema,  informacion);

@@ -29,7 +29,7 @@ let getFin = () => {
 
 function imprimir_citas() {
 
-    let citas = listar_citas(sessionStorage.getItem('id'));
+    let citas = listar_citas(localStorage.getItem('id'));
 
     tabla_citas.innerHTML = '';
 

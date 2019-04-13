@@ -11,7 +11,7 @@ const edad_padre = document.querySelector('#edad_padre');
 
 const btn_actualizar = document.querySelector('#btn_modificar_datos')
 
-let id_padre = sessionStorage.getItem('idBuscarPadre');
+let id_padre = localStorage.getItem('idBuscarPadre');
 let obtenerEdad = (pFecha) => {
     return Math.floor((new Date() - new Date(pFecha).getTime()) / 3.15576e+10);
 };

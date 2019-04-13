@@ -4,12 +4,12 @@ const botonCerrarSesion = document.querySelector('#boton_cerrar');
 const lblNombreUsuario = document.querySelector('#lblNombreUsuario');
 const enlaces = document.querySelectorAll('#menu-derecho a');
 
-let conectado = sessionStorage.getItem('conectado');
+let conectado = localStorage.getItem('conectado');
 
 let cerrar_sesion = (esAuto) => {
-    sessionStorage.clear();
+    localStorage.clear();
     if ('boolean' == typeof esAuto && esAuto === true) {
-        sessionStorage.setItem('quienIniciaSesion', encodeURIComponent(window.location.href));
+        localStorage.setItem('quienIniciaSesion', encodeURIComponent(window.location.href));
     }
     console.log('Redireccionando al inicio de sesión');
     location.replace('inicio_sesion.html');
@@ -18,28 +18,28 @@ let cerrar_sesion = (esAuto) => {
 let controlar_sesion = () => {
     if (null !== conectado && ('true' === conectado || true === conectado)) {
 
-        let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+        let tipoUsuario = localStorage.getItem('tipoUsuario');
 
         if (lblNombreUsuario) {
-            lblNombreUsuario.innerHTML = sessionStorage.getItem('nombreUsuario') || '';
+            lblNombreUsuario.innerHTML = localStorage.getItem('nombreUsuario') || '';
         }
 
         switch (tipoUsuario.toLowerCase()) {
             case 'superadmin':
 
-                sessionStorage.setItem('padreDesdeAdmin', true);
+                localStorage.setItem('padreDesdeAdmin', true);
 
                 break;
             case 'centroeducativo':
                 if (lblNombreUsuario) {
-                    lblNombreUsuario.innerHTML = sessionStorage.getItem('nombreInstitucion') || '';
+                    lblNombreUsuario.innerHTML = localStorage.getItem('nombreInstitucion') || '';
                 }
 
                 break;
             case 'padrefamilia':
 
 
-                sessionStorage.setItem('padreDesdeAdmin', false);
+                localStorage.setItem('padreDesdeAdmin', false);
 
                 if (enlaces) {
                     enlaces[0].classList.add('ocultar');

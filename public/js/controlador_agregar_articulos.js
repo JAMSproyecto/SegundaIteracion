@@ -78,7 +78,7 @@ let seleccionar_articulos =() =>{
       text: 'Todos los artículos fueron registrados con éxito'
     }).then((result) => {
       if (result.value) {
-        let tipo_usuario = sessionStorage.getItem('tipoUsuario');
+        let tipo_usuario = localStorage.getItem('tipoUsuario');
         if (tipo_usuario === 'SuperAdmin') {
           window.location.href = 'ver_articulos_lista_utiles_admin.html';
         } else {

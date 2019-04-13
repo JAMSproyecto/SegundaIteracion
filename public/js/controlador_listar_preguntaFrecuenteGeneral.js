@@ -3,7 +3,7 @@
 
 const Tabla_PreguntaFrecuente = document.querySelector('#tbl_preguntasFrecuentes tbody');
 const Slt_Filtros = document.querySelector('#txt_filtro');
-const Id_Centro = sessionStorage.getItem("id");
+const Id_Centro = localStorage.getItem("id");
 /*
     Eventos
  */

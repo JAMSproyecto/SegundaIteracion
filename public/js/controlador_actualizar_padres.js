@@ -31,7 +31,7 @@ const edad_hijo4 = document.querySelector('#num_edad_hijo4');
 
 const boton_actualizar = document.querySelector('#boton_registrar');
 
-let _id = sessionStorage.getItem('id');
+let _id = localStorage.getItem('id');
 
 let infoPadres = buscar_padre(_id);
 
