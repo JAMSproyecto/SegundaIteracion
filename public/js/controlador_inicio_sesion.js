@@ -4,6 +4,8 @@ const Input_Usuario = document.querySelector('#input_usuario');
 const Input_Contrasenna = document.querySelector('#txt_contrasenna');
 const Boton_Ingresar = document.querySelector('#boton_ingresar');
 
+const ocupaRedireccion = localStorage.getItem('quienIniciaSesion');
+
 let mostrarAlerta = (mensaje) => {
     Swal.fire({
         toast: false,
@@ -16,6 +18,62 @@ let mostrarAlerta = (mensaje) => {
         showConfirmButton: true
     });
 };
+
+
+let estaActiva = (primeraVez) => {
+	const tipoUsuario = localStorage.getItem('tipoUsuario');
+
+            if ('undefined' !== typeof tipoUsuario && null !== tipoUsuario) {
+
+                const elTipoUsuario = tipoUsuario.toLowerCase();
+
+                //switch para calquier cosa que no sea redireccionar:
+                switch (elTipoUsuario) {
+                    case 'superadmin':
+					    
+						break;
+                    case 'centroeducativo':
+                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
+                        break;
+                    case 'padrefamilia':
+                        localStorage.setItem('idBuscarPadre', localStorage.getItem('id'));
+                        break;
+                    default:
+                        localStorage.clear();
+                        console.error('Tipo de usuario desconocido');
+                        break;
+                }
+
+                if (null !== ocupaRedireccion) {
+                    localStorage.removeItem('quienIniciaSesion');
+                    const aDonde = decodeURIComponent(ocupaRedireccion);
+                    location.replace(aDonde);
+                } else {
+
+                    //switch para redireccionar.
+                    switch (elTipoUsuario) {
+                        case 'superadmin':
+                            location.replace('perfil_admin.html');
+                            break;
+                        case 'centroeducativo':
+                            location.replace('perfil_centro.html');
+
+                            break;
+                        case 'padrefamilia':
+                            location.replace('principal_padres.html');
+                            break;
+                    }
+
+                }
+            } else {
+				if(true == primeraVez){
+					localStorage.clear();
+				}else{
+					mostrarAlerta('Error de sesión');
+				}
+            }
+};
+
 
 let validarBlancos = (pusuario, pcontrasenna) => {
     if (pusuario === '') {
@@ -46,60 +104,13 @@ let obtener_Datos = () => {
     let errorBlancos = validarBlancos(usuario, contrasenna);
 
     if (errorBlancos == false) {
+	    
+		//Limpiamos localStorage antes de validar credenciales y de cargar nuevos datos al localStorage:
+	    localStorage.clear();
+		
         let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
         if (usuarioAceptado) {
-
-            const tipoUsuario = localStorage.getItem('tipoUsuario');
-
-            if ('undefined' !== typeof tipoUsuario && null !== tipoUsuario) {
-
-                const elTipoUsuario = tipoUsuario.toLowerCase();
-                const ocupaRedireccion = localStorage.getItem('quienIniciaSesion');
-
-                //switch para calquier cosa que no sea redireccionar (excepto el default).
-                switch (elTipoUsuario) {
-                    case 'superadmin':
-                        break;
-                    case 'centroeducativo':
-                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
-                        break;
-                    case 'padrefamilia':
-                        localStorage.setItem('idBuscarPadre', localStorage.getItem('id'));
-                        break;
-                    default:
-                        localStorage.clear();
-                        console.error('Tipo de usuario desconocido');
-                        location.replace('inicio_sesion.html');
-                        break;
-                }
-
-                if (null !== ocupaRedireccion) {
-                    localStorage.removeItem('quienIniciaSesion');
-                    const aDonde = decodeURIComponent(ocupaRedireccion);
-                    location.replace(aDonde);
-                } else {
-
-                    //switch para redireccionar.
-                    switch (elTipoUsuario) {
-                        case 'superadmin':
-                            location.replace('perfil_admin.html');
-                            break;
-                        case 'centroeducativo':
-                            location.replace('perfil_centro.html');
-
-                            break;
-                        case 'padrefamilia':
-                            location.replace('principal_padres.html');
-                            break;
-                    }
-
-                }
-            } else {
-                localStorage.clear();
-                mostrarAlerta('Error de sesión');
-                location.replace('inicio_sesion.html');
-            }
-
+            estaActiva(false);
         } else {
             mostrarAlerta('El nombre de usuario o la contraseña son incorrectos');
         }
@@ -112,7 +123,10 @@ if (Boton_Ingresar) {
 }
 
 
+
+
 window.onload = () => {
+	estaActiva(true);
     if (Input_Usuario) {
         Input_Usuario.select();
         Input_Usuario.focus();
