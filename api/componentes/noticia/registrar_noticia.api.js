@@ -3,6 +3,33 @@
 const model_registrar_noticia = require('./registrar_noticia.model');
 const fecha = require('./..//funciones_genericas/obtenerFecha');
 
+let formatearFecha = (pFecha) => {
+	if(pFecha.length > 0){
+    const fecha = new Date(pFecha);
+    const anio = fecha.getFullYear();
+    let dia_mes = fecha.getDate();
+    let mes = fecha.getMonth();
+	let h = fecha.getHours();
+    let m = fecha.getMinutes();
+    mes += 1;
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    if (dia_mes < 10) {
+        dia_mes = '0' + dia_mes;
+    }
+	if (h < 10) {
+        h = '0' + h;
+    }
+    if (m < 10) {
+        m = '0' + m;
+    }
+    return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+}else{
+	return '';
+}
+};
+
 
 module.exports.registrar_noticia = (req, res) => {
     let noticia_nueva = new model_registrar_noticia(
@@ -43,16 +70,43 @@ module.exports.registrar_noticia = (req, res) => {
 
 module.exports.listar_todas_noticias = function (req, res) {
     const filtros = { idCentro: req.body.idCentro };
-    model_registrar_noticia.find(filtros).then(
-        function (noticias) {
-            if (noticias.length > 0) {
+    model_registrar_noticia.find(filtros).sort({fecha: 'desc'}).then(
+        function (resultado) {
+			if (resultado) {
+            if (Object.keys(resultado).length > 0) {
+                
+                    let listarResultado = [];
+                    const has = Object.prototype.hasOwnProperty;
+                    let key;
+                    for (key in resultado) {
+                        if (!has.call(resultado, key)) continue;
+
+                        listarResultado.push(
+                            {
+                                '_id': resultado[key]['_id'] || '',
+                                'idCentro': resultado[key]['idCentro'] || 0,
+                                'tema': resultado[key]['tema'] || '',
+                                'informacion': resultado[key]['informacion'] || '',
+                                'fecha': formatearFecha(resultado[key]['fecha'] || ''),
+                                'estado': resultado[key]['estado'] || ''
+                            }
+                        );
+                    }
+                    res.json(
+                        {
+                            success: true,
+                            msg: listarResultado
+                        }
+                    )
+            } else {
                 res.json(
                     {
-                        success: true,
-                        msg: noticias
+                        success: false,
+                        msg: 'No se encontraron noticias'
                     }
                 )
-            } else {
+            }
+        }else {
                 res.json(
                     {
                         success: false,

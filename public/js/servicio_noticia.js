@@ -36,18 +36,19 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
     });
 
     request.fail(function (jqXHR, textStatus) {
+        console.error(textStatus);
         console.error(jqXHR);
     });
 };
 
-let listar_todas_noticias = (pId) => {
-    if ('undefined' == typeof pId || null === pId) {
+let listar_todas_noticias = (pIdCentro) => {
+    if ('undefined' == typeof pIdCentro || null === pIdCentro) {
         throw new Error('Error al listar noticias: El identificador no puede estar vacio');
     }
 
     let noticias_arreglo = [];
     let request = $.ajax({
-        url: "http://localhost:4000/api/listar_todas_noticias/" + pId,
+        url: "http://localhost:4000/api/listar_todas_noticias/" + pIdCentro,
         method: "GET",
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -55,11 +56,16 @@ let listar_todas_noticias = (pId) => {
     });
 
     request.done(function (res) {
-        noticias_arreglo = res.msg;
+		if(res.success){
+            noticias_arreglo = res.msg;
+		}else{
+			console.log(res.msg);
+		}
 
     });
 
     request.fail(function (jqXHR, textStatus) {
+        console.error(textStatus);
         console.error(jqXHR);
     });
 
@@ -67,13 +73,13 @@ let listar_todas_noticias = (pId) => {
 
 };
 
-let buscar_noticia = (idCentro) => {
-    if ('undefined' == typeof idCentro || null === idCentro) {
+let buscar_noticia = (pIdCentro) => {
+    if ('undefined' == typeof pIdCentro || null === pIdCentro) {
         throw new Error('Error al buscar noticia: El identificador no puede estar vacio');
     }
     let noticia = [];
     let request = $.ajax({
-        url: "http://localhost:4000/api/buscar_noticia/" + idCentro,
+        url: "http://localhost:4000/api/buscar_noticia/" + pIdCentro,
         method: "GET",
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -86,6 +92,7 @@ let buscar_noticia = (idCentro) => {
     });
 
     request.fail(function (jqXHR, textStatus) {
+        console.error(textStatus);
         console.error(jqXHR);
     });
 
@@ -133,7 +140,8 @@ let actualizar = (ptema, pinformacion, pid) => {
 
     });
 
-    request.fail(function (jqXHR) {
+    request.fail(function (jqXHR, textStatus) {
+        console.error(textStatus);
         console.error(jqXHR);
     });
 };
@@ -177,7 +185,13 @@ let eliminar = (ptema, pinformacion, pid) => {
 
     });
 
-    request.fail(function (jqXHR) {
+    request.fail(function (jqXHR, textStatus) {
+        console.error(textStatus);
         console.error(jqXHR);
     });
 };
+
+
+
+
+
