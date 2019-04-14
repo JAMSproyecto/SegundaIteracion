@@ -1,6 +1,9 @@
 'use strict';
 
 let registrar_noticia = (pidCentro, ptema, pinformacion) => {
+    if ('undefined' == typeof pidCentro || null === pidCentro) {
+        throw new Error('Error al registrar noticia: El identificador no puede estar vacio');
+    }
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_noticia",
         method: "POST",
@@ -14,38 +17,34 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
     });
 
-    request.done(function (msg) {
-        if (msg.success) {
+    request.done(function (res) {
+        if (res.success) {
             swal.fire({
                 type: 'success',
-                title: 'La noticia fue registrada exitosamente',
+                title: res.msg,
                 onAfterClose: function () {
-                    window.location.replace('./listar_noticia.html');
+                    location.replace('./listar_noticia.html');
                 }
             });
-
-        }
-        else {
+        } else {
             swal.fire({
                 type: 'error',
-                title: 'La noticia no fue registrada',
-                text: ' Inténtelo nuevamente'
+                title: res.msg,
+                text: 'Por favor, intente de nuevo'
             });
-
         }
-
     });
 
     request.fail(function (jqXHR, textStatus) {
-        swal.fire({
-            type: 'error',
-            title: 'La noticia no puede ser registrada',
-            text: 'Ocurrió un error inesperado, por favor intente de nuevo'
-        });
+        console.error(jqXHR);
     });
 };
 
 let listar_todas_noticias = (pId) => {
+    if ('undefined' == typeof pId || null === pId) {
+        throw new Error('Error al listar noticias: El identificador no puede estar vacio');
+    }
+
     let noticias_arreglo = [];
     let request = $.ajax({
         url: "http://localhost:4000/api/listar_todas_noticias/" + pId,
@@ -60,16 +59,18 @@ let listar_todas_noticias = (pId) => {
 
     });
 
-
     request.fail(function (jqXHR, textStatus) {
-
-
+        console.error(jqXHR);
     });
+
     return noticias_arreglo;
 
 };
 
 let buscar_noticia = (idCentro) => {
+    if ('undefined' == typeof idCentro || null === idCentro) {
+        throw new Error('Error al buscar noticia: El identificador no puede estar vacio');
+    }
     let noticia = [];
     let request = $.ajax({
         url: "http://localhost:4000/api/buscar_noticia/" + idCentro,
@@ -84,12 +85,10 @@ let buscar_noticia = (idCentro) => {
 
     });
 
-
     request.fail(function (jqXHR, textStatus) {
-
-
-
+        console.error(jqXHR);
     });
+
     return noticia;
 
 };
@@ -97,7 +96,9 @@ let buscar_noticia = (idCentro) => {
 
 
 let actualizar = (ptema, pinformacion, pid) => {
-
+    if ('undefined' == typeof pid || null === pid) {
+        throw new Error('Error al actualizar noticia: El identificador no puede estar vacio');
+    }
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_noticia",
         method: "POST",
@@ -139,7 +140,9 @@ let actualizar = (ptema, pinformacion, pid) => {
 
 
 let eliminar = (ptema, pinformacion, pid) => {
-
+    if ('undefined' == typeof pid || null === pid) {
+        throw new Error('Error al eliminar noticia: El identificador no puede estar vacio');
+    }
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_noticia",
         method: "POST",
