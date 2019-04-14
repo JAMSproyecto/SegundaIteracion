@@ -21,9 +21,7 @@ main{
 }
 
 .boton__citas{
-   
-        margin: 30px auto;
-        width: 900px;
+   text-align:right;
 }
 
 .slider {
@@ -384,16 +382,101 @@ font-size: 30px;
     text-transform: capitalize;
 }
 
+
+
+
+
 #calendario{
-    width: 920px;
-    margin: 20px auto;
+  margin-bottom:15px;
 }
 button.fc-button{
-    background: #17C0EB !important;
-    box-shadow: 0 0 10px #78909C !important;
-    min-width: none;
-    min-height: none;
+	background-image:none;
+    background: #17C0EB;
+    background-color: #17C0EB;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    min-width: 50px;
+    min-height: 25px;
 }
 .fc-day-header{
     text-transform: capitalize !important;
 }
+
+button.fc-button:disabled,
+button.fc-button[disabled] {
+	background-image:none;
+	background: #17C0EB;
+    background-color: #17C0EB;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+button.fc-button:hover,
+button.fc-button:active,
+button.fc-button:active:focus,
+button.fc-button:focus {
+    color: #fff;
+	background-image:none;
+	background: #3498db;
+    background-color: #3498db;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+
+
+.my__60{
+	margin-top:60px;
+	margin-bottom:60px;
+}
+
+.contenedor {
+  display: flex;
+  position:relative;
+  width:100%;
+}
+
+.contenedor.cuerpo {
+  flex-direction: column;
+  height: 100%;
+}
+
+.contenedor.contenido {
+  min-height: 250px;
+  
+   height: -moz-max-content;
+  height: -webkit-max-content;
+  height: max-content;
+  
+  flex-wrap: wrap;
+}
+
+.contenedor.contenido section {
+  flex: 27em;
+}
+
+.contenedor.contenido section:nth-child(1) {
+  padding: 0 5%;
+  align-self: flex-start;
+}
+
+.contenedor.contenido section:nth-child(2) {
+  padding: 0 5%;
+  align-self: flex-start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
