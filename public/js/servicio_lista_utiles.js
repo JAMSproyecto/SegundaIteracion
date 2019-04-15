@@ -146,6 +146,10 @@ let buscar_por_id = (id) => {
 
 //para buscar centro por id 
 let buscar_centro_por_id = (id) => {
+    if ('undefined' == typeof id || null === id) {
+        throw new Error('Error al obtener el perfil: El identificador no puede estar vacio');
+    }
+
   let centro = [];
 
   let request = $.ajax({
@@ -159,7 +163,7 @@ let buscar_centro_por_id = (id) => {
   });
 
   request.done(function (res) {
-    centro = res.centro;
+    centro = res.message;
     
   });
   
