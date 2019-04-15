@@ -41,7 +41,7 @@ let mostrar_datos = () => {
       //funcion para modificar articulos de la lista de utiles 
       btn_modificar.addEventListener('click', function () {
         Swal.fire({
-          title: 'Modificar atículos',
+          title: 'Modificar artículos',
           input: 'text',
           inputValue: lista[0]['articulos'][i]['cantidad'],
           showCancelButton: true,

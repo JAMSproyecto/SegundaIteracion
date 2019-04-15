@@ -63,7 +63,7 @@ module.exports.listar_todas_actividades = (req ,res) =>{
                 res.json(
                     {
                         success: false,
-                        msg: 'No se encontraron actividades registradas'
+                        msg: 'No se encontraron actividades'
                     }
                 )
             }
