@@ -5,7 +5,7 @@ let get_obtenerPerfil = (pId)=>{
     if ('undefined' == typeof pId || null === pId) {
         throw new Error('Error al obtener el perfil: El identificador no puede estar vacio');
     }
-  let perfil;
+  let perfil = {};
   let request = $.ajax({
     url: "http://localhost:4000/api/obtener_centro_por_id/" + pId,
     method: 'GET',

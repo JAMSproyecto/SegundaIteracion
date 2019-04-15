@@ -166,7 +166,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 
 
 module.exports.obtener_centro_por_id = (req, res) => {
-    ModelRegistrarCEdu.find({_id : req.body.id }).then(resultado => {
+    ModelRegistrarCEdu.findOne({_id : req.body.id }).then(resultado => {
             if (resultado) {
                 res.json(
                     {
