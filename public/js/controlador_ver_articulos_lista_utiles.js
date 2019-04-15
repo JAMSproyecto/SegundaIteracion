@@ -41,13 +41,13 @@ let mostrar_datos = () => {
       //funcion para modificar articulos de la lista de utiles 
       btn_modificar.addEventListener('click', function () {
         Swal.fire({
-          title: 'Realice los cambios necesarios',
+          title: 'Modificar atículos',
           input: 'text',
           inputValue: lista[0]['articulos'][i]['cantidad'],
           showCancelButton: true,
           inputValidator: (value) => {
             if (!value) {
-              return 'Por favor ingrese algún dato'
+              return 'Por favor ingrese la cantidad'
             } else {
               modificar_articulos_de_lista_utiles(this.dataset.id_articulo, value);
               lista = buscar_por_id(id_lista);

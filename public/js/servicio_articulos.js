@@ -16,10 +16,7 @@ let registrar_articulo = (pnombre, pdescripcion) => {
 
     request.done(function (msg)
         {
-            swal.fire({
-                type: 'success',
-                title: 'El artículo fue registrado de forma exitosa'
-              });
+        
         });
     
     request.fail(function (jqXHR, textStatus) {
@@ -175,8 +172,9 @@ let  eliminar_articulo = (id) => {
       title: 'El artículo fue eliminado de forma exitosa'
     }).then((result) => {
       if (result.value) {
+        window.location.href = 'listar_articulos.html';
     }
-})
+});
   });
 
   request.fail(function (jqXHR, textStatus) {

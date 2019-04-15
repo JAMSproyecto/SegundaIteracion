@@ -118,7 +118,6 @@ let cargarCEdu = () => {
                 pMessage.forEach(obj => {
                     let opcion = document.createElement('option');
                     opcion.value = obj['_id'];
-                   
                     opcion.textContent = obj['nombre'];
                     lista_centros.appendChild(opcion);
                 });

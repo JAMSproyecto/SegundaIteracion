@@ -1,4 +1,5 @@
 'use strict';
+
 //constantes que obtienen los datos del formulario
 const input_nombre = document.querySelector('#txt_nombre');
 const input_descripcion = document.querySelector('#txt_descripcion');
@@ -33,13 +34,39 @@ let obtener_datos = () => {
         registrar_articulo(nombre, descripcion);
         input_nombre.value = '';
         input_descripcion.value = '';
+
+       if (registrar_articulo) {
+          
+        Swal.fire({
+            title: ' El artículo fue registrado de forma exitosa ' + 
+            '         ¿ Desea agregar otro artículo ?',
+            type: 'question',
+            customClass: {
+              icon: 'swal2-spanish-question-mark'
+            },
+            confirmButtonText:  'Si',
+            cancelButtonText:  'No',
+            showCancelButton: true,
+            showCloseButton: true
+          }).then((result) => {
+            if(result.value){
+                boton_agregar.addEventListener('click', obtener_datos );
+                  
+            }else{
+                window.location.href = 'listar_articulos.html';
+            }
+          })
+       };
+       
     } else {
         swal.fire({
             type: 'warning',
-            title: 'El articulo no fue guardado de manera correcta',
+            title: 'El artículo no fue guardado de manera correcta',
             text: 'Favor completar los espacios señalados en rojo'
         });
     }
 };  
 //evento para agregar los datos 
 boton_agregar.addEventListener('click', obtener_datos );
+
+

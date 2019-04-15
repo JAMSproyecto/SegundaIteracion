@@ -27,7 +27,6 @@ let mostrar_datos = () =>{
             title: 'Modificar artículos',
             html : `<input id="swal-input1" class="swal2-input" value = "${articulos[i]['nombre']}">`+
             `<input id="swal-input2" class="swal2-input" value = "${articulos[i]['descripcion']}">`,
-            
             showCancelButton: true,
             preConfirm: () => {
                 actualizar_articulo(this.dataset.id_articulo, document.getElementById('swal-input1').value, document.getElementById('swal-input2').value);
@@ -94,7 +93,7 @@ function eliminar_articulos(){
   }).then((result) => {
     if (result.value) {
       eliminar_articulo(this.dataset.id_articulo);
-      articulos = obtener_articulos();
+      //articulos = obtener_articulos();
       mostrar_datos();
       Swal.fire(
         '¡Artículo eliminado!',

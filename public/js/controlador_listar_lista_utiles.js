@@ -165,7 +165,7 @@ function eliminar_lista_utiles(){
       }).then((result) => {
         if (result.value) {
             eliminar_lista(this.dataset.id_lista);
-            lista_utiles = response.coleccion_utiles;
+            //lista_utiles = response.coleccion_utiles;
             mostrar_datos();
           Swal.fire(
             '¡Artículo eliminado!',
