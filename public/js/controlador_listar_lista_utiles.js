@@ -95,8 +95,8 @@ let mostrar_datos = () => {
                 let centro = buscar_centro_por_id(lista_utiles[i]['codigo']);
                 th_centro.classList.remove('ocultar');
                 titulo.innerHTML = 'MEP';
-                if(centro[0].nombre){
-                    fila.insertCell().innerHTML = centro[0].nombre;
+                if(centro.nombre){
+                    fila.insertCell().innerHTML = centro.nombre;
                 }else{
                     fila.insertCell().innerHTML = 'MEP';
                     
