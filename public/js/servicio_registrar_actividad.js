@@ -57,6 +57,9 @@ let listar_todas_actividades = () => {
     let actividades_arreglo = [];
     let idCentro;
     switch(localStorage.getItem('tipoUsuario').toLowerCase()){
+        case 'superadmin':
+            idCentro = localStorage.getItem('verPerfilCEdu');
+            break;
         case 'centroeducativo':
             idCentro = localStorage.getItem('id');
             break;
@@ -64,8 +67,12 @@ let listar_todas_actividades = () => {
             idCentro = localStorage.getItem('verPerfilCEdu');
             break;
         default:
-        break;
-        
+		    throw new Error('Error al listar actividades: Tipo de usuario desconocido');
+            break;
+    }
+	
+    if ('undefined' == typeof idCentro || null === idCentro) {
+        throw new Error('Error al listar actividades: El identificador no puede estar vacio');
     }
 
     let request = $.ajax({

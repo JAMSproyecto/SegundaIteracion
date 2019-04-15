@@ -2,8 +2,7 @@
 const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
-let idCentro = localStorage.getItem('id');
-const noticias = listar_todas_noticias(idCentro);
+const noticias = listar_todas_noticias();
 
 
 let mostrar_datos = () => {

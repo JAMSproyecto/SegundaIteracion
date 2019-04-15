@@ -7,7 +7,7 @@
     <script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="css/headerCentro.css" />
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/footer.css">
 
+    <link rel="stylesheet" href="css/tablaDatos.css" />
+    <link rel="stylesheet" href="css/jqueryte-1.4.0.css" />
+	
     <link rel="stylesheet" href="css/centro.css" />
 </head>
 
@@ -138,7 +141,7 @@
 
         <div class="tabla__actividad">
             <div class="contenedor__actividades">
-                <h2 class="titulo">Noticias</h2>
+                <h2 class="titulo__secundario">Noticias</h2>
             </div>
             <div id="tabla__noticias" class="contenedor__noticias">
 
@@ -149,7 +152,7 @@
 
         <div class="tabla__actividad">
             <div class="contenedor__actividades">
-                <h2 class="titulo">Actividades</h2>
+                <h2 class="titulo__secundario">Actividades</h2>
             </div>
             <div>
 
@@ -163,11 +166,43 @@
             <div class="contenedor cuerpo">
                 <div class="contenedor contenido">
                     <section>
-                        Comentarios...
+                        
+						<div>
+						<h2 class="titulo__secundario">Comentarios</h2>
+						</div>
+						
+				<div class="tabla__responsive">
+                <table class="tabla">
+                    <tbody>
+					<tr>
+					<td>
+					
+					<input id="txtAddComentario" type="text" value="<b>My contents are from <u><span style=&quot;color:rgb(0, 148, 133);&quot;>INPUT</span></u></b>">
+					
+					</td>
+					</tr>
+					</tbody>
+                </table>
+                <table class="tabla" id="tblComentarios">
+                    <tbody>
+					<tr>
+					<td>Emiliano</td>
+					<td>2016-04-03</td>
+					<td>estrellas</td>
+					</tr>
+					<tr>
+					<td colspan="3">Texto</td>
+					</tr>
+					</tbody>
+                </table>
+            </div>
+			
+						
+						
                     </section>
                     <section>
                         <div class="bloque_calendario">
-
+							<h2 class="titulo__secundario">Citas</h2>
                             <div id="calendario"></div>
 
                         </div>
@@ -262,6 +297,7 @@
 
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/jqueryte-1.4.0.min.js"></script>
 
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/carrusel.js"></script>
@@ -273,7 +309,7 @@
     <script src="./js/fullcalendar/core/main.min.js"></script>
     <script src="./js/fullcalendar/daygrid/main.min.js"></script>
     <script src="./js/fullcalendar/core/locales-all.min.js"></script>
-    <script src="js/servicio_registrar_noticia.js"></script>
+    <script src="js/servicio_noticia.js"></script>
     <script src="js/controlador_listar_noticia_en_centro.js"></script>
     <script src="./js/servicio_registrar_actividad.js"></script>
 

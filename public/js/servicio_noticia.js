@@ -41,14 +41,31 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
     });
 };
 
-let listar_todas_noticias = (pIdCentro) => {
-    if ('undefined' == typeof pIdCentro || null === pIdCentro) {
+let listar_todas_noticias = () => {
+	
+    let idCentro;
+    switch(localStorage.getItem('tipoUsuario').toLowerCase()){
+        case 'superadmin':
+            idCentro = localStorage.getItem('verPerfilCEdu');
+            break;
+        case 'centroeducativo':
+            idCentro = localStorage.getItem('id');
+            break;
+        case 'padrefamilia':
+            idCentro = localStorage.getItem('verPerfilCEdu');
+            break;
+        default:
+		    throw new Error('Error al listar noticias: Tipo de usuario desconocido');
+            break;
+    }
+	
+    if ('undefined' == typeof idCentro || null === idCentro) {
         throw new Error('Error al listar noticias: El identificador no puede estar vacio');
     }
 
     let noticias_arreglo = [];
     let request = $.ajax({
-        url: "http://localhost:4000/api/listar_todas_noticias/" + pIdCentro,
+        url: "http://localhost:4000/api/listar_todas_noticias/" + idCentro,
         method: "GET",
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

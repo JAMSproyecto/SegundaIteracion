@@ -1,9 +1,8 @@
 'use strict';
 
 const div_noticias = document.querySelector('#tabla__noticias');
-let id_centro = localStorage.getItem('verPerfilCEdu');
 
-const noticias = listar_todas_noticias(id_centro);
+const noticias = listar_todas_noticias();
 
 let mostrar_datos = () => {
     div_noticias.innerHTML = ''; 
