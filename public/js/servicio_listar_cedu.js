@@ -52,7 +52,7 @@ let listarCEdu = (pCallback) => {
 //Creado por Johan
 let listarCEdu_todo = (pCallback) => {
     let request = $.ajax({
-        url: 'http://127.0.0.1:4000/api/obtener_lista_todos_centro_educativo',
+        url: 'http://127.0.0.1:4000/api/obtener_todos_centro_educativo',
         method: 'GET',
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
