@@ -61,7 +61,7 @@ let listar_todas_actividades = () => {
             idCentro = localStorage.getItem('id');
             break;
         case 'padrefamilia':
-            idCentro = localStorage.getItem('padreVerPerfilCEdu');
+            idCentro = localStorage.getItem('verPerfilCEdu');
             break;
         default:
         break;

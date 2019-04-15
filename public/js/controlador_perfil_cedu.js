@@ -1,9 +1,7 @@
 'use strict';
 
-let crearActividades = (perfil) => {
+let crearActividades = () => {
     let actividades = listar_todas_actividades();
-
-    document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
 
     if('object' == typeof actividades){
         actividades.forEach((e, index) => {
@@ -34,12 +32,23 @@ let crearActividades = (perfil) => {
 
 };
 
-window.addEventListener('load', () => {
+
+let iniciarComentarios = () => {
+	
+};
+
+let cargarComentarios = (pId) => {
+	
+};
+
+
+
+window.onload = () => {
     let id;
 
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
         case 'padrefamilia':
-            id = localStorage.getItem('padreVerPerfilCEdu')
+            id = localStorage.getItem('verPerfilCEdu')
             break;
 
         case 'centroeducativo':
@@ -47,10 +56,18 @@ window.addEventListener('load', () => {
             break;
 
         default:
+		   id = 0;
             break;
     }
-    let perfil = get_obtenerPerfil(id);
+    const perfil = get_obtenerPerfil(id);
+	document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
     crearCalendario(id);
-    crearActividades(perfil);
+    crearActividades();
 
-});
+	iniciarComentarios();
+	cargarComentarios(id)
+	
+	
+	
+};
+

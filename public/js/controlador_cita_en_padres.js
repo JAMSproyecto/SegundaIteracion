@@ -4,7 +4,7 @@ const boton_registrar = document.querySelector('#btn_registrar');
 
 
 let registrar_citas = (pId) =>{
-    localStorage.getItem('padreVerPerfilCEdu', pId);
+    localStorage.getItem('verPerfilCEdu', pId);
     window.location.replace("registrar_cita.html");
 
 };

@@ -42,7 +42,7 @@ let cargarDataTable = () => {
 };
 
 let irAlPerfil = (idCEdu) => {
-	localStorage.setItem('padreVerPerfilCEdu', idCEdu);
+	localStorage.setItem('verPerfilCEdu', idCEdu);
     location.replace('./perfilCentroPadre.html')
 };
 

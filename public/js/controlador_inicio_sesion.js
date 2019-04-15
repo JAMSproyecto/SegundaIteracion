@@ -33,7 +33,7 @@ let estaActiva = (primeraVez) => {
 					    
 						break;
                     case 'centroeducativo':
-                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
+                        localStorage.setItem('verPerfilCEdu', localStorage.getItem('id'));
                         break;
                     case 'padrefamilia':
                         localStorage.setItem('idBuscarPadre', localStorage.getItem('id'));
