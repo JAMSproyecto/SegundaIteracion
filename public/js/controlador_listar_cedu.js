@@ -53,8 +53,8 @@ let cargarCEdu = () => {
                 pMessage.forEach(obj => {
                     let tr_fila = tablaCuerpo.insertRow();						
 						
-						if(obj['nombreComercial'] && obj['nombreComercial'].length > 0){
-							tr_fila.insertCell().innerHTML = obj['nombreComercial'];
+						if(obj['nombre'] && obj['nombre'].length > 0){
+							tr_fila.insertCell().innerHTML = obj['nombre'];
 						}else{
 						    tr_fila.insertCell().innerHTML = '';
 						}
