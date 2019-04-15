@@ -1,6 +1,4 @@
-
-$('.your-class').slick();
-
+'use strict';
 
   $('.noticias').slick({
     centerPadding: '60px',
