@@ -22,7 +22,7 @@ let registrar_articulo = (pnombre, pdescripcion) => {
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
           type: 'error',
-          title: 'El artículo no fue registrado',
+          title: '¡El artículo no fue registrado!',
           text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
       });
@@ -97,7 +97,7 @@ let actualizar_articulo = (pid,pnombre,pdescripcion) => {
       {
           swal.fire({
               type: 'success',
-              title: 'El artículo fue actualizado de forma exitosa'
+              title: '¡El artículo fue actualizado de forma exitosa!'
               
             }).then((result) => {
               if (result.value) {
@@ -108,7 +108,7 @@ let actualizar_articulo = (pid,pnombre,pdescripcion) => {
     request.fail(function (jqXHR, textStatus) {
       swal.fire({
         type: 'error',
-        title: 'El artículo no fue actualizado',
+        title: '¡El artículo no fue actualizado!',
         text: 'Ocurrió un error inesperado, por favor intente de nuevo'
       });
     });
@@ -173,7 +173,7 @@ let  eliminar_articulo = (id) => {
   request.done(function (res) {
     swal.fire({
       type: 'success',
-      title: 'El artículo fue eliminado de forma exitosa'
+      title: '¡El artículo fue eliminado de forma exitosa!'
     }).then((result) => {
       if (result.value) {
         window.location.href = 'listar_articulos.html';

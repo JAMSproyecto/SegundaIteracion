@@ -19,7 +19,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
   request.done(function (msg) {
     swal.fire({
       type: 'success',
-      title: 'Lista de útiles registrada',
+      title: '!Lista de útiles registrada¡',
       text: 'el registro fue éxitoso'
 
     }).then((result) => {
@@ -108,7 +108,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
   });
 
   request.done(function (msg) {
-
+    
   });
 
   request.fail(function (jqXHR, textStatus) {
@@ -213,7 +213,7 @@ let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
   request.done(function (res) {
     swal.fire({
       type: 'success',
-      title: 'La cantidad de artículos fue actualizada de forma exitosa'
+      title: '¡ La cantidad de artículos fue actualizada de forma exitosa !'
       
     }).then((result) => {
       if (result.value) {

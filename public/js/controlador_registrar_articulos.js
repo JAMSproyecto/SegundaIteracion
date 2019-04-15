@@ -38,7 +38,7 @@ let obtener_datos = () => {
        if (registrar_articulo) {
           
         Swal.fire({
-            title: ' El artículo fue registrado de forma exitosa ' + 
+            title: '¡El artículo fue registrado de forma exitosa! ' + 
             '         ¿ Desea agregar otro artículo ?',
             type: 'question',
             customClass: {
