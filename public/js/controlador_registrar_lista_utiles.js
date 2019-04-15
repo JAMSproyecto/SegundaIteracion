@@ -112,9 +112,9 @@ function obtener_codigo_centro(){
 
 
 let cargarCEdu = () => {
-    listarCEdu_todo((pSuccess, pMessage) => {
+    listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
-            if ('object' == typeof (pMessage)) {
+            if ('object' == typeof pMessage) {
                 pMessage.forEach(obj => {
                     let opcion = document.createElement('option');
                     opcion.value = obj['_id'];
@@ -123,5 +123,5 @@ let cargarCEdu = () => {
                 });
             };
         }
-    })
+    });
 };
