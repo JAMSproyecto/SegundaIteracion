@@ -3,6 +3,7 @@
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
+const BtnRegistrarCita = document.querySelector('#btnRegistrarCita');
 
 let crearActividades = () => {
     let actividades = listar_todas_actividades();
@@ -57,7 +58,9 @@ let agregarComentario = () => {
 };
 
 
-
+BtnRegistrarCita.addEventListener('click', () =>{
+    location.replace("registrar_cita.html");
+}, false);
 
 
 window.onload = () => {
