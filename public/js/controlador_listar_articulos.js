@@ -93,7 +93,7 @@ function eliminar_articulos(){
   }).then((result) => {
     if (result.value) {
       eliminar_articulo(this.dataset.id_articulo);
-      //articulos = obtener_articulos();
+      articulos = obtener_articulos();
       mostrar_datos();
       Swal.fire(
         '¡Artículo eliminado!',

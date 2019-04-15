@@ -19,7 +19,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
   request.done(function (msg) {
     swal.fire({
       type: 'success',
-      title: 'Lista de utiles enviada',
+      title: 'Lista de útiles registrada',
       text: 'el registro fue éxitoso'
 
     }).then((result) => {
@@ -207,18 +207,27 @@ let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
     },
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    async: false
+   // async: false
   });
 
   request.done(function (res) {
     swal.fire({
       type: 'success',
-      title: 'La cantidad del artículo fue actualizada de forma exitosa'
+      title: 'La cantidad de artículos fue actualizada de forma exitosa'
+      
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'ver_articulos_lista_utiles_admin.html';
+    }
     });
   });
 
   request.fail(function (jqXHR, textStatus) {
-
+    swal.fire({
+      type: 'success',
+      title: 'La cantidad de artículos no fue actualizada de forma exitosa'
+      
+    })
   });
 
 };
