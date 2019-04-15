@@ -11,7 +11,7 @@ const input_comentario = document.querySelector('#comentario');
 const select = document.querySelector('#motivo_cita');
 
 
-const boton_registrar = document.querySelector('#btn');
+const boton_registrar = document.querySelector('#btnRegistrarCita');
 
 
 let validar = () => {
