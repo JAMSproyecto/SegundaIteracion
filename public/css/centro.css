@@ -354,9 +354,6 @@ main {
 .noticia  strong {
   font-size: 24px;
   text-transform: uppercase;
-  /* text-align: center; */
-  /* margin-top: 44px; */
-  /* padding-top: 44px; */
 }
 
 .actividad,
@@ -374,13 +371,7 @@ main {
   padding: 10px;
 }
 
-.tabla__actividad h2,
-.tabla__noticias h2 {
-  color: #17c0eb;
-  font-size: 30px;
-  font-weight: 700;
-  text-transform: capitalize;
-}
+
 
 button.fc-button {
   background-image: none;
@@ -418,6 +409,25 @@ button.fc-button:focus {
   border-color: rgb(44, 62, 80);
 }
 
+
+.fc-toolbar h2 {
+font-size: 28px;
+color: #333;
+font-weight: 400;
+margin: 16px 0 4px;
+}
+
+.fc-day-grid-event .fc-content {
+    white-space: normal;
+    overflow: hidden;
+    display: inline-block;
+
+}
+
+
+
+
+
 .my__60 {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -447,19 +457,18 @@ button.fc-button:focus {
 }
 
 .contenedor.contenido section:nth-child(1) {
-  padding: 0 5%;
+  padding: 0 15px 0 10px;
   align-self: flex-start;
 }
 
 .contenedor.contenido section:nth-child(2) {
-  padding: 0 5%;
+  padding: 0 10px 0 15px;
   align-self: flex-start;
 }
 
 #calendario {
   margin-bottom: 15px;
 }
-
 
 
 
