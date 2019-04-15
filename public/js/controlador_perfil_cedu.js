@@ -1,5 +1,9 @@
 'use strict';
 
+const TxtEditorComentario = document.querySelector('#txtEditorComentario');
+const TblAddComentario = document.querySelector('#tblAddComentario');
+const BtnComentar = document.querySelector('#btnComentar');
+
 let crearActividades = () => {
     let actividades = listar_todas_actividades();
 
@@ -34,12 +38,25 @@ let crearActividades = () => {
 
 
 let iniciarComentarios = () => {
-	
+	$('#txtEditorComentario').jqte({placeholder: "Agregar comentario...", status : true, color: false, source: false});
 };
 
 let cargarComentarios = (pId) => {
 	
 };
+
+let agregarComentario = () => {
+	const texto = $('#txtEditorComentario').val();
+	console.log(texto);
+	if(texto.length >0){
+	const textoComentado = he.encode(texto); 
+	alert(textoComentado);
+	}else{
+		TxtEditorComentario.focus();
+	}
+};
+
+
 
 
 
@@ -49,14 +66,20 @@ window.onload = () => {
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
         case 'superadmin':
             id = localStorage.getItem('verPerfilCEdu');
+			TblAddComentario.style = 'display:none;';
             break;
 			
         case 'centroeducativo':
             id = localStorage.getItem('id');
+			TblAddComentario.style = 'display:none;';
             break;
 			
         case 'padrefamilia':
             id = localStorage.getItem('verPerfilCEdu');
+			iniciarComentarios();
+			if(BtnComentar){
+			    BtnComentar.addEventListener('click', agregarComentario, false);
+			}
             break;
 
         default:
@@ -75,7 +98,7 @@ window.onload = () => {
     crearCalendario(id);
     crearActividades();
 
-	iniciarComentarios();
+
 	cargarComentarios(id)
 	
 	

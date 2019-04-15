@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/footer.css">
 
-    <link rel="stylesheet" href="css/tablaDatos.css" />
-    <link rel="stylesheet" href="css/jqueryte-1.4.0.css" />
-	
+    <link rel="stylesheet" href="./css/tablaDatos.css" />
+    <link rel="stylesheet" href="./css/comentarios/jqueryte-1.4.0.css" />
+
     <link rel="stylesheet" href="css/centro.css" />
 </head>
 
@@ -166,43 +166,44 @@
             <div class="contenedor cuerpo">
                 <div class="contenedor contenido">
                     <section>
-                        
-						<div>
-						<h2 class="titulo__secundario">Comentarios</h2>
-						</div>
-						
-				<div class="tabla__responsive">
-                <table class="tabla">
-                    <tbody>
-					<tr>
-					<td>
-					
-					<input id="txtAddComentario" type="text" value="<b>My contents are from <u><span style=&quot;color:rgb(0, 148, 133);&quot;>INPUT</span></u></b>">
-					
-					</td>
-					</tr>
-					</tbody>
-                </table>
-                <table class="tabla" id="tblComentarios">
-                    <tbody>
-					<tr>
-					<td>Emiliano</td>
-					<td>2016-04-03</td>
-					<td>estrellas</td>
-					</tr>
-					<tr>
-					<td colspan="3">Texto</td>
-					</tr>
-					</tbody>
-                </table>
-            </div>
-			
-						
-						
+
+                        <div>
+                            <h2 class="titulo__secundario">Comentarios</h2>
+                        </div>
+
+                        <div class="tblAddComentario tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" class="jqte-test"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+
+                                            <div class="text_right">
+                                                <button type="button" class="btn btn--amarillo"
+                                                    id="btnComentar">Agregar</button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="tabla tabla__minimalista" id="tblComentarios">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
                     </section>
                     <section>
                         <div class="bloque_calendario">
-							<h2 class="titulo__secundario">Citas</h2>
+                            <h2 class="titulo__secundario">Citas</h2>
                             <div id="calendario"></div>
 
                         </div>
@@ -297,7 +298,9 @@
 
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./js/jqueryte-1.4.0.min.js"></script>
+
+    <script src="./js/comentarios/he.js"></script>
+    <script src="./js/comentarios/jqueryte-1.4.0.min.js"></script>
 
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/carrusel.js"></script>

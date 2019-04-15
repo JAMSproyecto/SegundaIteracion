@@ -371,8 +371,6 @@ main {
   padding: 10px;
 }
 
-
-
 button.fc-button {
   background-image: none;
   background: #17c0eb;
@@ -409,24 +407,18 @@ button.fc-button:focus {
   border-color: rgb(44, 62, 80);
 }
 
-
 .fc-toolbar h2 {
-font-size: 28px;
-color: #333;
-font-weight: 400;
-margin: 16px 0 4px;
+  font-size: 28px;
+  color: #333;
+  font-weight: 400;
+  margin: 16px 0 4px;
 }
 
 .fc-day-grid-event .fc-content {
-    white-space: normal;
-    overflow: hidden;
-    display: inline-block;
-
+  white-space: normal;
+  overflow: hidden;
+  display: inline-block;
 }
-
-
-
-
 
 .my__60 {
   margin-top: 60px;
@@ -469,6 +461,40 @@ margin: 16px 0 4px;
 #calendario {
   margin-bottom: 15px;
 }
+
+
+
+
+/* Comentarios */
+.tblAddComentario.tabla__responsive {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tblAddComentario table {
+  margin-top: 15px;
+}
+
+.jqte {
+  margin: 0;
+  border: #b9b9b9 1px solid;
+}
+
+.jqte.jqte_focused {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.jqte_tool.jqte_tool_1 .jqte_tool_label {
+  position: relative;
+  display: block;
+  padding: 3px;
+  width: 70px;
+  height: 26px;
+  overflow: hidden;
+}
+
 
 
 
