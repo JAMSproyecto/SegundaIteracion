@@ -44,10 +44,12 @@ articulo_nuevo.save(
 			
 			const log = insertarBitacora('CentroEducativo', `Error al registrar el artículo: ${req.body.nombre} | ${error}`);
 			
+			console.error(`No se pudo guardar el artículo, ocurrio el siguiente error: ${error} `);
+			
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar el artículo, ocurrio el siguiente error ${error} `
+                    msg : 'El artículo no fue guardado de manera correcta'
                 }
             );
         } else {
@@ -57,7 +59,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : true,
-                    msg :  `Se ha registrado el artículo de forma correcta`
+                    msg :  'El artículo fue registrado de forma exitosa'
                 }
             );
         }
