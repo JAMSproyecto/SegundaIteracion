@@ -15,27 +15,26 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
   });
 
   peticion.done(response => {
-    respuesta = response.success;
-	
-	//Limpiamos localStorage:
-	localStorage.clear();
-	
+
+    localStorage.setItem('tiempoConexion', (new Date()).getTime());
     localStorage.setItem('conectado', response.success);
     localStorage.setItem('tipoUsuario', response.message.tipoUsuario);
     localStorage.setItem('nombreUsuario', response.message.nombreUsuario);
     localStorage.setItem('correo', pusuario);
     localStorage.setItem('id', response.message.id);
-	
-	if('undefined' !== typeof response.message.nombreInstitucion){
-		localStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
-	}else{
-		localStorage.setItem('nombreInstitucion', '');
-	}
-	
+
+    if ('undefined' !== typeof response.message.nombreInstitucion) {
+      localStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
+    } else {
+      localStorage.setItem('nombreInstitucion', '');
+    }
+
+    respuesta = response.success;
   });
 
   peticion.fail(jqXHR => {
-    console.error('Ocurrió un error inesperado, por favor intente de nuevo');
+    console.error('Ocurrió un error:');
+    console.error(jqXHR);
   });
 
   return respuesta;

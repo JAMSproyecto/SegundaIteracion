@@ -142,10 +142,22 @@ module.exports.activar_desactivar = function(req, res){
         estado: estado 
       }},
         function(error){
+			
+			let cambioError ='';
+			let cambioOk ='';
+
+			if(req.body.estado == 'Activo'){
+				cambioError = 'desactivar';
+				cambioOk = 'desactivó';
+			}else{
+				cambioError = 'activar';
+				cambioOk = 'activó';
+			}
+			
             if(error){
-                res.json({success: false ,msg: 'No se pudo activar el artículo '});
+                res.json({success: false ,msg: `No se pudo ${cambioError} el artículo`});
             }else{
-                res.json({success: true ,msg: 'El artículo se activó con éxito'}); 
+                res.json({success: true ,msg: `El artículo se ${cambioOk} con éxito`});
             }
         }
     )

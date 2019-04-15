@@ -1,9 +1,7 @@
 'use strict';
 
-let crearActividades = (perfil) => {
+let crearActividades = () => {
     let actividades = listar_todas_actividades();
-
-    document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
 
     if('object' == typeof actividades){
         actividades.forEach((e, index) => {
@@ -34,23 +32,53 @@ let crearActividades = (perfil) => {
 
 };
 
-window.addEventListener('load', () => {
+
+let iniciarComentarios = () => {
+	
+};
+
+let cargarComentarios = (pId) => {
+	
+};
+
+
+
+window.onload = () => {
     let id;
 
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
-        case 'padrefamilia':
-            id = localStorage.getItem('padreVerPerfilCEdu')
+        case 'superadmin':
+            id = localStorage.getItem('verPerfilCEdu');
             break;
-
+			
         case 'centroeducativo':
             id = localStorage.getItem('id');
+            break;
+			
+        case 'padrefamilia':
+            id = localStorage.getItem('verPerfilCEdu');
             break;
 
         default:
             break;
     }
-    let perfil = get_obtenerPerfil(id);
-    crearCalendario(id);
-    crearActividades(perfil);
+	
+    if ('undefined' == typeof id || null === id) {
+        throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
+    }
+	
+    const perfil = get_obtenerPerfil(id);
 
-});
+	if(null !== perfil){
+	    document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
+    }
+    crearCalendario(id);
+    crearActividades();
+
+	iniciarComentarios();
+	cargarComentarios(id)
+	
+	
+	
+};
+

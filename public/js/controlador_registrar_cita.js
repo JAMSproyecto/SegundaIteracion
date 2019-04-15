@@ -104,7 +104,7 @@ let mostrar_datos = () => {
         let motivo = select.value;
         let comentario = input_comentario.value;
         
-        let codigo = localStorage.getItem('padreVerPerfilCEdu'); 
+        let codigo = localStorage.getItem('verPerfilCEdu'); 
         
         
 

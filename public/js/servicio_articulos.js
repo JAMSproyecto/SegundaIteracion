@@ -129,27 +129,31 @@ let  activar_desactivar = (id, estado) => {
   });
 
   request.done(function (res) {
-    if (estado === 'Activo') {
-      swal.fire({
-        type: 'success',
-        title: 'El artículo fue desactivado'
-      }).then((result) => {
-        if (result.value) {
-      }
-  })
+    if (res.success) {
+
+        // Muestra el mensaje de éxito que retorna el api:
+		swal.fire({
+		  type: 'success',
+		  title: res.msg,
+		  onAfterClose: function () {
+		  
+		  }
+		});
+
     }else{
-      swal.fire({
-        type: 'success',
-        title: 'El artículo fue activado'
-      }).then((result) => {
-        if (result.value) {
-      }
-  })
+		
+        // Muestra el mensaje de error que retorna el api:
+		swal.fire({
+		  type: 'error',
+		  title: res.msg
+		});
+
     }
   });
 
   request.fail(function (jqXHR, textStatus) {
-
+	  console.error(jqXHR);
+	  console.error(textStatus);
   });
 
 };
