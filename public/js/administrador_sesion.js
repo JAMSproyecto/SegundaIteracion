@@ -29,7 +29,7 @@ let cerrar_sesion = (esAuto) => {
 			
 			//Validamos que el usuario no tenga más de una hora de inactividad
 			if(diferencia >=  3600000){
-			    cerrar_sesion(true);
+			    cerrar_sesion(false);
 			}else{
 			
 				//Refrescamos la hora de acceso:
