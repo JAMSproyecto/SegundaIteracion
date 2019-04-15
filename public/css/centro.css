@@ -2,12 +2,6 @@
   margin-bottom: 0px;
 }
 
-/*carrusel*/
-main {
-  margin: 0px;
-  padding: 0px;
-}
-
 .titulo_centro_educativo {
   color: #34495e;
   font-size: 29px;
@@ -22,73 +16,80 @@ main {
   text-align: right;
 }
 
+main {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/*carrusel*/
+
 .slider {
-  margin: auto;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.slider .slide_viewer {
+  height: 340px;
   overflow: hidden;
+  position: relative;
+  text-align: center;
 }
 
-.slider ul {
-  display: flex;
-  /* padding: 0; */
-  width: 500%;
-  animation: cambio 20s infinite alternate linear;
-  height: 500px;
-}
-
-.slider li {
-  width: 100%;
-  list-style: none;
-}
-
-.slider img {
+.slider .slide_group {
+  height: 100%;
+  position: relative;
   width: 100%;
 }
 
-@keyframes cambio {
-  0% {
-    margin-left: 0;
-  }
+.slider .slide {
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #ccc;
+  border: 1px solid #333;
+  width: 100%;
+  height: 340px;
 
-  20% {
-    margin-left: 0;
-  }
-
-  25% {
-    margin-left: -100%;
-  }
-
-  45% {
-    margin-left: -100%;
-  }
-
-  50% {
-    margin-left: -200%;
-  }
-
-  70% {
-    margin-left: -200%;
-  }
-
-  75% {
-    margin-left: -300%;
-  }
-
-  100% {
-    margin-left: -300%;
-  }
-
-  75% {
-    margin-left: -300%;
-  }
-
-  100% {
-    margin-left: -300%;
-  }
+  background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: 100vw 100%;
 }
 
+.slider .slide:first-child {
+  display: block;
+}
 
+.slider .slide:nth-of-type(1) {
+  background-image: url(./../imgs/aulas/imagen9.png);
+}
+
+.slider .slide:nth-of-type(2) {
+  background-image: url(./../imgs/aulas/imagen3.jpg);
+}
+
+.slider .slide:nth-of-type(3) {
+  background-image: url(./../imgs/imagen3.jpg);
+}
+
+.slider .slide:nth-of-type(4) {
+  background-image: url(./../imgs/aulas/imagen4.png);
+}
+
+.slider .slide:nth-of-type(5) {
+  background-image: url(./../imgs/aulas/imagen6.jpg);
+}
 
 /*fin de carrusel*/
+
+
 
 
 
@@ -175,11 +176,10 @@ main {
 
 .titulo__secundario {
   font-size: 29px;
-  /* background: red; */
-  width: 457px;
-  margin: auto;
-  /* border-bottom: 2px solid; */
+  width: 100%;
+  margin: 0 auto;
   color: #34495e;
+  text-align: center;
 }
 
 .faq {
@@ -298,11 +298,6 @@ main {
   display: table;
 }
 
-.tabla__noticias,
-.tabla__actividad {
-  background: #f9f9f9;
-  margin-bottom: 25px;
-}
 
 .secundaria img {
   width: 300px;
@@ -342,6 +337,12 @@ main {
   background: #fff;
   text-align: center;
   padding: 10px;
+}
+
+.tabla__noticias,
+.tabla__actividades {
+  background: #f9f9f9;
+  margin-bottom: 25px;
 }
 
 .contenedor__noticias,
@@ -449,12 +450,12 @@ button.fc-button:focus {
 }
 
 .contenedor.contenido section:nth-child(1) {
-  padding: 0 15px 0 10px;
+  padding: 0 15px 0 20px;
   align-self: flex-start;
 }
 
 .contenedor.contenido section:nth-child(2) {
-  padding: 0 10px 0 15px;
+  padding: 0 20px 0 15px;
   align-self: flex-start;
 }
 

@@ -28,7 +28,7 @@ let crearActividades = () => {
             actividad.appendChild(strong);
             actividad.appendChild(fecha);
             actividad.appendChild(hora);
-            document.querySelector('.contenedor__actividad').appendChild(actividad);
+            document.querySelector('#tabla__actividades').appendChild(actividad);
         });
 	} else {
 		console.log(actividades);
@@ -95,9 +95,10 @@ window.onload = () => {
 	
     const perfil = get_obtenerPerfil(id);
 
-	if(null !== perfil){
+	if('undefined' !== typeof perfil.nombre){
 	    document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
     }
+
     crearCalendario(id);
     crearActividades();
 
