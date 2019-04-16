@@ -42,13 +42,13 @@ let cargarDataTable = () => {
 };
 
 let irAlPerfil = (idCEdu) => {
-    localStorage.setItem('padreVerPerfilCEdu', idCEdu);
+	localStorage.setItem('verPerfilCEdu', idCEdu);
     let tipoUsuario = localStorage.getItem('tipoUsuario');
     if (tipoUsuario == 'padreFamilia'){
-        location.replace('./perfilCentroPadre.html')
+        location.replace('./perfilCentroPadre.html');
     }else {
-        location.replace('./perfilCentroAdmin.html')
-    };
+        location.replace('./perfilCentroAdmin.html');
+    }
 };
 
 let cargarCEdu = () => {
