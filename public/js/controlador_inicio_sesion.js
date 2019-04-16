@@ -30,8 +30,8 @@ let estaActiva = (primeraVez) => {
                 //switch para calquier cosa que no sea redireccionar:
                 switch (elTipoUsuario) {
                     case 'superadmin':
-                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
-                        break;
+
+						break;
                     case 'centroeducativo':
                         localStorage.setItem('verPerfilCEdu', localStorage.getItem('id'));
                         break;
