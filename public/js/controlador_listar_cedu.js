@@ -42,8 +42,13 @@ let cargarDataTable = () => {
 };
 
 let irAlPerfil = (idCEdu) => {
-	localStorage.setItem('padreVerPerfilCEdu', idCEdu);
-    location.replace('./perfilCentroPadre.html')
+    localStorage.setItem('padreVerPerfilCEdu', idCEdu);
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
+    if (tipoUsuario == 'padreFamilia'){
+        location.replace('./perfilCentroPadre.html')
+    }else {
+        location.replace('./perfilCentroAdmin.html')
+    };
 };
 
 let cargarCEdu = () => {

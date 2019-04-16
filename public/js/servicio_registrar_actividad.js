@@ -57,6 +57,9 @@ let listar_todas_actividades = () => {
     let actividades_arreglo = [];
     let idCentro;
     switch(localStorage.getItem('tipoUsuario').toLowerCase()){
+        case 'superadmin':
+            idCentro = localStorage.getItem('padreVerPerfilCEdu');
+            break;
         case 'centroeducativo':
             idCentro = localStorage.getItem('id');
             break;

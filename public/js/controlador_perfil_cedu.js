@@ -9,7 +9,7 @@ let crearActividades = (perfil) => {
         actividades.forEach((e, index) => {
             let actividad = document.createElement('div');
             actividad.classList.add('actividad');
-        
+         
             let strong = document.createElement('strong');
             strong.classList.add('nombre__actividad');
         
@@ -38,6 +38,9 @@ window.addEventListener('load', () => {
     let id;
 
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
+        case 'superadmin':
+            id = localStorage.getItem('padreVerPerfilCEdu')
+            break;
         case 'padrefamilia':
             id = localStorage.getItem('padreVerPerfilCEdu')
             break;
@@ -47,6 +50,7 @@ window.addEventListener('load', () => {
             break;
 
         default:
+        id=0;
             break;
     }
     let perfil = get_obtenerPerfil(id);

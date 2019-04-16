@@ -59,6 +59,7 @@ let obtener_Datos = () => {
                 //switch para calquier cosa que no sea redireccionar (excepto el default).
                 switch (elTipoUsuario) {
                     case 'superadmin':
+                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
                         break;
                     case 'centroeducativo':
                         localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
