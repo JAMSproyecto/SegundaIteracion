@@ -11,7 +11,7 @@ const input_comentario = document.querySelector('#comentario');
 const select = document.querySelector('#motivo_cita');
 
 
-const boton_registrar = document.querySelector('#btn');
+const boton_registrar = document.querySelector('#btnRegistrarCita');
 
 
 let validar = () => {
@@ -104,7 +104,7 @@ let mostrar_datos = () => {
         let motivo = select.value;
         let comentario = input_comentario.value;
         
-        let codigo = localStorage.getItem('padreVerPerfilCEdu'); 
+        let codigo = localStorage.getItem('verPerfilCEdu'); 
         
         
 

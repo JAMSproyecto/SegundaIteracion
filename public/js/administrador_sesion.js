@@ -11,9 +11,32 @@ let cerrar_sesion = (esAuto) => {
 
 //Función que se ejecuta de inmediato y comprueba el estado de la sesión:
 (() => {
-	let conectado = localStorage.getItem('conectado');
+	const conectado = localStorage.getItem('conectado');
 	if (null === conectado || 'false' === conectado || false === conectado) {
         console.log('Acceso restringido, no está conectado');
         cerrar_sesion(true);
-    }
+    }else{
+		const tiempoConexion = localStorage.getItem('tiempoConexion');
+		if(null === tiempoConexion){
+			cerrar_sesion(true);
+		}else{
+			
+			const msAhora = (new Date()).getTime();
+			const diferencia = msAhora - tiempoConexion;
+			
+			//1 hora = 3600000 milisegundos
+			//1 MINUTO = 60000 milisegundos
+			
+			//Validamos que el usuario no tenga más de una hora de inactividad
+			if(diferencia >=  3600000){
+			    cerrar_sesion(false);
+			}else{
+			
+				//Refrescamos la hora de acceso:
+				localStorage.setItem('tiempoConexion', msAhora);
+			}
+		}
+		
+		
+	}
 })();

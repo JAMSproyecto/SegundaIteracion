@@ -3,14 +3,14 @@
 const tablaCuerpo = document.querySelector('#tblCentrosEducativos tbody');
 
 let cargarDataTable = () => {
-	
+
 	//Nota: en esta función (cargarDataTable) no se utilizan funciones de flecha al propio para poder usar this.
-	
+
 	$('#tblCentrosEducativos thead tr:eq(1) th:not(.sinFiltro)').each(function() {
 		let titulo = $(this).text();
         $(this).html('<input type="text" class="icon-buscar" placeholder="" value="" >');
     });
-	
+
 	let tablaDatos = $('#tblCentrosEducativos').DataTable({
 		language: {
 			sSearch: 'Filtrar',
@@ -29,16 +29,16 @@ let cargarDataTable = () => {
         order: [[4, 'desc'],[3, 'desc']],
 		dom: '<f><t>'
     });
-	
+
 	$('#tblCentrosEducativos thead').on( 'keyup', '.icon-buscar',function () {
         tablaDatos
             .column( $(this).parent().index() )
             .search( this.value )
             .draw();
     } );
-	
-	
-	
+
+
+
 };
 
 let irAlPerfil = (idCEdu) => {
@@ -56,16 +56,16 @@ let cargarCEdu = () => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
                 pMessage.forEach(obj => {
-                    let tr_fila = tablaCuerpo.insertRow();						
-						
-						if(obj['nombreComercial'] && obj['nombreComercial'].length > 0){
-							tr_fila.insertCell().innerHTML = obj['nombreComercial'];
+                    let tr_fila = tablaCuerpo.insertRow();
+
+						if(obj['nombre'] && obj['nombre'].length > 0){
+							tr_fila.insertCell().innerHTML = obj['nombre'];
 						}else{
 						    tr_fila.insertCell().innerHTML = '';
 						}
-						
-						
-						
+
+
+
 						if(obj['direccion']){
 						let provincia = '';
 						let direccion = '';
@@ -73,14 +73,14 @@ let cargarCEdu = () => {
 							provincia = obtenerProvinciaPorID(obj2['idProvincia']);
 							direccion = obj2['sennas'];
 						});
-							
+
 							tr_fila.insertCell().innerHTML = provincia;
 							tr_fila.insertCell().innerHTML = direccion;
 						}else{
 						    tr_fila.insertCell().innerHTML = '';
 						    tr_fila.insertCell().innerHTML = '';
 						}
-						
+
 						if(obj['calificacion'] && Object.keys(obj['calificacion']).length >0){
 						obj['calificacion'].forEach(obj3 => {
 							tr_fila.insertCell().innerHTML = obj3['padres'];
@@ -90,12 +90,12 @@ let cargarCEdu = () => {
 							tr_fila.insertCell().innerHTML = '0';
 						    tr_fila.insertCell().innerHTML = '0';
 						}
-						
+
 						tr_fila.insertCell().innerHTML = '<button class="btn btn--amarillo" onClick="irAlPerfil('+obj['_id']+'); return false;">Ver m&aacute;s</button>';
                 });
-				
+
 				cargarDataTable();
-				
+
             } else {
                 Swal.fire({
                     toast: false,
@@ -125,4 +125,3 @@ let cargarCEdu = () => {
 window.onload = () => {
      cargarCEdu();
 };
-

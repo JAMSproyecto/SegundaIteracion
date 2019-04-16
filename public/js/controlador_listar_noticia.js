@@ -2,23 +2,8 @@
 const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
-let idCentro = localStorage.getItem('id');
-const noticias = listar_todas_noticias(idCentro);
+const noticias = listar_todas_noticias();
 
-let formatearFecha = (pFecha) => {
-    const fecha = new Date(pFecha);
-    const anio = fecha.getFullYear();
-    let dia_mes = fecha.getDate();
-    let mes = fecha.getMonth();
-    mes += 1;
-    if (mes < 10) {
-        mes = '0' + mes;
-    }
-    if (dia_mes < 10) {
-        dia_mes = '0' + dia_mes;
-    }
-    return dia_mes + '/' + mes + '/' + anio;
-};
 
 let mostrar_datos = () => {
     /*document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;*/
@@ -34,7 +19,7 @@ let mostrar_datos = () => {
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
             fila.insertCell().innerHTML = noticias[i]['informacion']
-            fila.insertCell().innerHTML = formatearFecha(noticias[i]['fecha']);
+            fila.insertCell().innerHTML = noticias[i]['fecha'];
 
             let celda_actualizar = fila.insertCell();
             let celda_eliminar = fila.insertCell();

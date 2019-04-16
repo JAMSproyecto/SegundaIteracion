@@ -31,7 +31,7 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
                     window.location.replace('./listar_actividad.html');
                   }
             });
-         
+
         }
         else {
             swal.fire({
@@ -58,17 +58,21 @@ let listar_todas_actividades = () => {
     let idCentro;
     switch(localStorage.getItem('tipoUsuario').toLowerCase()){
         case 'superadmin':
-            idCentro = localStorage.getItem('padreVerPerfilCEdu');
+            idCentro = localStorage.getItem('verPerfilCEdu');
             break;
         case 'centroeducativo':
             idCentro = localStorage.getItem('id');
             break;
         case 'padrefamilia':
-            idCentro = localStorage.getItem('padreVerPerfilCEdu');
+            idCentro = localStorage.getItem('verPerfilCEdu');
             break;
         default:
-        break;
-        
+		    throw new Error('Error al listar actividades: Tipo de usuario desconocido');
+            break;
+    }
+
+    if ('undefined' == typeof idCentro || null === idCentro) {
+        throw new Error('Error al listar actividades: El identificador no puede estar vacio');
     }
 
     let request = $.ajax({
@@ -81,14 +85,14 @@ let listar_todas_actividades = () => {
     request.done(function (res){
         actividades_arreglo = res.msg;
 
-        
+
 
     });
 
 
     request.fail(function (jqXHR, textStatus) {
- 
-        
+
+
     });
     return actividades_arreglo;
 
