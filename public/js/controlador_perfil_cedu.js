@@ -3,7 +3,6 @@
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
-const BtnRegistrarCita = document.querySelector('#btnRegistrarCita');
 
 let crearActividades = () => {
     let actividades = listar_todas_actividades();
@@ -58,20 +57,13 @@ let agregarComentario = () => {
 };
 
 
-BtnRegistrarCita.addEventListener('click', () =>{
-    location.replace("registrar_cita.html");
-}, false);
-
-
 window.onload = () => {
     let id;
 
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
         case 'superadmin':
-            id = localStorage.getItem('padreVerPerfilCEdu')
-            break;
-        case 'padrefamilia':
-            id = localStorage.getItem('padreVerPerfilCEdu')
+            id = localStorage.getItem('verPerfilCEdu');
+			TblAddComentario.style = 'display:none;';
             break;
 
         case 'centroeducativo':
@@ -88,7 +80,6 @@ window.onload = () => {
             break;
 
         default:
-        id=0;
             break;
     }
 
@@ -107,7 +98,8 @@ window.onload = () => {
 
 
 	cargarComentarios(id)
-
-
-
+	
+	
+	
 };
+
