@@ -51,7 +51,7 @@ let registrar_preguntaFrecuente = () => {
     } else {
         let pregunta = Input_pregunta.value;
         let respuesta = Input_respuesta.value;
-        let centroEducativo = sessionStorage.getItem('id');
+        let centroEducativo = localStorage.getItem('id');
 
 
         post_registrarPreguntaFrecuente(pregunta, respuesta, centroEducativo);

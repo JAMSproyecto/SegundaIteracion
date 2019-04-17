@@ -44,10 +44,12 @@ articulo_nuevo.save(
 			
 			const log = insertarBitacora('CentroEducativo', `Error al registrar el artículo: ${req.body.nombre} | ${error}`);
 			
+			console.error(`No se pudo guardar el artículo, ocurrio el siguiente error: ${error} `);
+			
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar el artículo, ocurrio el siguiente error ${error} `
+                    msg : 'El artículo no fue guardado de manera correcta'
                 }
             );
         } else {
@@ -57,7 +59,7 @@ articulo_nuevo.save(
             res.json(
                 {
                     success : true,
-                    msg :  `Se ha registrado el artículo de forma correcta`
+                    msg :  'El artículo fue registrado de forma exitosa'
                 }
             );
         }
@@ -91,6 +93,7 @@ module.exports.listar_todos = (req, res) =>{
 //función para obtener articulos esprecificos por medio del id unico 
 module.exports.buscar_por_id = (req, res) => {
     //se envian por parametro el id del articulo que se quiere encontrar 
+    console.log(req.body.id);
     model_articulo.find({_id : req.body.id }).then(
         function (articulo){
             if (articulo) {
@@ -128,6 +131,7 @@ module.exports.actualizar = function(req, res){
     );
 };
 
+
 //funcion para activar o desactiar lo articulos 
 module.exports.activar_desactivar = function(req, res){
     let estado ='';
@@ -141,14 +145,27 @@ module.exports.activar_desactivar = function(req, res){
         estado: estado 
       }},
         function(error){
+			
+			let cambioError ='';
+			let cambioOk ='';
+
+			if(req.body.estado == 'Activo'){
+				cambioError = 'desactivar';
+				cambioOk = 'desactivó';
+			}else{
+				cambioError = 'activar';
+				cambioOk = 'activó';
+			}
+			
             if(error){
-                res.json({success: false ,msg: 'No se pudo activar el artículo '});
+                res.json({success: false ,msg: `No se pudo ${cambioError} el artículo`});
             }else{
-                res.json({success: true ,msg: 'El artículo se activó con éxito'}); 
+                res.json({success: true ,msg: `El artículo se ${cambioOk} con éxito`});
             }
         }
     )
 };
+
 
 //funcion para eliminar los artículos 
 module.exports.eliminar_articulo = function(req, res){

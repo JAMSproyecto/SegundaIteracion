@@ -143,13 +143,6 @@ const rubros = require ('./componentes/rubros/rubros.route');
 app.use('/api', rubros);
 
 
-const listaMEPEvaluacion = require ('./componentes/listaEvaluacionMEP/listaEvaluacionMEP.route');
-app.use('/api', listaMEPEvaluacion);
-
-
-
-
-
 
 
 

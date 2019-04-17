@@ -97,7 +97,7 @@ let mostrar_datos = () => {
     }
     else {
 
-        let idCentro = sessionStorage.getItem("id");
+        let idCentro = localStorage.getItem("id");
         let actividad = input_actividad.value;
         let fecha = input_fecha.value;
         let hora_inicio = input_hora_inicio.value;

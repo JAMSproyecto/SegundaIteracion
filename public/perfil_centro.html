@@ -1,233 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <title>MEP</title>
+    <script src="./js/administrador_sesion.js"></script>
+
+    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/reset.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
-    <link rel="stylesheet" href="./css/centro.css" />
-    <link rel="stylesheet" href="./css/footer.css">
+
+    <link rel="stylesheet" href="./css/tablaDatos.css" />
+    <link rel="stylesheet" href="./css/comentarios/jqueryte-1.4.0.css" />
+
+    <link rel="stylesheet" href="css/centro.css" />
 </head>
 
 <body>
-    <header class="header__centro">
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <ul>
 
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-                    <li><button class="btn btn--amarillo" id="boton_cerrar">Cerrar sesión</button></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="column__abajo">
-            <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader"> <div class="bloqueHeader__nombreInstitucion">
+                    <div class="bloqueHeader__iconolateral">
+                        <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+                    </div>
+
+                    <div class="bloqueHeader__logo">
+                        <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </div>
                 </div>
-                <nav class="menu__abajo">
-                    <ul>
-
-                        <span>|</span>
-                        <li>
-                            <a class="calificaciones" href="#">Modificar perfil</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                            </ul>
-
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Actividad</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Noticias</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
-                                <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Útiles</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
-                                        útiles</a></li>
-
-                                <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Citas</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="lista_citas.html">listar citas
-                                    </a></li>
-
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Reportes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Ranking anual</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Preguntas frecuentes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a></li>
-                                <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                    </ul>
-                </nav>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+               
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
+				
+		<div class="header__nav">
+				            <div class="menu__palanca menu__palanca__izq">
+                <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                    <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                    <span class="menu__palanca__btn__intercalar"></span>
+                </a>
+                <ul id="menuOpciones" class="menu_opciones">
+                    <li>
+                        <a href="javascript:void(0)">Ver perfil</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Modificar perfil</a>
+                    </li>
+                    <li class="separador"><a href="javascript:void(0)"></a></li>
+                    <li>
+                        <a href="javascript:void(0)">Cuenta de usuario</a>
+                    </li>
+                    <li class="separador"><a href="javascript:void(0)"></a></li>
+                    <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                </ul>
             </div>
         </div>
+				
+				
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+        <div style="display:none;" class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+                <span>Nuestra Institución les da la bienvenida</span>
+            </div>
+        </div>
+		
+
+		
+        <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
+            <p class="nav__cerrar">
+			    <a href="javascript:void(0)" class="closebtn" onclick="menuNavVisible(false);return false;" title="Cerrar menú"><i class="far fa-times-circle"></i></a>
+			</p>
+            <ul>
+                <li><a class="centros" href="javascript:void(0)">Actividad</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a>
+                        </li>
+                        <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
+                    </ul>
+                </li>
+                <li><a class="centros" href="javascript:void(0)">Noticias</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
+                    </ul>
+                </li>
+                <li><a class="utiles" href="javascript:void(0)"> Útiles</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
+                                útiles</a></li>
+
+                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de
+                                útiles</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="javascript:void(0)"> Citas</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="lista_citas.html">listar citas
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="reporte">Reportes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="javascript:void(0)">Ranking anual</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-
-    <div class="slider">
-        <ul class="slides">
-            <li>
-                <img src="./imgs/aulas/imagen9.png" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen3.jpg" alt="">
-            </li>
-            <li>
-                <img src="./imgs/imagen3.jpg" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen4.png" alt="">
-            </li>
-            <li>
-                <img src="./imgs/aulas/imagen6.jpg" alt="">
-            </li>
-
-        </ul>
-    </div>
+    <main id="main">
+	
+	 <div>
+	<h2 class="titulo__secundario">Reseña Historica</h2>
+      </div>
+	  <div class="bloqueResenna">
+             <p>Reseña..</p>
+        </div>
 
 
+        <section class="bloque__descripcion">
+            <div class="contenedor__servicios">
 
-    </section>
-    <section class="bloque__descripcion">
-        <div class="contenedor__servicios">
-            <h1 class="titulo_centro_educativo">Escuela Marisa Learning Center</h1>
-            <div class="titulo__servicios">
-                <h2 class="titulo__secundario">Nuestros servicios</h2>
-            </div>
-            <div class="tabla__servicios">
-                <div class="fila__arriba">
-                    <div class="ser__cafeteria servicio">
-                        <i class="fas faq fa-mug-hot"></i>
-                        <span>Cafetería</span>
-                    </div>
-                    <div class="ser__enfermeria servicio">
-                        <i class="fas faq  fa-user-nurse"></i>
-                        <span>Enfermería</span>
-                    </div>
-                    <div class="ser__transporte servicio">
-                        <span><i class="fas faq  fa-bus"></i></span>
-                        <span>Transporte</span>
-                    </div>
-                    <div class="ser__estudio servicio">
-                        <i class="fas faq fa-user-friends"></i>
-                        <span>Excursiones</span>
-                    </div>
+                <div class="titulo__servicios">
+                    <h2 class="titulo__secundario">Nuestros servicios</h2>
                 </div>
-                <div class="fila__abajo">
-                    <div class="ser__laboratorio servicio">
-                        <i class="fas faq fa-flask"></i>
-                        <span>Laboratorio</span>
+                <div class="tabla__servicios">
+                    <div class="fila__arriba">
+                        <div class="ser__cafeteria servicio">
+                            <i class="fas faq fa-mug-hot"></i>
+                            <span>Cafetería</span>
+                        </div>
+                        <div class="ser__enfermeria servicio">
+                            <i class="fas faq  fa-user-nurse"></i>
+                            <span>Enfermería</span>
+                        </div>
+                        <div class="ser__transporte servicio">
+                            <span><i class="fas faq  fa-bus"></i></span>
+                            <span>Transporte</span>
+                        </div>
+                        <div class="ser__estudio servicio">
+                            <i class="fas faq fa-user-friends"></i>
+                            <span>Excursiones</span>
+                        </div>
                     </div>
-                    <div class="ser__deportes servicio">
-                        <i class="fas faq fa-futbol"></i>
-                        <span>Deportes</span>
+                    <div class="fila__abajo">
+                        <div class="ser__laboratorio servicio">
+                            <i class="fas faq fa-flask"></i>
+                            <span>Laboratorio</span>
+                        </div>
+                        <div class="ser__deportes servicio">
+                            <i class="fas faq fa-futbol"></i>
+                            <span>Deportes</span>
+                        </div>
+                        <div class="ser__biblioteca servicio">
+                            <i class="fas faq fa-book"></i>
+                            <span>Biblioteca</span>
+                        </div>
+                        <div class="ser__musica servicio">
+                            <i class="fas faq fa-music"></i>
+                            <span>Música</span>
+                        </div>
                     </div>
-                    <div class="ser__biblioteca servicio">
-                        <i class="fas faq fa-book"></i>
-                        <span>Biblioteca</span>
-                    </div>
-                    <div class="ser__musica servicio">
-                        <i class="fas faq fa-music"></i>
-                        <span>Música</span>
-                    </div>
+
                 </div>
-
             </div>
-        </div>
-        </div>
-        <div class="tabla__oferta">
-            <div class="contenedor__tabla">
-                <div class="titulo_oferta">
-                    <h2 class="titulo__secundario">Oferta académica</h2>
+            </div>
+            <div class="tabla__oferta">
+                <div class="contenedor__tabla">
+                    <div class="titulo_oferta">
+                        <h2 class="titulo__secundario">Oferta académica</h2>
+                    </div>
+                    <div class="oferta__academica">
+                        <div class="preescolar">
+                            <img src="./imgs/Niños-felices.png" />
+
+                            <p>Prescolar</p>
+                        </div>
+                        <div class="primaria">
+                            <img src="./imgs/primariajpg.jpg" />
+                            <p>Primaria</p>
+                        </div>
+                        <div class="secundaria">
+                            <img src="./imgs/secundaria.jpeg" />
+                            <p>Secundaria</p>
+                        </div>
+        </section>
+		
+		
+        <section id="contenedorNoticias">
+            <div>
+                <h2 class="titulo__secundario">Noticias</h2>
+            </div>
+            <div class="tabla__noticias">
+                <div id="tabla__noticias" class="contenedor__noticias"></div>
+            </div>
+        </section>
+        <section id="contenedorActividades">
+            <div>
+                <h2 class="titulo__secundario">Actividades</h2>
+            </div>
+            <div class="tabla__actividades">
+                <div id="tabla__actividades" class="contenedor__actividades"></div>
+            </div>
+        </section>		
+		
+
+        
+		
+        <div class="my__60">
+            <div class="contenedor cuerpo">
+                <div class="contenedor contenido">
+                    <section>
+
+                        <div>
+                            <h2 class="titulo__secundario">Comentarios</h2>
+                        </div>
+
+                        <div class="tblAddComentario tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" class="jqte-test"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+
+                                            <div class="text__right">
+                                                <button type="button" class="btn btn--amarillo"
+                                                    id="btnComentar">Agregar</button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="tabla tabla__minimalista" id="tblComentarios">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </section>
+                    <section>
+                        <div class="bloque_calendario">
+                            <h2 class="titulo__secundario">Citas</h2>
+                            <div id="calendario"></div>
+
+                        </div>
+                        <div class="boton__citas">
+                            <button type="button" class="btn btn--amarillo" id="btnRegistrarCita">Registrar
+                                cita</button>
+                        </div>
+                    </section>
                 </div>
-                <div class="oferta__academica">
-                    <div class="preescolar">
-                        <img src="./imgs/Niños-felices.png" />
-
-                        <p>Prescolar</p>
-                    </div>
-                    <div class="primaria">
-                        <img src="./imgs/primariajpg.jpg" />
-                        <p>Primaria</p>
-                    </div>
-                    <div class="secundaria">
-                        <img src="./imgs/secundaria.jpeg" />
-                        <p>Secundaria</p>
-                    </div>
-    </section>
-    <div class="tabla__actividad">
-        <div class="contenedor__actividades">
-            <h2 class="titulo">Noticias</h2>
-        </div>
-        <div id="tabla__noticias" class="contenedor__noticias">
-            <div class="contenedor__noticias">
-
             </div>
-
         </div>
-    </div>
 
-    <div class="tabla__actividad">
 
-        <div class="contenedor__actividades">
-            <h2 class="titulo">Actividades</h2>
-            <div class="contenedor__actividad">
+		
+		
 
-            </div>
-
-        </div>
-    </div>
-    <div class="bloque_calendario">
-        <div id="calendario">
-
-        </div>
-    </div>
+		
+		
+		
     </main>
-</body>
+
 
 <footer>
     <div class="footer__cuerpo">
@@ -294,31 +370,39 @@
                         class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
                 </div>
             </section>
+            <div class="my-rating"></div>
         </div>
     </div>
 </footer>
 
 
 
-<script src="./js/controlador_nav.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="./js/carrusel.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-<script src="./js/fullcalendar/core/main.min.js"></script>
-<script src="./js/fullcalendar/daygrid/main.min.js"></script>
-<script src="./js/fullcalendar/core/locales-all.min.js"></script>
-
-<script src="./js/servicios_cita.js"></script>
-<script src="js/calendario.js"></script>
-<script src="js/servicio_registrar_noticia.js"></script>
-<script src="js/controlador_listar_noticia_en_centro.js"></script>
-<script src="./js/servicio_registrar_actividad.js"></script>
-<script src="js/servicio_perfil_cedu.js"></script>
-<script src="js/controlador_perfil_cedu.js"></script>
 
 
+
+    <script src="./js/controlador_nav.js"></script>
+
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+    <script src="./js/moment-with-locales.min.js"></script>
+    <script src="./js/fullcalendar/core/main.min.js"></script>
+    <script src="./js/fullcalendar/daygrid/main.min.js"></script>
+    <script src="./js/fullcalendar/core/locales-all.min.js"></script>
+
+    <script src="./js/comentarios/he.js"></script>
+    <script src="./js/comentarios/jqueryte-1.4.0.min.js"></script>
+
+    <script src="./js/servicios_cita.js"></script>
+    <script src="./js/servicio_noticia.js"></script>
+    <script src="./js/servicio_registrar_actividad.js"></script>
+    <script src="./js/servicio_perfil_cedu.js"></script>
+
+    <script src="./js/calendario.js"></script>
+    <script src="./js/controlador_listar_noticia_en_centro.js"></script>
+    <script src="./js/controlador_perfil_cedu.js"></script>
+
+
+
+</body>
 </html>

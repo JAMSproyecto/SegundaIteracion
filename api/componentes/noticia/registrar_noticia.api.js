@@ -1,36 +1,63 @@
 'use strict';
 
 const model_registrar_noticia = require('./registrar_noticia.model');
+const fecha = require('./..//funciones_genericas/obtenerFecha');
+
+let formatearFecha = (pFecha) => {
+	if(pFecha.length > 0){
+    const fecha = new Date(pFecha);
+    const anio = fecha.getFullYear();
+    let dia_mes = fecha.getDate();
+    let mes = fecha.getMonth();
+	let h = fecha.getHours();
+    let m = fecha.getMinutes();
+    mes += 1;
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    if (dia_mes < 10) {
+        dia_mes = '0' + dia_mes;
+    }
+	if (h < 10) {
+        h = '0' + h;
+    }
+    if (m < 10) {
+        m = '0' + m;
+    }
+    return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+}else{
+	return '';
+}
+};
 
 
-module.exports.registrar_noticia = (req, res) =>{
-    let noticia_nueva = new model_registrar_noticia( 
+module.exports.registrar_noticia = (req, res) => {
+    let noticia_nueva = new model_registrar_noticia(
         {
-            idCentro : req.body.idCentro,
-            tema : req.body.tema,
-            noticia: req.body.noticia,
-            autor : req.body.autor,
-            fecha : req.body.fecha,
-            informacion: req.body.informacion
+            idCentro: req.body.idCentro,
+            tema: req.body.tema,
+            informacion: req.body.informacion,
+            fecha: fecha.get(),
+            estado: 'Activo'
 
         }
     );
-    
+
     noticia_nueva.save(
-        function(error){
-            if(error){
+        function (error) {
+            if (error) {
                 res.json(
                     {
-                        success : false,
-                        msg : `No se puede guardar la noticia, ocurrió el siguiente error ${error}`
+                        success: false,
+                        msg: `No se puede registrar la noticia, ocurrió el siguiente error ${error}`
                     }
                 )
-            }else{
+            } else {
 
                 res.json(
                     {
-                        success : true,
-                        msg : `Se registró la noticia de forma correcta`
+                        success: true,
+                        msg: `Se registró la noticia de forma exitosa`
                     }
                 )
             }
@@ -41,18 +68,45 @@ module.exports.registrar_noticia = (req, res) =>{
 
 
 
-module.exports.listar_todas_noticias = (req ,res) =>{
-    const filtros = {idCentro: req.body.idCentro};
-    model_registrar_noticia.find(filtros).then(
-        function(noticias){
-            if(noticias.length > 0){
+module.exports.listar_todas_noticias = function (req, res) {
+    const filtros = { idCentro: req.body.idCentro };
+    model_registrar_noticia.find(filtros).sort({fecha: 'desc'}).then(
+        function (resultado) {
+			if (resultado) {
+            if (Object.keys(resultado).length > 0) {
+                
+                    let listarResultado = [];
+                    const has = Object.prototype.hasOwnProperty;
+                    let key;
+                    for (key in resultado) {
+                        if (!has.call(resultado, key)) continue;
+
+                        listarResultado.push(
+                            {
+                                '_id': resultado[key]['_id'] || '',
+                                'idCentro': resultado[key]['idCentro'] || 0,
+                                'tema': resultado[key]['tema'] || '',
+                                'informacion': resultado[key]['informacion'] || '',
+                                'fecha': formatearFecha(resultado[key]['fecha'] || ''),
+                                'estado': resultado[key]['estado'] || ''
+                            }
+                        );
+                    }
+                    res.json(
+                        {
+                            success: true,
+                            msg: listarResultado
+                        }
+                    )
+            } else {
                 res.json(
                     {
-                        success: true,
-                        msg: noticias
+                        success: false,
+                        msg: 'No se encontraron noticias'
                     }
                 )
-            }else{
+            }
+        }else {
                 res.json(
                     {
                         success: false,
@@ -64,3 +118,53 @@ module.exports.listar_todas_noticias = (req ,res) =>{
 
     )
 };
+
+
+module.exports.buscar_por_id = function (req, res) {
+    model_registrar_noticia.find({ _id: req.body.idCentro }).then(
+        function (noticia) {
+            if (noticia) {
+                res.json(
+                    {
+                        success: true,
+                        msg: noticia
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success: false,
+                        msg: 'No se encontraron la noticia'
+                    }
+                )
+            }
+        }
+
+    )
+
+}
+
+
+module.exports.actualizar_noticia = function (req, res) {
+    console.log(req.body);
+    model_registrar_noticia.findByIdAndUpdate(req.body.id, { $set: req.body }, function (error) {
+        if (error) {
+            res.json(
+                {
+                    success: false,
+                    msg: `No se puede actualizar la noticia, ocurrió el siguiente error ${error}`
+                }
+            );
+
+        } else {
+            res.json(
+                {
+                    success: true,
+                    msg: 'La noticia se actualizó exitosamente'
+                }
+            );
+
+        }
+    });
+}
+

@@ -67,7 +67,7 @@ boton_crear.addEventListener('click', obtener_datos);
 
 window.onload = () => {
 
-    let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
 
     if (null !== tipoUsuario) {
 
@@ -97,7 +97,7 @@ function mostrar_centros(){
     if(this.value != 'centro_educativo'){
         input_centros.classList.add('ocultar');
         label_centro.classList.add('ocultar');
-        sessionStorage.setItem('id', '1999')
+        localStorage.setItem('id', '1999')
     }else{
         input_centros.classList.remove('ocultar');
         label_centro.classList.remove('ocultar');
@@ -106,23 +106,22 @@ function mostrar_centros(){
 };
 
 function obtener_codigo_centro(){
-    sessionStorage.setItem('id', this.value);
+    localStorage.setItem('id', this.value);
     
 };
 
 
 let cargarCEdu = () => {
-    listarCEdu_todo((pSuccess, pMessage) => {
+    listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
-            if ('object' == typeof (pMessage)) {
+            if ('object' == typeof pMessage) {
                 pMessage.forEach(obj => {
                     let opcion = document.createElement('option');
                     opcion.value = obj['_id'];
-                   
                     opcion.textContent = obj['nombre'];
                     lista_centros.appendChild(opcion);
                 });
             };
         }
-    })
+    });
 };

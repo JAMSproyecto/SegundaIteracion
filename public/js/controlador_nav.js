@@ -2,47 +2,31 @@
 
 const botonCerrarSesion = document.querySelector('#boton_cerrar');
 const lblNombreUsuario = document.querySelector('#lblNombreUsuario');
-const enlaces = document.querySelectorAll('#menu-derecho a');
+const BtnMenuPalanca = document.querySelector('#btnMenuPalanca');
+const MenuOpciones = document.querySelector('#menuOpciones');
+let MenuOpcionesActivo = false;
 
-let conectado = sessionStorage.getItem('conectado');
-
-let cerrar_sesion = (esAuto) => {
-    sessionStorage.clear();
-    if ('boolean' == typeof esAuto && esAuto === true) {
-        sessionStorage.setItem('quienIniciaSesion', encodeURIComponent(window.location.href));
-    }
-    console.log('Redireccionando al inicio de sesión');
-    location.replace('inicio_sesion.html');
-};
-
-let controlar_sesion = () => {
-    if (null !== conectado && ('true' === conectado || true === conectado)) {
-
-        let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+let controlar_navegacion = () => {
+    let tipoUsuario = localStorage.getItem('tipoUsuario') || '';
 
         if (lblNombreUsuario) {
-            lblNombreUsuario.innerHTML = sessionStorage.getItem('nombreUsuario') || '';
+            lblNombreUsuario.innerHTML = localStorage.getItem('nombreUsuario') || '';
         }
 
         switch (tipoUsuario.toLowerCase()) {
             case 'superadmin':
 
-                sessionStorage.setItem('padreDesdeAdmin', true);
+                localStorage.setItem('padreDesdeAdmin', true);
 
                 break;
             case 'centroeducativo':
+                if (lblNombreUsuario) {
+                    lblNombreUsuario.innerHTML = localStorage.getItem('nombreInstitucion') || '';
+                }
 
                 break;
             case 'padrefamilia':
-
-
-                sessionStorage.setItem('padreDesdeAdmin', false);
-
-                if (enlaces) {
-                    enlaces[0].classList.add('ocultar');
-                    enlaces[1].classList.add('ocultar');
-                    enlaces[2].classList.add('ocultar');
-                }
+                localStorage.setItem('padreDesdeAdmin', false);
 
                 break;
 
@@ -51,16 +35,39 @@ let controlar_sesion = () => {
                 cerrar_sesion(true);
                 break;
         }
-
-    } else {
-        console.log('Acceso restringido, no está conectado');
-        cerrar_sesion(true);
-    }
 };
 
-controlar_sesion();
+let fnBtnMenuPalanca = () => {
+	if (MenuOpcionesActivo) {
+		MenuOpciones.style = 'display: none;';
+		MenuOpcionesActivo = false;
+	} else {
+		MenuOpciones.style = 'display: block;';
+		MenuOpcionesActivo = true;
+	}
+};
+
+
+let menuNavVisible = (abierto) => {
+	if(true === abierto){
+		document.getElementById("mySidenav").style.width = "350px";
+   // document.getElementById("main").style.marginLeft = "350px";
+	}else{
+		 document.getElementById("mySidenav").style.width = "0";
+    //document.getElementById("main").style.marginLeft= "0";
+	}
+};
+
+
+controlar_navegacion();
 
 if (botonCerrarSesion) {
     botonCerrarSesion.addEventListener('click', cerrar_sesion, false);
 }
+
+if (BtnMenuPalanca) {
+	BtnMenuPalanca.addEventListener('click', fnBtnMenuPalanca, false);
+}
+
+
 
