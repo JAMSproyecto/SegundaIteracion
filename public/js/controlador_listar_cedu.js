@@ -63,42 +63,42 @@ let cargarCEdu = () => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
                 pMessage.forEach(obj => {
-                    let tr_fila = tablaCuerpo.insertRow();
-
-                    if (obj['nombre'] && obj['nombre'].length > 0) {
-                        tr_fila.insertCell().innerHTML = obj['nombre'];
-                    } else {
-                        tr_fila.insertCell().innerHTML = '';
-                    }
-
-
-
-                    if (obj['direccion']) {
-                        let provincia = '';
-                        let direccion = '';
-                        obj['direccion'].forEach(obj2 => {
-                            provincia = obtenerProvinciaPorID(obj2['idProvincia']);
-                            direccion = obj2['sennas'];
-                        });
-
-                        tr_fila.insertCell().innerHTML = provincia;
-                        tr_fila.insertCell().innerHTML = direccion;
-                    } else {
-                        tr_fila.insertCell().innerHTML = '';
-                        tr_fila.insertCell().innerHTML = '';
-                    }
-
-                    if (obj['calificacion'] && Object.keys(obj['calificacion']).length > 0) {
-                        obj['calificacion'].forEach(obj3 => {
-                            tr_fila.insertCell().innerHTML = obj3['padres'];
-                            tr_fila.insertCell().innerHTML = obj3['mep'];
-                        });
-                    } else {
-                        tr_fila.insertCell().innerHTML = '0';
-                        tr_fila.insertCell().innerHTML = '0';
-                    }
-
-                    tr_fila.insertCell().innerHTML = '<button class="btn btn--amarillo" onClick="irAlPerfil(' + obj['_id'] + '); return false;">Ver m&aacute;s</button>';
+                    let tr_fila = tablaCuerpo.insertRow();						
+						
+						if(obj['nombreComercial'] && obj['nombreComercial'].length > 0){
+							tr_fila.insertCell().innerHTML = obj['nombreComercial'];
+						}else{
+						    tr_fila.insertCell().innerHTML = '';
+						}
+						
+						
+						
+						if(obj['direccion']){
+						let provincia = '';
+						let direccion = '';
+					    obj['direccion'].forEach(obj2 => {
+							provincia = obtenerProvinciaPorID(obj2['idProvincia']);
+							direccion = obj2['sennas'];
+						});
+							
+							tr_fila.insertCell().innerHTML = provincia;
+							tr_fila.insertCell().innerHTML = direccion;
+						}else{
+						    tr_fila.insertCell().innerHTML = '';
+						    tr_fila.insertCell().innerHTML = '';
+						}
+						
+						if(obj['calificacion'] && Object.keys(obj['calificacion']).length >0){
+						obj['calificacion'].forEach(obj3 => {
+							tr_fila.insertCell().innerHTML = obj3['padres'];
+							tr_fila.insertCell().innerHTML = obj3['mep'];
+							});
+						}else{
+							tr_fila.insertCell().innerHTML = '0';
+						    tr_fila.insertCell().innerHTML = '0';
+						}
+						
+						tr_fila.insertCell().innerHTML = '<div  onClick="irAlPerfil('+obj['_id']+'); return false;"><i class="fas fa-eye"></i></div>';
                 });
 
                 cargarDataTable();

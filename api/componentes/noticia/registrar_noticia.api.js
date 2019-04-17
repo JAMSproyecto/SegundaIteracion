@@ -1,7 +1,7 @@
 'use strict';
 
 const model_registrar_noticia = require('./registrar_noticia.model');
-const fecha = require('./..//funciones_genericas/obtenerFecha');
+const fecha = require('../funciones_genericas/obtenerFecha');
 
 let formatearFecha = (pFecha) => {
 	if(pFecha.length > 0){
@@ -49,7 +49,7 @@ module.exports.registrar_noticia = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `No se puede registrar la noticia, ocurrió el siguiente error ${error}`
+                        msg: `La noticia no pudo ser registrada, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
@@ -57,7 +57,7 @@ module.exports.registrar_noticia = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `Se registró la noticia de forma exitosa`
+                        msg: `Se registró la noticia de manera exitosa`
                     }
                 )
             }
@@ -134,7 +134,7 @@ module.exports.buscar_por_id = function (req, res) {
                 res.json(
                     {
                         success: false,
-                        msg: 'No se encontraron la noticia'
+                        msg: 'No se encontró la noticia'
                     }
                 )
             }
@@ -161,6 +161,31 @@ module.exports.actualizar_noticia = function (req, res) {
                 {
                     success: true,
                     msg: 'La noticia se actualizó exitosamente'
+                }
+            );
+
+        }
+    });
+}
+
+
+module.exports.eliminar= function (req, res) {
+    console.log(req.body);
+    model_registrar_noticia.findByIdAndRemove(req.body.id,  
+        function (error) {
+        if (error) {
+            res.json(
+                {
+                    success: false,
+                    msg: `No se pudo eliminar la noticia, ocurrió el siguiente error ${error}`
+                }
+            );
+
+        } else {
+            res.json(
+                {
+                    success: true,
+                    msg: 'La noticia se elimino  exitosamente'
                 }
             );
 

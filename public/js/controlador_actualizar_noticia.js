@@ -1,8 +1,6 @@
 'use strict';
 const input_tema = document.querySelector('#txt_tema');
-
 const input_informacion = document.querySelector('#txt_informacion');
-
 const boton_actualizar = document.querySelector('#btn_actualizar');
 
 
@@ -16,6 +14,7 @@ let get_param = (param) => {
 
 let id = get_param('idCentro');
 
+console.log(id);
 
 let noticia = buscar_noticia(id);
 if (noticia) {

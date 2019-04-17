@@ -1,7 +1,7 @@
 'use strict';
 
-let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza, pcosto,
-    plugar, pfinalidad, pdetalles) => {
+let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza,
+    plugar,  pdetalles) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_actividad",
         method: "POST",
@@ -11,9 +11,8 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
             fecha: pfecha,
             hora_inicio: phora_inicio,
             finaliza: pfinaliza,
-            costo: pcosto,
             lugar: plugar,
-            finalidad: pfinalidad,
+
             detalles: pdetalles
 
         },
@@ -26,7 +25,7 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
             swal.fire({
                 type: 'success',
                 title: 'Los datos fueron guardados exitosamente',
-                text: ' Nos comunicaremos con usted',
+              
                 onAfterClose: function () {
                     window.location.replace('./listar_actividad.html');
                   }
@@ -53,7 +52,7 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
     });
 };
 
-let listar_todas_actividades = () => {
+let listar_todas_actividades = (pId) => {
     let actividades_arreglo = [];
     let idCentro;
     switch(localStorage.getItem('tipoUsuario').toLowerCase()){
@@ -76,7 +75,7 @@ let listar_todas_actividades = () => {
     }
 
     let request = $.ajax({
-        url: "http://localhost:4000/api/listar_todas_actividades/" + idCentro,
+        url: "http://localhost:4000/api/listar_todas_actividades/" + pId,
         method: "GET",
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -97,3 +96,115 @@ let listar_todas_actividades = () => {
     return actividades_arreglo;
 
 };
+
+
+let buscar_actividad = (idActividad) => {
+    let actividad = [];
+    let request = $.ajax({
+        url: "http://localhost:4000/api/buscar_actividad/" + idActividad,
+        method: "GET",
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+    request.done(function (res){
+        actividad = res.msg;
+
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+ 
+        
+    });
+    return actividad;
+
+};
+
+
+let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza,
+    plugar,  pdetalles,pidActividad,) => {
+
+    let request = $.ajax({
+        url: "http://localhost:4000/api/actualizar_actividad/",
+        method: "POST",
+        data: {
+            actividad: pactividad,
+            fecha: pfecha ,
+            hora_inicio: phora_inicio,
+            finaliza: pfinaliza,
+            lugar: plugar,
+            detalles:pdetalles,
+            id: pidActividad
+        },
+        dataType: "json",
+        async: false,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+    });
+
+    request.done(function (msg) {
+        if (msg.success) {
+            swal.fire({
+                type: 'success',
+                title: msg.msg,
+                onAfterClose: function () {
+                    window.location.replace('./listar_actividad.html');
+                }
+            });
+
+        }
+        else {
+            swal.fire({
+                type: 'error',
+                title: msg.msg
+            });
+
+        }
+
+    });
+
+    request.fail(function (jqXHR) {
+        console.error(jqXHR);
+    });
+};
+
+let eliminar = (pid) => {
+    let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_actividad",
+    method: "POST",
+    data: {
+        id: pid
+    },
+    dataType: "json",
+    async: false,
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+});
+
+request.done(function (msg) {
+    if (msg.success) {
+        swal.fire({
+            type: 'success',
+            title: msg.msg,
+            onAfterClose: function () {
+                window.location.replace('./listar_actividad.html');
+            }
+        });
+
+    }
+    else {
+        swal.fire({
+            type: 'error',
+            title: msg.msg
+        });
+
+    }
+
+});
+
+request.fail(function (jqXHR) {
+
+});
+};
+
+
+
+

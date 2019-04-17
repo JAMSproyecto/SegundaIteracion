@@ -4,9 +4,9 @@ const input_actividad = document.querySelector('#txt_actividad');
 const input_fecha = document.querySelector('#txt_fecha');
 const input_hora_inicio = document.querySelector('#txt_hora_inicio');
 const input_finaliza = document.querySelector('#txt_finaliza');
-const input_costo = document.querySelector('#txt_costo');
+
 const input_lugar = document.querySelector('#txt_lugar');
-const input_finalidad = document.querySelector('#txt_finalidad');
+
 const input_detalles = document.querySelector('#txt_detalles');
 const boton_enviar = document.querySelector('#btn_agregar');
 
@@ -51,15 +51,6 @@ let validar = () => {
     }
 
 
-    if (input_costo.value == '') {
-        input_costo.classList.add('error_input');
-        error = true;
-    } else {
-        input_costo.classList.remove('error_input');
-
-    }
-
-
     if (input_lugar.value == '') {
         input_lugar.classList.add('error_input');
         error = true;
@@ -67,12 +58,7 @@ let validar = () => {
         input_lugar.classList.remove('error_input');
     }
 
-    if (input_finalidad.value == '') {
-        error = true;
-        input_finalidad.classList.add('error_input');
-    } else {
-        input_finalidad.classList.remove('error_input');
-    }
+  
 
 
     if (input_detalles.value == '') {
@@ -102,15 +88,12 @@ let mostrar_datos = () => {
         let fecha = input_fecha.value;
         let hora_inicio = input_hora_inicio.value;
         let finaliza = input_finaliza.value;
-        let costo = input_costo.value;
         let lugar = input_lugar.value;
-        let finalidad = input_finalidad.value;
         let detalles = input_detalles.value
 
         registrar_actividad(idCentro, actividad, fecha, hora_inicio, finaliza,
-            costo, lugar, finalidad, detalles);
+             lugar, detalles);
     }
-
 
 };
 

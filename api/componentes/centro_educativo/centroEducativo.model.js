@@ -63,6 +63,7 @@ let schemaRegistrarCEdu = new Mongoose.Schema(
             min: 8,
             required: true
         },
+       
         fax: {
             type: TiposEsquema.Number, required: false, default: ''
         },
@@ -93,6 +94,7 @@ let schemaRegistrarCEdu = new Mongoose.Schema(
 			default: 'Mixto',
             enum: ['Mixto', 'Mujer', 'Hombre']
         },
+     
         bachillerInternacional: {
             type: TiposEsquema.Boolean, required: false, default: false
         },
@@ -123,7 +125,7 @@ let schemaRegistrarCEdu = new Mongoose.Schema(
 		padres: {type: TiposEsquema.Number, min:0, max: 5, default:0}
 	    }],
 		
-		
+      
 		/* TODO : Los niveles es mejor trabajarlos en una tabla por aparte en la tabla de niveles, donde cada nivel tenga
 		su propia lista de utiles y relacionar los articulos.
 		* aquí sólo sería poner un array con la lista de los ids de los nivel del centro.

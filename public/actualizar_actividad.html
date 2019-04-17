@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>MEP</title>
-    <script src="./js/administrador_sesion.js"></script>
+	<script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/headerGeneral.css" />
-    <link rel="stylesheet" href="css/tablas.css" />
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/centro.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/iconos.css">
-
 </head>
-
 
 <body>
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
@@ -46,7 +46,6 @@
                 <div class="bloqueHeader__nombreCed">
                     <span class="titulo_centro_educativo"></span>
                 </div>
-
                 <nav class="bloqueHeader__menuDer">
                     <ul>
                         <li>
@@ -62,33 +61,6 @@
                 </nav>
             </div>
         </div>
-    </header>
-    <main>
-        <section>
-            <h1 class="titulo__principal">Lista de noticias</h1>
-            <div class="wrapper">
-                    <form>
-                            <div class="bloque__filtro">
-                                    <label for="txt_filtrar">Filtrar</label>
-                                    <input type="text" id="txt_filtrar">
-                            </div>
-                       
-                        </form>
-
-                <table id="tbl_listar_noticia">
-                    <thead>
-                        <tr>
-                            <th>Tema de la noticia</th>
-                            <th>Información</th>
-                            <th>Fecha</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-
-                        </tr>
-
-
-                    </thead>
-                    <tbody>
 
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
@@ -151,27 +123,53 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <div class="tituloPrincipal">
-            <h1>Lista de noticias</h1>
+            <h1> Actualizar Evento </h1>
         </div>
-        <form class="bloqueFiltro">
-            <label for="txt_filtrar">Filtrar</label>
-            <input type="text" id="txt_filtrar">
-        </form>
-        <table id="tbl_listar_noticia">
-            <thead>
-                <tr>
-                    <th>Tema de la noticia</th>
-                    <th>Información</th>
-                    <th>Fecha</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+        <section>
+            <div class="bloque bloqueActividad">
+                <div class="bloqueActividad__contenedor">
+                    <form class="bloqueActividad__registroActividad">
+                        <div class="bloqueDato  bloqueActividad__tema">
+                            <label for="txt_actividad">Nombre de la actividad</label>
+                            <input type="text" id="txt_actividad">
+                        </div>
+                        <div class="bloqueDato bloqueActividad__informacion">
+                            <div class="  bloqueActividad__fecha ">
+                                <label class="labelFormulario" for="txt_fecha">Fecha</label>
+                                <input class="inputFormulario" type="date" id="txt_fecha">
+                            </div>
+                            <div class="  bloqueActividad__horaInicio">
+                                <label class="labelFormulario" for="txt_hora_inicio"> Hora inicio </label>
+                                <input class="inputFormulario" type="time" id="txt_hora_inicio">
+                            </div>
+                            <div class="   bloqueActividad__horaFinal">
+                                <label class="labelFormulario" for="txt_finaliza"> Hora final </label>
+                                <input class="inputFormulario" type="time" id="txt_finaliza">
+                            </div>
+                        </div>
+
+                        <div class="bloqueDato  bloqueActividad__lugar">
+                            <label class="labelFormulario" for="txt_lugar"> Lugar </label>
+                            <input class="inputFormulario" type="text" id="txt_lugar">
+                        </div>
+
+                        <div class="bloqueDato  bloqueActividad__detalle">
+                            <label class="labelFormulario" for="txt_detalles"> Informacion Importante </label>
+                            <textarea id="txt_detalles"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+
+        <button type="button" class="btn__actualizar btn--amarillo" id="btn_actualizar">Registrar</button>
+
     </main>
     <footer>
         <div class="footer__cuerpo">
@@ -241,19 +239,17 @@
             </div>
         </div>
     </footer>
+    <script src="./js/controlador_nav.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/servicio_registrar_actividad.js"></script>
+    <script src="./js/controlador_actualizar_actividad.js"></script>
+
+    <script src="./js/menuLateral.js"></script>
 
 
 
 </body>
-
-<script src="./js/controlador_nav.js"></script>
-
-<script src="./js/sweetalert2.all.min.js"></script>
-<script src="./js/jquery-3.3.1.min.js"></script>
-<script src="./js/servicio_noticia.js"></script>
-<script src="./js/controlador_listar_noticia.js"></script>
-<script src="./js/menuLateral.js"></script>
-
-
 
 </html>
