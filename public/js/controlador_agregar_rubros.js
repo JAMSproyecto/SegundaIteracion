@@ -92,13 +92,12 @@ let mostrar_datos = () => {
           }).then((result) => {
             if (result.value) {
               eliminar_rubro(this.dataset.id_rubro);
-              Swal.fire(
-                'Eliminado',
-                'El rubro ha sido eliminado',
-                'success'
-              )
             }
           })
+
+          rubros = listar_rubros();
+          mostrar_datos();
+
         })
 
         fila_inactivos.insertCell().appendChild(boton_activar);
