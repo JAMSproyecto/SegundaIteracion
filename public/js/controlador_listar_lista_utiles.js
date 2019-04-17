@@ -67,7 +67,7 @@ let mostrar_datos = () => {
             boton_agregar.addEventListener('click', seleccionar_lista);
 
             //se crea el boton  para ver la los articulos ya agregados en la lista de utiles 
-            boton_ver.classList.add('fas' ,'fa-search');
+            boton_ver.classList.add('fas' ,'fa-eye');
             boton_ver.dataset.codigo = lista_utiles[i]['_id'];
             //se llama a la función para ver los articuos de una lista de utiles 
             boton_ver.addEventListener('click', ver_info_lista);
@@ -78,7 +78,7 @@ let mostrar_datos = () => {
             //se llama a la funcion para modificar la lista de utiles 
             btn_modificar.addEventListener('click', function(){
                 Swal.fire({
-                    title: 'Realice los cambios necesarios',
+                    title: 'Modificar lista de útiles',
                     html : `<input id="swal-input1" class="swal2-input" value = "${lista_utiles[i]['nombre']}">`+
                     `<input id="swal-input2" class="swal2-input" value = "${lista_utiles[i]['anno']}">`,
                     

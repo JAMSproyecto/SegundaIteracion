@@ -257,7 +257,7 @@ let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
       
     }).then((result) => {
       if (result.value) {
-         window.location.href = 'listar_lista_utiles.html';
+        // window.location.href = 'listar_lista_utiles.html';
     }
     });
   });
