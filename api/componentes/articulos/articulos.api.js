@@ -131,7 +131,8 @@ module.exports.actualizar = function(req, res){
     );
 };
 
-//para activar y desactivar 
+
+//funcion para activar o desactiar lo articulos 
 module.exports.activar_desactivar = function(req, res){
     let estado ='';
 
@@ -165,7 +166,8 @@ module.exports.activar_desactivar = function(req, res){
     )
 };
 
-//para eliminar articulos 
+
+//funcion para eliminar los artículos 
 module.exports.eliminar_articulo = function(req, res){
     console.log(req.body.id);
     model_articulo.findByIdAndRemove(req.body.id,
