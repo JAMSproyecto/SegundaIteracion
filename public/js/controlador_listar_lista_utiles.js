@@ -75,6 +75,8 @@ let mostrar_datos = () => {
            
             //se llama a la función para ver los articuos de una lista de utiles 
             boton_ver.addEventListener('click', ver_info_lista);
+
+            
             //se llama a la función para agregar articulos a una lista de utiles 
             boton_agregar.addEventListener('click', seleccionar_lista);
 

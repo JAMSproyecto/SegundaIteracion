@@ -86,7 +86,7 @@ let cargarCEdu = () => {
 						    tr_fila.insertCell().innerHTML = '0';
 						}
 						
-						tr_fila.insertCell().innerHTML = '<button class="btn btn--amarillo" onClick="irAlPerfil('+obj['_id']+'); return false;">Ver m&aacute;s</button>';
+						tr_fila.insertCell().innerHTML = '<div  onClick="irAlPerfil('+obj['_id']+'); return false;"><i class="fas fa-eye"></i></div>';
                 });
 				
 				cargarDataTable();

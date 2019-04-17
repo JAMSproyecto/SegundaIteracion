@@ -1,9 +1,8 @@
 'use strict';
 const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
-
 let idCentro = localStorage.getItem('id');
-const noticias = listar_todas_noticias(idCentro);
+
 
 let formatearFecha = (pFecha) => {
     const fecha = new Date(pFecha);
@@ -21,14 +20,14 @@ let formatearFecha = (pFecha) => {
 };
 
 let mostrar_datos = () => {
-    /*document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;*/
-
+  
+    const noticias = listar_todas_noticias(idCentro);
     let filtros = input_filtrar.value;
     tabla.innerHTML = '';
 
     for (let i = 0; i < noticias.length; i++) {
 
-        if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase())) {
+        if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase() )) {
 
             let fila = tabla.insertRow();
             //celda que toman los datos de la base de datos
@@ -53,14 +52,17 @@ let mostrar_datos = () => {
             let boton_eliminar = document.createElement('a');
             boton_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = noticias[i]['_id'];
-
+celda_eliminar.appendChild( boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
                 eliminar(this.dataset.idCentro);
+               
+                mostrar_datos();
+
 
             });
             //a esa variable le agrego un elemento como hijo
-            celda_actualizar.appendChild(boton_eliminar);
-            celda_eliminar.appendChild(boton_eliminar);
+           
+            
         }
 
 

@@ -1,17 +1,19 @@
-/*cambio de los nombre de las clases del header*/
-/*    opacity: .6;*/
+
+
+body{
+    font-family: 'Asap', sans-serif;
+}
+
 
 .bloqueHeader{
     width: 100%;
 }
-
 
 .bloqueHeader .bloqueHeader__filaArriba{
     background-color: #179bd7;
     display: flow-root;
     width: 100%;
 }
-
 
 .bloqueHeader .bloqueHeader__nombreInstitucion{
     background: #ff6000 none repeat scroll 0 0;
@@ -43,9 +45,6 @@
     padding: 6px;
     font-size: 24px;
 }
-
-
-
 
 .bloqueHeader .bloqueHeader__logo{
     float: left;
@@ -95,16 +94,11 @@ padding: 20px;
     line-height: 21px;
 }
 
-
-
-
-
-
-
 .bloqueHeader__menuLateral li>  ul {
-    background-color: #FAFAFA;
+ background: #fff;
     /*background-color:#B3E5FC;*/ 
    padding: 5px 0px;
+ 
  
 }
 
@@ -114,12 +108,9 @@ padding: 20px;
 }
 
 
-
 .bloqueHeader__menuLateral  li  > ul >  li:hover >  a{
     color:#17c0eb;
 }
-
-
 
 /*final menu abajo*/
 
@@ -141,21 +132,23 @@ padding: 20px;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+  
+  }
+  
+  .nav li a{
+    color: #f1f1f1;
   }
   
   .nav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 20px;
-    color: #818181;
+    color:#353b48;
     display: block;
     transition: 0.3s;
   }
   
-  .nav a:hover {
-    color: #f1f1f1;
-  }
-  
+ 
   .nav .closebtn {
     position: absolute;
     top: 0;
@@ -193,19 +186,40 @@ padding: 20px;
 }
 
 
+.bloqueHeader__menuDer{
+    float: right;
+}
+.bloqueHeader__menuDer li ul{
+    background: #fff;
+    border: 1px solid #9a9b9b;
+    padding: 9px 0;
+    clip: rect(0,0,0,0);
 
+    min-width: 105px;
+    padding: 9px 0;
+    position: absolute;
+    transform: translate(-50%, -15px);
+}
 
+.bloqueHeader .bloqueHeader__menuDer li:hover > ul {
+    clip: auto;
+}
+.bloqueHeader .bloqueHeader__menuDer  li ul li {
+    padding: 8px 7px;
+    font-size: 13px;
+}
 
-.fa-user-cog{
-    color:#fff;
-    float: left;
+.bloqueHeader .bloqueHeader__menuDer ul  li a{
+    text-decoration: none;
+    color: #000;
+   
 }
 
 
 
-
-body .mainCentro{
-    padding: 0px;
-    margin: 0px;
+.bloqueHeader .bloqueHeader__menuDer  li ul li :hover{
+    color: #179bd7;
+    border-bottom: 1px solid #179bd7;
 }
+
 
