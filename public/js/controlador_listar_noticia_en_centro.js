@@ -5,7 +5,7 @@ const div_noticias = document.querySelector('#tabla__noticias');
 const noticias = listar_todas_noticias();
 
 let mostrar_datos = () => {
-    div_noticias.innerHTML = ''; 
+    div_noticias.innerHTML = '';  
     if (noticias) {
         if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
            

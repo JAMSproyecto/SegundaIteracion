@@ -39,7 +39,7 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
         console.error(textStatus);
         console.error(jqXHR);
     });
-};
+}; 
 
 let listar_todas_noticias = () => {
 	
