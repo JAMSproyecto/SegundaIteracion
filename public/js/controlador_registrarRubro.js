@@ -3,7 +3,7 @@
 const input_rubro = document.querySelector('#input_rubro');
 
 
-const boton_registrar = document.querySelector('#btn_registrar');
+const boton_registrar_rubro = document.querySelector('#btn_registrar_rubro');
 
 let validar_vacios = () => {
     let error_vacios = false;
@@ -50,4 +50,4 @@ function obtener_datos(){
 };
 
 
-boton_registrar.addEventListener('click', obtener_datos);
+boton_registrar_rubro.addEventListener('click', obtener_datos);

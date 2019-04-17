@@ -90,14 +90,14 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'Validación Incorrecta',
-            text: 'Por favor revise los espacios resaltados en rojo'
+            title: 'La actividad no fue registrada de forma correcta',
+            text: 'Favor completar los espacios señalados en rojo'
         }
         )
     }
     else {
 
-        let idCentro = sessionStorage.getItem("id");
+        let idCentro = localStorage.getItem("id");
         let actividad = input_actividad.value;
         let fecha = input_fecha.value;
         let hora_inicio = input_hora_inicio.value;

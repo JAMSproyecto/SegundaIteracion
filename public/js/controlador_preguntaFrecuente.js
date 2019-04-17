@@ -42,15 +42,16 @@ let registrar_preguntaFrecuente = () => {
         swal.fire(
             {
                 type: 'warning',
-                title: 'Datos  Incompletos',
-                text: 'Por favor, revise los campos resaltados en rojo'
+                title: 'La pregunta frecuente no fue registrada de forma correcta',
+                text: 'Favor completar los espacios señalados en rojo'
+    
             }
         );
 
     } else {
         let pregunta = Input_pregunta.value;
         let respuesta = Input_respuesta.value;
-        let centroEducativo = sessionStorage.getItem('id');
+        let centroEducativo = localStorage.getItem('id');
 
 
         post_registrarPreguntaFrecuente(pregunta, respuesta, centroEducativo);

@@ -6,7 +6,7 @@ const input_filtrar = document.querySelector('#txt_filtrar');
 
 
 let irAlPerfil = (pId) => {
-    sessionStorage.setItem('idBuscarPadre', pId);
+    localStorage.setItem('idBuscarPadre', pId);
     window.location.replace("principal_padres_desde_centros.html");
 };
 

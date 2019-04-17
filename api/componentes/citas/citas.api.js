@@ -1,7 +1,8 @@
 'uset strict';
 const cita_modelo = require('./citas.model');
 const nodemailer = require('nodemailer');
-const cedu_model = require('../centro_educativo/centroEducativo.model');
+const Moment = require('moment');
+//const cedu_model = require('../centro_educativo/centroEducativo.model');
 
 
 /*funcion para mandar correo al padre*/
@@ -17,16 +18,15 @@ let transporter = nodemailer.createTransport({
 /*funcion para registrar nueva cita*/
 module.exports.registrar = (req, res) => {
 
-
+    let fecha = Moment(req.body.Fecha);
     
     let nueva_cita = new cita_modelo(
         {
-            idCentro : req.body.idCentro,
             Nombre: req.body.Nombre,
             Apellidos: req.body.Apellidos,
             Telefono: req.body.Telefono,
             Correo: req.body.Correo,
-            Fecha: req.body.Fecha,
+            Fecha: fecha.format('DD-MM-YYYY'),
             Hora: req.body.Hora,
             Motivo: req.body.Motivo,
             Comentario: req.body.Comentario,
@@ -43,10 +43,10 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `No se logro guardar los datos ${error}`
+                        msg: `No se pudo guardar la etiqueta, ocurrió el siguiente error ${error} `
+                    });
 
-                    }
-                );
+                  
 
             } else {
                 /*envio el correo de confirmacion al padre*/
@@ -109,7 +109,7 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `Registro exitoso`
+                        msg: `La cita se registró correctamente`
                     }
                 );
             }
@@ -118,34 +118,6 @@ module.exports.registrar = (req, res) => {
 }
 /*fin de funcion de registro de nueva cita*/
 
-/*funcion de listar citas*/
-module.exports.listar_todos = (req, res) => {
-
-    cita_modelo.find({codigo : req.body.codigo}).then(
-        function (citas) {
-            if (citas.length > 0) {
-                
-                res.json(
-                    {
-                        success: true,
-                        citas: citas
-                    }
-                )
-            } else {
-                res.json(
-                    {
-                        success: false,
-                        comentarios: 'No se encontraron citas'
-                    }
-                )
-            }
-        }
-
-    )
-};
-/*fin de funcion listar citas*/
-
-
 /**
  * obtener_citasCentro
  * @param req Parametro de petición de cliente
@@ -153,7 +125,7 @@ module.exports.listar_todos = (req, res) => {
  *  
  */
 module.exports.obtener_citasCentro = (req, res) =>{
-    cita_modelo.find({Centro_asociado : req.body.idCentro}).then(function (citas) {
+    cita_modelo.find({Centro_asociado : req.body.id}).then(function (citas) {
         if (citas.length > 0) {
             res.json(
                 {
@@ -164,8 +136,7 @@ module.exports.obtener_citasCentro = (req, res) =>{
         } else {
             res.json(
                 {
-                    success: false,
-                    citas: 'No se encontraron citas'
+                    success: false
                 }
             )
         }

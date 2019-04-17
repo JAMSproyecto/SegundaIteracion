@@ -2,10 +2,9 @@
 
 const mongoose = require('mongoose');
 
-let shema_cita = new mongoose.Schema(
+let schema_cita = new mongoose.Schema(
     {
 
-        idCentro: { type: mongoose.Schema.Types.Number, require: true, index: true },
         Nombre: { type: String, required: true },
         Apellidos: { type: String, required: true },
         Telefono: { type: String, required: true },
@@ -19,4 +18,4 @@ let shema_cita = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Cita', shema_cita);
+module.exports = mongoose.model('Cita', schema_cita);

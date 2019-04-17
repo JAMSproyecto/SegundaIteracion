@@ -1,21 +1,21 @@
 'use strict';
 
 const div_noticias = document.querySelector('#tabla__noticias');
-let id_centro = sessionStorage.getItem('padreVerPerfilCEdu');
 
-const noticias = listar_todas_noticias(id_centro);
+const noticias = listar_todas_noticias();
 
 let mostrar_datos = () => {
-    div_noticias.innerHTML = '';
+    div_noticias.innerHTML = '';  
     if (noticias) {
         if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
            
             let bloques = '';
         noticias.forEach( function (objeto) {
             bloques +='<div class="noticia not">';
-            bloques +=' <h3 class="titulo">'+ objeto.tema +'</h3>';
-            bloques +='<strong class="nombre__noticia">'+ objeto.noticia +'</strong>';
-            bloques +='<p class="hora__noticia">'+ objeto.fecha +'</p>';
+            bloques +=' <h3 class="titulo">Tema:'+ objeto.tema +'</h3>';
+         bloques +='<p class="informacion"> ' + objeto.informacion + '</p>';
+            bloques +='<p class="hora__noticia">Fecha:' + objeto.fecha  +'</p>';
+         
             bloques +='</div>';
         });
         div_noticias.innerHTML = bloques;

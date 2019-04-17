@@ -6,8 +6,9 @@ const model_registrar_rubro = require('./rubros.model');
 module.exports.registrar_Rubro = (req, res) =>{
     let rubro_nuevo = new model_registrar_rubro( 
         {
-            rubro : req.body.rubro
-
+            rubro : req.body.rubro,
+            valor : 5,
+            estado : 'Inactivo'
         }
     );
     
@@ -72,3 +73,43 @@ module.exports.actualizar_Rubros = function(req, res){
     );
 };
 
+module.exports.desactivar = function(req, res){
+    model_registrar_rubro.findByIdAndUpdate(req.body.id, {$set: { 
+        estado: 'Inactivo'
+      }},
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo deshabilitar el rubro '});
+            }else{
+                res.json({success: true ,msg: 'El rubro se desactivó con éxito'}); 
+            }
+        }
+    )
+};
+module.exports.activar = function(req, res){
+    model_registrar_rubro.findByIdAndUpdate(req.body.id, {$set: { 
+        estado: 'Activo'
+      }},
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo activar el rubro '});
+            }else{
+                res.json({success: true ,msg: 'El rubro se activó con éxito'}); 
+            }
+        }
+    )
+};
+
+
+module.exports.eliminar = function(req, res){
+    model_registrar_rubro.findByIdAndRemove(req.body.id,
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar el dato '});
+            }else{
+                res.json({success: true ,msg: 'El dato se eliminó con éxito'}); 
+            }
+        }
+    )
+
+};

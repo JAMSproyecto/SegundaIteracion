@@ -7,7 +7,8 @@ const NombreTabla = 'articulo_';
 let schema_articulo = new mongoose.Schema(
     {
     nombre : {type : String, required : true},
-    descripcion : {type : String, required : true}
+    descripcion : {type : String, required : true},
+    estado : {type : String, required : true}
     }
 );
 

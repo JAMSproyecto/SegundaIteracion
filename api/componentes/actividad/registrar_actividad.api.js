@@ -24,7 +24,7 @@ module.exports.registrar_actividad = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        msg : `No se puede guardar el comentario ocurrió el siguiente error ${error}`
+                        msg : `No se puede guardar el comentario, ocurrió el siguiente error ${error}`
                     }
                 )
             }else{
@@ -32,7 +32,7 @@ module.exports.registrar_actividad = (req, res) =>{
                 res.json(
                     {
                         success : true,
-                        msg : `Se registró atividad de forma correcta`
+                        msg : `Se ha registrado la actividad de manera correcta`
                     }
                 )
             }

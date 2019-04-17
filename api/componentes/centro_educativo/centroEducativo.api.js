@@ -136,15 +136,13 @@ module.exports.registrar_centro_educativo = async (req, res) => {
         });
     }
 
-
 };
-
 
 module.exports.obtener_todos_centro_educativo = async (req, res) => {
     try {
         const mostrarColumnas = {}; //{ _id: 0 };
 
-        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion').sort({_id: 'desc'});
+        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion nombre').sort({_id: 'desc'});
         if (!!Object.keys(resultado).length) {
             res.json({
                 success: true,
@@ -153,7 +151,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontraron datos'
+                message: 'No se encontraron centros educativos'
             });
         }
     } catch (err) {
@@ -167,20 +165,23 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 };
 
 
-/**
- * titulo_centro_educativo
- * tabla__servicios
- */
-module.exports.obtener_perfil_centro_educativo = (req, res) => {
-    ModelRegistrarCEdu.findById(req.body.id).then(
-        (centro) => {
-            res.json({
-                success: true,
-                centro: centro
-            });
+module.exports.obtener_centro_por_id = (req, res) => {
+    ModelRegistrarCEdu.findOne({_id : req.body.id }).then(resultado => {
+            if (resultado) {
+                res.json(
+                    {
+                        success : true,
+                        message : resultado
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : false,
+                        message : 'No se encontró el centro educativo'
+                    }
+                )
+            }
         });
 };
-
-
-
 

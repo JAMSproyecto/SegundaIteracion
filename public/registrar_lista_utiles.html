@@ -6,6 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
+	<script src="./js/administrador_sesion.js"></script>
+
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <link rel="stylesheet" href="css/reset.min.css">
@@ -136,18 +138,23 @@
 
     <main>
         <h1 class="titulo__principal">Crear lista de útiles</h1>
+        <h2 id="titulo_centro" class="titulo__principal"></h2>
         <section class="bloque__principal">
-
+                
             <div class="formulario_lista_utiles">
                 <div class="text_center">
                     <label for="txt_tipo">Tipo</label>
                     <select id="txt_tipo">
-                        <option value="">Seleccione el tipo de lista</option>
-                        <option value="MEP">MEP</option>
-                        <option value="centro_educativo">Centro Educativo</option>
+                        <option value="">Seleccione el tipo de lista</option> 
                     </select>
                 </div>
+                <div class="text_center" >
+                    <label for="lista_centros" id="label_centro">Centro educativo</label>
+                        <input list = "lista" id="lista_centros">
+                        <datalist id="lista">
 
+                        </datalist>
+                </div>
                 <div class="text_center">
                     <label for="txt_nombre">Nombre</label>
                     <input type="text" id="txt_nombre">
@@ -254,6 +261,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="js/servicio_listar_cedu.js"></script>
     <script src="js/servicio_lista_utiles.js"></script>
     <script src="js/controlador_registrar_lista_utiles.js"></script>
 

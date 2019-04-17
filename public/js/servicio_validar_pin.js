@@ -17,8 +17,8 @@ function validar_pin(pPin, pC1, pC2) {
 
   peticion.done(function (response) {
     respuesta = response;
-    //sessionStorage.setItem('conectado', response.success);
-    //sessionStorage.setItem('tipo_usuario', response.usuario.tipo);
+    //localStorage.setItem('conectado', response.success);
+    //localStorage.setItem('tipo_usuario', response.usuario.tipo);
   });
 
   peticion.fail(function (response) {

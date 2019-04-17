@@ -6,6 +6,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
     <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
+	<script src="./js/administrador_sesion.js"></script>
+
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -98,6 +100,7 @@
     <main>
             <section>
                 <h1 class="titulo__principal">Lista de útiles</h1>
+                <h2 id="titulo" class="titulo__principal"></h2>
                 <div class="wrapper">
                     <div class="bloque__filtro">
                         <label for="txt_filtrar">Filtrar</label>
@@ -108,12 +111,12 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Tipo</th>
                                     <th>Año</th>
-                                    <th>Institución Educativa</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
+                                    <th>Agregar artículos</th>
+                                    <th>Ver artículos</th>
+                                    <th>Modificar lista</th>
+                                    <th>Eliminar lista</th>
+                                    <th>Estado</th>
                             </thead>
                             <tbody>
     

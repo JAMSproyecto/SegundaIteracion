@@ -90,13 +90,13 @@ let mostrar_datos = () => {
         swal.fire(
             {
                 type: 'warning',
-                title: 'Datos  Incompletos',
-                text: 'Por favor, revise los campos resaltados en rojo'
+                title: 'La cita no fue registrada de manera correcta',
+                text: 'Favor completar los espacios señalados en rojo'
             }
         );
 
     } else {
-        let id = sessionStorage.getItem("id");
+        let id = localStorage.getItem("id");
         let nombre = input_nombre.value;
         let apellidos = input_apellidos.value;
         let telefono = input_telefono.value;

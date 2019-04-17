@@ -63,7 +63,7 @@ module.exports.registrar_Padre = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        message: `Usuario ya existente, por favor intente otro correo`
+                        message: `El usuario ya existe en el sistema, por favor intente con otro correo`
                     }
                 )
             } else {
@@ -145,7 +145,7 @@ module.exports.registrar_Padre = (req, res) => {
                             res.json(
                                 {
                                     success: true,
-                                    message: `Se registró el perfil de manera correcta`
+                                    message: `Se ha registrado el perfil de forma correcta`
                                 }
                             )
                         }
@@ -194,7 +194,7 @@ console.log(filtros);
                 res.json(
                     {
                         success: false,
-                        message: 'No se encontró el padre de familia'
+                        message: 'No se encontró el usuario padre de familia'
                     }
                 );
             }

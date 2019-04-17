@@ -40,15 +40,13 @@ mostrar_datos();
 
 
 //función seleccionar los artículos que se quieren 
-let seleccionar_rubro =() =>{
+let seleccionar_articulos =() =>{
   let id_lista = localStorage.getItem('lista');
   let articulos_seleccionados = document.querySelectorAll('input[type=checkbox]:checked');
   console.log(articulos_seleccionados);
   let error =false;
 
-  
   for (let i = 0; i < articulos_seleccionados.length; i++) {
-   
     //se accede a ala celda de la cantidad (padre al hijo )
     let input_cantidad = articulos_seleccionados[i].parentNode.previousSibling.firstChild;
     if (input_cantidad.value == '' || input_cantidad.value <= 0) {
@@ -69,14 +67,25 @@ let seleccionar_rubro =() =>{
   if(error || articulos_seleccionados.length <= 0){
     swal.fire({
       type: 'warning',
-      title: 'Uno o más artículos no fueron registrados o seleccionados',
-      text: 'Verifique los campos señalados en rojo o seleccione los artículos deseados'
+      title: '¡Los artículos no fueron agregados de forma correcta!',
+      text: 'Favor completar los espacios señalados en rojo'
     });
   }else{
     swal.fire({
       type: 'success',
-      title: 'Artículos registrados',
-      text: 'Todos los artículos fueron registrados con éxito'
+      title: '¡Artículos agregados!',
+
+      text: 'Todos los artículos fueron agregados con éxito'
+    }).then((result) => {
+      if (result.value) {
+        let tipo_usuario = localStorage.getItem('tipoUsuario');
+        if (tipo_usuario === 'SuperAdmin') {
+          window.location.href = 'ver_articulos_lista_utiles_admin.html';
+        } else {
+          window.location.href = 'ver_articulos_lista_utiles.html';
+        }
+      };
+      text: 'Los artículos fueron agregados correctamente'
     });
   }
   

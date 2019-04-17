@@ -32,6 +32,14 @@ router.route('/listar_lista_utiles/:codigo')
             lista_utiles_api.obtener_todos(req, res);
             }
         );
+        
+router.route('/listar_lista_utiles_todos')
+.get(
+    function(req, res)
+    {
+    lista_utiles_api.obtener_todos_general(req, res);
+    }
+);
 
 router.route('/agregar_articulo')
         .post(
@@ -46,6 +54,48 @@ router.route('/buscar_lista_id/:id')
                 function(req, res)
                 {
                 lista_utiles_api.buscar_por_id(req, res);
+                }
+            );
+
+//end point para eliminar articulos de la lista de utiles 
+router.route('/eliminar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.eliminar_articulo_lista(req, res);
+                }
+            );
+
+//end point para modificar articulos de la lista de utiles 
+router.route('/modificar_articulo_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.modificar_articulo_lista(req, res);
+                }
+            );
+
+//end point para modificar la lista de utiles 
+router.route('/modificar_lista_utiles')
+            .post(
+                function(req, res)
+                {
+                 lista_utiles_api.modificar_lista_utiles(req, res);
+                }
+            );
+//para activar y desactivar lista de utiles 
+router.route('/activar_desactivar_lista_utiles')
+            .post(
+                function(req, res){
+                    lista_utiles_api.activar_desactivar(req,res);
+                }
+            );
+
+//para eliminar lista de útiles 
+router.route('/eliminar_lista_utiles/:id')
+            .get(
+                function(req, res){
+                 lista_utiles_api.eliminar_lista(req, res);
                 }
             );
 

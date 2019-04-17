@@ -1,45 +1,99 @@
 'use strict';
+
 //constantes que obtienen los datos del formulario
 const input_nombre = document.querySelector('#txt_nombre');
 const input_descripcion = document.querySelector('#txt_descripcion');
 const boton_agregar = document.querySelector('#btn_agregar');
 
-//función para validar que no hay campos vacíos 
-let validar = () => {
-    let error = false;
 
-    if (input_nombre.value == '') {
-        error = true;
-        input_nombre.classList.add('error_input');
-    } else {
-        input_nombre.classList.remove('error_input');
+let mostrarAlerta = (mensaje, input) => {
+  if (input) {
+    input.classList.add('error_input');
+  }
+  Swal.fire({
+    title: mensaje,
+    type: 'warning',
+    position: 'center',
+    //timer: 7000,
+    showConfirmButton: true,
+    onAfterClose: () => {
+      if (input) {
+        input.focus();
+      }
     }
-
-    if (input_descripcion.value == '') {
-        error = true;
-        input_descripcion.classList.add('error_input');
-    } else {
-        input_descripcion.classList.remove('error_input');
-    }
-
-    return error;
+  });
 };
 
 //función que envia los datos al servicio 
-let obtener_datos = () => {
-    if (validar() == false ) {
-        let nombre = input_nombre.value;
-        let descripcion = input_descripcion.value;
-        registrar_articulo(nombre, descripcion);
-        input_nombre.value = '';
-        input_descripcion.value = '';
-    } else {
-        swal.fire({
-            type: 'warning',
-            title: 'El articulo no fue enviado',
-            text: 'Por favor revise los campos resaltados'
+let enviarDatos = () => {
+
+  const nombre = input_nombre.value.trim();
+  const descripcion = input_descripcion.value.trim();
+
+  if (nombre == '') {
+    mostrarAlerta('Digite el nombre del artículo', input_nombre);
+    return false;
+  } else {
+    input_nombre.classList.remove('error_input');
+  }
+
+  if (descripcion == '') {
+    mostrarAlerta('Digite la descripción del artículo', input_descripcion);
+    return false;
+  } else {
+    input_descripcion.classList.remove('error_input');
+  }
+
+  registrar_articulo(nombre, descripcion,
+    function (success, msg) {
+
+      //Aquí llegan los resultados que el servicio envía a travez de pEnviaResultado.
+      //Los propios parámetros de pEnviaResultado son (success, msg):
+      //success es un boolean
+      //msg es un string
+
+      if (success) {
+        Swal.fire({
+          title: '¡' + msg + '!',
+          text: '¿Desea agregar otro artículo?',
+          type: 'question',
+          customClass: {
+            icon: 'swal2-spanish-question-mark'
+          },
+          confirmButtonText: 'Si',
+          cancelButtonText: 'No',
+          showCancelButton: true,
+          showCloseButton: false,
+          onAfterClose: () => {
+            input_nombre.value = '';
+            input_descripcion.value = '';
+            input_nombre.select();
+            input_nombre.focus();
+          }
+        }).then((result) => {
+          if (result.value) { } else {
+            location.href = 'listar_articulos.html';
+          }
         });
-    }
-};  
-//evento para agregar los datos 
-boton_agregar.addEventListener('click', obtener_datos );
+      } else {
+        swal.fire({
+          type: 'error',
+          title: '¡El artículo no fue registrado!',
+          text: msg
+        });
+      }
+    });
+};
+
+//evento para agregar los datos
+if (boton_agregar) {
+  boton_agregar.addEventListener('click', enviarDatos);
+}
+
+window.onload = () => {
+  if (input_nombre) {
+    input_nombre.select();
+    input_nombre.focus();
+  }
+};
+

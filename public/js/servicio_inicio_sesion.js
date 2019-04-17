@@ -15,23 +15,26 @@ let validar_credenciales = (pusuario, pcontrasenna) => {
   });
 
   peticion.done(response => {
+
+    localStorage.setItem('tiempoConexion', (new Date()).getTime());
+    localStorage.setItem('conectado', response.success);
+    localStorage.setItem('tipoUsuario', response.message.tipoUsuario);
+    localStorage.setItem('nombreUsuario', response.message.nombreUsuario);
+    localStorage.setItem('correo', pusuario);
+    localStorage.setItem('id', response.message.id);
+
+    if ('undefined' !== typeof response.message.nombreInstitucion) {
+      localStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
+    } else {
+      localStorage.setItem('nombreInstitucion', '');
+    }
+
     respuesta = response.success;
-    sessionStorage.setItem('conectado', response.success);
-    sessionStorage.setItem('tipoUsuario', response.message.tipoUsuario);
-    sessionStorage.setItem('nombreUsuario', response.message.nombreUsuario);
-    sessionStorage.setItem('correo', pusuario);
-    sessionStorage.setItem('id', response.message.id);
-	
-	if('undefined' !== typeof response.message.nombreInstitucion){
-		sessionStorage.setItem('nombreInstitucion', response.message.nombreInstitucion);
-	}else{
-		sessionStorage.setItem('nombreInstitucion', '');
-	}
-	
   });
 
   peticion.fail(jqXHR => {
-    console.error('Ocurri&oacute; un error inesperado, por favor intente de nuevo');
+    console.error('Ocurrió un error:');
+    console.error(jqXHR);
   });
 
   return respuesta;

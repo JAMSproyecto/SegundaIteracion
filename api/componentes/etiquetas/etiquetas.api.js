@@ -20,7 +20,6 @@ module.exports.registrar_etiqueta = (req, res) =>{
                     }
                 )
             }else{
-
                 res.json(
                     {
                         success : true,

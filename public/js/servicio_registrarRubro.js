@@ -57,9 +57,6 @@ let registrar_rubro = (prubro) => {
   });
 };
 
-
-
-
 let listar_rubros = () => {
   let lista_rubros = [];
 
@@ -76,7 +73,7 @@ let listar_rubros = () => {
   request.done(function (res) {
     lista_rubros = res.data;
 
-  }); 
+  });
 
   request.fail(function (jqXHR, textStatus) {
 
@@ -87,7 +84,7 @@ let listar_rubros = () => {
 
 let actualizar_rubro = (prubro, pid) => {
   let request = $.ajax({
-    url: "http://localhost:4000/api/actualizar_Rubro",
+    url: "http://localhost:4000/api/actualizar_Rubros",
     method: "POST",
     data: {
       rubro: prubro,
@@ -106,7 +103,7 @@ let actualizar_rubro = (prubro, pid) => {
           title: 'Se han modificado los datos de manera exitosa',
           text: msg.message,
           onAfterClose: function () {
-          
+
             window.location.replace('#');
           }
         });
@@ -143,6 +140,7 @@ let actualizar_rubro = (prubro, pid) => {
   });
 };
 
+/*
 let agregar_rubro = (pid, prubro_seleccionado) => {
 
   let request = $.ajax({
@@ -180,6 +178,109 @@ let agregar_rubro = (pid, prubro_seleccionado) => {
       title: 'Artículo no enviada',
       text: 'Ocurrió un error inesperado, por favor intente de nuevo'
     });
+  });
+};
+
+*/
+
+let activar_rubro = (pid, pcantidad_activos) => {
+console.log("pcantidad_activos: " + pcantidad_activos);
+  if (pcantidad_activos < 11) {
+    let request = $.ajax({
+      url: "http://localhost:4000/api/activar_Rubros",
+      method: "POST",
+      data: {
+        id: pid,
+      },
+      dataType: "json",
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+    });
+
+    request.done(function (res) {
+      swal.fire({
+        type: 'success',
+        title: 'Proceso realizado con éxito',
+        text: res.msg
+      });
+
+    });
+
+    request.fail(function (res) {
+      swal.fire({
+        type: 'error',
+        title: 'Proceso no realizado',
+        text: res.msg
+      });
+
+    });
+  } else {
+    swal.fire({
+      type: 'info',
+      title: 'Se ha alcanzado la cantidad máxima de rubros',
+      text: 'Si desea agregar este rubro, remueva rubros de la lista de activos'
+    });
+  };
+
+
+};
+
+let desactivar_rubro = (pid) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/desactivar_Rubros",
+    method: "POST",
+    data: {
+      id: pid,
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+  });
+
+  request.done(function (res) {
+    swal.fire({
+      type: 'success',
+      title: 'Proceso realizado con éxito',
+      text: res.msg
+    });
+
+  });
+
+  request.fail(function (res) {
+    swal.fire({
+      type: 'error',
+      title: 'Proceso no realizado',
+      text: res.msg
+    });
+
+  });
+};
+
+let eliminar_rubro = (pid) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_Rubros",
+    method: "POST",
+    data: {
+      id: pid,
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+  });
+
+  request.done(function (res) {
+    swal.fire({
+      type: 'success',
+      title: 'Proceso realizado con éxito',
+      text: res.msg
+    });
+
+  });
+
+  request.fail(function (res) {
+    swal.fire({
+      type: 'error',
+      title: 'Proceso no realizado',
+      text: res.msg
+    });
+
   });
 };
 

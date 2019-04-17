@@ -3,14 +3,10 @@ const express = require('express');
 const router = express.Router();
 const registro_rubro_api = require('./rubros.api');
 
-/*
-router.param('idPadre', function(req,res, next, pIdPadre){
-    req.body.idPadre = pIdPadre;
-
+router.param('id_rubro', function(req, res, next, id_rubro){
+    req.body.id_rubro = id_rubro;
     next();
-    }
-
-);*/
+});
 
 router.route('/registrar_Rubro')
     .post(
@@ -26,15 +22,6 @@ router.route('/listar_Rubros')
         }
     );
 
-
-
-  /*  router.route('/buscar_padre/:idPadre')
-    .get(
-        function (req, res) {
-            registro_rubro_api.buscar_Rubro(req, res);
-        }
-    ); */
-
     router.route('/actualizar_Rubros')
     .post(
         function (req, res) {
@@ -42,5 +29,27 @@ router.route('/listar_Rubros')
         }
     );
     
+
+
+    router.route('/desactivar_Rubros')
+.post(
+    function(req , res){
+        registro_rubro_api.desactivar(req, res);
+    }
+);
+
+router.route('/activar_Rubros')
+.post(
+    function(req , res){
+        registro_rubro_api.activar(req, res);
+    }
+);
+
+router.route('/eliminar_Rubros')
+.post(
+    function(req , res){
+        registro_rubro_api.eliminar(req, res);
+    }
+);
 
 module.exports = router;
