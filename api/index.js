@@ -142,6 +142,9 @@ app.use('/api', etiquetas);
 const rubros = require ('./componentes/rubros/rubros.route');
 app.use('/api', rubros);
 
+const calificacion_padre = require ('./componentes/calificacion_padre/calificacion_padre.route');
+app.use('/api', calificacion_padre);
+
 
 
 
