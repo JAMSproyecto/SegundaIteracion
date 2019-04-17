@@ -213,7 +213,7 @@ main {
   box-shadow: 0 0 3px #78909c;
   margin: 10px;
   display: inline-block;
-  /* border-radius: 12px; */
+  border-radius: 12px; 
   background: #fff;
 }
 
