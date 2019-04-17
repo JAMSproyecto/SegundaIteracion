@@ -30,7 +30,7 @@ let estaActiva = (primeraVez) => {
                 //switch para calquier cosa que no sea redireccionar:
                 switch (elTipoUsuario) {
                     case 'superadmin':
-					    
+
 						break;
                     case 'centroeducativo':
                         localStorage.setItem('verPerfilCEdu', localStorage.getItem('id'));
@@ -93,7 +93,7 @@ let validarBlancos = (pusuario, pcontrasenna) => {
     } else {
         Input_Contrasenna.classList.remove('error_input');
     }
-	
+
     return false;
 };
 
@@ -104,10 +104,10 @@ let obtener_Datos = () => {
     let errorBlancos = validarBlancos(usuario, contrasenna);
 
     if (errorBlancos == false) {
-	    
+
 		//Limpiamos localStorage antes de validar credenciales y de cargar nuevos datos al localStorage:
 	    localStorage.clear();
-		
+
         let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
         if (usuarioAceptado) {
             estaActiva(false);

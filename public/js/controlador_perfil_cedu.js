@@ -3,7 +3,6 @@
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
-const BtnRegistrarCita = document.querySelector('#btnRegistrarCita');
 
 let crearActividades = () => {
     let actividades = listar_todas_actividades();
@@ -12,16 +11,16 @@ let crearActividades = () => {
         actividades.forEach((e, index) => {
             let actividad = document.createElement('div');
             actividad.classList.add('actividad');
-        
+
             let strong = document.createElement('strong');
             strong.classList.add('nombre__actividad');
-        
+
             let fecha = document.createElement('p');
             fecha.classList.add('fecha__actividad');
-        
+
             let hora = document.createElement('p');
             hora.classList.add('hora__actividad');
-        
+
             strong.innerHTML = e.actividad;
             fecha.innerHTML = e.fecha;
             hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
@@ -43,24 +42,19 @@ let iniciarComentarios = () => {
 };
 
 let cargarComentarios = (pId) => {
-	
+
 };
 
 let agregarComentario = () => {
 	const texto = $('#txtEditorComentario').val();
 	console.log(texto);
 	if(texto.length >0){
-	const textoComentado = he.encode(texto); 
+	const textoComentado = he.encode(texto);
 	alert(textoComentado);
 	}else{
 		TxtEditorComentario.focus();
 	}
 };
-
-
-BtnRegistrarCita.addEventListener('click', () =>{
-    location.replace("registrar_cita.html");
-}, false);
 
 
 window.onload = () => {
@@ -71,12 +65,12 @@ window.onload = () => {
             id = localStorage.getItem('verPerfilCEdu');
 			TblAddComentario.style = 'display:none;';
             break;
-			
+
         case 'centroeducativo':
             id = localStorage.getItem('id');
 			TblAddComentario.style = 'display:none;';
             break;
-			
+
         case 'padrefamilia':
             id = localStorage.getItem('verPerfilCEdu');
 			iniciarComentarios();
@@ -88,11 +82,11 @@ window.onload = () => {
         default:
             break;
     }
-	
+
     if ('undefined' == typeof id || null === id) {
         throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
     }
-	
+
     const perfil = get_obtenerPerfil(id);
 
 	if('undefined' !== typeof perfil.nombre){
