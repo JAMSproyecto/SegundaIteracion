@@ -78,12 +78,17 @@ bloqueCalificacionMep.appendChild(botonCalificarCentro);
 
         let rubros = listar_rubros();
         let rubrosActivos = [];
-           for (let i = 0; i < rubros.length; i++){
-            if (rubros[i]['estado'] == 'Activo'){
-                rubrosActivos [i] = rubros[i];
+        let y = 0;    
+        for (let i = 0; i < rubros.length; i++){
+            
+                if (rubros[i]['estado'] == 'Activo'){
+                    rubrosActivos [y] = rubros[i];
+                    y++;
+                }
+            
+        
             }
-        }
-
+console.log(rubrosActivos);
         Swal.mixin({
             input: 'select',
             inputOptions: {
