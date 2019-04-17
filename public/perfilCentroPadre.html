@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
 
     <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="./css/comentarios/jqueryte-1.4.0.css" />
 
+    <link rel="stylesheet" href="css/estrellas.css" />
     <link rel="stylesheet" href="css/centro.css" />
 </head>
 
@@ -161,7 +161,7 @@
                     <section>
 
                         <div>
-                            <h2 class="titulo__secundario">Comentarios</h2>
+                            <h2 class="titulo__secundario">Calificar</h2>
                         </div>
 
                         <div class="tblAddComentario tabla__responsive">
@@ -169,7 +169,37 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <textarea id="txtEditorComentario" class="jqte-test"></textarea>
+                                            <div class="estrellas">
+                                                <div class="estrellas__cuerpo">
+                                                    <input type="radio" name="estrella" class="estrella__1" value="1"
+                                                        id="estrella1"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__1" for="estrella1"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__2" value="2"
+                                                        id="estrella2"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__2" for="estrella2"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__3" value="3"
+                                                        id="estrella3"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__3" for="estrella3"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__4" value="4"
+                                                        id="estrella4"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__4" for="estrella4"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__5" value="5"
+                                                        id="estrella5"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__5" for="estrella5"><i></i></label>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" maxlength="500" rows="1"
+                                                placeholder="Haz un comentario..."></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -178,7 +208,7 @@
 
                                             <div class="text__right">
                                                 <button type="button" class="btn btn--amarillo"
-                                                    id="btnComentar">Agregar</button>
+                                                    id="btnComentar">Asignar</button>
                                             </div>
 
                                         </td>
@@ -297,9 +327,6 @@
     <script src="./js/fullcalendar/core/main.min.js"></script>
     <script src="./js/fullcalendar/daygrid/main.min.js"></script>
     <script src="./js/fullcalendar/core/locales-all.min.js"></script>
-
-    <script src="./js/comentarios/he.js"></script>
-    <script src="./js/comentarios/jqueryte-1.4.0.min.js"></script>
 
     <script src="./js/carrusel.js"></script>
 
