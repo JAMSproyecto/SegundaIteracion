@@ -1,160 +1,145 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>MEP</title>
+    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
-    <link href="./css/animate.min.css" rel="stylesheet">
-    <link href="./css/general.css" rel="stylesheet" />
-    <link href="./css/footer.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="./css/footer.css">
-
-
-
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/centro.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/general.css" />
 </head>
 
 <body>
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+                <div class="bloqueHeader__nombreInstitucion">
+                    <div class="bloqueHeader__iconolateral">
+                        <span onclick="openNav()">&#9776</span>
+                    </div>
 
-    <header>
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <ul>
-                    <li> <a href="perfil_centro.html"><i class="fas fa-hand-point-left"></i></li>
-
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-                    <li><button class="btn btn--amarillo" id="boton_cerrar">Cerrar sesión</button></li>
-
-                </ul>
-            </nav>
-        </div>
-        <div class="column__abajo">
-            <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
-                </div>
-                <div class="column__abajo">
-                    <div class="contenedor">
-                        <div class="logo">
+                    <div class="bloqueHeader__logo">
+                        <a href="perfil_centro.html">
                             <img src="imgs/logo_mep.png" class="imagen_mep">
-                        </div>
-                        <nav class="menu__abajo">
-                            <ul>
-        
-                                <span>|</span>
-                                <li>
-                                    <a class="calificaciones" href="#">Modificar perfil</a>
-                                    <ul>
-                                        <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                        <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                        <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                        <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                        <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                                    </ul>
-        
-                                </li>
-                                <span>|</span>
-                                <li><a class="centros" href="#">Actividad</a>
-                                    <ul>
-                                        <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                        <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-        
-                                    </ul>
-                                </li>
-                                <span>|</span>
-                                <li><a class="centros" href="#">Noticias</a>
-                                    <ul>
-                                        <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
-                                        <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
-        
-                                    </ul>
-                                </li>
-                                <span>|</span>
-                                <li><a class="utiles" href="#"> Útiles</a>
-                                    <ul>
-                                        <li>
-                                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
-                                                útiles</a></li>
-        
-                                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <span>|</span>
-                                <li>
-                                    <a class="reporte">Reportes</a>
-                                    <ul>
-                                        <li><a class="subtitulos" href="#">Ranking anual</a></li>
-                                    </ul>
-                                </li>
-                                <span>|</span>
-                                <li>
-                                    <a class="reporte">Preguntas frecuentes</a>
-                                    <ul>
-                                        <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a></li>
-                                        <li><a class="subtitulos" href="listarPreguntasFrecuentes.html"></a></li>
-                                    </ul>
-                                </li>
-                                <span>|</span>
-                            </ul>
-                        </nav>
+                        </a>
+
+                    </div>
+                    <div class="bloqueHeader__institucion">
+                        <span> Nuestra Institucion</span>
                     </div>
                 </div>
-            </header>
-    <main>
-        <section class="noticia">
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
 
-            <h1 class="titulo__principal">Registrar Noticia </h1>
-            <div class=" bloque__principal bloque__actividad">
-                <form class="registrar_noticia">
+                <div class="bloqueHeader__btnCerrar">
+                    <button type="button" id="boton_cerrar" class=" btn--amarillo">Cerrar
+                        sesi&oacute;n</button></li>
+                </div>
+            </div>
+        </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+                <span>Les da la bienvenida</span>
+            </div>
+        </div>
+        <div class="bloqueHeader__imagen">
+            <div>
 
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a class="menuArriba__btn contrasenia" href="#">Cambiar Contraseña</a></li>
+                </li>
+                <li>
+                    <a class="calificaciones" href="#">Modificar perfil</a></li>
+                <li><a class="centros" href="#">Actividad</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a>
+                        </li>
+                        <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
+                    </ul>
+                </li>
+                <li><a class="centros" href="#">Noticias</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
+                    </ul>
+                </li>
+                <li><a class="utiles" href="#"> Útiles</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
+                                útiles</a></li>
+
+                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de
+                                útiles</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="#"> Citas</a>
+                    <ul>
+                        <li>
+                            <a class="subtitulos" href="lista_citas.html">listar citas
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="reporte">Reportes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="#">Ranking anual</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <section class="bloqueNoticia">
+            <div class="bloqueNoticia__tituloPrincipal tituloPrincipal">
+                <h1 class="">Registrar Noticia </h1>
+            </div>
+            <div class="bloqueNoticia__tituloPrincipal bloquePrincipal">
+                <form class="bloqueNoticia__registrarNoticia">
                     <div class="text_center">
                         <label for="txt_tema"> Tema de la noticia </label>
                         <input type="text" id="txt_tema">
                     </div>
 
                     <div class="text_center">
-                        <label for="txt_noticia">Título de la noticia</label>
-                        <input type="text" id="txt_noticia">
-                    </div>
-
-
-                    <div class="text_center">
-                        <label for="txt_autor">Autor</label>
-                        <input type="text" id="txt_autor">
-                    </div>
-
-
-
-                    <div class="text_center">
-                        <label for="txt_fecha"> Fecha </label>
-                        <input type="date" id="txt_fecha">
-                    </div>
-
-                    <div class="text_center">
                         <label for="txt_informacion"> Información </label>
-                        <input type="text" id="txt_informacion">
+                        <textarea id="txt_informacion"></textarea>
                     </div>
-
                 </form>
             </div>
-            <form class="formulario-boton">
-                <div class="bloque_boton">
-                    <button class="btn btn--amarillo" type="button" id="btn_enviar">Registrar</button>
-                </div>
-            </form>
+            <div class="formulario-boton">
+                <button type="button" class="btn btn--amarillo" id="btn_enviar">Registrar</button>
+            </div>
         </section>
-
-
-
-
     </main>
     <footer>
         <div class="footer__cuerpo">
@@ -226,11 +211,15 @@
     </footer>
 
 
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="js/servicio_registrar_noticia.js"></script>
-    <script src="js/controlador_registrar_noticia.js"></script>
+    <script src="js/servicio_noticia.js"></script>
+    <script src="./js/controlador_registrar_noticia.js"></script>
+    <script src="js/menuLateral.js"></script>
+
+
 
 
 

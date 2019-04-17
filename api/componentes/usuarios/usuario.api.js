@@ -237,7 +237,7 @@ module.exports.validar_credenciales = (req, res) => {
                         // Guardamos en una variable el objeto retornado.
                         // Aquí con await lo que hacemos es ESPERAR el resultado que se obtiene de la base de datos y almacenarlo en la constante ObjCentro.
                         //El select se utiliza para indicar cuales columnas queremos obtener.
-                        const ObjCentro = await ModelUsuarioCentro.findOne({ correo: req.body.correo }).select('contacto nombreComercial');
+                        const ObjCentro = await ModelUsuarioCentro.findOne({ correo: req.body.correo }).select('contacto nombre');
 
                         //Validamos que el resultado no sea nulo:
                         if (null !== ObjCentro) {
@@ -281,7 +281,7 @@ module.exports.validar_credenciales = (req, res) => {
                                         id: idUsuario,
                                         tipoUsuario: usuario.tipo,
                                         nombreUsuario: nombreUsuario,
-                                        nombreInstitucion: ObjCentro.nombreComercial
+                                        nombreInstitucion: ObjCentro.nombre
                                     }
                                 };
                             } else {

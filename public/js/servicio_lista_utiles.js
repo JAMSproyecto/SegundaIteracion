@@ -6,7 +6,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
     url: "http://localhost:4000/api/registrar_lista_utiles",
     method: "POST",
     data: {
-      codigo : sessionStorage.getItem('id'),
+      codigo : localStorage.getItem('id'),
       tipo: ptipo,
       nombre: pnombre,
       anno: panno
@@ -19,12 +19,12 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
   request.done(function (msg) {
     swal.fire({
       type: 'success',
-      title: 'Lista de utiles enviada',
+      title: '!Lista de útiles registrada¡',
       text: 'el registro fue éxitoso'
 
     }).then((result) => {
       if (result.value) {
-        let tipoUsuario = sessionStorage.getItem('tipoUsuario');
+        let tipoUsuario = localStorage.getItem('tipoUsuario');
         if(tipoUsuario === 'SuperAdmin'){
           window.location.href = 'listar_lista_utiles.html';
         }else{
@@ -46,7 +46,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
 let obtener_lista_utiles = () => {
   let coleccion_utiles = [];
-  let id_usuario = sessionStorage.getItem('id');
+  let id_usuario = localStorage.getItem('id');
   let request = $.ajax({
     url: "http://localhost:4000/api/listar_lista_utiles/" + id_usuario,
     method: "GET",
@@ -108,7 +108,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
   });
 
   request.done(function (msg) {
-
+    
   });
 
   request.fail(function (jqXHR, textStatus) {
@@ -123,7 +123,6 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
 
 let buscar_por_id = (id) => {
   let lista = [];
-
   let request = $.ajax({
     url: "http://localhost:4000/api/buscar_lista_id/" + id,
     type: "GET",
@@ -145,7 +144,12 @@ let buscar_por_id = (id) => {
   return lista;
 };
 
+//para buscar centro por id 
 let buscar_centro_por_id = (id) => {
+    if ('undefined' == typeof id || null === id) {
+        throw new Error('Error al obtener el perfil: El identificador no puede estar vacio');
+    }
+
   let centro = [];
 
   let request = $.ajax({
@@ -159,7 +163,7 @@ let buscar_centro_por_id = (id) => {
   });
 
   request.done(function (res) {
-    centro = res.centro;
+    centro = res.message;
     
   });
   
@@ -207,15 +211,27 @@ let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
     },
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    async: false
+   // async: false
   });
 
   request.done(function (res) {
-    
+    swal.fire({
+      type: 'success',
+      title: '¡ La cantidad de artículos fue actualizada de forma exitosa !'
+      
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'ver_articulos_lista_utiles_admin.html';
+    }
+    });
   });
 
   request.fail(function (jqXHR, textStatus) {
-
+    swal.fire({
+      type: 'success',
+      title: 'La cantidad de artículos no fue actualizada de forma exitosa'
+      
+    })
   });
 
 };
@@ -232,15 +248,26 @@ let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
     },
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    async: false
   });
 
   request.done(function (res) {
-    
+    swal.fire({
+      type: 'success',
+      title: 'La lista de útiles fue actualizada de forma exitosa'
+      
+    }).then((result) => {
+      if (result.value) {
+        // window.location.href = 'listar_lista_utiles.html';
+    }
+    });
   });
 
   request.fail(function (jqXHR, textStatus) {
-
+    swal.fire({
+      type: 'error',
+      title: 'La lista de útiles no fue actualizada',
+      text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+    });
   });
 
 };
@@ -260,7 +287,23 @@ let  activar_desactivar_lista = (id, estado) => {
   });
 
   request.done(function (res) {
-    
+    if (estado === 'Activo') {
+      swal.fire({
+        type: 'success',
+        title: 'La lista de útiles fue desactivada'
+      }).then((result) => {
+        if (result.value) {
+      }
+  })
+    }else{
+      swal.fire({
+        type: 'success',
+        title: 'La lista de útiles fue activada'
+      }).then((result) => {
+        if (result.value) {
+      }
+  })
+    }
   });
 
   request.fail(function (jqXHR, textStatus) {
@@ -282,7 +325,14 @@ let  eliminar_lista = (id) => {
   });
 
   request.done(function (res) {
-    
+    swal.fire({
+      type: 'success',
+      title: 'La lista de útiles fue eliminada de forma exitosa'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'lisar_lista_utiles.html';
+    }
+})
   });
 
   request.fail(function (jqXHR, textStatus) {

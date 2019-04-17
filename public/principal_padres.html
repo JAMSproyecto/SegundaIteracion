@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MEP</title>
+	<script src="./js/administrador_sesion.js"></script>
+
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilosCss.css" />
@@ -69,26 +71,20 @@
                 <table class="tabla tabla__rayada" id="tblCentrosEducativos">
                     <thead>
                         <tr class="cabecera--celeste">
-                            <th>Foto</th>
                             <th>Nombre</th>
                             <th>Provincia</th>
-                            <th>Cant&oacute;n</th>
-                            <th>Distrito</th>
                             <th>Direcci&oacute;n</th>
                             <th>Calificaci&oacute;n</th>
                             <th>Calificaci&oacute;n MEP</th>
                             <th>Perfil</th>
                         </tr>
                         <tr>
-                            <th>Foto</th>
                             <th>Nombre</th>
                             <th>Provincia</th>
-                            <th>Cant&oacute;n</th>
-                            <th>Distrito</th>
                             <th>Direcci&oacute;n</th>
                             <th>Calificaci&oacute;n</th>
                             <th>Calificaci&oacute;n MEP</th>
-                            <th>Perfil</th>
+                            <th class="sinFiltro"></th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -172,13 +168,17 @@
 
     <script src="./js/general.js"></script>
 
-    <script src="./js/controlador_cerrar_sesion.js"></script>
+    <!-- datatable -->
+    <script src="./js/dataTables/Buttons/jszip.min.js"></script>
+    <script src="./js/dataTables/jquery.dataTables.es.min.js"></script>
+    <script src="./js/dataTables/Buttons/dataTables.buttons.min.js"></script>
+    <!-- /datatable -->
 
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controladorListar.js"></script>
     <script src="./js/servicio_listar_cedu.js"></script>
     <script src="./js/controlador_listar_cedu.js"></script>
-    <script src="./js/controlador_cerrar_sesion.js"></script>
+
 </body>
 
 </html>

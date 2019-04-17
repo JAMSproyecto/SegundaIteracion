@@ -96,7 +96,7 @@ let mostrar_datos = () => {
         );
 
     } else {
-        let id = sessionStorage.getItem("id");
+        let id = localStorage.getItem("id");
         let nombre = input_nombre.value;
         let apellidos = input_apellidos.value;
         let telefono = input_telefono.value;
