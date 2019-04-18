@@ -41,6 +41,9 @@ let mostrar_datos = () => {
 
             boton_eliminar.addEventListener('click', function () {
                 eliminar(this.dataset.idCentro);
+               
+                mostrar_datos();
+
 
             });
             //a esa variable le agrego un elemento como hijo
