@@ -51,7 +51,7 @@ function imprimir_citas() {
     }
 };
 
-
+if(botonBuscar) {
 botonBuscar.addEventListener('click', function () {
 
     let inicio = input_inicio.value;
@@ -79,9 +79,11 @@ botonBuscar.addEventListener('click', function () {
 
     }
 });
-
+}
 
 window.addEventListener('load', () => {
-    imprimir_citas();
+	if(tabla_citas) {
+        imprimir_citas();
+	}
 });
 
