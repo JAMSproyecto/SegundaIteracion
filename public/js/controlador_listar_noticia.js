@@ -2,11 +2,9 @@
 const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
-const noticias = listar_todas_noticias();
-
 
 let mostrar_datos = () => {
-    /*document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;*/
+const noticias = listar_todas_noticias();
 
     let filtros = input_filtrar.value;
     tabla.innerHTML = '';
