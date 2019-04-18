@@ -3,6 +3,8 @@
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
+const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
+
 
 let calificacionSeleccionada = 0;
 
@@ -83,6 +85,112 @@ if(calificacionSeleccionada < 1){
 }
 };
 
+let calificarMEP = () => {
+
+    let botonCalificarCentro = document.createElement('button');
+    botonCalificarCentro.innerText = 'Calificar';
+ 
+bloqueCalificacionMep.appendChild(botonCalificarCentro);
+
+    botonCalificarCentro.addEventListener('click', function () {
+
+        let rubros = listar_rubros();
+        let rubrosActivos = [];
+        let y = 0;    
+        for (let i = 0; i < rubros.length; i++){
+            
+                if (rubros[i]['estado'] == 'Activo'){
+                    rubrosActivos [y] = rubros[i];
+                    y++;
+                }
+            
+        
+            }
+console.log(rubrosActivos);
+        Swal.mixin({
+            input: 'select',
+            inputOptions: {
+                1:1,
+                2:2,
+                3:3,
+                4:4,
+                5:5,
+                6:6,
+                7:7,
+                8:8,
+                9:9,
+                10:10
+            },
+            confirmButtonText: 'Siguiente &rarr;',
+            showCancelButton: true,
+            progressSteps: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+          }).queue([  
+        
+            {
+              title: rubrosActivos [0]['rubro']
+            },
+            {
+                title: rubrosActivos [1]['rubro']
+              },
+              {
+                title: rubrosActivos [2]['rubro']
+              },
+              {
+                title: rubrosActivos [3]['rubro']
+              },
+              {
+                title: rubrosActivos [4]['rubro']
+              },
+              {
+                title: rubrosActivos [5]['rubro']
+              },
+              {
+                title: rubrosActivos [6]['rubro']
+              },
+              {
+                title: rubrosActivos [7]['rubro']
+              },
+              {
+                title: rubrosActivos [8]['rubro']
+              },
+              {
+                title: rubrosActivos [9]['rubro']
+              },
+   
+
+
+          ]).then((result) => {
+            if (result.value) {
+let values = [];
+values = result.value;
+console.log(values);
+                let sum = values.reduce((previous, current) => current += previous);
+let avg = sum / values.length;
+              Swal.fire({
+                title: 'Calificación completada',
+                html:
+                  'El centro ha recibido una calificación total de:' + avg,
+                confirmButtonText: 'Aceptar'
+              })
+            }
+          })
+
+
+
+
+      //  agregar_calificacion(this.dataset.id_calificacion);
+
+       
+      });
+
+};
+
+//Marlon. Fin del calificar MEP
+
+
+
+
+
 
 
 window.onload = () => {
@@ -91,12 +199,16 @@ window.onload = () => {
     switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
         case 'superadmin':
             id = localStorage.getItem('verPerfilCEdu');
-            TblAddComentario.style = 'display:none;';
+            if(TblAddComentario){
+                TblAddComentario.style = 'display:none;';
+            }
             break;
 
         case 'centroeducativo':
             id = localStorage.getItem('id');
-            TblAddComentario.style = 'display:none;';
+            if(TblAddComentario){
+                TblAddComentario.style = 'display:none;';
+            }
             break;
 
         case 'padrefamilia':
@@ -126,7 +238,7 @@ window.onload = () => {
 
     cargarCalificaciones(id)
 
-
+calificarMEP();
 
 };
 
