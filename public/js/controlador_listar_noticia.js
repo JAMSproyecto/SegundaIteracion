@@ -38,7 +38,7 @@ const noticias = listar_todas_noticias();
             boton_eliminar.dataset.idCentro = noticias[i]['_id'];
 
             boton_eliminar.addEventListener('click', function () {
-                eliminar(this.dataset.idCentro);
+                eliminar_noticia(this.dataset.idCentro);
                
                 mostrar_datos();
 

@@ -43,7 +43,7 @@ let obtener_datos = () => {
 
     input_detalles.value;
 
-    actualizar(actividad,fecha,hora_inicio,finaliza, detalles, id);
+    actualizar_actividad(actividad,fecha,hora_inicio,finaliza, detalles, id);
 };
 
 
