@@ -51,7 +51,7 @@ function imprimir_citas() {
     }
 };
 
-/*Se comenta esta seccion porque no hay boton de buscar en el calendario. A la espera de la revisión de Andres. Marlon 4/18
+if(botonBuscar) {
 botonBuscar.addEventListener('click', function () {
 
     let inicio = input_inicio.value;
@@ -80,12 +80,13 @@ if ((inicio && fin) || (nombre_filtrar)) {
 
 }
 });
+}
 
-
-Se termina de comentar la funcionalidad de buscar citas*/
 
 
 window.addEventListener('load', () => {
-    imprimir_citas();
+	if(tabla_citas) {
+        imprimir_citas();
+	}
 });
 
