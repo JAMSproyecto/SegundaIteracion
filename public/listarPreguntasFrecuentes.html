@@ -117,8 +117,8 @@
 
     <main>
         <div class="datos">
-            <label for="txt_pregunta"></label>
-            <div class="controlador" id="filtro">
+            <div class="bloqueFiltro" id="filtro">
+                <label for="txt_filtro"></label>
                 <input type="text" list="preguntas" id="txt_filtro" />
                 <datalist id="preguntas"></datalist>
             </div>
@@ -128,11 +128,10 @@
                 <tr>
                     <th>Pregunta</th>
                     <th>Respuesta</th>
-                    <th>Acciones</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
     </main>
