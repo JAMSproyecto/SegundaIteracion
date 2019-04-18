@@ -1,6 +1,7 @@
 'use strict';
 
-let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles) => {
+let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza,
+    plugar,  pdetalles) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_actividad",
         method: "POST",
@@ -82,11 +83,14 @@ let listar_todas_actividades = () => {
     request.done(function (res){
         actividades_arreglo = res.msg;
 
+
+
     });
 
+
     request.fail(function (jqXHR, textStatus) {
- 
-        
+
+
     });
     return actividades_arreglo;
 
@@ -116,7 +120,8 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles,pidActividad,) => {
+let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza,
+    plugar,  pdetalles,pidActividad,) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_actividad/",
@@ -190,7 +195,7 @@ request.done(function (msg) {
             title: msg.msg
         });
 
-    } 
+    }
 
 });
 

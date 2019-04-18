@@ -210,6 +210,7 @@ window.onload = () => {
             if(TblAddComentario){
                 TblAddComentario.style = 'display:none;';
             }
+			calificarMEP();
             break;
 
         case 'centroeducativo':
@@ -246,7 +247,7 @@ window.onload = () => {
 
     cargarCalificaciones(id)
 
-calificarMEP();
+
 
 };
 
