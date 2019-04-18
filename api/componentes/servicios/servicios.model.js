@@ -6,6 +6,7 @@
 
   let schema_servicio = new mongoose.Schema(
       {
+        codigo : {type : mongoose.Schema.Types.Number, require : true, index : true},
         nombre : {type : String, required : true},
         descripcion : {type : String, required : true }
       }

@@ -142,8 +142,8 @@ app.use('/api', etiquetas);
 const rubros = require ('./componentes/rubros/rubros.route');
 app.use('/api', rubros);
 
-
-
+const CompServicios = require('./componentes/servicios/servicios.route');
+app.use('/api',CompServicios);
 
 
 
