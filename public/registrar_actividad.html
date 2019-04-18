@@ -17,9 +17,8 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/iconos.css">
 </head>
 
 <body>
@@ -106,46 +105,45 @@
     </header>
 
     <main>
-        <section>
-            <h1 class="titulo__principal"> Registrar Evento </h1>
-            <div class=" bloque__principal bloque__actividad">
-                <div>
-                    <div class="dato text_center">
+        <div class="tituloPrincipal">
+            <h1> Registrar Evento </h1>
+        </div>
+        <section class="bloque bloqueActividad">
+            <div class="bloqueActividad__contenedor">
+                <div class="bloqueActividad__registroActividad">
+                    <div class="bloqueDato  bloqueActividad__tema">
                         <label for="txt_actividad">Nombre de la actividad</label>
                         <input type="text" id="txt_actividad">
                     </div>
-                    <div class="dato text_center">
-                        <label for="txt_fecha">Fecha</label>
-                        <input type="date" id="txt_fecha">
-                    </div>
-                    <div class="hora__actividad ">
-                        <div class="dato text_center hora">
-                            <label for="txt_hora_inicio"> Hora inicio </label>
-                            <input type="time" id="txt_hora_inicio">
+                    <div class="bloqueDato bloqueActividad__informacion">
+                        <div class="  bloqueActividad__fecha ">
+                            <label class="labelFormulario" for="txt_fecha">Fecha</label>
+                            <input class="inputFormulario" type="date" id="txt_fecha">
                         </div>
-                        <div class="dato text_center hora">
-                            <label for="txt_finaliza"> Hora final </label>
-                            <input type="time" id="txt_finaliza">
+                        <div class="  bloqueActividad__horaInicio">
+                            <label class="labelFormulario" for="txt_hora_inicio"> Hora inicio </label>
+                            <input class="inputFormulario" type="time" id="txt_hora_inicio">
+                        </div>
+                        <div class="   bloqueActividad__horaFinal">
+                            <label class="labelFormulario" for="txt_finaliza"> Hora final </label>
+                            <input class="inputFormulario" type="time" id="txt_finaliza">
                         </div>
                     </div>
-                    <div class="dato text_center">
-                        <label for="txt_costo"> Costo </label>
-                        <input type="number" id="txt_costo">
+
+                    <div class="bloqueDato  bloqueActividad__lugar">
+                        <label class="labelFormulario" for="txt_lugar"> Lugar </label>
+                        <input class="inputFormulario" type="text" id="txt_lugar">
                     </div>
-                    <div class="dato text_center">
-                        <label for="txt_lugar"> Lugar </label>
-                        <input type="text" id="txt_lugar">
-                    </div>
-                    <div class="dato text_center">
-                        <label for="txt_finalidad"> Finalidad </label>
-                        <input type="text" id="txt_finalidad">
-                    </div>
-                    <div class="dato text_center">
-                        <label for="txt_detalles"> Informacion Importante </label>
+
+                    <div class="bloqueDato  bloqueActividad__detalle">
+                        <label class="labelFormulario" for="txt_detalles"> Información importante </label>
                         <textarea id="txt_detalles"></textarea>
                     </div>
                 </div>
             </div>
+
+            </div>
+
         </section>
         <div class="formulario-boton">
             <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
