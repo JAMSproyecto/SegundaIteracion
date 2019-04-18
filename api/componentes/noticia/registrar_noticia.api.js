@@ -3,6 +3,32 @@
 const model_registrar_noticia = require('./registrar_noticia.model');
 const fecha = require('./../funciones_genericas/obtenerFecha');
 
+let formatearFecha = (pFecha) => {
+	if(pFecha.length > 0){
+    const fecha = new Date(pFecha);
+    const anio = fecha.getFullYear();
+    let dia_mes = fecha.getDate();
+    let mes = fecha.getMonth();
+	let h = fecha.getHours();
+    let m = fecha.getMinutes();
+    mes += 1;
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    if (dia_mes < 10) {
+        dia_mes = '0' + dia_mes;
+    }
+	if (h < 10) {
+        h = '0' + h;
+    }
+    if (m < 10) {
+        m = '0' + m;
+    }
+    return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+}else{
+	return '';
+}
+};
 
 module.exports.registrar_noticia = (req, res) => {
     let noticia_nueva = new model_registrar_noticia(
