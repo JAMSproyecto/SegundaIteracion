@@ -1,5 +1,6 @@
 'use strict';
 const model_servicio = require('./servicios.model');
+const model_cedu = require('../centro_educativo/centroEducativo.model');
 const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
 
@@ -62,3 +63,32 @@ servicio_nuevo.save(
     );    
 };
 
+//función para ontener la lista de servicio por el id del centro 
+module.exports.obtener_por_id = (req,res) =>{
+    model_servicio.find({codigo : req.body.codigo}).then(
+        function(coleccion){
+            const cant = Object.keys(coleccion).length;
+            if (cant > 0) {
+                model_cedu.findOne({_id: coleccion[0].nombre}).then(
+                    (centro) =>{
+                        res.json(
+                            {
+                                succes : true,
+                                coleccion : coleccion,
+                                nombre : centro.nombre
+                            }
+                        )
+                    }
+                )
+                
+            }else{
+                res.json(
+                    {
+                        succes : false,
+                        coleccion : `No se encontraron servicios registrados`
+                    }
+                )
+            }
+        }
+    )
+};

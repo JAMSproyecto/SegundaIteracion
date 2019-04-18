@@ -68,6 +68,7 @@ let obtener_lista_utiles = () => {
   return coleccion_utiles;
 
 };
+
 let obtener_lista_utiles_todos = () => {
   let coleccion_utiles = [];
   let request = $.ajax({

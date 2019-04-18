@@ -31,3 +31,27 @@ let registrar_servicio = (pnombre, pdescripcion, pEnviaResultado) => {
       pEnviaResultado(false, 'Ocurrió un error inesperado, por favor intente de nuevo');
     });
   };
+
+  let obtener_por_id = () => {
+    let coleccion = [];
+    let codigo = localStorage.getItem('id');
+    let request = $.ajax({
+      url: "http://localhost:4000/api/obtener_servicios_id/" + codigo,
+      type: "GET",
+      data: {
+      },
+      dataType: "json",
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      async: false
+    });
+  
+    request.done(function (res) {
+      coleccion = res.coleccion;
+      
+    });
+    
+    request.fail(function (jqXHR, textStatus) {
+  
+    });
+    return coleccion;
+  };

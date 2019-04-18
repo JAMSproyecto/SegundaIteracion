@@ -6,12 +6,12 @@ const servicio_api = require('./servicios.api');
 
 /*es metodo nos permite buscar un parametro que viene dentro de url del end point 
  sacandolo del url(header) y metiendolo en el cuerpo para poderlo usar*/
- router.param('id', function(req,res, next, id){
-    req.body.id = id;
+ router.param('codigo', function(req,res, next, codigo){
+    req.body.codigo = codigo;
 
-    next();
-    }
-);
+        next();
+     }
+    );
 
 router.route('/registrar_servicio')
     .post(
@@ -19,5 +19,13 @@ router.route('/registrar_servicio')
             servicio_api.registrar(req, res);
         }
     );
+
+router.route('/obtener_servicios_id/:codigo')
+        .get(
+            function(req,res)
+            {
+                servicio_api.obtener_por_id(req,res);
+            }
+        );
 
 module.exports = router;
