@@ -65,17 +65,19 @@ servicio_nuevo.save(
 
 //función para ontener la lista de servicio por el id del centro 
 module.exports.obtener_por_id = (req,res) =>{
+   
     model_servicio.find({codigo : req.body.codigo}).then(
         function(coleccion){
             const cant = Object.keys(coleccion).length;
             if (cant > 0) {
-                model_cedu.findOne({_id: coleccion[0].nombre}).then(
+                model_cedu.findOne({_id: coleccion[0].codigo}).then(
                     (centro) =>{
+                      
                         res.json(
                             {
                                 succes : true,
-                                coleccion : coleccion,
-                                nombre : centro.nombre
+                                coleccion_servicios : coleccion,
+                                nombre_centro: centro.nombre
                             }
                         )
                     }

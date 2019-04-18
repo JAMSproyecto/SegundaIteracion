@@ -46,7 +46,7 @@ let registrar_servicio = (pnombre, pdescripcion, pEnviaResultado) => {
     });
   
     request.done(function (res) {
-      coleccion = res.coleccion;
+      coleccion = res;
       
     });
     

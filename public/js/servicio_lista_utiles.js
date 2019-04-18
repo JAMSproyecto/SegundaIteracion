@@ -66,7 +66,7 @@ let obtener_lista_utiles = () => {
 
   });
   return coleccion_utiles;
-
+u
 };
 
 let obtener_lista_utiles_todos = () => {
