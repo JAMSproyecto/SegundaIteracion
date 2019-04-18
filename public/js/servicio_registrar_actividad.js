@@ -1,7 +1,6 @@
 'use strict';
 
-let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza,
-    plugar,  pdetalles) => {
+let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_actividad",
         method: "POST",
@@ -117,8 +116,7 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza,
-    plugar,  pdetalles,pidActividad,) => {
+let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles,pidActividad,) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_actividad/",

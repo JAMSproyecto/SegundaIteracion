@@ -40,7 +40,10 @@ module.exports.registrar_actividad = (req, res) => {
     );
 };
 
-
+/**
+ * Listar actividades 
+ * @param req {body:idCentro}
+ */
 module.exports.listar_todas_actividades = (req, res) => {
     const filtros = { idCentro: req.body.idCentro };
     model_registrar_actividad.find(filtros).then(
