@@ -1,10 +1,4 @@
 
-
-body{
-    font-family: 'Asap', sans-serif;
-}
-
-
 .bloqueHeader {
   width: 100%;
   -webkit-box-shadow: 0 1px 2px rgba(99, 114, 130, 0.06), 0 3px 6px rgba(27, 39, 51, 0.08);
@@ -57,35 +51,6 @@ body{
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
-.bloqueHeader .bloqueHeader__filaArriba{
-    background-color: #179bd7;
-    display: flow-root;
-    width: 100%;
-}
-
-.bloqueHeader .bloqueHeader__nombreInstitucion{
-    background: #ff6000 none repeat scroll 0 0;
-    color: #fff;
-    /* display: block; */
-    float: left;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: -500px;
-    padding: 16px 6px 9px 546px;
-    position: relative;
-    margin-right: 21px;
-    width: 55%;
-}
-
-.bloqueHeader .bloqueHeader__nombreInstitucion::after{
-    border-left: 16px solid #ff6000;
-    border-top: 71px solid rgba(0, 0, 0, 0);
-    content: "";
-    display: inline;
-    float: right;
-    position: absolute;
-    right: -16px;
-    bottom: 0;
 }
 
 .bloqueHeader .bloqueHeader__logo {
@@ -116,8 +81,6 @@ body{
 
 .bloqueHeader .bloqueHeader__btnCerrar {
   float: right;
-.bloqueHeader .bloqueHeader__logo{
-    float: left;
 }
 
 .bloqueHeader__filaAbajo {
@@ -220,12 +183,6 @@ body{
 .nav > ul > li > a:active {
   color: #253b80;
   font-weight: 800;
-.bloqueHeader__menuLateral li>  ul {
- background: #fff;
-    /*background-color:#B3E5FC;*/ 
-   padding: 5px 0px;
- 
- 
 }
 
 header .header__nav .menu__palanca {
@@ -288,11 +245,6 @@ header .header__nav .menu__palanca > ul li.separador a:hover {
   height: 1px;
   border-bottom: 1px solid transparent;
 }
-.bloqueHeader__menuLateral  li  > ul >  li:hover >  a{
-    color:#17c0eb;
-}
-
-/*final menu abajo*/
 
 header .header__nav .menu__palanca li {
   text-align: left;
@@ -303,51 +255,6 @@ header .header__nav .menu__palanca li {
 header .header__nav .menu__palanca li span {
   padding-left: 0.7em;
 }
-.nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #253b80;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  
-  }
-  
-  .nav li a{
-    color: #f1f1f1;
-  }
-  
-  .nav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color:#353b48;
-    display: block;
-    transition: 0.3s;
-  }
-  
- 
-  .nav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .nav {padding-top: 15px;}
-    .nav a {font-size: 18px;}
-  }
 
 header .header__nav .menu__palanca li a {
   background-color: #fff;
@@ -458,33 +365,6 @@ header .header__nav .menu__palanca li:not(.separador) a:hover {
   background: #dadada url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAGQCAYAAABvWArbAAAATElEQVQ4je3EyQ3AMAwEsem/RF+w4NtNbD4pIgjEB+m9C8/zfl0I4S3GKFJKIucsSimi1irMTLTWxBhDzDnFWkvsvcU5R9x7Pc/7ag8dcsgPlMnBXgAAAABJRU5ErkJggg==') 50% 50% repeat-x;
   font-weight: normal;
   color: #212121;
-.bloqueHeader__menuDer{
-    float: right;
-}
-.bloqueHeader__menuDer li ul{
-    background: #fff;
-    border: 1px solid #9a9b9b;
-    padding: 9px 0;
-    clip: rect(0,0,0,0);
-
-    min-width: 105px;
-    padding: 9px 0;
-    position: absolute;
-    transform: translate(-50%, -15px);
-}
-
-.bloqueHeader .bloqueHeader__menuDer li:hover > ul {
-    clip: auto;
-}
-.bloqueHeader .bloqueHeader__menuDer  li ul li {
-    padding: 8px 7px;
-    font-size: 13px;
-}
-
-.bloqueHeader .bloqueHeader__menuDer ul  li a{
-    text-decoration: none;
-    color: #000;
-   
 }
 
 @media screen and (max-width: 36em) {
@@ -519,11 +399,5 @@ main#main {
 
 
 
-
-
-.bloqueHeader .bloqueHeader__menuDer  li ul li :hover{
-    color: #179bd7;
-    border-bottom: 1px solid #179bd7;
-}
 
 

@@ -1,37 +1,38 @@
 'use strict';
 
 const model_registrar_actividad = require('./registrar_actividad.model');
-const fecha = require('../funciones_genericas/obtenerFecha');
 
-module.exports.registrar_actividad = (req, res) => {
+
+module.exports.registrar_actividad = (req, res) =>{
     let actividad_nueva = new model_registrar_actividad(
         {
-            idCentro: req.body.idCentro,
-            actividad: req.body.actividad,
-            fecha: fecha.get(),
-            hora_inicio: req.body.hora_inicio,
-            finaliza: req.body.finaliza,
+            idCentro : req.body.idCentro,
+            actividad : req.body.actividad,
+            fecha: req.body.fecha,
+            hora_inicio : req.body.hora_inicio,
+            finaliza : req.body.finaliza,
+            costo: req.body.costo,
             lugar: req.body.lugar,
-            detalles: req.body.detalles,
-            estado: 'Activo'
+            finalidad: req.body.finalidad,
+            detalles: req.body.detalles
         }
     );
-
+    
     actividad_nueva.save(
-        function (error) {
-            if (error) {
+        function(error){
+            if(error){
                 res.json(
                     {
-                        success: false,
-                        msg: `La actividad no pudo ser registrada, ocurrió el siguiente error ${error}`
+                        success : false,
+                        msg : `No se puede guardar el comentario, ocurrió el siguiente error ${error}`
                     }
                 )
-            } else {
+            }else{
 
                 res.json(
                     {
-                        success: true,
-                        msg: `Se registró la actividad de manera exitosa`
+                        success : true,
+                        msg : `Se ha registrado la actividad de manera correcta`
                     }
                 )
             }
@@ -41,18 +42,24 @@ module.exports.registrar_actividad = (req, res) => {
 };
 
 
-module.exports.listar_todas_actividades = (req, res) => {
-    const filtros = { idCentro: req.body.idCentro };
+/**
+ * Listar actividades 
+ * @param req {body:idCentro}
+ */
+module.exports.listar_todas_actividades = (req ,res) =>{
+
+    const filtros = {idCentro: req.body.idCentro};
+    
     model_registrar_actividad.find(filtros).then(
-        function (actividades) {
-            if (actividades.length > 0) {
+        function(actividades){
+            if(actividades.length > 0){
                 res.json(
                     {
                         success: true,
                         msg: actividades
                     }
                 )
-            } else {
+            }else{
                 res.json(
                     {
                         success: false,
@@ -65,74 +72,3 @@ module.exports.listar_todas_actividades = (req, res) => {
     )
 };
 
-
-module.exports.buscar_por_id = function (req, res) {
-    model_registrar_actividad.find({ _id: req.body.idCentro }).then(
-        function (actividad) {
-            if (actividad) {
-                res.json(
-                    {
-                        success: true,
-                        msg: actividad
-                    }
-                )
-            } else {
-                res.json(
-                    {
-                        success: false,
-                        msg: 'No se encontró la actividad'
-                    }
-                )
-
-            }
-        }
-
-    )
-
-};
-
-
-module.exports.actualizar_actividad = function (req, res) {
-    console.log(req.body);
-    model_registrar_actividad.findByIdAndUpdate(req.body.id, { $set: req.body }, function (error) {
-        if (error) {
-            res.json(
-                {
-                    success: false,
-                    msg: `No se puede actualizar la actividad, ocurrió el siguiente error ${error}`
-                }
-            );
-
-        } else {
-            res.json(
-                {
-                    success: true,
-                    msg: 'La actividad se actualizó exitosamente'
-                }
-            );
-
-        }
-    });
-}
-
-module.exports.eliminar = function (req, res) {
-    console.log(req.body);
-    model_registrar_actividad.findByIdAndRemove(req.body.id,
-        function (error) {
-            if (error) {
-                res.json(
-                    {
-                        success: false,
-                        msg: `No se pudo eliminar la actividad, ocurrió el siguiente error ${error}`
-                    }
-                );
-            } else {
-                res.json(
-                    {
-                        success: true,
-                        msg: 'La actividad se elimino  exitosamente'
-                    }
-                );
-            }
-        });
-}

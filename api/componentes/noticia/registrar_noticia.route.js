@@ -41,11 +41,6 @@ router.route('/buscar_noticia/:idCentro')
         }
     );
 
-    router.route('/eliminar_noticia')
-    .post(
-        function (req, res) {
-            registrar_noticia_api.eliminar(req, res);
-        }
-    );
+
  
 module.exports = router;

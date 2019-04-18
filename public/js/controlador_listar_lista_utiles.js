@@ -63,21 +63,6 @@ let mostrar_datos = () => {
             //se crea el boton para agregar articulos a la lista de útiles
             boton_agregar.classList.add('fas','fa-plus');
             boton_agregar.dataset.codigo = lista_utiles[i]['_id'];
-           
-            
-            //se crea el boton dinamino para ver la los articulos ya agregados en la lista de utiles 
-            boton_ver.classList.add('fas' ,'fa-search');
-            boton_ver.dataset.codigo = lista_utiles[i]['_id'];
-            
-
-            //se crea el boton para modificar la lista de utiles 
-            btn_modificar.classList.add('fas', 'fa-pencil-alt');
-            btn_modificar.dataset.id_lista = lista_utiles[i]['_id'];
-           
-            //se llama a la función para ver los articuos de una lista de utiles 
-            boton_ver.addEventListener('click', ver_info_lista);
-
-            
             //se llama a la función para agregar articulos a una lista de utiles 
             boton_agregar.addEventListener('click', seleccionar_lista);
 

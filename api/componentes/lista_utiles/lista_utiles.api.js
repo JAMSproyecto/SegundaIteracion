@@ -3,7 +3,7 @@
 const model_utiles = require('./lista_utiles.model');
 const model_cedu = require('../centro_educativo/centroEducativo.model');
 
-//para registrar la lista de utiles 
+
 module.exports.registrar = (req, res) =>{
     let lista_utiles_nuevo = new model_utiles(
         {
@@ -36,7 +36,7 @@ lista_utiles_nuevo.save(
 );
 };
 
-//función para obtener las listas por id especifico del centro 
+
 module.exports.obtener_todos = (req, res) =>{
     model_utiles.find({codigo : req.body.codigo}).then(
         function (utiles){
@@ -72,7 +72,7 @@ module.exports.obtener_todos = (req, res) =>{
     )
 };
 
-//funcion para agregar artículos a la lista de útiles 
+
 module.exports.agregar_articulos = (req, res) =>{
 console.log(req.body.id_lista);
     model_utiles.findByIdAndUpdate(

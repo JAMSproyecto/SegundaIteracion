@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
-    <script src="./js/administrador_sesion.js"></script>
-
-    <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css"
+        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
-    <link rel="stylesheet" href="./css/animate.min.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerGeneral.css" />
-    <link rel="stylesheet" href="./css/iconos.css">
-    <link rel="stylesheet" href="css/tablas.css" />
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/iconos.css">
-    <link rel="stylesheet" href="./css/general.css">
-
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/centro.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/general.css" />
 </head>
 
 <body>
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
-        visualiza el menu el los header-->
+    visualiza el menu el los header-->
     <header class="bloqueHeader">
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
@@ -50,53 +42,50 @@
                 <div class="bloqueHeader__nombreCed">
                     <span class="titulo_centro_educativo"></span>
                 </div>
-                <nav class="bloqueHeader__menuDer">
-                    <ul>
-                        <li>
-                            <a href="#"> <i class="fas fa-user-cog"></i></a>
-                            <ul>
-                                <li><a href="#">Cambiar Contraseña</a></li>
-                                <li class="cerrar_sesion" id="boton_cerrar"><a href="#">Cerrar sesión</a></li>
-                                <li><a href="#">Modificar perfil</a></li>
-                            </ul>
 
-                        </li>
-                    </ul>
-                </nav>
+                <div class="bloqueHeader__btnCerrar">
+                    <button type="button" id="boton_cerrar" class=" btn--amarillo">Cerrar
+                        sesi&oacute;n</button></li>
+                </div>
             </div>
         </div>
-
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
                 <span>Les da la bienvenida</span>
             </div>
         </div>
+        <div class="bloqueHeader__imagen">
 
+            <div></div>
+            <div></div>
         </div>
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul>
-
+                <li><a class="menuArriba__btn contrasenia" href="#">Cambiar Contraseña</a></li>
+                </li>
+                <li>
+                    <a class="calificaciones" href="#">Modificar perfil</a></li>
                 <li><a class="centros" href="#">Actividad</a>
                     <ul>
                         <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a>
                         </li>
-                        <li><a class="subtitulos" href="listar_actividad.html">Lista de actividades</a></li>
+                        <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
                     </ul>
                 </li>
                 <li><a class="centros" href="#">Noticias</a>
                     <ul>
-                        <li><a href="registrar_noticia.html">Registrar noticia</a></li>
-                        <li><a href="listar_noticia.html">Lista de noticias</a></li>
+                        <li><a class="subtitulos" href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a class="subtitulos" href="listar_noticia.html">Listar noticias</a></li>
                     </ul>
                 </li>
                 <li><a class="utiles" href="#"> Útiles</a>
                     <ul>
                         <li>
-                            <a href="registrarListaUtilesCentro.html">Registrar lista de
+                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
                                 útiles</a></li>
 
-                        <li><a href="listaUtilesCentroEducativo.html">Lista de
+                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de
                                 útiles</a>
                         </li>
                     </ul>
@@ -105,7 +94,7 @@
                 <li><a class="utiles" href="#"> Citas</a>
                     <ul>
                         <li>
-                            <a class="subtitulos" href="lista_citas.html">lista de citas
+                            <a class="subtitulos" href="lista_citas.html">listar citas
                             </a></li>
                     </ul>
                 </li>
@@ -113,41 +102,42 @@
                 <li>
                     <a class="reporte">Reportes</a>
                     <ul>
-                        <li><a href="#">Ranking anual</a></li>
+                        <li><a class="subtitulos" href="#">Ranking anual</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="reporte">Preguntas frecuentes</a>
                     <ul>
-                        <li><a href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
                         </li>
-                        <li><a href="listarPreguntasFrecuentes.html">Lista de FAQS</a></li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="tituloPrincipal">
-            <h1>Actualizar Noticia </h1>
-        </div>
-        <section class="bloque bloqueNoticia">
-
-            <div class="bloqueNoticia__contenedor">
+    <main id="main">
+        <section class="bloqueNoticia">
+            <div class="bloqueNoticia__tituloPrincipal tituloPrincipal">
+                <h1 class="">Actualizar Noticia </h1>
+            </div>
+            <div class="bloqueNoticia__tituloPrincipal bloquePrincipal">
                 <form class="bloqueNoticia__registrarNoticia">
-                    <div class="bloqueDato">
+                    <div class="text_center">
                         <label for="txt_tema"> Tema de la noticia </label>
                         <input type="text" id="txt_tema">
                     </div>
 
-                    <div class="bloqueDato">
+                    <div class="text_center">
                         <label for="txt_informacion"> Información </label>
                         <textarea id="txt_informacion"></textarea>
                     </div>
                 </form>
             </div>
+            <div class="formulario-boton">
+                <button type="button" class="btn  btn--amarillo" id="btn_actualizar">Registrar</button>
+            </div>
         </section>
-        <button type="button" class="btn  btn--amarillo" id="btn_actualizar">Registrar</button>
     </main>
     <footer>
         <div class="footer__cuerpo">
