@@ -116,7 +116,7 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles,pidActividad,) => {
+let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles,pidActividad,) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_actividad/",
@@ -161,7 +161,7 @@ let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetall
     });
 };
 
-let eliminar = (pid) => {
+let eliminar_actividad = (pid) => {
     let request = $.ajax({
     url: "http://localhost:4000/api/eliminar_actividad",
     method: "POST",
@@ -190,7 +190,7 @@ request.done(function (msg) {
             title: msg.msg
         });
 
-    }
+    } 
 
 });
 

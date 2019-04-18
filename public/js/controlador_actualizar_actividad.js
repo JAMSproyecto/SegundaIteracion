@@ -1,5 +1,7 @@
 'use strict';
 
+import { actualizar_actividad } from "../../api/componentes/actividad/registrar_actividad.api";
+
 const input_actividad = document.querySelector('#txt_actividad');
 const input_fecha = document.querySelector('#txt_fecha');
 const input_hora_inicio = document.querySelector('#txt_hora_inicio');
@@ -43,7 +45,7 @@ let obtener_datos = () => {
 
     input_detalles.value;
 
-    actualizar(actividad,fecha,hora_inicio,finaliza, detalles, id);
+    actualizar_actividad(actividad,fecha,hora_inicio,finaliza, detalles, id);
 };
 
 
