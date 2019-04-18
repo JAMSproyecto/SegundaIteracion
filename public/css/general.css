@@ -618,6 +618,10 @@ select:not(.error_input):focus,
     font-size: 19px;
 }
  
+/*creado por Johan */
+.ocultar{
+    visibility: hidden;
+}
 
 
 
