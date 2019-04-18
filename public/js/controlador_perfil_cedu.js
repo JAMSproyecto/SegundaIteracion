@@ -86,9 +86,6 @@ if(calificacionSeleccionada < 1){
 };
 let calificarMEP = () => {
 
-  const tipoUsuario = localStorage.getItem('tipoUsuario');
-
-  if (tipoUsuario == 'superadmin') {
 let idCentro = localStorage.getItem('verPerfilCEdu');
   console.log(idCentro);
 
@@ -185,7 +182,7 @@ let idCentro = localStorage.getItem('verPerfilCEdu');
 
 
   });
-  }
+
 
   
 
