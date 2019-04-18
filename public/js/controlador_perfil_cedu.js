@@ -87,8 +87,9 @@ if(calificacionSeleccionada < 1){
 let calificarMEP = () => {
 
   const tipoUsuario = localStorage.getItem('tipoUsuario');
+  console.log(tipoUsuario);
 
-  if (tipoUsuario == 'superadmin') {
+  if (tipoUsuario == 'SuperAdmin') {
 let idCentro = localStorage.getItem('verPerfilCEdu');
   console.log(idCentro);
 
@@ -178,11 +179,11 @@ let idCentro = localStorage.getItem('verPerfilCEdu');
             'El centro ha recibido una calificación total de: ' + prom +', para total de: ' +estrellasMep+ ' estrellas',
           confirmButtonText: 'Aceptar'
         })
+        registrar_calificacionMEP(idCentro, estrellasMep);
       }
     })
 
-    registrar_calificacionMEP(idCentro, estrellasMep);
-
+   
 
   });
   }

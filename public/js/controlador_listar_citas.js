@@ -31,7 +31,7 @@ function imprimir_citas() {
 
     let citas = listar_citas(localStorage.getItem('id'));
 
-    tabla_citas.innerHTML = '';
+   // tabla_citas.innerHTML = '';
 
     for (let i = 0; i < citas.length; i++) {
 
@@ -51,34 +51,38 @@ function imprimir_citas() {
     }
 };
 
-
+/*Se comenta esta seccion porque no hay boton de buscar en el calendario. A la espera de la revisión de Andres. Marlon 4/18
 botonBuscar.addEventListener('click', function () {
 
     let inicio = input_inicio.value;
     let fin = input_fin.value;
     let nombre_filtrar = input_filtrar.value;
 
-    let start = new Date(inicio + ' 00:00:00 GMT-06:00'); /*llamar a la funcion y pasar como parametro lo que uqier convertir en date*/
+    let start = new Date(inicio + ' 00:00:00 GMT-06:00'); //llamar a la funcion y pasar como parametro lo que uqier convertir en date
+
     let end = new Date(fin + ' 00:00:00 GMT-06:00');
 
-    if ((inicio && fin) || (nombre_filtrar)) {
+if ((inicio && fin) || (nombre_filtrar)) {
 
-        $('#tbl_citas tbody tr').hide().each(function () {
+    $('#tbl_citas tbody tr').hide().each(function () {
 
-            let fecha = $('td', this).eq(4).data('fecha'); /*this cada uno de los tr, this se convierte en tr en cada iteracion*/
-            let fecha_actual = new Date(fecha + ' 00:00:00 GMT-06:00');
-            let calendario = start <= fecha_actual && fecha_actual <= end;
+        let fecha = $('td', this).eq(4).data('fecha'); //this cada uno de los tr, this se convierte en tr en cada iteracion
+        let fecha_actual = new Date(fecha + ' 00:00:00 GMT-06:00');
+        let calendario = start <= fecha_actual && fecha_actual <= end;
 
 
-            if (calendario) {
-                $(this).show();
-            } /*seleciona todo los tr luego los esconde y luego para cada uno agarra la fecha*/
-        });
-    } else {
-        $('#tbl_citas tbody tr').show();
+        if (calendario) {
+            $(this).show();
+        } //seleciona todo los tr luego los esconde y luego para cada uno agarra la fecha
+    });
+} else {
+    $('#tbl_citas tbody tr').show();
 
-    }
+}
 });
+
+
+Se termina de comentar la funcionalidad de buscar citas*/
 
 
 window.addEventListener('load', () => {
