@@ -5,7 +5,9 @@ const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
+const div_noticias = document.querySelector('#tabla__noticias');
 
+const noticias = listar_todas_noticias();
 
 let calificacionSeleccionada = 0;
 
@@ -207,6 +209,31 @@ let calificarMEP = () => {
 //Marlon. Fin del calificar MEP
 
 
+
+let mostrar_noticias = () => {
+  div_noticias.innerHTML = '';
+  if (noticias) {
+    if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
+
+      let bloques = '';
+      noticias.forEach(function (objeto) {
+        bloques += '<div class="noticia not">';
+        bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
+        bloques += '<i class="far fa-newspaper"></i>';
+        bloques += '<p class="informacion"> ' + objeto.informacion + '</p>';
+        bloques += '<p class="hora__noticia">Fecha:' + objeto.fecha + '</p>';
+
+        bloques += '</div>';
+      });
+      div_noticias.innerHTML = bloques;
+    } else {
+    }
+  } else {
+    console.error('Error al obtener las noticias');
+  }
+
+};
+
 window.onload = () => {
   let id;
 
@@ -250,10 +277,9 @@ window.onload = () => {
   crearCalendario(id);
   crearActividades();
 
-
+  mostrar_noticias();
   cargarCalificaciones(id)
   mostrar_resennia(perfil.referenciaHistorica);
-
 
 };
 

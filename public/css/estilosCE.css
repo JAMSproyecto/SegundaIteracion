@@ -1,4 +1,6 @@
 
+/*estilos resennia*/
+
 #bloqueResennia{
   width: 90%;
   margin: 0 auto;
@@ -12,20 +14,34 @@
     font-size: 18px;
 }
 
+/*fin estilos resennia*/
 
 
-.menu__editar-oferta {
-  position: relative;
-  left: 70%;
-  color: #17c0eb;
-  top: 29px;
+/*estilos noticias*/
+#contenedorNoticias{
+  float: left;
 }
 
-.menu__editar-oferta a {
-  color: #17c0eb;
-  text-decoration: none;
+.fa-newspaper{
+  font-size: 52px;
+  /* float: left; */
+  color: #253b80;
+  
 }
 
+.noticia {
+  width: 212px;
+  box-shadow: 0 0 3px #78909c;
+  margin: 10px;
+  /* padding: 50px 20px; */
+  display: inline-block;
+  border-radius: 12px;
+  height: 200px;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+}
+/*fin estilos noticias*/
 
 
 /*fin oferta academica*/
@@ -162,24 +178,7 @@
   margin: 8px;
 }
 
-.star-rating a {
-  display: inline-block;
-  color: #95a5a6;
-  font-size: 23px;
-  text-decoration: none;
-}
 
-.star-rating:hover a {
-  color: #f39c12; /* amarillo (seleccionado) */
-}
-
-.star-rating:hover a:hover ~ a {
-  color: #95a5a6; /* gris (normal) */
-}
-
-.star-rating a:focus {
-  color: #f39c12;
-}
 
 .servicio:hover {
   box-shadow: 0 0 10px #78909c;
@@ -236,29 +235,13 @@
 
 
 
-.bloque_noticias {
-  width: 900px;
-  margin: 150px auto;
-}
 
 .noticias__uno p {
   text-align: center;
   font-family: 'Cinzel', serif;
 }
 
-.noticia {
-  border: 1px solid #2d3436;
-  width: 212px;
-  box-shadow: 0 0 3px #78909c;
-  margin: 10px;
-  /* padding: 50px 20px; */
-  display: inline-block;
-  border-radius: 12px;
-  height: 200px;
-  background: #fff;
-  text-align: center;
-  padding: 10px;
-}
+
 
 .tabla__noticias,
 .tabla__actividades {
@@ -266,32 +249,14 @@
   margin-bottom: 25px;
 }
 
-.contenedor__noticias,
-.contenedor__actividades {
-  width: 1000px;
-  margin: auto;
-  text-align: center;
-}
+
 
 .noticia  strong {
   font-size: 24px;
   text-transform: uppercase;
 }
 
-.actividad,
-.noticia {
-  border: 1px solid #2d3436;
-  width: 212px;
-  box-shadow: 0 0 3px #78909c;
-  margin: 10px;
-  /* padding: 50px 20px; */
-  display: inline-block;
-  border-radius: 12px;
-  height: 200px;
-  background: #fff;
-  text-align: center;
-  padding: 10px;
-}
+/*estilos cita*/
 
 button.fc-button {
   background-image: none;
@@ -384,7 +349,7 @@ button.fc-button:focus {
   margin-bottom: 15px;
 }
 
-
+/*fin estilos cita*/
 
 
 /* Comentarios */
@@ -417,11 +382,10 @@ button.fc-button:focus {
   overflow: hidden;
 }
 
-
-
-
-
-
+.tblAddComentario textarea {
+  max-width: 100%;
+}
+/*fin estilos comentarios*/
 
 .bloqueResenna{
     background: #fff;
@@ -430,9 +394,7 @@ button.fc-button:focus {
 
 
 
-.tblAddComentario textarea {
-    max-width: 100%;
-}
+
 
 
 
