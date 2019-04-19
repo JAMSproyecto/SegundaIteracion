@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="./css/tablaDatos.css" />
     <link rel="stylesheet" href="./css/generalFormulario.css">
-    <link rel="stylesheet" href="css/centro.css" />
+    <link rel="stylesheet" href="css/estilosCE.css" />
 </head>
 
 <body>
@@ -68,24 +68,13 @@
                         </ul>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
-
-
-
-
-
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
                 <span>Nuestra Institución les da la bienvenida</span>
             </div>
         </div>
-
-
-
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
             <p class="nav__cerrar">
                 <a href="javascript:void(0)" class="closebtn" onclick="menuNavVisible(false);return false;"
@@ -147,14 +136,28 @@
     </header>
 
     <main id="main">
-
-        <div>
-            <h2 class="titulo__secundario">Reseña Historica</h2>
-        </div>
-        <div class="bloqueResenna">
-            <p>Reseña..</p>
-        </div>
-
+        <section id="bloqueResennia">
+            <div>
+                <h2 class="titulo__secundario">Reseña Historica</h2>
+                <p id='mostrarResennia'></p>
+            </div>
+        </section>
+        <section id="contenedorNoticias">
+            <div>
+                <h2 class="titulo__secundario">Noticias</h2>
+            </div>
+            <div class="tabla__noticias">
+                <div id="tabla__noticias" class="contenedor__noticias"></div>
+            </div>
+        </section>
+        <section id="contenedorActividades">
+            <div>
+                <h2 class="titulo__secundario">Actividades</h2>
+            </div>
+            <div class="tabla__actividades">
+                <div id="tabla__actividades" class="contenedor__actividades"></div>
+            </div>
+        </section>
 
         <section class="bloque__descripcion">
             <div class="contenedor__servicios">
@@ -200,101 +203,57 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-            </div>
-            <div class="tabla__oferta">
-                <div class="contenedor__tabla">
-                    <div class="titulo_oferta">
-                        <h2 class="titulo__secundario">Oferta académica</h2>
+
+                    <div class="my__60">
+                        <div class="contenedor cuerpo">
+                            <div class="contenedor contenido">
+                                <section>
+
+                                    <div>
+                                        <h2 class="titulo__secundario">Comentarios</h2>
+                                    </div>
+
+                                    <div class="tblAddComentario tabla__responsive">
+                                        <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <textarea id="txtEditorComentario" maxlength="500" rows="2"
+                                                            placeholder="Haz un comentario..."></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+
+
+                                                        <div class="text__right">
+                                                            <button type="button" class="btn btn--amarillo"
+                                                                id="btnComentar">Agregar</button>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="tabla tabla__minimalista" id="tblComentarios">
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+                                </section>
+                                <section>
+                                    <div class="bloque_calendario">
+                                        <h2 class="titulo__secundario">Citas</h2>
+                                        <div id="calendario"></div>
+
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
                     </div>
-                    <div class="oferta__academica">
-                        <div class="preescolar">
-                            <img src="./imgs/Niños-felices.png" />
-
-                            <p>Prescolar</p>
-                        </div>
-                        <div class="primaria">
-                            <img src="./imgs/primariajpg.jpg" />
-                            <p>Primaria</p>
-                        </div>
-                        <div class="secundaria">
-                            <img src="./imgs/secundaria.jpeg" />
-                            <p>Secundaria</p>
-                        </div>
-        </section>
-
-
-        <section id="contenedorNoticias">
-            <div>
-                <h2 class="titulo__secundario">Noticias</h2>
-            </div>
-            <div class="tabla__noticias">
-                <div id="tabla__noticias" class="contenedor__noticias"></div>
-            </div>
-        </section>
-        <section id="contenedorActividades">
-            <div>
-                <h2 class="titulo__secundario">Actividades</h2>
-            </div>
-            <div class="tabla__actividades">
-                <div id="tabla__actividades" class="contenedor__actividades"></div>
-            </div>
-        </section>
-
-
-
-
-        <div class="my__60">
-            <div class="contenedor cuerpo">
-                <div class="contenedor contenido">
-                    <section>
-
-                        <div>
-                            <h2 class="titulo__secundario">Comentarios</h2>
-                        </div>
-
-                        <div class="tblAddComentario tabla__responsive">
-                            <table class="tabla tabla__minimalista" id="tblAddComentario">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <textarea id="txtEditorComentario" maxlength="500" rows="2"
-                                                placeholder="Haz un comentario..."></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-
-
-                                            <div class="text__right">
-                                                <button type="button" class="btn btn--amarillo"
-                                                    id="btnComentar">Agregar</button>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="tabla tabla__minimalista" id="tblComentarios">
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-
-                    </section>
-                    <section>
-                        <div class="bloque_calendario">
-                            <h2 class="titulo__secundario">Citas</h2>
-                            <div id="calendario"></div>
-
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
 
 
 

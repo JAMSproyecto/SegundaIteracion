@@ -1,95 +1,16 @@
-.header__centro {
-  margin-bottom: 0px;
-}
 
-.titulo_centro_educativo {
-  color: #34495e;
-  font-size: 29px;
-  padding-top: 33px;
-  text-align: center;
-  /* border-bottom: 2px solid; */
-
-  margin-bottom: 17px;
-}
-
-.boton__citas {
-  text-align: right;
-}
-
-main {
-  margin: 0;
-  padding: 0;
-}
-
-
-
-/*carrusel*/
-
-.slider {
+#bloqueResennia{
+  width: 90%;
   margin: 0 auto;
-  max-width: 90%;
-}
-
-.slider .slide_viewer {
-  height: 340px;
-  overflow: hidden;
-  position: relative;
   text-align: center;
+  padding: 30px 0;
 }
 
-.slider .slide_group {
-  height: 100%;
-  position: relative;
-  width: 100%;
+#bloqueResennia p{
+  font-style: italic;
+    
+    font-size: 18px;
 }
-
-.slider .slide {
-  display: none;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #ccc;
-  border: 1px solid #333;
-  width: 100%;
-  height: 340px;
-
-  background-size: cover;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: 100vw 100%;
-}
-
-.slider .slide:first-child {
-  display: block;
-}
-
-.slider .slide:nth-of-type(1) {
-  background-image: url(./../imgs/aulas/imagen9.png);
-}
-
-.slider .slide:nth-of-type(2) {
-  background-image: url(./../imgs/aulas/imagen3.jpg);
-}
-
-.slider .slide:nth-of-type(3) {
-  background-image: url(./../imgs/imagen3.jpg);
-}
-
-.slider .slide:nth-of-type(4) {
-  background-image: url(./../imgs/aulas/imagen4.png);
-}
-
-.slider .slide:nth-of-type(5) {
-  background-image: url(./../imgs/aulas/imagen6.jpg);
-}
-
-/*fin de carrusel*/
-
-
 
 
 
