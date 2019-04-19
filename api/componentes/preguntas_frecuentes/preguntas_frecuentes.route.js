@@ -31,4 +31,25 @@ router.route('/obtener_preguntaFrecuente_general')
             pregunta_frecuente_api.obtener_PreguntaFrecuente_General(req, res);
         }
     );
+
+router.route('/obtener_preguntaFrecuente')
+.post(
+    function (req, res) {
+        pregunta_frecuente_api.obtener_PreguntaFrecuente(req, res);
+    }
+);
+
+router.route('/actualizar_preguntaFrecuente')
+.post(
+    function (req, res) {
+        pregunta_frecuente_api.actualizar_PreguntaFrecuente(req, res);
+    }
+);
+
+router.route('/eliminar_preguntaFrecuente')
+.post(
+    function (req, res) {
+        pregunta_frecuente_api.eliminar_PreguntaFrecuente(req, res);
+    }
+);
 module.exports = router;

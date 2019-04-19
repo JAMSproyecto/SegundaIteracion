@@ -160,3 +160,70 @@ module.exports.obtener_PreguntaFrecuente_General = (req ,res) =>{
 
     )
 };
+
+/**
+ Método para agregar pregunta frecuente para la aplicación
+ * @param req{
+ *              Pregunta,
+ *              Respuesta
+ *          }
+ * @returns res {
+ *          exito,
+ *          (Opcional)msg,
+ *          
+ *      }
+ */
+module.exports.obtener_PreguntaFrecuente = (req ,res) =>{
+    console.log(req.body.id);
+    Model_PreguntaFrecuente.findById(
+        req.body.id,
+        function(error,preguntaFrecuente){
+            if(error){
+                res.json(
+                    {
+                        exito: false
+                    }
+                )
+            }else{
+                res.json(
+                    {
+                        exito: true,
+                        preguntaFrecuente: preguntaFrecuente
+                    }
+                )
+            }
+        }
+    )
+};
+
+module.exports.actualizar_PreguntaFrecuente = function(req, res){
+    Model_PreguntaFrecuente.findByIdAndUpdate(req.body.id, { $set: {
+        pregunta: req.body.pregunta,
+        respuesta: req.body.respuesta
+    } },
+        function (error){
+            console.log(error);
+            if(error){
+                
+                res.json({success : false , msg : 'No se pudo actualizar la pregunta frecuente'});
+            }else{
+                res.json({success: true , msg : 'La pregunta frecuente se actualizó con éxito'});
+            }
+        }
+    
+    );
+};
+
+module.exports.eliminar_PreguntaFrecuente = function(req, res){
+    console.log(req.body.id);
+    Model_PreguntaFrecuente.findByIdAndRemove(req.body.id,
+
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar el artículo'});
+            }else{
+                res.json({success: true ,msg: 'El articulo se eliminó con éxito'}); 
+            }
+        }
+    )
+};

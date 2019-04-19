@@ -16,6 +16,7 @@ const boton_registrar = document.querySelector('#btn');
 
 let validar = () => {
     let error = false;
+    let fecha = moment(`${input_fecha.value} ${input_hora.value}`, 'DD-MM-YYYY hh:mm');
 
     if (input_nombre.value == '') {
         error = true;
@@ -47,21 +48,17 @@ let validar = () => {
         input_correo.classList.remove('error_input');
     }
 
-    if (input_fecha.value == '') {
+    if (fecha.toString() == 'Invalid date' || fecha.isSameOrBefore(moment())) {
         error = true;
         input_fecha.classList.add('error_input');
+        input_hora.classList.add('error_input');
     } else {
         input_fecha.classList.remove('error_input');
-    }
-
-
-    if (input_hora.value == '') {
-        error = true;
-        input_hora.classList.add('error_input');
-
-    } else {
         input_hora.classList.remove('error_input');
     }
+
+
+    
     if (select.value == '') {
         error = true;
         select.classList.add('error_input');
@@ -107,7 +104,7 @@ let mostrar_datos = () => {
         let codigo = localStorage.getItem('padreVerPerfilCEdu'); 
         
         
-
+        
 
 
 
@@ -120,13 +117,49 @@ let mostrar_datos = () => {
 
 
 window.onload = () => {
+    $.datetimepicker.setDateFormatter({
+        parseDate: function (date, format) {
+            var d = moment(date, format);
+            return d.isValid() ? d.toDate() : false;
+        },
+        
+        formatDate: function (date, format) {
+            return moment(date).format(format);
+        },
+    
+        //Optional if using mask input
+        formatMask: function(format){
+            return format
+                .replace(/Y{4}/g, '9999')
+                .replace(/Y{2}/g, '99')
+                .replace(/M{2}/g, '19')
+                .replace(/D{2}/g, '39')
+                .replace(/H{2}/g, '29')
+                .replace(/m{2}/g, '59')
+                .replace(/s{2}/g, '59');
+        }
+    });
+
 
     $.datetimepicker.setLocale('es');
     $('#fecha').datetimepicker({
-        timepicker: false, datepicker: true, mask: true, format: 'Y-m-d', /*yearStart: ,*/
+        timepicker: false, datepicker: true, mask: true, format: 'DD-MM-YYYY',
        
         minDate: '2017-01-01'
     });
+ 
+    let informacionPadre = buscar_padre(localStorage.getItem('id'));
+
+    input_nombre.value = informacionPadre.nombre;
+    input_apellidos.value = `${informacionPadre.apellido} ${informacionPadre.segundoApellido}`;
+    if(informacionPadre.numCasa != '' && typeof informacionPadre.numCasa != "undefined")
+        input_telefono.value = informacionPadre.numCasa;
+    else
+        input_telefono.value = informacionPadre.numCel;
+    
+    input_correo.value = informacionPadre.correo;
+
+
 };
 
 

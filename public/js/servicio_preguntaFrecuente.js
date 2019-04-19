@@ -2,8 +2,7 @@
 
 //Preguntas frecuentes centro educativo
 let post_registrarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativo) => {
-    let request = $.ajax(
-        {
+    let request = $.ajax({
             url: "http://localhost:4000/api/registrar_preguntaFrecuente_centroEducativo",
             method: "POST",
             data: {
@@ -19,111 +18,126 @@ let post_registrarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativo
 
     request.done(function (msg) {
         if (msg.exito) {
-            swal.fire(
-                {
-                    type: 'success',
-                    title: 'Los datos fueron guardados exitosamente',
-                    text: 'Nos comunicaremos con usted tan pronto como sea posible'
-                }
-            ).then((resultado)=>{
+            swal.fire({
+                type: 'success',
+                title: 'Los datos fueron guardados exitosamente',
+                text: 'Nos comunicaremos con usted tan pronto como sea posible'
+            }).then((resultado) => {
                 window.location.replace('listarPreguntasFrecuentes.html');
             });
         } else {
-            swal.fire(
-                {
-                    type: 'error',
-                    title: 'Los datos no fueron guardados exitosamente',
-                    text: 'Error'
-                }
-            );
-        }
-    }
-    );
- 
-    request.fail(function (jqXHR, textStatus) {
-        swal.fire(
-            {
+            swal.fire({
                 type: 'error',
-                title: 'Los datos no se lograron guardar',
-                text: 'Error de conexión'
-            }
-        );
-    }
-    );
+                title: 'Los datos no fueron guardados exitosamente',
+                text: 'Error'
+            });
+        }
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        swal.fire({
+            type: 'error',
+            title: 'Los datos no se lograron guardar',
+            text: 'Error de conexión'
+        });
+    });
 };
 
 
 
 let get_ListarPreguntasFrecuentes = (tabla_PreguntaFrecuente, idCentro) => {
-    
-     let request = $.ajax({
-       url: "http://localhost:4000/api/obtener_preguntaFrecuente_centroEducativo",
-       method: "POST",
-       data: {
-           idCentroEducativo: idCentro
-       },
-       dataType: "json",
-       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-       async : false
-     });
-   
-     request.done(function (res) {
-        if(res.exito){
-            for(let i = 0; i < res.preguntasFrecuentes.length; i++){
+
+    let request = $.ajax({
+        url: "http://localhost:4000/api/obtener_preguntaFrecuente_centroEducativo",
+        method: "POST",
+        data: {
+            idCentroEducativo: idCentro
+        },
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+
+    request.done(function (res) {
+        if (res.exito) {
+            for (let i = 0; i < res.preguntasFrecuentes.length; i++) {
                 let row = document.createElement('tr');
-    
+
                 let slt_filtros = document.querySelector('#preguntas');
                 let opt_pregunta = document.createElement('option');
- 
+
                 //Obtiene la pregunta
                 let pregunta = res.preguntasFrecuentes[i];
-                
+
                 //Pregunta
                 let cell = document.createElement('td');
-            
+
                 cell.innerHTML = pregunta.pregunta;
-    
+
                 row.appendChild(cell);
 
                 opt_pregunta.setAttribute('value', pregunta.pregunta);
                 slt_filtros.appendChild(opt_pregunta);
-    
+
                 //Respuesta
                 cell = document.createElement('td');
-                    
+
                 cell.innerHTML = pregunta.respuesta;
-    
-                row.appendChild(cell);    
-    
-                //Filtros
-                
+
+                row.appendChild(cell);
+
+                //se agrego el boton para actualizar 
+                let btn_actualizar = document.createElement('button');
+                btn_actualizar.dataset.id_preguntaFrecuente = pregunta._id;
+                btn_actualizar.textContent = 'Actualizar';
+
+                //se llama a la función para actualizar el articulo
+                btn_actualizar.addEventListener('click',
+                    function () {
+                        localStorage.setItem('IdPreguntaFrecuente', this.dataset.id_preguntaFrecuente);
+                        window.location.href = "actualizarPreguntaFrecuente.html";
+                    }
+                );
+                let celda_actualizar = row.insertCell();
+                celda_actualizar.appendChild(btn_actualizar);
+
+                //se agrego el boton para eliminar artículos
+                let btn_eliminar = document.createElement('button');
+                btn_eliminar.dataset.id_preguntaFrecuente = pregunta._id;
+                btn_eliminar.textContent = 'Eliminar';
+
+                //se llama a la función para eliminar articulos 
+                btn_eliminar.addEventListener('click', function () {
+                    eliminar_preguntaFrecuente(this.dataset.id_preguntaFrecuente);
+
+                });
+                let celda_eliminar = row.insertCell();
+                celda_eliminar.appendChild(btn_eliminar);
 
                 tabla_PreguntaFrecuente.appendChild(row);
             }
-        }
-        else{
+        } else {
             swal.fire({
                 type: 'error',
                 title: 'Error al traer listado de preguntas frecuentes',
                 text: 'Ocurrió un error inesperado, por favor intente de nuevo'
-              });
+            });
         }
-       
-     });
-   
-     request.fail(function (jqXHR, textStatus) {
-       
-     });
-        
-    
-   };
+
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+
+    });
+
+
+};
 
 
 //Preguntas frecuentes generales 
 
 let post_registrarPreguntaFrecuenteGeneral = (pPregunta, pRespuesta) => {
-    let request = $.ajax(
-        {
+    let request = $.ajax({
             url: "http://localhost:4000/api/registrar_preguntaFrecuente_general",
             method: "POST",
             data: {
@@ -139,105 +153,222 @@ let post_registrarPreguntaFrecuenteGeneral = (pPregunta, pRespuesta) => {
 
     request.done(function (msg) {
         if (msg.exito) {
-            swal.fire(
-                {
-                    type: 'success',
-                    title: 'Los datos fueron guardados exitosamente',
-                    text: 'Nos comunicaremos con usted tan pronto como sea posible'
-                }
-            ).then((resultado)=>{
+            swal.fire({
+                type: 'success',
+                title: 'Los datos fueron guardados exitosamente',
+                text: 'Nos comunicaremos con usted tan pronto como sea posible'
+            }).then((resultado) => {
                 window.location.replace('listarPreguntasFrecuentesGenerales.html');
             });
         } else {
-            swal.fire(
-                {
-                    type: 'error',
-                    title: 'Los datos no fueron guardados exitosamente',
-                    text: 'Error'
-                }
-            );
-        }
-    }
-    );
- 
-    request.fail(function (jqXHR, textStatus) {
-        swal.fire(
-            {
+            swal.fire({
                 type: 'error',
-                title: 'Los datos no se lograron guardar',
-                text: 'Error de conexión'
-            }
-        );
-    }
-    );
+                title: 'Los datos no fueron guardados exitosamente',
+                text: 'Error'
+            });
+        }
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        swal.fire({
+            type: 'error',
+            title: 'Los datos no se lograron guardar',
+            text: 'Error de conexión'
+        });
+    });
 };
 
 
 let get_ListarPreguntasFrecuentesGenerales = (tabla_PreguntaFrecuente) => {
-    
+
     let request = $.ajax({
-      url: "http://localhost:4000/api/obtener_preguntaFrecuente_general",
-      method: "GET",
-      data: {},
-      dataType: "json",
-      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-      async : false
+        url: "http://localhost:4000/api/obtener_preguntaFrecuente_general",
+        method: "GET",
+        data: {},
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
     });
-  
+
     request.done(function (res) {
-       if(res.exito){
-           for(let i = 0; i < res.preguntasFrecuentes.length; i++){
-               let row = document.createElement('tr');
-   
-               let slt_filtros = document.querySelector('#preguntas');
-               let opt_pregunta = document.createElement('option');
+        if (res.exito) {
+            for (let i = 0; i < res.preguntasFrecuentes.length; i++) {
+                let row = document.createElement('tr');
 
-               //Obtiene la pregunta
-               let pregunta = res.preguntasFrecuentes[i];
-               
-               //Pregunta
-               let cell = document.createElement('td');
-           
-               cell.innerHTML = pregunta.pregunta;
-   
-               row.appendChild(cell);
+                let slt_filtros = document.querySelector('#preguntas');
+                let opt_pregunta = document.createElement('option');
 
-               opt_pregunta.setAttribute('value', pregunta.pregunta);
-               slt_filtros.appendChild(opt_pregunta);
-   
-               //Respuesta
-               cell = document.createElement('td');
-                   
-               cell.innerHTML = pregunta.respuesta;
-   
-               row.appendChild(cell);
+                //Obtiene la pregunta
+                let pregunta = res.preguntasFrecuentes[i];
 
-               //Acciones
-               // cell = document.createElement('td');
-                   
-               // cell.innerHTML = '<>';
-   
-               // row.appendChild(cell);
-   
-   
-               //Filtros
-               
+                //Pregunta
+                let cell = document.createElement('td');
 
-               tabla_PreguntaFrecuente.appendChild(row);
-           }
-       }
-       else{
-           swal.fire({
-               type: 'error',
-               title: 'No se encontraron preguntas frecuentes'
-             });
-       }
-      
+                cell.innerHTML = pregunta.pregunta;
+
+                row.appendChild(cell);
+
+                opt_pregunta.setAttribute('value', pregunta.pregunta);
+                slt_filtros.appendChild(opt_pregunta);
+
+                //Respuesta
+                cell = document.createElement('td');
+
+                cell.innerHTML = pregunta.respuesta;
+
+                row.appendChild(cell);
+
+                //se agrego el boton para actualizar 
+                let btn_actualizar = document.createElement('button');
+                btn_actualizar.dataset.id_preguntaFrecuente = pregunta._id;
+                btn_actualizar.textContent = 'Actualizar';
+
+                //se llama a la función para actualizar el articulo
+                btn_actualizar.addEventListener('click',
+                    function () {
+                        localStorage.setItem('IdPreguntaFrecuente', this.dataset.id_preguntaFrecuente);
+                        window.location.href = "actualizarPreguntaFrecuente.html";
+                    }
+                );
+                let celda_actualizar = row.insertCell();
+                celda_actualizar.appendChild(btn_actualizar);
+
+                //se agrego el boton para eliminar artículos
+                let btn_eliminar = document.createElement('button');
+                btn_eliminar.dataset.id_preguntaFrecuente = pregunta._id;
+                btn_eliminar.textContent = 'Eliminar';
+
+                //se llama a la función para eliminar articulos 
+                btn_eliminar.addEventListener('click', function () {
+                    eliminar_preguntaFrecuente(this.dataset.id_preguntaFrecuente);
+
+                });
+                let celda_eliminar = row.insertCell();
+                celda_eliminar.appendChild(btn_eliminar);
+
+
+                tabla_PreguntaFrecuente.appendChild(row);
+            }
+        } else {
+            swal.fire({
+                type: 'error',
+                title: 'No se encontraron preguntas frecuentes'
+            });
+        }
+
     });
-  
+
     request.fail(function (jqXHR, textStatus) {
-      
+
     });
-       
-   
-  };
+
+
+};
+
+
+let post_actualizarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativo, pIdPreguntaFrecuente) => {
+    let request = $.ajax({
+            url: "http://localhost:4000/api/actualizar_preguntaFrecuente",
+            method: "POST",
+            data: {
+                pregunta: pPregunta,
+                respuesta: pRespuesta,
+                idCentroEducativo: pIdCentroEducativo,
+                id: pIdPreguntaFrecuente
+            },
+            dataType: "json",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+
+    );
+
+    request.done(function (msg) {
+        if (msg.success) {
+            swal.fire({
+                type: 'success',
+                title: 'Los datos fueron guardados exitosamente',
+                text: 'Nos comunicaremos con usted tan pronto como sea posible'
+            }).then((resultado) => {
+                window.location.replace('listarPreguntasFrecuentes.html');
+            });
+        } else {
+            swal.fire({
+                type: 'error',
+                title: 'Los datos no fueron guardados exitosamente',
+                text: 'Error'
+            });
+        }
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        swal.fire({
+            type: 'error',
+            title: 'Los datos no se lograron guardar',
+            text: 'Error de conexión'
+        });
+    });
+};
+
+
+// Get Listar Pregunta
+let get_obtenerPreguntaFrecuente = (pId) => {
+
+    let request = $.ajax({
+        url: "http://localhost:4000/api/obtener_preguntaFrecuente",
+        method: "POST",
+        data: {
+            id: pId
+        },
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+    let preguntaFrecuente = "";
+    request.done(function (res) {
+        if (res.exito) {
+            preguntaFrecuente = res.preguntaFrecuente;
+        } else {
+            swal.fire({
+                type: 'error',
+                title: 'Error al traer la pregunta frecuente',
+                text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+            });
+        }
+
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+
+    });
+
+    return preguntaFrecuente;
+};
+
+//función para eliminar pregunta frecuente
+let eliminar_preguntaFrecuente = (pId) => {
+    let request = $.ajax({
+        url: "http://localhost:4000/api/eliminar_preguntaFrecuente/",
+        type: "POST",
+        data: {
+            id: pId
+        },
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+
+    request.done(function (res) {
+        let tabla = document.querySelector('#tbl_preguntasFrecuentes tbody');
+        tabla.innerHTML = '';
+        if (localStorage.getItem('tipoUsuario') == 'CentroEducativo') {
+            get_ListarPreguntasFrecuentes(tabla, localStorage.getItem('id'));
+        } else {
+            get_ListarPreguntasFrecuentesGenerales(tabla);
+        }
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+
+    });
+
+};
