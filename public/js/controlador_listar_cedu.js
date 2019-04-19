@@ -63,56 +63,57 @@ let cargarCEdu = () => {
     listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
-                    pMessage.forEach(obj => {
-                            let card = document.createElement('div');
-                            let card_contenedor= document.createElement('div');
+                pMessage.forEach(obj => {
+                    
+                    let card = document.createElement('div');
+                    let card_contenedor = document.createElement('div');
 
 
-                            let centro_nombre = document.createElement('h1');
-                            centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
+                    let centro_nombre = document.createElement('h1');
+                    centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
 
-                            let telefono = document.createElement('span');
-                            telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+                    let telefono = document.createElement('span');
+                    telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
 
-                            let correo = document.createElement('span');
-                            correo.innerHTML = 'Correo: ' + obj['correo'];
+                    let correo = document.createElement('span');
+                    correo.innerHTML = 'Correo: ' + obj['correo'];
 
-                            let provincia = document.createElement('span');
-                            let direccion = document.createElement('span');
-                            obj['direccion'].forEach(obj2 => {
-                                    provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
-                                    direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
-                            });
-
-
-                            //Estoy trabajando en mostrar la calificacion del MEP en el card. Marlon 4/18
-                            let calificacionMep = document.createElement('span');
-                            let idCentro = obj['_id'];
-                            let obtenerCalificacion = listar_calificacion_CEdu(idCentro);
-                            console.log(obtenerCalificacion);
-                            
-
-                            let verMas = document.createElement('a');
-                            verMas.addEventListener('click', () => {
-                                    irAlPerfil(obj['_id']);
-                            }, false);
-                            verMas.innerHTML = '<i class="fas fa-id-card"></i>';
-
-
-                            card.appendChild(centro_nombre);
-                            card.appendChild(telefono);
-                            card.appendChild(correo);
-                            card.appendChild(provincia);
-                            card.appendChild(direccion);
-                            card.appendChild(verMas);
-                            card_contenedor.appendChild(card);
-
-                            cards_centros.appendChild(card_contenedor);
+                    let provincia = document.createElement('span');
+                    let direccion = document.createElement('span');
+                    obj['direccion'].forEach(obj2 => {
+                        provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
+                        direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
                     });
 
+
+                    //Estoy trabajando en mostrar la calificacion del MEP en el card. Marlon 4/18
+                    let calificacionMep = document.createElement('span');
+                    let idCentro = obj['_id'];
+                    let obtenerCalificacion = listar_calificacion_CEdu(idCentro);
+                    console.log(obtenerCalificacion);
+
+
+                    let verMas = document.createElement('a');
+                    verMas.addEventListener('click', () => {
+                        irAlPerfil(obj['_id']);
+                    }, false);
+                    verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+
+
+                    card.appendChild(centro_nombre);
+                    card.appendChild(telefono);
+                    card.appendChild(correo);
+                    card.appendChild(provincia);
+                    card.appendChild(direccion);
+                    card.appendChild(verMas);
+                    card_contenedor.appendChild(card);
+
+                    cards_centros.appendChild(card_contenedor);
+                });
+
             }
-    }
-});
+        }
+    });
 };
 
 window.onload = () => {

@@ -15,17 +15,7 @@ body {
   margin: 31px 0px;
 
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: inherit;
-  font-family: inherit;
-  line-height: 1.2;
-  font-weight: 500;
-}
+
 
 h1 {
   font-size: 33px;
@@ -39,22 +29,5 @@ h2 {
   font-weight: 700;
 }
 
-
-
-.titulo__principal {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-.titulo__secundario {
-  color: #17c0eb;
-  font-size: 21px;
-  font-weight: 600;
-  padding: 10px 49px;
-}
-
-.titulo__secundario__registro {
-  padding: 10px 0px;
-}
 
 

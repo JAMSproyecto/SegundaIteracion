@@ -7,7 +7,6 @@ const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const div_noticias = document.querySelector('#tabla__noticias');
 
-const noticias = listar_todas_noticias();
 
 let calificacionSeleccionada = 0;
 
@@ -15,43 +14,12 @@ let mostrar_resennia = (resennia) => {
 
   mostrarResennia.innerHTML = resennia;
   //bloque.classList.add('actividad');
-  console.log(resennia);
+
 
 
 }
 
 
-let crearActividades = () => {
-  let actividades = listar_todas_actividades();
-
-  if ('object' == typeof actividades) {
-    actividades.forEach((e, index) => {
-      let actividad = document.createElement('div');
-      actividad.classList.add('actividad');
-
-      let strong = document.createElement('strong');
-      strong.classList.add('nombre__actividad');
-
-      let fecha = document.createElement('p');
-      fecha.classList.add('fecha__actividad');
-
-      let hora = document.createElement('p');
-      hora.classList.add('hora__actividad');
-
-      strong.innerHTML = e.actividad;
-      fecha.innerHTML = e.fecha;
-      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
-      actividad.appendChild(strong);
-      actividad.appendChild(fecha);
-      actividad.appendChild(hora);
-      document.querySelector('#tabla__actividades').appendChild(actividad);
-    });
-  } else {
-    console.log(actividades);
-  }
-
-
-};
 
 let marcarEstrella = (event) => {
   let grupoEstrellas = document.querySelectorAll(".estrellas__cuerpo input");
@@ -208,9 +176,9 @@ let calificarMEP = () => {
 
 //Marlon. Fin del calificar MEP
 
-
-
 let mostrar_noticias = () => {
+  const noticias = listar_todas_noticias();
+
   div_noticias.innerHTML = '';
   if (noticias) {
     if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
@@ -233,6 +201,40 @@ let mostrar_noticias = () => {
   }
 
 };
+/*
+let crearActividades = () => {
+
+  let actividades = listar_todas_actividades();
+
+  if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
+    actividades.forEach(obj  => {
+      
+      let actividad = document.createElement('div');
+      actividad.classList.add('actividad');
+
+      let strong = document.createElement('strong');
+      strong.classList.add('nombre__actividad');
+
+      let fecha = document.createElement('p');
+      fecha.classList.add('fecha__actividad');
+
+      let hora = document.createElement('p');
+      hora.classList.add('hora__actividad');
+
+      strong.innerHTML = e.actividad;
+      fecha.innerHTML = e.fecha;
+      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
+      actividad.appendChild(strong);
+      actividad.appendChild(fecha);
+      actividad.appendChild(hora);
+      document.querySelector('#tabla__actividades').appendChild(actividad);
+    });
+  } else {
+    console.log(actividades);
+  }
+
+
+};*/
 
 window.onload = () => {
   let id;
@@ -275,7 +277,7 @@ window.onload = () => {
   }
 
   crearCalendario(id);
-  crearActividades();
+  //crearActividades();
 
   mostrar_noticias();
   cargarCalificaciones(id)
