@@ -132,7 +132,6 @@ let idCentro = localStorage.getItem('verPerfilCEdu');
       showCancelButton: true,
       progressSteps: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     }).queue([
-
       {
         title: rubrosActivos[0]['rubro']
       },
@@ -181,7 +180,7 @@ let idCentro = localStorage.getItem('verPerfilCEdu');
             'El centro ha recibido una calificación total de: ' + prom +', para total de: ' +estrellasMep+ ' estrellas',
           confirmButtonText: 'Aceptar'
         })
-        registrar_calificacionMEP(idCentro, estrellasMep, rubros[0], values[0], rubros[1], values[1],rubros[2], values[2],rubros[3], values[3],rubros[4], values[4],rubros[5], values[5],rubros[6], values[6],rubros[7], values[7],rubros[8], values[8],rubros[9], values[9]);
+        registrar_calificacionMEP(idCentro, estrellasMep, rubros[0].rubro, values[0], rubros[1].rubro, values[1],rubros[2].rubro, values[2],rubros[3].rubro, values[3],rubros[4].rubro, values[4],rubros[5].rubro, values[5],rubros[6].rubro, values[6],rubros[7].rubro, values[7],rubros[8].rubro, values[8],rubros[9].rubro, values[9]);
       }
     })
 

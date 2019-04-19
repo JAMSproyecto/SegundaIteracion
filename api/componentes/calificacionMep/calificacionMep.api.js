@@ -4,6 +4,7 @@ const modelCalificacionMEP = require('./calificacionMep.model');
 
 
 module.exports.registrar_calificacionMEP = (req, res) => {
+
     let calificacionMEP_nueva = new modelCalificacionMEP(
         {
             idCentro: req.body.idCentro,
