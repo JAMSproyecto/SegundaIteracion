@@ -1,12 +1,5 @@
 
 
-.tituloPrincipal{
-    text-align: center;
-    font-size: 30px;
-    margin: 31px 0px;
-
-}
-
 /*FORMULARIO ACTIVIDAD*/
 
 .bloque {
@@ -70,9 +63,9 @@
   }
   
   .bloqueFiltro input{
-      width: 232px;
-      /* display: block; */
-      display: inline-block;
+    width: 300px;
+    font-size: 19px;
+    display: inline-block;
   }
   
   
@@ -616,6 +609,7 @@ select:not(.error_input):focus,
 .bloqueFiltro input{
     width: 300px;
     font-size: 19px;
+    display: inline-block;
 }
  
 
