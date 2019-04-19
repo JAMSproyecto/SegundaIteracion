@@ -1,0 +1,621 @@
+
+
+/*FORMULARIO ACTIVIDAD*/
+
+.bloque {
+    background-color: #f5f6fa;
+    width: 45%;
+    margin: auto;
+    margin-bottom: 30px;
+    border: 1px solid #bdc3c7;
+   
+  }
+
+.bloqueActividad .bloqueActividad__contenedor,
+.bloqueNoticia   .bloqueNoticia__contenedor,
+.bloquePreguntas  .bloquePreguntas__contenedor,
+.bloqueRegistrar-utiles .bloqueRegistrar-utiles__contenedor{
+    padding: 30px 0px;
+    font-family: 'Asap', sans-serif;
+}
+
+
+.bloqueActividad__informacion{
+      display: table;
+  }
+
+
+.bloqueDato{
+    padding-bottom: 21px;
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+
+.bloqueDato input,
+.bloqueDato textarea{
+    text-align: center;
+  
+    font-size: 18px;
+}
+
+
+.bloqueDato input{
+    text-transform: capitalize;
+
+}
+
+.bloqueDato label{
+    font-size: 19px;
+}
+ 
+  .bloqueActividad__informacion .bloqueActividad__fecha,
+  .bloqueActividad__informacion .bloqueActividad__horaInicio,
+  .bloqueActividad__informacion .bloqueActividad__horaFinal
+{
+    display: table-cell;
+    padding: 0px 27px;
+}
+  /*FIN DE FORMULARIO ACTIVIDAD*/
+  .error_input {
+    background-color: rgba(255, 82, 82,0.3);
+  
+  }
+  
+  .bloqueFiltro input{
+    width: 300px;
+    font-size: 19px;
+    display: inline-block;
+  }
+  
+  
+ 
+
+
+
+.titulo__secundario{
+    color: #17c0eb;
+    font-size: 21px;
+    font-weight: 600;
+    padding: 10px 49px;
+ 
+}
+
+.titulo__secundario__registro{
+    padding: 10px 0px;
+}
+
+h2 {
+    color: #17c0eb;
+    font-size: 21px;
+    font-weight: 600;
+      margin-top:35px;
+    margin-bottom: 35px;
+}
+
+
+.titulo__tablas{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.centros__aprobados{
+    margin-bottom: 100px;
+}
+
+
+
+.registrar_actividad input{
+    width: 300px;
+
+
+}
+
+
+
+.bloque__principal-articulos
+{
+    background: #f9f9f9;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+
+.bloque__principal-utiles{
+    margin-top: 0px;
+}
+
+
+.formulario-boton .btn{
+    font-weight: 700;
+}
+
+
+
+
+/*formulario citas*/
+.columna__izquierda-cita{
+    background: #dfe6e9;
+ 
+}
+
+
+
+.columna__contenedor-izquierdo{
+    padding: 0px 49px;
+    position: relative;
+    /* bottom: -10px; */
+    top: 34px;   
+}
+
+
+.controlador{
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.columna__derecha-cita{
+    background: #81b43e;
+    padding: -4rem 1rem 0;
+    color: #fff;
+    position: relative;
+    right: 65px;
+    top: 30px;
+    box-shadow: 12px 14px 6px #bdc3c7;
+    padding: 10px;
+}
+
+
+.columna__contenedor{
+    padding-top: 13px;
+}
+
+
+
+
+.frm__motivo{
+    margin: auto;
+    width: 350px;
+    margin-top: 25px;
+}
+
+.comentario{
+    margin-top: 20px;
+}
+
+.btn_registrar{
+    padding: 10px 39px;
+    font-size: 15px;
+}
+
+
+/*fin formulario citas*/
+
+
+/*formulario registrar actividad*/
+
+.formulario_lista_utiles {  
+    width: 500px;
+    margin: auto;
+    padding: 0px 73px;
+}
+
+.formulario__articulos{
+    padding: 20px;
+}
+
+
+.registrar_actividad{
+    display: flow-root;
+}
+.registrar_actividad input{
+    width: 400px;
+    margin: auto;
+}
+
+
+
+
+
+.registrar_actividad .hora input{
+   width: 150px;
+
+}
+
+.bloqueHeader__informacion{
+    display: table;
+    width: 400px;
+    margin: auto;
+}
+
+
+
+
+
+
+
+/*botones*/
+.bloque__boton{
+    width: 200px;
+    margin: auto;
+    padding: 20px;
+
+}
+
+
+.boton{
+    padding: 10px 30px;
+    background-color: #ffb142;
+    color: #fff;
+    border:0px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.bloque__boton-utiles{
+    width: 160px;
+}
+
+
+.bloque__boton-registrar{
+    width: 200px;
+}
+
+
+.dato,
+.hora__actividad{
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+.wrapper{
+    width: 1000px;
+    margin: auto;
+  
+}
+
+.menu__centros{
+    position: relative;
+    top: 151px;
+}
+
+
+/*jeison*/
+
+
+
+
+
+/* Estilos para los formularios */
+input[type="file"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+select,
+textarea {
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 1.5;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+input[type="color"] {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input:not([type]) {
+    -webkit-appearance: none;
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 1.5;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    text-align: left;
+}
+
+input[type="file"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select:focus,
+textarea:focus {
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    
+}
+
+input:not([type]):focus {
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: 1px rgba(0, 0, 0, 0.12);
+}
+
+input[type="file"][disabled],
+input[type="text"][disabled],
+input[type="password"][disabled],
+input[type="email"][disabled],
+input[type="url"][disabled],
+input[type="date"][disabled],
+input[type="month"][disabled],
+input[type="time"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="week"][disabled],
+input[type="number"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="color"][disabled],
+select[disabled],
+textarea[disabled] {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+input:not([type])[disabled] {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    border-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54);
+}
+
+
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+    border-color: #ea1c0d;
+    color: #f44336;
+}
+
+input[type="file"]:focus:invalid:focus,
+input[type="radio"]:focus:invalid:focus,
+input[type="checkbox"]:focus:invalid:focus {
+    outline-color: #f44336;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: 1px rgba(0, 0, 0, 0.12);
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    vertical-align: sub;
+}
+
+select:not([size]):not([multiple]) {
+    height: -webkit-calc(2.25rem + 2px);
+    height: calc(2.25rem + 2px);
+}
+
+select[multiple] {
+    height: auto;
+}
+
+label {
+   font-size: 17px;
+    line-height: 2;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 8px 0;
+}
+
+legend {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    margin-bottom: 8px;
+    padding: 8px 0;
+    width: 100%;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    height: 150px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    display: inline;
+}
+
+
+
+
+/* -----------------------------------------------------*/
+
+a.btn.btn--amarillo,
+input[type=submit].btn--amarillo,
+input[type=reset].btn--amarillo,
+input[type=button].btn--amarillo,
+button.btn--amarillo {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: none;
+   
+    min-width: 136px;
+    min-height: 43px;
+    text-overflow: ellipsis;
+    color: rgb(var(--pure-material-onprimary-rgb, 55, 55, 55));
+background-image:none;
+	background-color: rgb(var(--pure-material-primary-rgb, 241, 217, 129));	
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	text-shadow: 0 1px 0 #fff;
+	 -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+text-decoration: none;
+}
+
+a.btn.btn--amarillo::-moz-focus-inner,
+input[type=submit].btn--amarillo::-moz-focus-inner,
+input[type=reset].btn--amarillo::-moz-focus-inner,
+input[type=button].btn--amarillo::-moz-focus-inner,
+button.btn--amarillo::-moz-focus-inner {
+    padding: 0;
+	border: none;
+}
+
+/* Overlay */
+a.btn.btn--amarillo::before,
+input[type=submit].btn--amarillo::before,
+input[type=reset].btn--amarillo::before,
+input[type=button].btn--amarillo::before,
+button.btn--amarillo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image:none;
+	background-color: rgb(var(--pure-material-onprimary-rgb, 137, 137, 137));
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+ fieldset.error_input,
+ input.error_input,
+ select.error_input,
+ textarea.error_input {
+    border-color: #eb3b5a;
+    box-shadow: 0 0 0 .2rem rgba(235, 59, 90, .25);
+}
+
+ fieldset:not(.error_input):hover,
+ fieldset:not(.error_input):focus,
+ input:not(.error_input):focus,
+select:not(.error_input):focus,
+ textarea:not(.error_input):focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+
+
+
+
+.bloqueFiltro{
+    width: 90%;
+    margin: 30px auto;
+
+  }
+  .bloqueFiltro label{
+    font-size: 25px;
+    width: 100px;
+    font-weight: bold;
+  }
+
+
+
+.bloqueFiltro input{
+    width: 300px;
+    font-size: 19px;
+    display: inline-block;
+}
+ 
+/*creado por Johan */
+.ocultar{
+    visibility: hidden;
+}
+
+
+

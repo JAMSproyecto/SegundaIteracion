@@ -46,7 +46,7 @@ let mostrar_datos = () => {
         let idCentro = localStorage.getItem("id");
         let tema = input_tema.value;
         let informacion = input_informacion.value;
-        registrar_noticia(idCentro, tema,  informacion);
+        registrar_noticia(idCentro, tema, informacion);
     }
 
 

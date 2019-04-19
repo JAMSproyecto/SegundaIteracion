@@ -36,7 +36,7 @@ let cargarCEdu = (idInputTabla, ordenar, esZA) => {
 	const tablaCuerpo = document.querySelector('#'+idInputTabla+' tbody');
 
 if(ordenar === true){
-	pMessage.sort(ordenarPor('nombreComercial', esZA, null));
+	pMessage.sort(ordenarPor('nombre', esZA, null));
 }
                 let i = 0;
                 pMessage.forEach(elObjecto => {
@@ -51,8 +51,8 @@ if(ordenar === true){
 						}
 						
 						
-						if(elObjecto['nombreComercial'] && elObjecto['nombreComercial'].length > 0){
-							tr_fila.insertCell().innerHTML = elObjecto['nombreComercial'];
+						if(elObjecto['nombre'] && elObjecto['nombre'].length > 0){
+							tr_fila.insertCell().innerHTML = elObjecto['nombre'];
 						}else{
 						    tr_fila.insertCell().innerHTML = '';
 						}

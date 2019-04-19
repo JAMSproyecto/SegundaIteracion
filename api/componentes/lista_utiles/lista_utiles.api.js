@@ -278,3 +278,40 @@ module.exports.modificar_lista_utiles = function(req, res){
         }
     );
 };
+
+//para activar y desactivar la lista de útiles 
+module.exports.activar_desactivar = function(req, res){
+    let estado ='';
+
+    if(req.body.estado == 'Activo'){
+        estado = 'Inactivo';
+    }else{
+        estado = 'Activo';
+    }
+    model_utiles.findByIdAndUpdate(req.body.id, {$set: { 
+        estado: estado 
+      }},
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo activar la lista de útiles '});
+            }else{
+                res.json({success: true ,msg: 'la lista de útiles se activó con éxito'}); 
+            }
+        }
+    )
+};
+
+//para eliminar la lista de útiles 
+module.exports.eliminar_lista = function(req, res){
+    console.log(req.body.id);
+    model_utiles.findByIdAndRemove(req.body.id,
+
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar la lista útiles'});
+            }else{
+                res.json({success: true ,msg: 'La lista útiles se eliminó con éxito'}); 
+            }
+        }
+    )
+};

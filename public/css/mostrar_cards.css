@@ -1,0 +1,16 @@
+#cards_centros div {
+    width: 295px;
+    height: 355px;
+    display: inline-block;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+div h1 {
+    font-size: 18px;
+    text-align: center;
+}
+
+h2 {
+text-align: right;
+}

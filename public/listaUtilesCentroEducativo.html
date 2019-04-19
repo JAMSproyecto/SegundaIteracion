@@ -3,217 +3,253 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
+    <script src="./js/administrador_sesion.js"></script>
+
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="css/reset.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
-    <link rel="stylesheet" href="./css/animate.min.css">
+
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/tablas.css"/>
-    <link rel="stylesheet" href="./css/footer.css">
-    
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/generalFormulario.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
+    <link rel="stylesheet" href="./css/tablas.css">
+
+
 </head>
+
 <body>
-    <header>
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <ul>
-                    <li> <a href="perfil_centro.html"><i class="fas fa-hand-point-left"></i></a></li>
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-					<li>
-                        <a id="lblNombreUsuario" href="javascript:void(0);"></a>
-                    </li>
-                    <li><a id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar sesi&oacute;n</a></li>
 
-                </ul>
-            </nav>
-        </div>
-        <div class="column__abajo">
-            <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
+        <div class="bloqueHeader__nombreInstitucion">
+            <div class="bloqueHeader__iconolateral">
+                <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+            </div>
+
+            <div class="bloqueHeader__logo">
+                    <a href="perfil_centro.html">
+                            <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </a>
+                  
                 </div>
-                <nav class="menu__abajo">
+        </div>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                            <span class="menu__palanca__btn__intercalar"></span>
+                        </a>
+                        <ul id="menuOpciones" class="menu_opciones">
+                            <li>
+                                <a href="javascript:void(0)">Ver perfil</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Modificar perfil</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li>
+                                <a href="javascript:void(0)">Cuenta de usuario</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+                <span>Nuestra Institución les da la bienvenida</span>
+            </div>
+        </div>
+
+
+        <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
+            <p class="nav__cerrar">
+                <a href="javascript:void(0)" class="closebtn" onclick="menuNavVisible(false);return false;"
+                    title="Cerrar menú"><i class="far fa-times-circle"></i></a>
+            </p>
+            <ul>
+                <li><a class="centros" href="javascript:void(0)">Actividad</a>
                     <ul>
-
-                        <span>|</span>
-                        <li>
-                            <a class="calificaciones" href="#">Modificar perfil</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                            </ul>
-
+                        <li><a href="registrar_actividad.html">Registrar actividad</a>
                         </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Actividad</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Noticias</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Registrar noticias</a></li>
-                                <li><a class="subtitulos" href="#">Listar noticias</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Útiles</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
-                                        útiles</a></li>
-
-                                <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Reportes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Ranking Anual</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
+                        <li><a href="listar_actividad.html">Listar actividad</a></li>
                     </ul>
-                </nav>
+                </li>
+                <li><a class="centros" href="javascript:void(0)">Noticias</a>
+                    <ul>
+                        <li><a href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a href="listar_noticia.html">Listar noticias</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)"> Útiles</a>
+                    <ul>
+                        <li>
+                            <a href="registrarListaUtilesCentro.html">Registrar lista de
+                                útiles</a></li>
+
+                        <li><a href="listaUtilesCentroEducativo.html">Ver lista de
+                                útiles</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="javascript:void(0)"> Citas</a>
+                    <ul>
+                        <li>
+                            <a href="lista_citas.html">listar citas
+                            </a></li>
+                    </ul>
+                </li>
+
+              
+                <li>
+                        <a class="reporte">Servicios</a>
+                        <ul>
+                            <li><a href="javascript:void(0)">Registrar servicios</a></li>
+                            <li><a href="javascript:void(0)">Lista de servicios</a></li>
+                        </ul>
+                    </li>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id='main'>
+        <section>
+            <div class="tituloPrincipal">
+                    <h1 >Lista de útiles</h1>
+            </div>
+           
+            <h2 id="titulo" class="tituloPrincipal"></h2>
+           
+                <div class="bloqueFiltro">
+                    <label for="txt_filtrar">Filtrar</label>
+                    <input type="text" id="txt_filtrar">
+                </div>
+           
+                    <table id="tbl_lista_utiles">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Año</th>
+                                <th>Agregar </th>
+                                <th>Ver</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                                <th>Estado</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+        </section>
+
+
+        
+
+    </main>
+
+    <footer>
+        <div class="footer__cuerpo">
+            <div class="footer__flex">
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Contacto</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                            22-24-66-88</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-fax"></i> Fax:
+                            29-53-55-22</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                            educacion@ucenfotec.com</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Direcci&oacute;n</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
+                            Jos&eacute;,
+                            Barrio Cristo
+                            Rey</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24, calle
+                            12</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Citas</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="far fa-calendar-alt"></i> Agendar</a></li>
+                </ul>
+                <section class="footer__social__seccion footer__flex">
+                    <span class="footer__social__traslapar footer__social__conectate">
+                        Conectate <span class="footer__social__pequeno">con</span> nosotros
+                    </span>
+                    <span class="footer__social__traslapar footer__social__iconos__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
+                                class="fab fa-twitter-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
+                    </span>
+                </section>
+                <section class="footer__inferior__seccion footer__flex">
+                    <div class="footer__inferior__envoltura">
+                        <i class="fa fa-copyright"></i> 2019
+                        <address class="footer__direccion__compania">JAMS</address>
+                        <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
+                    </div>
+                    <div class="footer__inferior__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
+                            class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
+                    </div>
+                </section>
             </div>
         </div>
-    </header>
-    <main>
-            <section>
-                <h1 class="titulo__principal">Lista de útiles</h1>
-                <h2 id="titulo" class="titulo__principal"></h2>
-                <div class="wrapper">
-                    <div class="bloque__filtro">
-                        <label for="txt_filtrar">Filtrar</label>
-                        <input type="text" id="txt_filtrar">
-                    </div>
-                    <div class="contenedor_tabla">
-                        <table id="tbl_lista_utiles">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Año</th>
-                                    <th></th>                               
-                                    <th></th>                                   
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-    
-                            </tbody>
-                        </table>
-                    </div>
-            </section>
- 
-		
-        <div class="paginador">
-            <div class="paginador__contenido">
-                <a class="derecha" href="perfil_centro.html">
-                    <i class="fas fa-arrow-circle-left fa-lg"></i>
-                    <p>Perfil</p>
-                </a>
-                <a class="izquierda" href="javascript:void(0);">
-                    <i class="fas fa-arrow-circle-right fa-lg"></i>
-                    <p></p>
-                </a>
-            </div>
-        </div> 
-    
-        </main>
-    
-        <footer>
-                <div class="footer__cuerpo">
-                    <div class="footer__flex">
-                        <ul class="footer__lista__top">
-                            <li>
-                                <h4 class="footer__lista__header">Contacto</h4>
-                            </li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                        class="fa fas fa-phone"></i> Tel&eacute;fono:
-                                    22-24-66-88</a></li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                        class="fa fas fa-fax"></i> Fax:
-                                    29-53-55-22</a></li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                        class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
-                                    educacion@ucenfotec.com</a></li>
-                        </ul>
-                        <ul class="footer__lista__top">
-                            <li>
-                                <h4 class="footer__lista__header">Direcci&oacute;n</h4>
-                            </li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
-                                    Jos&eacute;,
-                                    Barrio Cristo
-                                    Rey</a></li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24, calle
-                                    12</a></li>
-                        </ul>
-                        <ul class="footer__lista__top">
-                            <li>
-                                <h4 class="footer__lista__header">Citas</h4>
-                            </li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                        class="far fa-calendar-alt"></i> Agendar</a></li>
-                        </ul>
-                        <section class="footer__social__seccion footer__flex">
-                            <span class="footer__social__traslapar footer__social__conectate">
-                                Conectate <span class="footer__social__pequeno">con</span> nosotros
-                            </span>
-                            <span class="footer__social__traslapar footer__social__iconos__envoltura">
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                    title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                    title="Facebook"><i class="fab fa-facebook-square"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
-                                        class="fab fa-twitter-square"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                    title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
-                                        class="fab fa-youtube"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                    title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
-                            </span>
-                        </section>
-                        <section class="footer__inferior__seccion footer__flex">
-                            <div class="footer__inferior__envoltura">
-                                <i class="fa fa-copyright"></i> 2019
-                                <address class="footer__direccion__compania">JAMS</address>
-                                <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
-                            </div>
-                            <div class="footer__inferior__envoltura">
-                                <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
-                                    class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </footer>
-    
-        <script src="./js/controlador_nav.js"></script>
-        <script src="./js/sweetalert2.all.min.js"></script>
-        <script src="./js/jquery-3.3.1.min.js"></script>
-        <script src="./js/servicio_lista_utiles.js"></script>
-        <script src="./js/controlador_listar_lista_utiles.js"></script>
-    
-    </body>
-    
-    </html>
+    </footer>
+
+    <script src="./js/controlador_nav.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/servicio_lista_utiles.js"></script>
+    <script src="./js/controlador_listar_lista_utiles.js"></script>
+
+</body>
+
+</html>

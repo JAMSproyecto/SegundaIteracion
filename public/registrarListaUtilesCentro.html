@@ -3,147 +3,186 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
+    <script src="./js/administrador_sesion.js"></script>
+
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="css/reset.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
-    <link rel="stylesheet" href="./css/animate.min.css">
+
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerCentro.css" />
-    <link rel="stylesheet" href="./css/general.css" />
-    <link rel="stylesheet" href="./css/footer.css">
-    
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/generalFormulario.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
+    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
+
+
+
 </head>
+
 <body>
-    <header>
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <ul>
-                    <li> <a href="perfil_centro.html"><i class="fas fa-hand-point-left"></i></a></li>
-                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
-					<li>
-                        <a id="lblNombreUsuario" href="javascript:void(0);"></a>
-                    </li>
-                    <li><a id="boton_cerrar" class="btn btn--amarillo" href="javascript:void(0);">Cerrar sesi&oacute;n</a></li>
 
-                </ul>
-            </nav>
-        </div>
-        <div class="column__abajo">
-            <div class="contenedor">
-                <div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
-                </div>
-                <nav class="menu__abajo">
-                    <ul>
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
+        <div class="bloqueHeader__nombreInstitucion">
+            <div class="bloqueHeader__iconolateral">
+                <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+            </div>
 
-                        <span>|</span>
-                        <li>
-                            <a class="calificaciones" href="#">Modificar perfil</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Modificar cédula juridica</a></li>
-                                <li><a class="subtitulos" href="#">Ubicación</a></li>
-                                <li><a class="subtitulos" href="#">Imagenes de perfil</a></li>
-                                <li><a class="subtitulos" href="#">Actulizar documentos </a></li>
-                                <li><a class="subtitulos" href="#">Actualizar matrícula</a></li>
-                            </ul>
+            <div class="bloqueHeader__logo">
+                <a href="perfil_centro.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
 
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Actividad</a>
-                            <ul>
-                                <li><a class="subtitulos" href="registrar_actividad.html">Registrar actividad</a></li>
-                                <li><a class="subtitulos" href="listar_actividad.html">Listar actividad</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="centros" href="#">Noticias</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Registrar noticias</a></li>
-                                <li><a class="subtitulos" href="#">Listar noticias</a></li>
-
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li><a class="utiles" href="#"> Útiles</a>
-                            <ul>
-                                <li>
-                                    <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
-                                        útiles</a></li>
-
-                                <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de útiles</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a class="reporte">Reportes</a>
-                            <ul>
-                                <li><a class="subtitulos" href="#">Ranking Anual</a></li>
-                            </ul>
-                        </li>
-                        <span>|</span>
-                    </ul>
-                </nav>
             </div>
         </div>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                            <span class="menu__palanca__btn__intercalar"></span>
+                        </a>
+                        <ul id="menuOpciones" class="menu_opciones">
+                            <li>
+                                <a href="javascript:void(0)">Ver perfil</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Modificar perfil</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li>
+                                <a href="javascript:void(0)">Cuenta de usuario</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+                <span>Nuestra Institución les da la bienvenida</span>
+            </div>
+        </div>
+
+
+        <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
+            <p class="nav__cerrar">
+                <a href="javascript:void(0)" class="closebtn" onclick="menuNavVisible(false);return false;"
+                    title="Cerrar menú"><i class="far fa-times-circle"></i></a>
+            </p>
+            <ul>
+                <li><a class="centros" href="javascript:void(0)">Actividad</a>
+                    <ul>
+                        <li><a href="registrar_actividad.html">Registrar actividad</a>
+                        </li>
+                        <li><a href="listar_actividad.html">Lista de actividades</a></li>
+                    </ul>
+                </li>
+                <li><a class="centros" href="javascript:void(0)">Noticias</a>
+                    <ul>
+                        <li><a href="registrar_noticia.html">Registrar noticia</a></li>
+                        <li><a href="listar_noticia.html">Lista de noticias</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)"> Útiles</a>
+                    <ul>
+                        <li>
+                            <a href="registrarListaUtilesCentro.html">Registrar lista de
+                                útiles</a></li>
+
+                        <li><a href="listaUtilesCentroEducativo.html">Ver lista de
+                                útiles</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="javascript:void(0)"> Citas</a>
+                    <ul>
+                        <li>
+                            <a href="lista_citas.html">lista de citas
+                            </a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a class="reporte">Servicios</a>
+                    <ul>
+                        <li><a href="javascript:void(0)">Registrar servicios</a></li>
+                        <li><a href="javascript:void(0)">Lista de servicios</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a href="listarPreguntasFrecuentes.html">Lita de FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </header>
     <main>
-            <h1 class="titulo__principal">Crear lista de útiles</h1>
-            <h2  class="titulo__principal" id="titulo_centro"></h2>
-            <section class="bloque__principal  bloque__principal-utiles">
-                <div class="formulario_lista_utiles">
+        <div class="tituloPrincipal">
+            <h1>Crear lista de útiles</h1>
+        </div>
 
-                    <div class="text_center">
+
+        <section class="bloque bloqueRegistrar-utiles">
+            <div class="bloqueRegistrar-utiles__contenedor">
+
+                <form class="bloqueRegistrar__registroUtile-CE">
+                    <div class="bloqueDato">
                         <label for="txt_tipo" id="label_tipo"></label>
                         <select id="txt_tipo">
                         </select>
                     </div>
-                    <div class="text_center" >
-                            <label for="lista_centros" id="label_centro">Centro educativo</label>
-                            <input list = "lista" id="lista_centros">
-                            <datalist id="lista">
-    
-                            </datalist>
+                    <div class="bloqueDato">
+                        <label for="lista_centros" id="label_centro">Centro educativo</label>
+                        <input list="lista" id="lista_centros">
+                        <datalist id="lista">
+
+                        </datalist>
                     </div>
-                    <div class="text_center">
+                    <div class="bloqueDato">
                         <label for="txt_nombre">Nombre</label>
                         <input type="text" id="txt_nombre">
                     </div>
 
-                    <div class="text_center">
+                    <div class="bloqueDato">
                         <label for="txt_anno">Año</label>
                         <input type="text" id="txt_anno">
                     </div>
-                </div>
-            </section>
-            <div class="formulario-boton text_center">
-                <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
-            </div>		
-			
-        <div class="paginador">
-            <div class="paginador__contenido">
-                <a class="derecha" href="listar_lista_utiles.html">
-                    <i class="fas fa-arrow-circle-left fa-lg"></i>
-                    <p>Lista de &uacute;tiles</p>
-                </a>
-                <a class="izquierda" href="javascript:void(0);">
-                    <i class="fas fa-arrow-circle-right fa-lg"></i>
-                    <p>Reportes</p>
-                </a>
             </div>
-        </div>
-			
-			
-        </main>
+            </form>
 
-        <footer>
+        </section>
+
+        <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
+
+
+
+
+        <main id='main'>
+
+            <footer>
                 <div class="footer__cuerpo">
                     <div class="footer__flex">
                         <ul class="footer__lista__top">
@@ -168,7 +207,8 @@
                                     Jos&eacute;,
                                     Barrio Cristo
                                     Rey</a></li>
-                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24, calle
+                            <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av
+                                    24, calle
                                     12</a></li>
                         </ul>
                         <ul class="footer__lista__top">
@@ -187,12 +227,12 @@
                                     title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
                                 <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
                                     title="Facebook"><i class="fab fa-facebook-square"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
-                                        class="fab fa-twitter-square"></i></a>
+                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                                    title="Twitter"><i class="fab fa-twitter-square"></i></a>
                                 <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
                                     title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
-                                        class="fab fa-youtube"></i></a>
+                                <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                                    title="Youtube"><i class="fab fa-youtube"></i></a>
                                 <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
                                     title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
                             </span>
@@ -216,10 +256,10 @@
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-                <script src="js/servicio_listar_cedu.js"></script>
+            <script src="js/servicio_listar_cedu.js"></script>
             <script src="js/servicio_lista_utiles.js"></script>
             <script src="js/controlador_registrar_lista_utiles.js"></script>
 
-    </body>
+</body>
 
 </html>

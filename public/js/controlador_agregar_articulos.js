@@ -67,15 +67,15 @@ let seleccionar_articulos =() =>{
   if(error || articulos_seleccionados.length <= 0){
     swal.fire({
       type: 'warning',
-      title: 'Los artículos no fueron registrados de forma correcta',
+      title: '¡Los artículos no fueron agregados de forma correcta!',
       text: 'Favor completar los espacios señalados en rojo'
     });
   }else{
     swal.fire({
       type: 'success',
-      title: 'Artículos registrados',
+      title: '¡Artículos agregados!',
 
-      text: 'Todos los artículos fueron registrados con éxito'
+      text: 'Todos los artículos fueron agregados con éxito'
     }).then((result) => {
       if (result.value) {
         let tipo_usuario = localStorage.getItem('tipoUsuario');
@@ -85,7 +85,7 @@ let seleccionar_articulos =() =>{
           window.location.href = 'ver_articulos_lista_utiles.html';
         }
       };
-      text: 'Los artículos fueron registrados correctamente'
+      text: 'Los artículos fueron agregados correctamente'
     });
   }
   

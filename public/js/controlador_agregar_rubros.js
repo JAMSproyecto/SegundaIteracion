@@ -28,7 +28,7 @@ let mostrar_datos = () => {
         fila.insertCell().innerHTML = rubros[i]['rubro'];
 
         let boton_desactivar = document.createElement('a');
-        boton_desactivar.innerHTML = '<i class="fas fa-minus"></i>';
+        boton_desactivar.innerHTML = '<i class="fas fa-user-minus"></i>';
         boton_desactivar.dataset.id_rubro = rubros[i]['_id'];
         fila.insertCell().appendChild(boton_desactivar);
         boton_desactivar.addEventListener('click', function () {
@@ -44,22 +44,20 @@ let mostrar_datos = () => {
         let fila_inactivos = tabla_inactivos.insertRow();
         fila_inactivos.insertCell().innerHTML = rubros[i]['rubro'];
 
-        let fila_iconos = fila_inactivos.insertCell();
-
 
         let boton_activar = document.createElement('a');
-        boton_activar.innerHTML = '<i class="fas fa-plus"></i>';
+        boton_activar.innerHTML = '<i class="fas fa-user-plus"></i>';
         boton_activar.dataset.id_rubro = rubros[i]['_id'];
 
         let boton_editar = document.createElement('a');
-        boton_editar.innerHTML = '<i class="fas fa-edit"></i>';
+        boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
         boton_editar.dataset.id_rubro = rubros[i]['_id'];
 
         let boton_eliminar = document.createElement('a');
         boton_eliminar.innerHTML = '<i class="fas fa-trash-alt"></i>';
         boton_eliminar.dataset.id_rubro = rubros[i]['_id'];
 
-        fila_iconos.appendChild(boton_editar);
+        fila_inactivos.insertCell().appendChild(boton_editar);
         boton_editar.addEventListener('click', function () {
           Swal.fire({
             title: 'Realice los cambios necesarios',
@@ -80,7 +78,7 @@ let mostrar_datos = () => {
         }
         )
 
-        fila_iconos.appendChild(boton_eliminar);
+        fila_inactivos.insertCell().appendChild(boton_eliminar);
         boton_eliminar.addEventListener('click', function () {
           Swal.fire({
             title: '¿Estas seguro de eliminar el rubro?',
@@ -94,16 +92,15 @@ let mostrar_datos = () => {
           }).then((result) => {
             if (result.value) {
               eliminar_rubro(this.dataset.id_rubro);
-              Swal.fire(
-                'Eliminado',
-                'El rubro ha sido eliminado',
-                'success'
-              )
             }
           })
+
+          rubros = listar_rubros();
+          mostrar_datos();
+
         })
 
-        fila_iconos.appendChild(boton_activar);
+        fila_inactivos.insertCell().appendChild(boton_activar);
         boton_activar.addEventListener('click', function () {
           activar_rubro(this.dataset.id_rubro, cantidad_activos);
           rubros = listar_rubros();

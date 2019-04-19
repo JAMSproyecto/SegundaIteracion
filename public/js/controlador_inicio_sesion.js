@@ -4,6 +4,8 @@ const Input_Usuario = document.querySelector('#input_usuario');
 const Input_Contrasenna = document.querySelector('#txt_contrasenna');
 const Boton_Ingresar = document.querySelector('#boton_ingresar');
 
+const ocupaRedireccion = localStorage.getItem('quienIniciaSesion');
+
 let mostrarAlerta = (mensaje) => {
     Swal.fire({
         toast: false,
@@ -18,29 +20,20 @@ let mostrarAlerta = (mensaje) => {
 };
 
 
-let obtener_Datos = () => {
-    let usuario = Input_Usuario.value;
-    let contrasenna = Input_Contrasenna.value;
-
-    let errorBlancos = validar(usuario, contrasenna);
-
-    if (!errorBlancos) {
-        let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
-        if (usuarioAceptado) {
-
-            const tipoUsuario = localStorage.getItem('tipoUsuario');
+let estaActiva = (primeraVez) => {
+	const tipoUsuario = localStorage.getItem('tipoUsuario');
 
             if ('undefined' !== typeof tipoUsuario && null !== tipoUsuario) {
 
                 const elTipoUsuario = tipoUsuario.toLowerCase();
-                const ocupaRedireccion = localStorage.getItem('quienIniciaSesion');
 
-                //switch para calquier cosa que no sea redireccionar (excepto el default).
+                //switch para calquier cosa que no sea redireccionar:
                 switch (elTipoUsuario) {
                     case 'superadmin':
-                        break;
+
+						break;
                     case 'centroeducativo':
-                        localStorage.setItem('padreVerPerfilCEdu', localStorage.getItem('id'));
+                        localStorage.setItem('verPerfilCEdu', localStorage.getItem('id'));
                         break;
                     case 'padrefamilia':
                         localStorage.setItem('idBuscarPadre', localStorage.getItem('id'));
@@ -48,7 +41,6 @@ let obtener_Datos = () => {
                     default:
                         localStorage.clear();
                         console.error('Tipo de usuario desconocido');
-                        location.replace('inicio_sesion.html');
                         break;
                 }
 
@@ -74,46 +66,67 @@ let obtener_Datos = () => {
 
                 }
             } else {
-                localStorage.clear();
-                mostrarAlerta('Error de sesión');
-                location.replace('inicio_sesion.html');
+				if(true == primeraVez){
+					localStorage.clear();
+				}else{
+					mostrarAlerta('Error de sesión');
+				}
             }
+};
 
+
+let validarBlancos = (pusuario, pcontrasenna) => {
+    if (pusuario === '') {
+        Input_Usuario.classList.add('error_input');
+		Input_Usuario.select();
+		Input_Usuario.focus();
+		return true;
+    } else {
+        Input_Usuario.classList.remove('error_input');
+    }
+
+    if (pcontrasenna === '') {
+        Input_Contrasenna.classList.add('error_input');
+		Input_Contrasenna.select();
+		Input_Contrasenna.focus();
+		return true;
+    } else {
+        Input_Contrasenna.classList.remove('error_input');
+    }
+
+    return false;
+};
+
+let obtener_Datos = () => {
+    let usuario = Input_Usuario.value.trim();
+    let contrasenna = Input_Contrasenna.value.trim();
+
+    let errorBlancos = validarBlancos(usuario, contrasenna);
+
+    if (errorBlancos == false) {
+
+		//Limpiamos localStorage antes de validar credenciales y de cargar nuevos datos al localStorage:
+	    localStorage.clear();
+
+        let usuarioAceptado = validar_credenciales(usuario, codificar(contrasenna));
+        if (usuarioAceptado) {
+            estaActiva(false);
         } else {
             mostrarAlerta('El nombre de usuario o la contraseña son incorrectos');
         }
-    } else {
-        mostrarAlerta('Por favor ingrese el usuario y la contraseña');
     }
 };
 
-let validar = (pusuario, pcontrasenna) => {
-    let error = false;
-
-    if (pusuario == '') {
-        error = true;
-        input_usuario.classList.add('error_input');
-    } else {
-        input_usuario.classList.remove('error_input');
-    }
-
-    if (pcontrasenna == '') {
-        error = true;
-        txt_contrasenna.classList.add('error_input');
-    } else {
-        txt_contrasenna.classList.remove('error_input');
-    }
-
-    return error;
-};
 
 if (Boton_Ingresar) {
     Boton_Ingresar.addEventListener('click', obtener_Datos);
 }
 
 
+
+
 window.onload = () => {
-	localStorage.clear();
+	estaActiva(true);
     if (Input_Usuario) {
         Input_Usuario.select();
         Input_Usuario.focus();
