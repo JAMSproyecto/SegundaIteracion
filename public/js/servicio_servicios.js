@@ -2,7 +2,7 @@
 
 
 //función para registrar los datos con su respectiva ruta
-let registrar_servicio = (pnombre, pdescripcion, pEnviaResultado) => {
+let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
 
     //NOTA: pEnviaResultado es una función que viene como parámetro para enviar el resultado al controlador.
     // La función pEnviaResultado recibe sus propios parámetros (en el controlador): success, msg.
@@ -13,6 +13,7 @@ let registrar_servicio = (pnombre, pdescripcion, pEnviaResultado) => {
       data: {
         codigo : localStorage.getItem('id'),
         nombre: pnombre,
+        tipo: ptipo,
         descripcion: pdescripcion
       },
       dataType: "json",

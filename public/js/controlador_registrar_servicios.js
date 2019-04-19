@@ -2,6 +2,7 @@
 
 //constantes que obtienen los datos del formulario
 const input_nombre = document.querySelector('#txt_nombre');
+const input_tipo = document.querySelector('#txt_tipo');
 const input_descripcion = document.querySelector('#txt_descripcion');
 const boton_agregar = document.querySelector('#btn_agregar');
 
@@ -28,6 +29,7 @@ let mostrarAlerta = (mensaje, input) => {
 let enviarDatos = () => {
 
   const nombre = input_nombre.value.trim();
+  const tipo = input_tipo.value.trim();
   const descripcion = input_descripcion.value.trim();
 
   if (nombre == '') {
@@ -37,6 +39,13 @@ let enviarDatos = () => {
     input_nombre.classList.remove('error_input');
   }
 
+  if (tipo == '') {
+    mostrarAlerta('seleccione el tipo de servicio', input_nombre);
+    return false;
+  } else {
+    input_tipo.classList.remove('error_input');
+  }
+
   if (descripcion == '') {
     mostrarAlerta('Digite la descripción del servicio', input_descripcion);
     return false;
@@ -44,7 +53,7 @@ let enviarDatos = () => {
     input_descripcion.classList.remove('error_input');
   }
 
-  registrar_servicio(nombre, descripcion,
+  registrar_servicio(nombre,tipo,descripcion,
     function (success, msg) {
 
       //Aquí llegan los resultados que el servicio envía a travez de pEnviaResultado.
