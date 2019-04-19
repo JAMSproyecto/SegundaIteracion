@@ -6,7 +6,7 @@ let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacio
         method: "POST",
         data: {
             idCentro: pidCentro,
-            calificacion: pestrellasMep,
+            calificacionTotal: pestrellasMep,
             rubro1: prubro1,
             calificacionRubro1: pcalificacionRubro1,
             rubro2: prubro2,
@@ -52,4 +52,29 @@ let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacio
             text: 'Error al registrar'
         });
     });
+}; 
+
+
+let listar_calificacion_CEdu = (pId) => {
+    let calificacionMEP = [];
+    let request = $.ajax({
+        url: "http://localhost:4000/api/listar_calificacionMEP/" + pId,
+        method: "GET",
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+
+    request.done(function (res) {
+        calificacionMEP = res.msg;
+
+    });
+
+
+    request.fail(function (jqXHR, textStatus) {
+
+
+    });
+    return calificacionMEP;
+
 };

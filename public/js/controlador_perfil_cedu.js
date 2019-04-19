@@ -173,7 +173,7 @@ let idCentro = localStorage.getItem('verPerfilCEdu');
           sumValues += values[i];
         }
         let prom = (sumValues / values.length);
-        let estrellasMep = (prom/2);
+        let estrellasMep = Math.floor(prom/2);
         Swal.fire({
           title: 'Calificación completada',
           html:

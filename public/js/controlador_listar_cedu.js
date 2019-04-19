@@ -59,6 +59,7 @@ let irAlPerfil = (idCEdu) => {
 };
 
 let cargarCEdu = () => {
+
     listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {

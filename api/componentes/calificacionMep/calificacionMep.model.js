@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 let schema_calificacionMEP = new mongoose.Schema(
     {
-        idCentro: {type: Number, ref: 'centro_educativo_', required: true},
+        idCentro: {type: Number, ref: 'centro_educativo_', required: true, unique: true},
         calificacionTotal : {type : String, required : true},
         rubro1 : {type : String, required: true},
         calificacionRubro1 : {type : Number, required: true},

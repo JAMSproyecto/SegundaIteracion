@@ -55,3 +55,27 @@ module.exports.registrar_calificacionMEP = (req, res) => {
 
     );
 };
+
+
+module.exports.listar_calificacionMEP = (req, res) => {
+    const filtros = { idCentro: req.body.idCentro };
+    modelCalificacionMEP.find(filtros).then(
+        function (data) {
+            if (data.length > 0) {
+                res.json(
+                    {
+                        success: true,
+                        data: data
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success: false,
+                        data: 'Datos no encontrados'
+                    }
+                )
+            }
+        }
+    );
+};
