@@ -18,8 +18,7 @@ let transporter = nodemailer.createTransport({
 /*funcion para registrar nueva cita*/
 module.exports.registrar = (req, res) => {
 
-    let fecha = Moment(req.body.Fecha);
-    
+    let fecha = Moment(req.body.Fecha, 'DD-MM-YYYY');
     let nueva_cita = new cita_modelo(
         {
             Nombre: req.body.Nombre,
