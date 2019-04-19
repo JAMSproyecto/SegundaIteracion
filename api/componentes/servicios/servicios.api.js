@@ -64,7 +64,7 @@ servicio_nuevo.save(
 };
 
 //función para ontener la lista de servicio por el id del centro 
-module.exports.obtener_por_id = (req,res) =>{
+module.exports.obtener_servicios_id = (req,res) =>{
    
     model_servicio.find({codigo : req.body.codigo}).then(
         function(coleccion){

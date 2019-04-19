@@ -12,7 +12,7 @@ let mostrar_datos = ()=>{
     let lista_servicios = response.coleccion_servicios;
     let nombre = response.nombre_centro;
     console.log('servicios: ',lista_servicios);
-    
+ 
         titulo.innerHTML = nombre;
         for (let i = 0; i < lista_servicios.length; i++) {
         if (lista_servicios[i]['nombre'].toLowerCase().includes(filtro.toLowerCase()) || lista_servicios[i]['descripcion'].toLowerCase().includes(filtro.toLowerCase())) {

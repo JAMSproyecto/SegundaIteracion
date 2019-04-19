@@ -7,10 +7,6 @@ const Input_respuesta = document.querySelector('#txt_respuesta');
 
 const boton_registrar = document.querySelector('#btn');
 
-
-/**
- * Función para validar los campos
- */
 let validar = () => {
     let error = false;
 
@@ -34,11 +30,10 @@ let validar = () => {
 
 };
 
-
 /**
  * Evento click para el botón registrar
  */
-let registrar_preguntaFrecuente = () => {
+let actualizar_preguntaFrecuente = () => {
     if (validar() == true) {//llamada a la función
         swal.fire(
             {
@@ -53,15 +48,21 @@ let registrar_preguntaFrecuente = () => {
         let pregunta = Input_pregunta.value;
         let respuesta = Input_respuesta.value;
         let centroEducativo = localStorage.getItem('id');
+        let id_preguntaFrecuente = localStorage.getItem('IdPreguntaFrecuente');
 
-
-        post_registrarPreguntaFrecuente(pregunta, respuesta, centroEducativo);
+        post_actualizarPreguntaFrecuente(pregunta, respuesta, centroEducativo, id_preguntaFrecuente);
 
 
     }
 };
 
 
-boton_registrar.addEventListener('click', registrar_preguntaFrecuente);
+window.addEventListener('load', function(){
+    if(typeof localStorage.getItem('IdPreguntaFrecuente') != 'undefined'){
+        let preguntaFrecuente = get_obtenerPreguntaFrecuente(localStorage.getItem('IdPreguntaFrecuente'));
 
-
+        Input_pregunta.value = preguntaFrecuente.pregunta;
+        Input_respuesta.value = preguntaFrecuente.respuesta;
+        boton_registrar.addEventListener('click', actualizar_preguntaFrecuente);   
+    }
+});
