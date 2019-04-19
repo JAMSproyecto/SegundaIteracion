@@ -24,7 +24,7 @@ router.route('/obtener_servicios_id/:codigo')
         .get(
             function(req,res)
             {
-                servicio_api.obtener_por_id(req,res);
+                servicio_api.obtener_servicios_id(req,res);
             }
         );
 

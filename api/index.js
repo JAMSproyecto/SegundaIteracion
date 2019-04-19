@@ -148,6 +148,8 @@ app.use('/api', calificacion_padre);
 const calificacionMep = require ('./componentes/calificacionMep/calificacionMep.route');
 app.use('/api', calificacionMep);
 
+const CompServicios = require('./componentes/servicios/servicios.route');
+app.use('/api',CompServicios);
 
 
 
