@@ -62,71 +62,48 @@ let cargarCEdu = () => {
     listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
-                pMessage.forEach(obj => {
-                    let tr_fila = tablaCuerpo.insertRow();
-
-                    if (obj['nombre'] && obj['nombre'].length > 0) {
-                        tr_fila.insertCell().innerHTML = obj['nombre'];
-                    } else {
-                        tr_fila.insertCell().innerHTML = '';
-                    }
+                    pMessage.forEach(obj => {
+                            let card = document.createElement('div');
+                            let card_contenedor= document.createElement('div');
 
 
+                            let centro_nombre = document.createElement('h1');
+                            centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
 
-                    if (obj['direccion']) {
-                        let provincia = '';
-                        let direccion = '';
-                        obj['direccion'].forEach(obj2 => {
-                            provincia = obtenerProvinciaPorID(obj2['idProvincia']);
-                            direccion = obj2['sennas'];
-                        });
+                            let telefono = document.createElement('span');
+                            telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
 
-                        tr_fila.insertCell().innerHTML = provincia;
-                        tr_fila.insertCell().innerHTML = direccion;
-                    } else {
-                        tr_fila.insertCell().innerHTML = '';
-                        tr_fila.insertCell().innerHTML = '';
-                    }
+                            let correo = document.createElement('span');
+                            correo.innerHTML = 'Correo: ' + obj['correo'];
 
-                    if (obj['calificacion'] && Object.keys(obj['calificacion']).length > 0) {
-                        obj['calificacion'].forEach(obj3 => {
-                            tr_fila.insertCell().innerHTML = obj3['padres'];
-                            tr_fila.insertCell().innerHTML = obj3['mep'];
-                        });
-                    } else {
-                        tr_fila.insertCell().innerHTML = '0';
-                        tr_fila.insertCell().innerHTML = '0';
-                    }
+                            let provincia = document.createElement('span');
+                            let direccion = document.createElement('span');
+                            obj['direccion'].forEach(obj2 => {
+                                    provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
+                                    direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
+                            });
 
-                    tr_fila.insertCell().innerHTML = '<button class="btn btn--amarillo" onClick="irAlPerfil(' + obj['_id'] + '); return false;">Ver m&aacute;s</button>';
-                });
+                            let verMas = document.createElement('a');
+                            verMas.addEventListener('click', () => {
+                                    irAlPerfil(obj['_id']);
+                            }, false);
+                            verMas.innerHTML = '<i class="fas fa-id-card"></i>';
 
-                cargarDataTable();
 
-            } else {
-                Swal.fire({
-                    toast: false,
-                    type: 'warning',
-                    position: 'top',
-                    animation: false,
-                    customClass: 'animated tada',
-                    showConfirmButton: true,
-                    title: pMessage
-                });
+                            card.appendChild(centro_nombre);
+                            card.appendChild(telefono);
+                            card.appendChild(correo);
+                            card.appendChild(provincia);
+                            card.appendChild(direccion);
+                            card.appendChild(verMas);
+                            card_contenedor.appendChild(card);
+
+                            cards_centros.appendChild(card_contenedor);
+                    });
+
             }
-        } else {
-            Swal.fire({
-                toast: false,
-                type: 'warning',
-                position: 'top',
-                animation: false,
-                customClass: 'animated tada',
-                showConfirmButton: true,
-                title: pMessage
-            });
-
-        }
-    });
+    }
+});
 };
 
 window.onload = () => {
