@@ -42,7 +42,7 @@ let mostrar_datos = () => {
             boton_eliminar.dataset.idCentro = actividades[i]['_id'];
             celda_eliminar.appendChild(boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
-                eliminar(this.dataset.idCentro);
+                eliminar_actividad(this.dataset.idCentro);
 
                 mostrar_datos();
 

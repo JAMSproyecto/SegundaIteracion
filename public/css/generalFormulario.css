@@ -612,6 +612,10 @@ select:not(.error_input):focus,
     display: inline-block;
 }
  
+/*creado por Johan */
+.ocultar{
+    visibility: hidden;
+}
 
 
 

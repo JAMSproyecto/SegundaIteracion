@@ -145,6 +145,9 @@ app.use('/api', rubros);
 const calificacion_padre = require ('./componentes/calificacion_padre/calificacion_padre.route');
 app.use('/api', calificacion_padre);
 
+const calificacionMep = require ('./componentes/calificacionMep/calificacionMep.route');
+app.use('/api', calificacionMep);
+
 
 
 

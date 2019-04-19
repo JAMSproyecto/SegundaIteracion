@@ -83,11 +83,14 @@ let listar_todas_actividades = () => {
     request.done(function (res){
         actividades_arreglo = res.msg;
 
+
+
     });
 
+
     request.fail(function (jqXHR, textStatus) {
- 
-        
+
+
     });
     return actividades_arreglo;
 
@@ -117,7 +120,7 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza,
+let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza,
     plugar,  pdetalles,pidActividad,) => {
 
     let request = $.ajax({
@@ -163,7 +166,7 @@ let actualizar = ( pactividad, pfecha, phora_inicio, pfinaliza,
     });
 };
 
-let eliminar = (pid) => {
+let eliminar_actividad = (pid) => {
     let request = $.ajax({
     url: "http://localhost:4000/api/eliminar_actividad",
     method: "POST",
