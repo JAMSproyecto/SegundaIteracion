@@ -4,6 +4,7 @@ const modelCalificacionMEP = require('./calificacionMep.model');
 
 
 module.exports.registrar_calificacionMEP = (req, res) => {
+
     let calificacionMEP_nueva = new modelCalificacionMEP(
         {
             idCentro: req.body.idCentro,
@@ -30,8 +31,8 @@ module.exports.registrar_calificacionMEP = (req, res) => {
             calificacionRubro10: req.body.calificacionRubro10,
             estado: 'Activo'
         }
+      
     );
-
     calificacionMEP_nueva.save(
         function (error) {
             if (error) {
@@ -52,5 +53,29 @@ module.exports.registrar_calificacionMEP = (req, res) => {
             }
         }
 
+    );
+};
+
+
+module.exports.listar_calificacionMEP = (req, res) => {
+    const filtros = { idCentro: req.body.idCentro };
+    modelCalificacionMEP.find(filtros).then(
+        function (data) {
+            if (data.length > 0) {
+                res.json(
+                    {
+                        success: true,
+                        data: data
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success: false,
+                        data: 'Datos no encontrados'
+                    }
+                )
+            }
+        }
     );
 };
