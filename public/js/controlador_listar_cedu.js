@@ -84,6 +84,14 @@ let cargarCEdu = () => {
                                     direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
                             });
 
+
+                            //Estoy trabajando en mostrar la calificacion del MEP en el card. Marlon 4/18
+                            let calificacionMep = document.createElement('span');
+                            let idCentro = obj['_id'];
+                            let obtenerCalificacion = listar_calificacion_CEdu(idCentro);
+                            console.log(obtenerCalificacion);
+                            
+
                             let verMas = document.createElement('a');
                             verMas.addEventListener('click', () => {
                                     irAlPerfil(obj['_id']);
