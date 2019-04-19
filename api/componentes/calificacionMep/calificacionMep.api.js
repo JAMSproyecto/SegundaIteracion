@@ -31,8 +31,8 @@ module.exports.registrar_calificacionMEP = (req, res) => {
             calificacionRubro10: req.body.calificacionRubro10,
             estado: 'Activo'
         }
+      
     );
-
     calificacionMEP_nueva.save(
         function (error) {
             if (error) {
