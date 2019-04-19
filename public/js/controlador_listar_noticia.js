@@ -14,6 +14,7 @@ const noticias = listar_todas_noticias();
         if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase())) {
 
             let fila = tabla.insertRow();
+            
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
             fila.insertCell().innerHTML = noticias[i]['informacion']

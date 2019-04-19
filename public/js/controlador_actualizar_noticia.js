@@ -28,7 +28,7 @@ let obtener_datos = () => {
     let tema = input_tema.value;
     let informacion = input_informacion.value;
 
-    actualizar_noticia(tema, informacion, id);
+    actualizar(tema, informacion, id);
 };
 
 

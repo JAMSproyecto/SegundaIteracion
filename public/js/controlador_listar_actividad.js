@@ -32,7 +32,7 @@ let mostrar_datos = () => {
 
             let boton_editar = document.createElement('a');
             boton_editar.innerHTML = '<i class="fas fa-pen"></i> ';
-            boton_editar.href = `actualizar_actividad.html?idActividad=${actividades[i]['_id']}`;
+            boton_editar.href = `actualizar_actividad.html?iCentro=${actividades[i]['_id']}`;
 
             celda_actualizar.appendChild(boton_editar);
 

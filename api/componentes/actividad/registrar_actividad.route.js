@@ -18,6 +18,13 @@ router.route('/registrar_actividad')
         }
     );
 
+router.route('/actualizar_actividad')
+    .post(
+        function (req, res) {
+            registrar_actividad_api.actualizar_actividad(req, res);
+        }
+    );
+
 router.route('/listar_todas_actividades/:idCentro') 
     .get(
         function (req, res) {
@@ -26,19 +33,15 @@ router.route('/listar_todas_actividades/:idCentro')
     );
 
 
-router.route('/buscar_actividad/:idCentro')
+
+router.route('/buscar_actividad/:idActividad')
     .get(
         function (req, res) {
             registrar_actividad_api.buscar_por_id(req, res);
         }
     );
 
-    router.route('/actualizar_actividad')
-    .post(
-        function (req, res) {
-            registrar_actividad_api.actualizar_actividad(req, res);
-        }
-    );
+
 
     router.route('/eliminar_actividad')
     .post(

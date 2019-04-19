@@ -96,7 +96,7 @@ let buscar_noticia = (idCentro) => {
 
 
 
-let actualizar_noticia = (ptema, pinformacion, pid) => {
+let actualizar = (ptema, pinformacion, pid) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_noticia",
@@ -140,10 +140,7 @@ let actualizar_noticia = (ptema, pinformacion, pid) => {
 
 
 
-let eliminar_noticia = (pid) => {
-	if ('undefined' == typeof pid || null === pid) {
-        throw new Error('Error al eliminar noticia: El identificador no puede estar vacio');
-    }
+let eliminar = (pid) => {
     let request = $.ajax({
     url: "http://localhost:4000/api/eliminar_noticia",
     method: "POST",
