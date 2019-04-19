@@ -11,18 +11,19 @@ let mostrar_datos = () => {
     let filtros = input_filtrar.value;
     tabla.innerHTML = '';
 
-    for (let i = 0; i < actividades.length; i++){
+    for (let i = 0; i < actividades.length; i++) {
 
         if (actividades[i]['actividad'].toLowerCase().includes(filtros.toLowerCase())) {
 
             let fila = tabla.insertRow();
+            const ocultarHora = actividades[i]['fecha'].split(' ');
 
-        fila.insertCell().innerHTML = actividades[i]['actividad'];
-        fila.insertCell().innerHTML = actividades[i]['fecha'];
-        fila.insertCell().innerHTML = actividades[i]['hora_inicio'];
-        fila.insertCell().innerHTML = actividades[i]['finaliza'];
-        fila.insertCell().innerHTML = actividades[i]['lugar'];
-        fila.insertCell().innerHTML = actividades[i]['detalles'];
+            fila.insertCell().innerHTML = actividades[i]['actividad'];
+            fila.insertCell().innerHTML = ocultarHora[0];
+            fila.insertCell().innerHTML = actividades[i]['hora_inicio'];
+            fila.insertCell().innerHTML = actividades[i]['finaliza'];
+            fila.insertCell().innerHTML = actividades[i]['lugar'];
+            fila.insertCell().innerHTML = actividades[i]['detalles'];
 
             let celda_actualizar = fila.insertCell();
             let celda_eliminar = fila.insertCell();
