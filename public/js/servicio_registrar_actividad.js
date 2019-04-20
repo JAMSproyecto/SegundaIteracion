@@ -1,6 +1,6 @@
 'use strict';
 
-let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza, pdetalles) => {
+let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliza, plugar, pdetalles) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_actividad",
         method: "POST",
@@ -44,7 +44,7 @@ let registrar_actividad = (pidCentro, pactividad, pfecha, phora_inicio, pfinaliz
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
             type: 'error',
-            title: 'La actividad no pude ser registrada',
+            title: 'El dato no pude ser registrado',
             text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
     });
@@ -96,11 +96,10 @@ let buscar_actividad = (idCentro) => {
 };
 
 
-let actualizar = (pactividad, pfecha, phora_inicio, pfinaliza,
-    plugar, pdetalles,  pid) => {
+let actualizar = (pactividad, pfecha, phora_inicio, pfinaliza, plugar, pdetalles, pid) => {
 
     let request = $.ajax({
-        url: "http://localhost:4000/api/actualizar_actividad/",
+        url: "http://localhost:4000/api/actualizar_noticia",
         method: "POST",
         data: {
             actividad: pactividad,
@@ -141,6 +140,8 @@ let actualizar = (pactividad, pfecha, phora_inicio, pfinaliza,
         console.error(jqXHR);
     });
 };
+
+
 
 let eliminar_actividad = (pid) => {
     let request = $.ajax({

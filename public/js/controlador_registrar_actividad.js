@@ -4,7 +4,6 @@ const input_actividad = document.querySelector('#txt_actividad');
 const input_fecha = document.querySelector('#txt_fecha');
 const input_hora_inicio = document.querySelector('#txt_hora_inicio');
 const input_finaliza = document.querySelector('#txt_finaliza');
-
 const input_lugar = document.querySelector('#txt_lugar');
 
 const input_detalles = document.querySelector('#txt_detalles');
@@ -76,7 +75,7 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'La actividad no fue registrada de forma correcta',
+            title: 'Los datos no fueron registrados de manera correcta',
             text: 'Favor completar los espacios señalados en rojo'
         }
         )

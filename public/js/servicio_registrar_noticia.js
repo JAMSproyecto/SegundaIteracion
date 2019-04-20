@@ -39,7 +39,7 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
             type: 'error',
-            title: 'La noticia no puede ser registrada',
+            title: 'El dato no pude ser registrado',
             text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
     });
@@ -140,7 +140,7 @@ let actualizar = (ptema, pinformacion, pid) => {
 
 
 
-let eliminar = (pid) => {
+let eliminar_noticia = (pid) => {
     let request = $.ajax({
     url: "http://localhost:4000/api/eliminar_noticia",
     method: "POST",
