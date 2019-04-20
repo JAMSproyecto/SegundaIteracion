@@ -184,14 +184,16 @@
   box-shadow: 0 0 10px #78909c;
 }
 
-.ser__transporte,
-.ser__deportes,
-.ser__biblioteca,
+.ser__actividad,
+.ser__alimentacion,
+.ser__arte,
+.ser__cientifico,
+.ser__deporte,
 .ser__musica,
-.ser__estudio,
-.ser__laboratorio,
-.ser__cafeteria,
-.ser__enfermeria {
+.ser__religion,
+.ser__salud,
+.ser__transporte,
+.ser__estudio{
   padding: 24px 30px;
 }
 

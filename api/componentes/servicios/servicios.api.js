@@ -29,11 +29,12 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
 
 
 //funcion para regsitrar servicios 
-module.exports.registrar= (req,res) =>{
+module.exports.registrar_servicio = (req,res) =>{
     let servicio_nuevo = new model_servicio(
         {
             codigo : req.body.codigo,
             nombre : req.body.nombre,
+            tipo : req.body.tipo,
             descripcion : req.body.descripcion
         }
     );
@@ -77,7 +78,6 @@ module.exports.obtener_servicios_id = (req,res) =>{
                             {
                                 succes : true,
                                 coleccion_servicios : coleccion,
-                                nombre_centro: centro.nombre
                             }
                         )
                     }
@@ -88,6 +88,37 @@ module.exports.obtener_servicios_id = (req,res) =>{
                     {
                         succes : false,
                         coleccion : `No se encontraron servicios registrados`
+                    }
+                )
+            }
+        }
+    )
+};
+
+//funcion para obtner el nombre del centro 
+module.exports.obtener_nombre_centro_id = (req,res) =>{
+   
+    model_servicio.find({codigo : req.body.codigo}).then(
+        function(coleccion){
+            const cant = Object.keys(coleccion).length;
+            if (cant > 0) {
+                model_cedu.findOne({_id: coleccion[0].codigo}).then(
+                    (centro) =>{
+                      
+                        res.json(
+                            {
+                                succes : true,
+                                nombre_centro: centro.nombre
+                            }
+                        )
+                    }
+                )
+                
+            }else{
+                res.json(
+                    {
+                        succes : false,
+                        centro: `No se encontró el nombre del centro educativo`
                     }
                 )
             }

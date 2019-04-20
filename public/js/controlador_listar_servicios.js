@@ -5,15 +5,16 @@ const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
 let response = obtener_por_id();
+let res = obtener_nombre_centro_id();
 
 let mostrar_datos = ()=>{
     let filtro = input_filtrar.value;
     tabla.innerHTML = '';
-    let lista_servicios = response.coleccion_servicios;
-    let nombre = response.nombre_centro;
+    let lista_servicios = response;
+    let nombre_centro = res;
     console.log('servicios: ',lista_servicios);
  
-        titulo.innerHTML = nombre;
+        titulo.innerHTML = nombre_centro;
         for (let i = 0; i < lista_servicios.length; i++) {
         if (lista_servicios[i]['nombre'].toLowerCase().includes(filtro.toLowerCase()) || lista_servicios[i]['descripcion'].toLowerCase().includes(filtro.toLowerCase())) {
 
