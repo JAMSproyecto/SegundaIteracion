@@ -5,6 +5,7 @@ const TblAddComentario = document.querySelector('#tblAddComentario');
 const BtnComentar = document.querySelector('#btnComentar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
+const mostrarActividad = document.querySelector('#tabla__actividades');
 const div_noticias = document.querySelector('#tabla__noticias');
 const tablaServicios = document.querySelector('#tabla__servicios');
 
@@ -71,6 +72,9 @@ let crearActividades = () => {
       actividad.appendChild(lugar);
       actividad.appendChild(detalles);
       //Termina lo agregado por Marlon
+
+
+      mostrarActividad.appendChild(actividad);
     })
 
   }
