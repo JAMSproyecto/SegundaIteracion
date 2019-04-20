@@ -72,7 +72,7 @@ let listar_todas_actividades = (pId) => {
 
 };
 
-
+ 
 let buscar_actividad = (idCentro) => {
     let actividad = [];
     let request = $.ajax({

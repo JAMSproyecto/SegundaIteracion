@@ -201,10 +201,12 @@ let mostrar_noticias = () => {
   }
 
 };
-/*
+
 let crearActividades = () => {
 
-  let actividades = listar_todas_actividades();
+ let id = localStorage.getItem('verPerfilCEdu');
+
+  let actividades = listar_todas_actividades(id);
 
   if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
     actividades.forEach(obj  => {
@@ -221,9 +223,9 @@ let crearActividades = () => {
       let hora = document.createElement('p');
       hora.classList.add('hora__actividad');
 
-      strong.innerHTML = e.actividad;
-      fecha.innerHTML = e.fecha;
-      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
+      strong.innerHTML = obj.actividad;
+      fecha.innerHTML = obj.fecha;
+      hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
       actividad.appendChild(strong);
       actividad.appendChild(fecha);
       actividad.appendChild(hora);
@@ -234,7 +236,7 @@ let crearActividades = () => {
   }
 
 
-};*/
+};
 
 window.onload = () => {
   let id;
@@ -277,7 +279,7 @@ window.onload = () => {
   }
 
   crearCalendario(id);
-  //crearActividades();
+  crearActividades();
 
   mostrar_noticias();
   cargarCalificaciones(id)

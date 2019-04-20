@@ -28,7 +28,7 @@ router.route('/listar_todas_actividades/:idCentro')
         function (req, res) {
             registrar_actividad_api.listar_todas_actividades(req, res);
         }
-    );
+    ); 
 
 
 
