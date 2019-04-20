@@ -79,7 +79,7 @@ let cargarCEdu = () => {
             if ('object' == typeof (pMessage)) {
                     pMessage.forEach(obj => {
                             let card = document.createElement('div');
-                            let card_contenedor= document.createElement('div');
+                            
 
 
                             let centro_nombre = document.createElement('h1');
@@ -118,9 +118,9 @@ let cargarCEdu = () => {
                                 card.appendChild(direccion);
                                 card.appendChild(calificacionMEP);
                                 card.appendChild(verMas);
-                                card_contenedor.appendChild(card);
+                                
 
-                            cards_centros.appendChild(card_contenedor);
+                            cards_centros.appendChild(card);
                     });
 
             }

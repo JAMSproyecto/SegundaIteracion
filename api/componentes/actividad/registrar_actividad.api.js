@@ -73,7 +73,7 @@ module.exports.registrar_actividad = (req, res) => {
  * @param req {body:idCentro}
  */
 module.exports.listar_todas_actividades = (req, res) => {
-    const filtros = { idActividad : req.body.idActividad };
+    const filtros = { idCentro : req.body.idCentro };
     model_registrar_actividad.find(filtros).sort({ fecha: 'desc' }).then(
         function (resultado) {
             if (resultado) {
