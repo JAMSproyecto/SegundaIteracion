@@ -3,7 +3,7 @@ const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
 
-let mostrar_noticias = () => {
+let mostrar_datos = () => {
 const noticias = listar_todas_noticias();
 
     let filtros = input_filtrar.value;
@@ -14,7 +14,6 @@ const noticias = listar_todas_noticias();
         if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase())) {
 
             let fila = tabla.insertRow();
-            
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
             fila.insertCell().innerHTML = noticias[i]['informacion']
@@ -41,12 +40,12 @@ const noticias = listar_todas_noticias();
             boton_eliminar.addEventListener('click', function () {
                 eliminar_noticia(this.dataset.idCentro);
                
-                mostrar_noticias();
+                mostrar_datos();
 
 
             });
             //a esa variable le agrego un elemento como hijo
-           
+            celda_actualizar.appendChild(boton_eliminar);
             celda_eliminar.appendChild(boton_eliminar);
         }
 
@@ -54,6 +53,6 @@ const noticias = listar_todas_noticias();
     }
 };
 
-input_filtrar.addEventListener('keyup', mostrar_noticias);
+input_filtrar.addEventListener('keyup', mostrar_datos);
 
-mostrar_noticias();
+mostrar_datos();

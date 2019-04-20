@@ -28,4 +28,12 @@ router.route('/obtener_servicios_id/:codigo')
             }
         );
 
+router.route('/obtener_nombre_centro_id/:codigo')
+            .get(
+              function(req,res) 
+              {
+                  servicio_api.obtener_nombre_centro_id(req,res);
+              } 
+            );
+
 module.exports = router;

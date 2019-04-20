@@ -6,7 +6,7 @@
     background-color: #f5f6fa;
     width: 45%;
     margin: auto;
-  
+    margin-bottom: 30px;
     border: 1px solid #bdc3c7;
    
   }
@@ -15,8 +15,8 @@
 .bloqueNoticia   .bloqueNoticia__contenedor,
 .bloquePreguntas  .bloquePreguntas__contenedor,
 .bloqueRegistrar-utiles .bloqueRegistrar-utiles__contenedor{
-    padding: 10px 0px;
- 
+    padding: 30px 0px;
+    font-family: 'Asap', sans-serif;
 }
 
 
@@ -68,7 +68,22 @@
     display: inline-block;
   }
   
+  
+ 
 
+
+
+.titulo__secundario{
+    color: #17c0eb;
+    font-size: 21px;
+    font-weight: 600;
+    padding: 10px 49px;
+ 
+}
+
+.titulo__secundario__registro{
+    padding: 10px 0px;
+}
 
 h2 {
     color: #17c0eb;
@@ -77,6 +92,133 @@ h2 {
       margin-top:35px;
     margin-bottom: 35px;
 }
+
+
+.titulo__tablas{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.centros__aprobados{
+    margin-bottom: 100px;
+}
+
+
+
+.registrar_actividad input{
+    width: 300px;
+
+
+}
+
+
+
+.bloque__principal-articulos
+{
+    background: #f9f9f9;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+
+.bloque__principal-utiles{
+    margin-top: 0px;
+}
+
+
+.formulario-boton .btn{
+    font-weight: 700;
+}
+
+
+
+
+/*formulario citas*/
+.columna__izquierda-cita{
+    background: #dfe6e9;
+ 
+}
+
+
+
+.columna__contenedor-izquierdo{
+    padding: 0px 49px;
+    position: relative;
+    /* bottom: -10px; */
+    top: 34px;   
+}
+
+
+.controlador{
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.columna__derecha-cita{
+    background: #81b43e;
+    padding: -4rem 1rem 0;
+    color: #fff;
+    position: relative;
+    right: 65px;
+    top: 30px;
+    box-shadow: 12px 14px 6px #bdc3c7;
+    padding: 10px;
+}
+
+
+.columna__contenedor{
+    padding-top: 13px;
+}
+
+
+
+
+.frm__motivo{
+    margin: auto;
+    width: 350px;
+    margin-top: 25px;
+}
+
+.comentario{
+    margin-top: 20px;
+}
+
+.btn_registrar{
+    padding: 10px 39px;
+    font-size: 15px;
+}
+
+
+/*fin formulario citas*/
+
+
+/*formulario registrar actividad*/
+
+.formulario_lista_utiles {  
+    width: 500px;
+    margin: auto;
+    padding: 0px 73px;
+}
+
+.formulario__articulos{
+    padding: 20px;
+}
+
+
+.registrar_actividad{
+    display: flow-root;
+}
+.registrar_actividad input{
+    width: 400px;
+    margin: auto;
+}
+
+
+
+
 
 .registrar_actividad .hora input{
    width: 150px;
@@ -92,6 +234,9 @@ h2 {
 
 
 
+
+
+
 /*botones*/
 .bloque__boton{
     width: 200px;
@@ -101,6 +246,22 @@ h2 {
 }
 
 
+.boton{
+    padding: 10px 30px;
+    background-color: #ffb142;
+    color: #fff;
+    border:0px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.bloque__boton-utiles{
+    width: 160px;
+}
+
+
+.bloque__boton-registrar{
+    width: 200px;
+}
 
 
 .dato,
@@ -109,7 +270,28 @@ h2 {
 }
 
 
+
+
+
+
+
+
+.wrapper{
+    width: 1000px;
+    margin: auto;
+  
+}
+
+.menu__centros{
+    position: relative;
+    top: 151px;
+}
+
+
 /*jeison*/
+
+
+
 
 
 /* Estilos para los formularios */
@@ -408,6 +590,9 @@ select:not(.error_input):focus,
 }
 
 
+
+
+
 .bloqueFiltro{
     width: 90%;
     margin: 30px auto;
@@ -432,17 +617,5 @@ select:not(.error_input):focus,
     visibility: hidden;
 }
 
-.bloqueBoton{
-    width: 150px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-#btn_registrar_rubro,
-#btn,
-#btnRegistrar,
-#btn_actualizar,
-#btn_enviar,
-#btn_agregar{
-    background: #179bd7;
-    color:#fff;
-}
+
+

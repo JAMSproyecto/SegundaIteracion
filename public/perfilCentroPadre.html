@@ -19,252 +19,225 @@
 
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
+
     <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="./css/generalFormulario.css">
+
+    <link rel="stylesheet" href="css/estrellas.css" />
     <link rel="stylesheet" href="css/estilosCE.css" />
-    <link rel="stylesheet" href="./css/estilosPadres.css">
 </head>
 
 <body>
+    <header class="header__centro">
+        <div class="column__arriba">
+            <nav class="menu__arriba">
+                <ul>
+                    <li> <a class="registrarse" href="principal_padres.html">Regresar perfil</a></li>
+                    <li> <a class="btn_top contrasenia" href="#">Cambiar Contraseña</a></li>
+                    <li><button class="btn btn--amarillo" id="boton_cerrar">Cerrar sesión</button></li>
+                </ul>
+            </nav>
+        </div>
 
-    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
-    visualiza el menu el los header-->
-    <header class="bloqueHeader">
-        <div class="bloqueHeader__perfil-CE">
-            <div class="bloqueHeader__logo">
-                <a href="perfil_padre.html">
-                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                </a>
-            </div>
-            <div class="institucion">
-                <span>Nuestra Institución </span>
-            </div>
-        </div>
-        <div class="bloqueHeader__filaArriba">
-            <div class="bloqueHeader__contendorArriba">
-                <div class="bloqueHeader__nombreCed">
-                    <span class="titulo_centro_educativo tituloCE"></span>
-                </div>
-
-                <div class="header__nav">
-                    <div class="menu__palanca menu__palanca__izq">
-                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
-                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
-                            <span class="menu__palanca__btn__intercalar"></span>
-                        </a>
-                        <ul id="menuOpciones" class="menu_opciones">
-                            <li>
-                                <a href="javascript:void(0)">Ver perfil</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Modificar perfil</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bloqueHeader__filaAbajo">
-            <div class="bloqueHeader__contenedorAbajo">
-                <span>Les da la bienvenida</span>
-            </div>
-        </div>
     </header>
 
-    <main id="main">
-
-
-            <section id="bloqueResennia">
-                    <div>
-                        <h2 class="titulo__secundario">Reseña Historica</h2>
-                        <p id='mostrarResennia'></p>
-                    </div>
-                </section>
+    <main>
 
         <section>
             <div>
                 <h1 class="titulo_centro_educativo"></h1>
             </div>
-
-
-            <section class="bloque__descripcion">
-                <div class="contenedor__servicios">
-
-                    <div class="titulo__servicios">
-                        <h2 class="titulo__secundario">Nuestros servicios</h2>
-                    </div>
-                    <div class="tabla__servicios">
-                        <div class="fila__arriba">
-                            <div class="ser__cafeteria servicio">
-                                <i class="fas faq fa-mug-hot"></i>
-                                <span>Cafetería</span>
-                            </div>
-                            <div class="ser__enfermeria servicio">
-                                <i class="fas faq  fa-user-nurse"></i>
-                                <span>Enfermería</span>
-                            </div>
-                            <div class="ser__transporte servicio">
-                                <span><i class="fas faq  fa-bus"></i></span>
-                                <span>Transporte</span>
-                            </div>
-                            <div class="ser__estudio servicio">
-                                <i class="fas faq fa-user-friends"></i>
-                                <span>Excursiones</span>
-                            </div>
+            <div class="slider">
+                <div class="slide_viewer">
+                    <div class="slide_group">
+                        <div class="slide">
                         </div>
-                        <div class="fila__abajo">
-                            <div class="ser__laboratorio servicio">
-                                <i class="fas faq fa-flask"></i>
-                                <span>Laboratorio</span>
-                            </div>
-                            <div class="ser__deportes servicio">
-                                <i class="fas faq fa-futbol"></i>
-                                <span>Deportes</span>
-                            </div>
-                            <div class="ser__biblioteca servicio">
-                                <i class="fas faq fa-book"></i>
-                                <span>Biblioteca</span>
-                            </div>
-                            <div class="ser__musica servicio">
-                                <i class="fas faq fa-music"></i>
-                                <span>Música</span>
-                            </div>
+                        <div class="slide">
                         </div>
-
-                    </div>
-                </div>
-
-                <div class="tabla__oferta">
-                    <div class="contenedor__tabla">
-                        <div class="titulo_oferta">
-                            <h2 class="titulo__secundario">Oferta académica</h2>
+                        <div class="slide">
                         </div>
-                        <div class="oferta__academica">
-                            <div class="preescolar">
-                                <img src="./imgs/Niños-felices.png" />
-
-                                <p>Prescolar</p>
-                            </div>
-                            <div class="primaria">
-                                <img src="./imgs/primariajpg.jpg" />
-                                <p>Primaria</p>
-                            </div>
-                            <div class="secundaria">
-                                <img src="./imgs/secundaria.jpeg" />
-                                <p>Secundaria</p>
-                            </div>
+                        <div class="slide">
                         </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section id="contenedorNoticias">
-                <div>
-                    <h2 class="titulo__secundario">Noticias</h2>
-                </div>
-                <div class="tabla__noticias">
-                    <div id="tabla__noticias" class="contenedor__noticias"></div>
-                </div>
-            </section>
-            <section id="contenedorActividades">
-                <div>
-                    <h2 class="titulo__secundario">Actividades</h2>
-                </div>
-                <div class="tabla__actividades">
-                    <div id="tabla__actividades" class="contenedor__actividades"></div>
-                </div>
-            </section>
-
-            <div class="my__60">
-                <div class="contenedor cuerpo">
-                    <div class="contenedor contenido">
-                        <section>
-
-                            <div>
-                                <h2 class="titulo__secundario">Calificar</h2>
-                            </div>
-
-                            <div class="tblAddComentario tabla__responsive">
-                                <table class="tabla tabla__minimalista" id="tblAddComentario">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="estrellas">
-                                                    <div class="estrellas__cuerpo">
-                                                        <input type="radio" name="estrella" class="estrella__1"
-                                                            value="1" id="estrella1"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__1" for="estrella1"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__2" value="2"
-                                                            id="estrella2"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__2" for="estrella2"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__3" value="3"
-                                                            id="estrella3"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__3" for="estrella3"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__4" value="4"
-                                                            id="estrella4"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__4" for="estrella4"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__5" value="5"
-                                                            id="estrella5"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__5" for="estrella5"><i></i></label>
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <textarea id="txtEditorComentario" maxlength="500" rows="1"
-                                                    placeholder="Haz un comentario..."></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-
-                                                <div class="text__right">
-                                                    <button type="button" class="btn btn--amarillo"
-                                                        id="btnComentar">Asignar</button>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="tabla tabla__minimalista" id="tblComentarios">
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-
-
-
-                        </section>
-                        <section>
-                            <div class="bloque_calendario">
-                                <h2 class="titulo__secundario">Citas</h2>
-                                <div id="calendario"></div>
-
-                            </div>
-                            <div class="boton__citas">
-                                <button type="button" class="btn btn--amarillo" id="btnRegistrarCita">Registrar
-                                    cita</button>
-                            </div>
-                        </section>
+                        <div class="slide">
+                        </div>
                     </div>
                 </div>
             </div>
+
+        </section>
+
+
+        <section class="bloque__descripcion">
+            <div class="contenedor__servicios">
+
+                <div class="titulo__servicios">
+                    <h2 class="titulo__secundario">Nuestros servicios</h2>
+                </div>
+                <div class="tabla__servicios">
+                    <div class="fila__arriba">
+                        <div class="ser__cafeteria servicio">
+                            <i class="fas faq fa-mug-hot"></i>
+                            <span>Cafetería</span>
+                        </div>
+                        <div class="ser__enfermeria servicio">
+                            <i class="fas faq  fa-user-nurse"></i>
+                            <span>Enfermería</span>
+                        </div>
+                        <div class="ser__transporte servicio">
+                            <span><i class="fas faq  fa-bus"></i></span>
+                            <span>Transporte</span>
+                        </div>
+                        <div class="ser__estudio servicio">
+                            <i class="fas faq fa-user-friends"></i>
+                            <span>Excursiones</span>
+                        </div>
+                    </div>
+                    <div class="fila__abajo">
+                        <div class="ser__laboratorio servicio">
+                            <i class="fas faq fa-flask"></i>
+                            <span>Laboratorio</span>
+                        </div>
+                        <div class="ser__deportes servicio">
+                            <i class="fas faq fa-futbol"></i>
+                            <span>Deportes</span>
+                        </div>
+                        <div class="ser__biblioteca servicio">
+                            <i class="fas faq fa-book"></i>
+                            <span>Biblioteca</span>
+                        </div>
+                        <div class="ser__musica servicio">
+                            <i class="fas faq fa-music"></i>
+                            <span>Música</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tabla__oferta">
+                <div class="contenedor__tabla">
+                    <div class="titulo_oferta">
+                        <h2 class="titulo__secundario">Oferta académica</h2>
+                    </div>
+                    <div class="oferta__academica">
+                        <div class="preescolar">
+                            <img src="./imgs/Niños-felices.png" />
+
+                            <p>Prescolar</p>
+                        </div>
+                        <div class="primaria">
+                            <img src="./imgs/primariajpg.jpg" />
+                            <p>Primaria</p>
+                        </div>
+                        <div class="secundaria">
+                            <img src="./imgs/secundaria.jpeg" />
+                            <p>Secundaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contenedorNoticias">
+            <div>
+                <h2 class="titulo__secundario">Noticias</h2>
+            </div>
+            <div class="tabla__noticias">
+                <div id="tabla__noticias" class="contenedor__noticias"></div>
+            </div>
+        </section>
+        <section id="contenedorActividades">
+            <div>
+                <h2 class="titulo__secundario">Actividades</h2>
+            </div>
+            <div class="tabla__actividades">
+                <div id="tabla__actividades" class="contenedor__actividades"></div>
+            </div>
+        </section>
+
+        <div class="my__60">
+            <div class="contenedor cuerpo">
+                <div class="contenedor contenido">
+                    <section>
+
+                        <div>
+                            <h2 class="titulo__secundario">Calificar</h2>
+                        </div>
+
+                        <div class="tblAddComentario tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="estrellas">
+                                                <div class="estrellas__cuerpo">
+                                                    <input type="radio" name="estrella" class="estrella__1" value="1"
+                                                        id="estrella1"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__1" for="estrella1"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__2" value="2"
+                                                        id="estrella2"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__2" for="estrella2"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__3" value="3"
+                                                        id="estrella3"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__3" for="estrella3"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__4" value="4"
+                                                        id="estrella4"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__4" for="estrella4"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__5" value="5"
+                                                        id="estrella5"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__5" for="estrella5"><i></i></label>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" maxlength="500" rows="1"
+                                                placeholder="Haz un comentario..."></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+
+                                            <div class="text__right">
+                                                <button type="button" class="btn btn--amarillo"
+                                                    id="btnComentar">Asignar</button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="tabla tabla__minimalista" id="tblComentarios">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </section>
+                    <section>
+                        <div class="bloque_calendario">
+                            <h2 class="titulo__secundario">Citas</h2>
+                            <div id="calendario"></div>
+
+                        </div>
+                        <div class="boton__citas">
+                            <button type="button" class="btn btn--amarillo" id="btnRegistrarCita">Registrar
+                                cita</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -363,7 +336,7 @@
     <script src="./js/servicio_perfil_cedu.js"></script>
 
     <script src="./js/calendario.js"></script>
-
+  
     <script src="./js/controlador_perfil_cedu.js"></script>
 
 

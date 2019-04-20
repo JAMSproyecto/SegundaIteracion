@@ -8,18 +8,51 @@ const mostrarResennia = document.querySelector('#mostrarResennia');
 const div_noticias = document.querySelector('#tabla__noticias');
 
 
+const noticias = listar_todas_noticias();
+
 let calificacionSeleccionada = 0;
 
 let mostrar_resennia = (resennia) => {
 
   mostrarResennia.innerHTML = resennia;
   //bloque.classList.add('actividad');
-
+  console.log(resennia);
 
 
 }
 
 
+let crearActividades = () => {
+  let actividades = listar_todas_actividades();
+
+  if ('object' == typeof actividades) {
+    actividades.forEach((e, index) => {
+      let actividad = document.createElement('div');
+      actividad.classList.add('actividad');
+
+      let strong = document.createElement('strong');
+      strong.classList.add('nombre__actividad');
+
+      let fecha = document.createElement('p');
+      fecha.classList.add('fecha__actividad');
+
+      let hora = document.createElement('p');
+      hora.classList.add('hora__actividad');
+
+      strong.innerHTML = e.actividad;
+      fecha.innerHTML = e.fecha;
+      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
+      actividad.appendChild(strong);
+      actividad.appendChild(fecha);
+      actividad.appendChild(hora);
+      document.querySelector('#tabla__actividades').appendChild(actividad);
+    });
+  } else {
+    console.log(actividades);
+  }
+
+
+};
 
 let marcarEstrella = (event) => {
   let grupoEstrellas = document.querySelectorAll(".estrellas__cuerpo input");
@@ -176,9 +209,9 @@ let calificarMEP = () => {
 
 //Marlon. Fin del calificar MEP
 
-let mostrar_noticias = () => {
-  const noticias = listar_todas_noticias();
 
+
+let mostrar_noticias = () => {
   div_noticias.innerHTML = '';
   if (noticias) {
     if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
@@ -202,59 +235,114 @@ let mostrar_noticias = () => {
 
 };
 
-let crearActividades = () => {
+//creado por Johan para las crads servicios 
+let cards_servicios = () =>{
+  let servicio = obtener_por_id();
 
-  let id = localStorage.getItem('verPerfilCEdu');
+    if (Object.keys(servicio).length > 0) {
+      servicio.forEach(function(object) {
 
-  let actividades = listar_todas_actividades(id);
+        let div_servicio = document.createElement('div');
+        let nombre = document.createElement('span');
+        let logo = document.createElement('i');
 
-  if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
-    actividades.forEach(obj => {
+        switch(object.tipo){
+          case 'actividades' :
+          div_servicio.classList.add('ser__actividad','servicio');
+          logo.classList.add('fas','faq','fa-user-friends');
 
-      let actividad = document.createElement('div');
-      actividad.classList.add('actividad');
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      let strong = document.createElement('strong');
-      strong.classList.add('nombre__actividad');
+          case 'alimentacion' : 
+          div_servicio.classList.add('ser__alimentacion','servicio');
+          logo.classList.add('fas','faq','fa-mug-hot');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      let fecha = document.createElement('p');
-      fecha.classList.add('fecha__actividad');
+          case 'artes' : 
+          div_servicio.classList.add('ser__arte','servicio');
+          logo.classList.add('fas','faq','fa-palette');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      let hora = document.createElement('p');
-      hora.classList.add('hora__actividad');
+          case 'cientifico' : 
+          div_servicio.classList.add('ser__cientifico','servicio');
+          logo.classList.add('fas','faq','fa-flask');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      //Agregado por Marlon, para que muestre los datos faltantes
-      let lugar = document.createElement('p');
-      lugar.classList.add('lugar__actividad');
+          
+          case 'deporte' : 
+          div_servicio.classList.add('ser__deporte','servicio');
+          logo.classList.add('fas','faq','fa-futbol');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      let detalles = document.createElement('p');
-      detalles.classList.add('detalles__actividad');
+          case 'musica' : 
+          div_servicio.classList.add('ser__musica','servicio');
+          logo.classList.add('fas','faq','fa-guita');
+         
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      lugar.innerHTML = 'Lugar: ' + obj.lugar;
-      detalles.innerHTML = obj.detalles;
-      //Termina lo agregado por Marlon
+          case 'religion' : 
+          div_servicio.classList.add('ser__religion','servicio');
+          logo.classList.add('fas','faq','fa-bible');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      strong.innerHTML = obj.actividad;
-      fecha.innerHTML = obj.fecha;
-      hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
-      actividad.appendChild(strong);
-      actividad.appendChild(fecha);
-      actividad.appendChild(hora);
+          case 'salud' : 
+          div_servicio.classList.add('ser__salud','servicio');
+          logo.classList.add('fas','faq','fa-user-nurse');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
-      //Agregado por Marlon
-      actividad.appendChild(lugar);
-      actividad.appendChild(detalles);
-      //Termina lo agregado por Marlon
+          case 'transporte' : 
+          div_servicio.classList.add('ser__transporte','servicio');
+          logo.classList.add('fas','faq','fa-bus');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
 
+          case 'estudio' : 
+          div_servicio.classList.add('ser__estudio','servicio');
+          logo.classList.add('fas','faq','fa-book');
+          
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+        }
 
-      document.querySelector('#tabla__actividades').appendChild(actividad);
-    });
-  } else {
-    console.log(actividades);
+        document.querySelector('#tabla__servicios').appendChild(div_servicio);
+      });
   }
-
-
-};
+ };
 
 window.onload = () => {
   let id;
@@ -300,6 +388,7 @@ window.onload = () => {
   crearActividades();
 
   mostrar_noticias();
+  cards_servicios();
   cargarCalificaciones(id)
   mostrar_resennia(perfil.referenciaHistorica);
 

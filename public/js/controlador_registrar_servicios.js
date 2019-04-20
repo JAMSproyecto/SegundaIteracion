@@ -40,7 +40,7 @@ let enviarDatos = () => {
   }
 
   if (tipo == '') {
-    mostrarAlerta('seleccione el tipo de servicio', input_nombre);
+    mostrarAlerta('seleccione el tipo de servicio', input_tipo);
     return false;
   } else {
     input_tipo.classList.remove('error_input');
