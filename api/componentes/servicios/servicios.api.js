@@ -29,11 +29,12 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
 
 
 //funcion para regsitrar servicios 
-module.exports.registrar= (req,res) =>{
+module.exports.registrar_servicio = (req,res) =>{
     let servicio_nuevo = new model_servicio(
         {
             codigo : req.body.codigo,
             nombre : req.body.nombre,
+            tipo : req.body.tipo,
             descripcion : req.body.descripcion
         }
     );
