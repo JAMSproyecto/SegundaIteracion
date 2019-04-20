@@ -31,7 +31,7 @@ let mostrar_datos = () => {
             fila.insertCell().innerHTML = padresFamilia[i]['correo'];
             fila.insertCell().innerHTML = padresFamilia[i]['provincia'];
             fila.insertCell().innerHTML = padresFamilia[i]['canton'];
-            fila.insertCell().innerHTML = '<button class="btn btn--amarillo" onClick="irAlPerfil('+padresFamilia[i]['_id']+'); return false;">Ver más</button>';
+            fila.insertCell().innerHTML = '<a  onClick="irAlPerfil('+padresFamilia[i]['_id']+'); return false;"><i class="fas fa-eye"></i></a>';
         }
     }
 };

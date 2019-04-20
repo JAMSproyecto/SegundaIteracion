@@ -68,7 +68,7 @@ module.exports.registrar_actividad = (req, res) => {
     );
 };
 
-/**
+/** 
  * Listar actividades 
  * @param req {body:idCentro}
  */

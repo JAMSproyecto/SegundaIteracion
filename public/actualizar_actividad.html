@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-   
+
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="./css/estiloGeneral.css">
@@ -118,14 +118,14 @@
                     </ul>
                 </li>
 
-               
+
                 <li>
-                        <a class="reporte">Servicios</a>
-                        <ul>
-                            <li><a href="javascript:void(0)">Registrar servicios</a></li>
-                            <li><a href="javascript:void(0)">Lista de servicios</a></li>
-                        </ul>
-                    </li>
+                    <a class="reporte">Servicios</a>
+                    <ul>
+                        <li><a href="javascript:void(0)">Registrar servicios</a></li>
+                        <li><a href="javascript:void(0)">Lista de servicios</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a class="reporte">Preguntas frecuentes</a>
                     <ul>
@@ -137,7 +137,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="main">
         <div class="tituloPrincipal">
             <h1> Actualizar Evento </h1>
         </div>
@@ -180,8 +180,10 @@
             </div>
 
         </section>
+        <div class="bloqueBoton">
+            <button type="button" class="btn__actualizar btn--amarillo" id="btn_actualizar">Registrar</button>
 
-        <button type="button" class="btn__actualizar btn--amarillo" id="btn_actualizar">Registrar</button>
+        </div>
 
     </main>
     <footer>
@@ -259,8 +261,7 @@
     <script src="js/servicio_registrar_actividad.js"></script>
     <script src="./js/controlador_actualizar_actividad.js"></script>
 
-    <script src="./js/menuLateral.js"></script>
-
+ 
 
 
 </body>

@@ -36,8 +36,7 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
     });
 
     request.fail(function (jqXHR, textStatus) {
-        console.error(textStatus);
-        console.error(jqXHR);
+      
     });
 };
 
@@ -82,8 +81,7 @@ let listar_todas_noticias = () => {
     });
 
     request.fail(function (jqXHR, textStatus) {
-        console.error(textStatus);
-        console.error(jqXHR);
+      
     });
 
     return noticias_arreglo;
@@ -158,8 +156,7 @@ let actualizar_noticia = (ptema, pinformacion, pid) => {
     });
 
     request.fail(function (jqXHR, textStatus) {
-        console.error(textStatus);
-        console.error(jqXHR);
+    
     });
 };
 
