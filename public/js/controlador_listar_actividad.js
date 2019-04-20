@@ -3,6 +3,7 @@
 
 const tabla = document.querySelector('#tbl_listar_actividad tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
+
 const actividades = listar_todas_actividades();
 
 let mostrar_actividades = () => {

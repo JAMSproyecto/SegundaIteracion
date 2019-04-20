@@ -204,13 +204,13 @@ let mostrar_noticias = () => {
 
 let crearActividades = () => {
 
- let id = localStorage.getItem('verPerfilCEdu');
+  let id = localStorage.getItem('verPerfilCEdu');
 
   let actividades = listar_todas_actividades(id);
 
   if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
-    actividades.forEach(obj  => {
-      
+    actividades.forEach(obj => {
+
       let actividad = document.createElement('div');
       actividad.classList.add('actividad');
 
@@ -223,12 +223,30 @@ let crearActividades = () => {
       let hora = document.createElement('p');
       hora.classList.add('hora__actividad');
 
+      //Agregado por Marlon, para que muestre los datos faltantes
+      let lugar = document.createElement('p');
+      lugar.classList.add('lugar__actividad');
+
+      let detalles = document.createElement('p');
+      detalles.classList.add('detalles__actividad');
+
+      lugar.innerHTML = 'Lugar: ' + obj.lugar;
+      detalles.innerHTML = obj.detalles;
+      //Termina lo agregado por Marlon
+
       strong.innerHTML = obj.actividad;
       fecha.innerHTML = obj.fecha;
       hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
       actividad.appendChild(strong);
       actividad.appendChild(fecha);
       actividad.appendChild(hora);
+
+      //Agregado por Marlon
+      actividad.appendChild(lugar);
+      actividad.appendChild(detalles);
+      //Termina lo agregado por Marlon
+
+
       document.querySelector('#tabla__actividades').appendChild(actividad);
     });
   } else {
