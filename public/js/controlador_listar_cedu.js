@@ -58,6 +58,20 @@ let irAlPerfil = (idCEdu) => {
     }
 };
 
+let mostrarCalificacionMEP = (pId) => {
+
+        let calificacionMEP = listar_calificacion_CEdu(pId);
+if ('object' == typeof (calificacionMEP)){
+    console.log(calificacionMEP['calificacionTotal']);
+    return calificacionMEP['calificacionTotal'];
+} else {
+    console.log(calificacionMEP);
+    return '';
+}
+        
+}
+
+
 let cargarCEdu = () => {
     
     listarCEdu((pSuccess, pMessage) => {
@@ -86,6 +100,12 @@ let cargarCEdu = () => {
                                         direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
                                 });
 
+                                let calificacionMEP = document.createElement('p');
+                                calificacionMEP.innerHTML = 'Calificación MEP :' + mostrarCalificacionMEP(obj['_id']);
+
+                                console.log(obj['_id']);
+
+
                                 let verMas = document.createElement('a');
                                 verMas.addEventListener('click', () => {
                                         irAlPerfil(obj['_id']);
@@ -98,6 +118,7 @@ let cargarCEdu = () => {
                                 card.appendChild(correo);
                                 card.appendChild(provincia);
                                 card.appendChild(direccion);
+                                card.appendChild(calificacionMEP);
                                 card.appendChild(verMas);
                                 card_contenedor.appendChild(card);
 
