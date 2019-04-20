@@ -7,9 +7,7 @@ const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
 const label_centro = document.querySelector('#label_centro');
-input_tipo.classList.add('ocultar');
-input_centros.classList.add('ocultar');
-label_centro.classList.add('ocultar');
+const bloqueOcultar = document.querySelector('#bloqueCentrosOcultar');
 
 
 let response = obtener_lista_utiles();
@@ -70,10 +68,11 @@ window.onload = () => {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
 
     if (null !== tipoUsuario) {
-
+     
 
         if (tipoUsuario === 'SuperAdmin') {
             input_tipo.classList.remove('ocultar');
+            input_centros.classList.remove('ocultar');
             input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
             cargarCEdu();
@@ -95,9 +94,8 @@ window.onload = () => {
   
 function mostrar_centros(){
     if(this.value != 'centro_educativo'){
-        input_centros.classList.add('ocultar');
-        label_centro.classList.add('ocultar');
-        localStorage.setItem('id', '1999')
+        localStorage.setItem('id', '1999');
+        bloqueOcultar.classList.remove('ocultar');
     }else{
         input_centros.classList.remove('ocultar');
         label_centro.classList.remove('ocultar');

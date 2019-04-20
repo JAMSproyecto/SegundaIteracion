@@ -100,10 +100,7 @@
     padding: 20px 0;
 }
 
-
 /*jeison*/
-
-
 
 
 
@@ -415,20 +412,21 @@ select:not(.error_input):focus,
     font-size: 25px;
     width: 100px;
     font-weight: bold;
+    margin-right: 10px;
+
   }
 
 
 
 .bloqueFiltro input{
     width: 300px;
-    font-size: 19px;
+    font-size: 13px;
     display: inline-block;
 }
  
 /*creado por Johan */
-.ocultar{
-    visibility: hidden;
+#ocultar{
+   /* visibility: hidden;*/
+   display: none;
 }
-
-
 

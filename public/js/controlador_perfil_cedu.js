@@ -420,7 +420,7 @@ window.onload = () => {
 
 let tipoUsuario = localStorage.getItem("tipoUsuario");
 
-  if (tipoUsuario == 'centroeducativo') {
+  if (tipoUsuario == 'CentroEducativo') {
     crearCalendario(id);
   };
 
