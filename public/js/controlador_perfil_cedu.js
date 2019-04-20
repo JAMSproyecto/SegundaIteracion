@@ -186,10 +186,12 @@ let mostrar_noticias = () => {
       let bloques = '';
       noticias.forEach(function (objeto) {
         bloques += '<div class="noticia not">';
-        bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
         bloques += '<i class="far fa-newspaper"></i>';
+        bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
+        bloques += '<p class="hora__noticia">Fecha: ' + objeto.fecha + '</p>';
+
         bloques += '<p class="informacion"> ' + objeto.informacion + '</p>';
-        bloques += '<p class="hora__noticia">Fecha:' + objeto.fecha + '</p>';
+  
 
         bloques += '</div>';
       });
@@ -230,7 +232,7 @@ let crearActividades = () => {
       let detalles = document.createElement('p');
       detalles.classList.add('detalles__actividad');
 
-      lugar.innerHTML = 'Lugar: ' + obj.lugar;
+     lugar.innerHTML = 'Lugar: ' + obj.lugar;
       detalles.innerHTML = obj.detalles;
       //Termina lo agregado por Marlon
 

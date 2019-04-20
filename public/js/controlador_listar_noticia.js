@@ -13,13 +13,17 @@ const noticias = listar_todas_noticias();
 
         if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase())) {
 
+            const ocultarHora = noticias[i]['fecha'].split(' ');
+
+
             let fila = tabla.insertRow();
             
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
             fila.insertCell().innerHTML = noticias[i]['informacion']
-            fila.insertCell().innerHTML = noticias[i]['fecha'];
-
+            fila.insertCell().innerHTML = ocultarHora[0];
+            
+            
             let celda_actualizar = fila.insertCell();
             let celda_eliminar = fila.insertCell();
             //accedo a esa celda para ir metiendo los elementos

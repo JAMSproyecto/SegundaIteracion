@@ -21,11 +21,12 @@ let mostrar_actividades = () => {
             const ocultarHora = actividades[i]['fecha'].split(' ');
             
             fila.insertCell().innerHTML = actividades[i]['actividad'];
+            fila.insertCell().innerHTML = ocultarHora[0];
             fila.insertCell().innerHTML = actividades[i]['hora_inicio'];
             fila.insertCell().innerHTML = actividades[i]['finaliza'];
             fila.insertCell().innerHTML = actividades[i]['lugar'];
             fila.insertCell().innerHTML = actividades[i]['detalles'];
-            fila.insertCell().innerHTML = ocultarHora[0];
+          
 
             let celda_actualizar = fila.insertCell();
             let celda_eliminar = fila.insertCell();

@@ -10,36 +10,81 @@
 
 #bloqueResennia p{
   font-style: italic;
-    
     font-size: 18px;
 }
 
 /*fin estilos resennia*/
 
 
+.bloqueInformacion{
+  background: #f9f9f9; 
+  display: flow-root;
+}
+
+
+/*estilos actividad*/
+
+#contenedorActividades{
+  float: right
+
+}
+/*estilos actividad*/
+
+
 /*estilos noticias*/
 #contenedorNoticias{
   float: left;
+  width: 58%;
+
+}
+
+.titulo{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.hora__noticia{
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .fa-newspaper{
-  font-size: 52px;
-  /* float: left; */
-  color: #253b80;
+        
+    font-size: 67px;
+  
+    color: #253b80;
+    float: left;
+    
+    padding-left: 29px;
+    
   
 }
 
+
+
+
 .noticia {
-  width: 212px;
-  box-shadow: 0 0 3px #78909c;
-  margin: 10px;
-  /* padding: 50px 20px; */
   display: inline-block;
+  width: 373px;
+  box-shadow: 0 0 3px #78909c;
+  margin: 19px;
+  /* padding: 50px 20px; */
+  /* display: table-cell; */
   border-radius: 12px;
   height: 200px;
   background: #fff;
   text-align: center;
   padding: 10px;
+}
+
+
+.informacion{
+  float: right;
+  float: right;
+  /* text-align: center; */
+  font-style: italic;
+  font-size: 14px;
 }
 /*fin estilos noticias*/
 

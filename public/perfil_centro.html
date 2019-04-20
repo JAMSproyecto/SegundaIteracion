@@ -15,13 +15,15 @@
     <link rel="stylesheet" href="./css/estiloGeneral.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
+  
 
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="./css/tablaDatos.css" />
     <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="css/estilosCE.css" />
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+   <link rel="stylesheet" href="./css/estiloGeneral.css">
 </head>
 
 <body>
@@ -80,17 +82,17 @@
                     title="Cerrar menú"><i class="far fa-times-circle"></i></a>
             </p>
             <ul>
-                <li><a  href="javascript:void(0)">Actividad</a>
+                <li><a href="javascript:void(0)">Actividad</a>
                     <ul>
-                        <li><a  href="registrar_actividad.html">Registrar actividad</a>
+                        <li><a href="registrar_actividad.html">Registrar actividad</a>
                         </li>
-                        <li><a  href="listar_actividad.html">Lista de actividades</a></li>
+                        <li><a href="listar_actividad.html">Lista de actividades</a></li>
                     </ul>
                 </li>
-                <li><a  href="javascript:void(0)">Noticias</a>
+                <li><a href="javascript:void(0)">Noticias</a>
                     <ul>
                         <li><a href="registrar_noticia.html">Registrar noticias</a></li>
-                        <li><a  href="listar_noticia.html">Lista de noticias</a></li>
+                        <li><a href="listar_noticia.html">Lista de noticias</a></li>
                     </ul>
                 </li>
                 <li><a class="utiles" href="javascript:void(0)"> Útiles</a>
@@ -134,29 +136,35 @@
         </nav>
     </header>
 
-    <main id="main">
+    <main class="mainPerfil-CE" id="main">
         <section id="bloqueResennia">
             <div>
                 <h2 class="titulo__secundario">Reseña Historica</h2>
                 <p id='mostrarResennia'></p>
             </div>
         </section>
-        <section id="contenedorNoticias">
-            <div>
-                <h2 class="titulo__secundario">Noticias</h2>
-            </div>
-            <div class="tabla__noticias">
-                <div id="tabla__noticias"></div>
-            </div>
+        <section class="bloqueInformacion">
+            <section id="contenedorNoticias">
+                <div>
+                    <h2 class="titulo__secundario">Noticias</h2>
+                </div>
+                <div class="tabla__noticias">
+                    <div id="tabla__noticias"></div>
+                </div>
+                <div class="tabla__noticias">
+                        <div id="tabla__noticias"></div>
+                    </div>
+            </section>
+            <section id="contenedorActividades">
+                <div>
+                    <h2 class="titulo__secundario">Actividades</h2>
+                </div>
+                <div class="tabla__actividades">
+                    <div id="tabla__actividades" class="contenedor__actividades"></div>
+                </div>
+            </section>
         </section>
-        <section id="contenedorActividades">
-            <div>
-                <h2 class="titulo__secundario">Actividades</h2>
-            </div>
-            <div class="tabla__actividades">
-                <div id="tabla__actividades" class="contenedor__actividades"></div>
-            </div>
-        </section>
+
 
         <section class="bloque__descripcion">
             <div class="contenedor__servicios">
