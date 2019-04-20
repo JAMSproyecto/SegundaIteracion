@@ -71,7 +71,17 @@
   color: #fff;
 }
 
+.bloqueHeader .bloqueHeader__nombreCed span {
+  font-weight: bold;
+  float: left;
+  padding: 21px 0px;
+  color: #fff;
+  font-size: 17px;
+}
 
+.bloqueHeader .bloqueHeader__btnCerrar {
+  float: right;
+}
 
 .bloqueHeader__filaAbajo {
   background: #253b80;

@@ -33,11 +33,41 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
     });
   };
 
-  let obtener_por_id = () => {
+  //para obtener los servicios por el id del centro 
+  let obtener_servicios_por_id = (idCentro) => {
     let coleccion = [];
+
+    let request = $.ajax({
+      url: "http://localhost:4000/api/obtener_servicios_id/" + idCentro,
+      type: "GET",
+      data: {
+      },
+      dataType: "json",
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      async: false
+    });
+
+    request.done(function (res) {
+      if(res.success){
+        coleccion = res.message;
+      }else{
+        console.log(res.message);
+      }
+    });
+    
+    request.fail(function (jqXHR, textStatus) {
+  
+    });
+    return coleccion;
+  };
+
+//para obtener el nombre del centro 
+  let obtener_nombre_centro_id = () => {
+    let nombre;
+    
     let codigo = localStorage.getItem('id');
     let request = $.ajax({
-      url: "http://localhost:4000/api/obtener_servicios_id/" + codigo,
+      url: "http://localhost:4000/api/obtener_nombre_centro_id/" + codigo,
       type: "GET",
       data: {
       },
@@ -47,12 +77,12 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
     });
   
     request.done(function (res) {
-      coleccion = res;
-      
+      nombre = res.nombre_centro;
+    
     });
     
     request.fail(function (jqXHR, textStatus) {
   
     });
-    return coleccion;
+    return nombre;
   };

@@ -29,65 +29,104 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
 
 
 //funcion para regsitrar servicios 
-module.exports.registrar= (req,res) =>{
+module.exports.registrar_servicio = (req, res) => {
     let servicio_nuevo = new model_servicio(
         {
-            codigo : req.body.codigo,
-            nombre : req.body.nombre,
-            descripcion : req.body.descripcion
+            codigo: req.body.codigo,
+            nombre: req.body.nombre,
+            tipo: req.body.tipo,
+            descripcion: req.body.descripcion
         }
     );
 
-servicio_nuevo.save(
-        function(error){
+    servicio_nuevo.save(
+        function (error) {
             if (error) {
                 const log = insertarBitacora('CentroEducativo', `Error al registrar el servicio: ${req.body.nombre} | ${error}`);
 
                 res.json(
                     {
-                        succes : false,
-                        msg : `No se pudo guardar el servicio, ocurrio el siguiente error ${error} `
+                        succes: false,
+                        msg: `No se pudo guardar el servicio, ocurrio el siguiente error ${error} `
                     }
                 );
             } else {
                 const log = insertarBitacora('CentroEducativo', `Se registró el servicio: ${req.body.nombre} - ${req.body.descripcion}`);
-                
+
                 res.json(
                     {
-                        success : true,
-                        msg :  `Se ha registrado el servicio de forma correcta`
+                        success: true,
+                        msg: `Se ha registrado el servicio de forma correcta`
                     }
                 );
             }
         }
-    );    
+    );
 };
 
-//función para ontener la lista de servicio por el id del centro 
-module.exports.obtener_servicios_id = (req,res) =>{
-   
-    model_servicio.find({codigo : req.body.codigo}).then(
-        function(coleccion){
+//función para obtener la lista de servicio por el id del centro 
+module.exports.obtener_servicios_id = (req, res) => {
+
+    model_servicio.find({ codigo: req.body.codigo }).then(
+        function (coleccion) {
+            if (coleccion) {
+
+                const cant = Object.keys(coleccion).length;
+
+                if (cant > 0) {
+                    res.json(
+                        {
+                            success: true,
+                            message: coleccion
+                        }
+                    )
+
+                } else {
+                    res.json(
+                        {
+                            success: false,
+                            message: `No se encontraron servicios registrados`
+                        }
+                    )
+                }
+            } else {
+                res.json(
+                    {
+                        success: false,
+                        message: `No se encontraron servicios registrados`
+                    }
+                )
+            }
+
+        }
+
+    )
+};
+
+//funcion para obtner el nombre del centro 
+module.exports.obtener_nombre_centro_id = (req, res) => {
+
+    model_servicio.find({ codigo: req.body.codigo }).then(
+        function (coleccion) {
             const cant = Object.keys(coleccion).length;
             if (cant > 0) {
-                model_cedu.findOne({_id: coleccion[0].codigo}).then(
-                    (centro) =>{
-                      
+                model_cedu.findOne({ _id: coleccion[0].codigo }).then(
+                    (centro) => {
+
                         res.json(
                             {
-                                succes : true,
-                                coleccion_servicios : coleccion,
+                                succes: true,
                                 nombre_centro: centro.nombre
                             }
                         )
                     }
                 )
-                
-            }else{
+
+            } else {
                 res.json(
                     {
-                        succes : false,
-                        coleccion : `No se encontraron servicios registrados`
+                        succes: false,
+                        centro: `No se encontró el nombre del centro educativo`
                     }
                 )
             }

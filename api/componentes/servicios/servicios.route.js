@@ -16,7 +16,7 @@ const servicio_api = require('./servicios.api');
 router.route('/registrar_servicio')
     .post(
         function(req, res){
-            servicio_api.registrar(req, res);
+            servicio_api.registrar_servicio(req, res);
         }
     );
 
@@ -27,5 +27,13 @@ router.route('/obtener_servicios_id/:codigo')
                 servicio_api.obtener_servicios_id(req,res);
             }
         );
+
+router.route('/obtener_nombre_centro_id/:codigo')
+            .get(
+              function(req,res) 
+              {
+                  servicio_api.obtener_nombre_centro_id(req,res);
+              } 
+            );
 
 module.exports = router;

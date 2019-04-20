@@ -142,7 +142,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
     try {
         const mostrarColumnas = {}; //{ _id: 0 };
 
-        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion nombre').sort({_id: 'desc'});
+        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion nombre correo telefono').sort({_id: 'desc'});
         if (!!Object.keys(resultado).length) {
             res.json({
                 success: true,

@@ -6,20 +6,58 @@ const BtnComentar = document.querySelector('#btnComentar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const div_noticias = document.querySelector('#tabla__noticias');
+const tablaServicios = document.querySelector('#tabla__servicios');
 
+
+const noticias = listar_todas_noticias();
 
 let calificacionSeleccionada = 0;
 
 let mostrar_resennia = (resennia) => {
-
-  mostrarResennia.innerHTML = resennia;
-  //bloque.classList.add('actividad');
-
-
-
+  if (mostrarResennia) {
+    if ('undefined' !== typeof resennia && null !== resennia) {
+      mostrarResennia.innerHTML = resennia;
+    } else {
+      console.log(resennia);
+      mostrarResennia.innerHTML = '';
+    }
+  }else {
+    console.log('No existe el campo para imprimir la reseña');
+  }
 }
 
 
+let crearActividades = () => {
+  let actividades = listar_todas_actividades();
+
+  if ('object' == typeof actividades) {
+    actividades.forEach((e, index) => {
+      let actividad = document.createElement('div');
+      actividad.classList.add('actividad');
+
+      let strong = document.createElement('strong');
+      strong.classList.add('nombre__actividad');
+
+      let fecha = document.createElement('p');
+      fecha.classList.add('fecha__actividad');
+
+      let hora = document.createElement('p');
+      hora.classList.add('hora__actividad');
+
+      strong.innerHTML = e.actividad;
+      fecha.innerHTML = e.fecha;
+      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
+      actividad.appendChild(strong);
+      actividad.appendChild(fecha);
+      actividad.appendChild(hora);
+      document.querySelector('#tabla__actividades').appendChild(actividad);
+    });
+  } else {
+    console.log(actividades);
+  }
+
+
+};
 
 let marcarEstrella = (event) => {
   let grupoEstrellas = document.querySelectorAll(".estrellas__cuerpo input");
@@ -176,9 +214,9 @@ let calificarMEP = () => {
 
 //Marlon. Fin del calificar MEP
 
-let mostrar_noticias = () => {
-  const noticias = listar_todas_noticias();
 
+
+let mostrar_noticias = () => {
   div_noticias.innerHTML = '';
   if (noticias) {
     if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
@@ -248,14 +286,115 @@ let crearActividades = () => {
       actividad.appendChild(detalles);
       //Termina lo agregado por Marlon
 
+//creado por Johan para las crads servicios 
+let cards_servicios = (id) => {
+  let servicio = obtener_servicios_por_id(id);
 
-      document.querySelector('#tabla__actividades').appendChild(actividad);
+  const cantidadServicios = Object.keys(servicio).length || servicio.length;
+
+  if (cantidadServicios > 0) {
+    servicio.forEach(function (object) {
+
+      let div_servicio = document.createElement('div');
+      let nombre = document.createElement('span');
+      let logo = document.createElement('i');
+
+      switch (object.tipo) {
+        case 'actividades':
+          div_servicio.classList.add('ser__actividad', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-user-friends');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'alimentacion':
+          div_servicio.classList.add('ser__alimentacion', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-mug-hot');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'artes':
+          div_servicio.classList.add('ser__arte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-palette');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'cientifico':
+          div_servicio.classList.add('ser__cientifico', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-flask');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+
+        case 'deporte':
+          div_servicio.classList.add('ser__deporte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-futbol');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'musica':
+          div_servicio.classList.add('ser__musica', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-guita');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'religion':
+          div_servicio.classList.add('ser__religion', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-bible');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'salud':
+          div_servicio.classList.add('ser__salud', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-user-nurse');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'transporte':
+          div_servicio.classList.add('ser__transporte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-bus');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+
+        case 'estudio':
+          div_servicio.classList.add('ser__estudio', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-book');
+
+          nombre.innerHTML = object.nombre;
+          div_servicio.appendChild(nombre);
+          div_servicio.appendChild(logo);
+          break;
+      }
+
+      tablaServicios.appendChild(div_servicio);
     });
-  } else {
-    console.log(actividades);
   }
-
-
 };
 
 window.onload = () => {
@@ -302,6 +441,7 @@ window.onload = () => {
   crearActividades();
 
   mostrar_noticias();
+  cards_servicios(id);
   cargarCalificaciones(id)
   mostrar_resennia(perfil.referenciaHistorica);
 
