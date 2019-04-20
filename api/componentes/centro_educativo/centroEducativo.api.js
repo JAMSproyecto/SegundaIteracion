@@ -3,6 +3,7 @@
 const Tiza = require('chalk');
 const ModelRegistrarCEdu = require('./centroEducativo.model');
 const ModelUsuario = require('./../usuarios/usuario.model');
+const ModelCalificacionMEP = require('./../calificacionMep/calificacionMep.model');
 const ObtenerPin = require('./../funciones_genericas/obtenerPin');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
 
@@ -42,7 +43,7 @@ let enviarCorreo = (pCorreoPara, pNombre, pPin) => {
 module.exports.registrar_centro_educativo = async (req, res) => {
     try {
 
-        const existeUsuario = await ModelUsuario.find({correo: req.body.correoCentro}).countDocuments();
+        const existeUsuario = await ModelUsuario.find({ correo: req.body.correoCentro }).countDocuments();
 
         if (existeUsuario < 1) {
 
@@ -140,14 +141,45 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
 module.exports.obtener_todos_centro_educativo = async (req, res) => {
     try {
-        const mostrarColumnas = {}; //{ _id: 0 };
-
-        const resultado = await ModelRegistrarCEdu.find({}, mostrarColumnas).select('fotoCentro nombreComercial calificacion direccion nombre correo telefono').sort({_id: 'desc'});
+        const resultado = await ModelRegistrarCEdu.find().select('fotoCentro nombreComercial direccion nombre correo telefono').sort({_id: 'desc'});
         if (!!Object.keys(resultado).length) {
-            res.json({
-                success: true,
-                message: resultado
-            });
+
+            let listarResultado = [];
+            const has = Object.prototype.hasOwnProperty;
+            let key;
+            for (key in resultado) {
+                if (!has.call(resultado, key)) continue;
+
+
+                let calificacionMEP = await ModelCalificacionMEP.findOne({ 'idCentro': resultado[key]['_id'] }, { '_id': 0 }).select('calificacionTotal');
+
+                if (calificacionMEP) {
+                    if (Object.keys(calificacionMEP).length < 1) {
+                        calificacionMEP = '';
+                    } else {
+                        calificacionMEP = '' + calificacionMEP.calificacionTotal;
+                    }
+                } else {
+                    calificacionMEP = '';
+                }
+
+                listarResultado.push({
+                    '_id': resultado[key]['_id'] || 0,
+                    'fotoCentro': resultado[key]['fotoCentro'] || '',
+                    'nombre': resultado[key]['nombre'] || '',
+                    'nombreComercial': resultado[key]['nombreComercial'] || '',
+                    'direccion': resultado[key]['direccion'] || '',
+                    'telefono': resultado[key]['telefono'] || '',
+                    'correo': resultado[key]['correo'] || '',
+                    'calificacionMEP': calificacionMEP
+                });
+            }
+            res.json(
+                {
+                    success: true,
+                    message: listarResultado
+                }
+            )
         } else {
             res.json({
                 success: false,
@@ -166,22 +198,22 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 
 
 module.exports.obtener_centro_por_id = (req, res) => {
-    ModelRegistrarCEdu.findOne({_id : req.body.id }).then(resultado => {
-            if (resultado) {
-                res.json(
-                    {
-                        success : true,
-                        message : resultado
-                    }
-                )
-            } else {
-                res.json(
-                    {
-                        success : false,
-                        message : 'No se encontró el centro educativo'
-                    }
-                )
-            }
-        });
+    ModelRegistrarCEdu.findOne({ _id: req.body.id }).then(resultado => {
+        if (resultado) {
+            res.json(
+                {
+                    success: true,
+                    message: resultado
+                }
+            )
+        } else {
+            res.json(
+                {
+                    success: false,
+                    message: 'No se encontró el centro educativo'
+                }
+            )
+        }
+    });
 };
 
