@@ -105,12 +105,6 @@ let cargarCEdu = () => {
                                 console.log(obj['_id']);
 
 
-                                let verMas = document.createElement('a');
-                                verMas.addEventListener('click', () => {
-                                        irAlPerfil(obj['_id']);
-                                }, false);
-                                verMas.innerHTML = '<i class="fas fa-id-card"></i>';
-
                             let verMas = document.createElement('a');
                             verMas.addEventListener('click', () => {
                                     irAlPerfil(obj['_id']);
@@ -125,7 +119,7 @@ let cargarCEdu = () => {
                                 card.appendChild(calificacionMEP);
                                 card.appendChild(verMas);
                                 card_contenedor.appendChild(card);
-                                
+
                             cards_centros.appendChild(card_contenedor);
                     });
 

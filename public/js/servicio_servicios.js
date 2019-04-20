@@ -34,12 +34,11 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
   };
 
   //para obtener los servicios por el id del centro 
-  let obtener_por_id = () => {
+  let obtener_servicios_por_id = (idCentro) => {
     let coleccion = [];
 
-    let codigo = localStorage.getItem('id');
     let request = $.ajax({
-      url: "http://localhost:4000/api/obtener_servicios_id/" + codigo,
+      url: "http://localhost:4000/api/obtener_servicios_id/" + idCentro,
       type: "GET",
       data: {
       },
@@ -47,9 +46,13 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       async: false
     });
-  
+
     request.done(function (res) {
-      coleccion = res.coleccion_servicios;
+      if(res.success){
+        coleccion = res.message;
+      }else{
+        console.log(res.message);
+      }
     });
     
     request.fail(function (jqXHR, textStatus) {

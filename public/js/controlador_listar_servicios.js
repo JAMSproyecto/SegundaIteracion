@@ -4,7 +4,7 @@ const tabla = document.querySelector('#tbl_servicios tbody');
 const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
-let response = obtener_por_id();
+let response = obtener_servicios_por_id();
 let res = obtener_nombre_centro_id();
 
 let mostrar_datos = ()=>{

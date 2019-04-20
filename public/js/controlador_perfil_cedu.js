@@ -6,6 +6,7 @@ const BtnComentar = document.querySelector('#btnComentar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const div_noticias = document.querySelector('#tabla__noticias');
+const tablaServicios = document.querySelector('#tabla__servicios');
 
 
 const noticias = listar_todas_noticias();
@@ -13,12 +14,16 @@ const noticias = listar_todas_noticias();
 let calificacionSeleccionada = 0;
 
 let mostrar_resennia = (resennia) => {
-
-  mostrarResennia.innerHTML = resennia;
-  //bloque.classList.add('actividad');
-  console.log(resennia);
-
-
+  if (mostrarResennia) {
+    if ('undefined' !== typeof resennia && null !== resennia) {
+      mostrarResennia.innerHTML = resennia;
+    } else {
+      console.log(resennia);
+      mostrarResennia.innerHTML = '';
+    }
+  }else {
+    console.log('No existe el campo para imprimir la reseña');
+  }
 }
 
 
@@ -236,113 +241,115 @@ let mostrar_noticias = () => {
 };
 
 //creado por Johan para las crads servicios 
-let cards_servicios = () =>{
-  let servicio = obtener_por_id();
+let cards_servicios = (id) => {
+  let servicio = obtener_servicios_por_id(id);
 
-    if (Object.keys(servicio).length > 0) {
-      servicio.forEach(function(object) {
+  const cantidadServicios = Object.keys(servicio).length || servicio.length;
 
-        let div_servicio = document.createElement('div');
-        let nombre = document.createElement('span');
-        let logo = document.createElement('i');
+  if (cantidadServicios > 0) {
+    servicio.forEach(function (object) {
 
-        switch(object.tipo){
-          case 'actividades' :
-          div_servicio.classList.add('ser__actividad','servicio');
-          logo.classList.add('fas','faq','fa-user-friends');
+      let div_servicio = document.createElement('div');
+      let nombre = document.createElement('span');
+      let logo = document.createElement('i');
+
+      switch (object.tipo) {
+        case 'actividades':
+          div_servicio.classList.add('ser__actividad', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-user-friends');
 
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'alimentacion' : 
-          div_servicio.classList.add('ser__alimentacion','servicio');
-          logo.classList.add('fas','faq','fa-mug-hot');
-          
+        case 'alimentacion':
+          div_servicio.classList.add('ser__alimentacion', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-mug-hot');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'artes' : 
-          div_servicio.classList.add('ser__arte','servicio');
-          logo.classList.add('fas','faq','fa-palette');
-          
+        case 'artes':
+          div_servicio.classList.add('ser__arte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-palette');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'cientifico' : 
-          div_servicio.classList.add('ser__cientifico','servicio');
-          logo.classList.add('fas','faq','fa-flask');
-          
+        case 'cientifico':
+          div_servicio.classList.add('ser__cientifico', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-flask');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          
-          case 'deporte' : 
-          div_servicio.classList.add('ser__deporte','servicio');
-          logo.classList.add('fas','faq','fa-futbol');
-          
+
+        case 'deporte':
+          div_servicio.classList.add('ser__deporte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-futbol');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'musica' : 
-          div_servicio.classList.add('ser__musica','servicio');
-          logo.classList.add('fas','faq','fa-guita');
-         
+        case 'musica':
+          div_servicio.classList.add('ser__musica', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-guita');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'religion' : 
-          div_servicio.classList.add('ser__religion','servicio');
-          logo.classList.add('fas','faq','fa-bible');
-          
+        case 'religion':
+          div_servicio.classList.add('ser__religion', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-bible');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'salud' : 
-          div_servicio.classList.add('ser__salud','servicio');
-          logo.classList.add('fas','faq','fa-user-nurse');
-          
+        case 'salud':
+          div_servicio.classList.add('ser__salud', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-user-nurse');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'transporte' : 
-          div_servicio.classList.add('ser__transporte','servicio');
-          logo.classList.add('fas','faq','fa-bus');
-          
+        case 'transporte':
+          div_servicio.classList.add('ser__transporte', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-bus');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
 
-          case 'estudio' : 
-          div_servicio.classList.add('ser__estudio','servicio');
-          logo.classList.add('fas','faq','fa-book');
-          
+        case 'estudio':
+          div_servicio.classList.add('ser__estudio', 'servicio');
+          logo.classList.add('fas', 'faq', 'fa-book');
+
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
           break;
-        }
+      }
 
-        document.querySelector('#tabla__servicios').appendChild(div_servicio);
-      });
+      tablaServicios.appendChild(div_servicio);
+    });
   }
- };
+};
 
 window.onload = () => {
   let id;
@@ -388,7 +395,7 @@ window.onload = () => {
   crearActividades();
 
   mostrar_noticias();
-  cards_servicios();
+  cards_servicios(id);
   cargarCalificaciones(id)
   mostrar_resennia(perfil.referenciaHistorica);
 
