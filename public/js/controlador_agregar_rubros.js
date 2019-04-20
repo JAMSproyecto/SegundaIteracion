@@ -35,7 +35,7 @@ let mostrar_datos = () => {
           desactivar_rubro(this.dataset.id_rubro);
           rubros = listar_rubros();
           mostrar_datos();
-         
+
         });
         cantidad_activos++;
       }
@@ -69,12 +69,12 @@ let mostrar_datos = () => {
                 return 'Por favor ingrese algún dato'
               } else {
                 actualizar_rubro(value, this.dataset.id_rubro);
+                rubros = listar_rubros();
+                mostrar_datos();
               }
             }
           })
 
-          rubros = listar_rubros(),
-            mostrar_datos()
         }
         )
 
@@ -92,11 +92,10 @@ let mostrar_datos = () => {
           }).then((result) => {
             if (result.value) {
               eliminar_rubro(this.dataset.id_rubro);
+              rubros = listar_rubros();
+              mostrar_datos();
             }
           })
-
-          rubros = listar_rubros();
-          mostrar_datos();
 
         })
 
