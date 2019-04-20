@@ -45,6 +45,9 @@ let crearActividades = () => {
       let strong = document.createElement('strong');
       strong.classList.add('nombre__actividad');
 
+      let lugar = document.createElement('p');
+      lugar.classList.add('lugar__actividad');
+
       let fecha = document.createElement('p');
       fecha.classList.add('fecha__actividad');
 
@@ -52,8 +55,7 @@ let crearActividades = () => {
       hora.classList.add('hora__actividad');
 
       //Agregado por Marlon, para que muestre los datos faltantes
-      let lugar = document.createElement('p');
-      lugar.classList.add('lugar__actividad');
+  
 
       let detalles = document.createElement('p');
       detalles.classList.add('detalles__actividad');
@@ -66,11 +68,12 @@ let crearActividades = () => {
       fecha.innerHTML = obj.fecha;
       hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
       actividad.appendChild(strong);
+      actividad.appendChild(lugar);
       actividad.appendChild(fecha);
       actividad.appendChild(hora);
 
       //Agregado por Marlon
-      actividad.appendChild(lugar);
+
       actividad.appendChild(detalles);
       //Termina lo agregado por Marlon
 
@@ -415,12 +418,18 @@ window.onload = () => {
     document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
   }
 
-  crearCalendario(id);
+let tipoUsuario = localStorage.getItem("tipoUsuario");
+
+  if (tipoUsuario == 'centroeducativo') {
+    crearCalendario(id);
+  };
+
+
   crearActividades();
 
   mostrar_noticias();
   cards_servicios(id);
-  cargarCalificaciones(id)
+  cargarCalificaciones(id);
   mostrar_resennia(perfil.referenciaHistorica);
 
 };
