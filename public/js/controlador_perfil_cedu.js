@@ -21,17 +21,22 @@ let mostrar_resennia = (resennia) => {
       console.log(resennia);
       mostrarResennia.innerHTML = '';
     }
-  }else {
+  } else {
     console.log('No existe el campo para imprimir la reseña');
   }
 }
 
 
 let crearActividades = () => {
+
+
   let actividades = listar_todas_actividades();
 
-  if ('object' == typeof actividades) {
-    actividades.forEach((e, index) => {
+  console.log(actividades);
+
+  if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
+    actividades.forEach(obj => {
+
       let actividad = document.createElement('div');
       actividad.classList.add('actividad');
 
@@ -44,19 +49,31 @@ let crearActividades = () => {
       let hora = document.createElement('p');
       hora.classList.add('hora__actividad');
 
-      strong.innerHTML = e.actividad;
-      fecha.innerHTML = e.fecha;
-      hora.innerHTML = `${e.hora_inicio} - ${e.finaliza}`;
+      //Agregado por Marlon, para que muestre los datos faltantes
+      let lugar = document.createElement('p');
+      lugar.classList.add('lugar__actividad');
+
+      let detalles = document.createElement('p');
+      detalles.classList.add('detalles__actividad');
+
+      lugar.innerHTML = 'Lugar: ' + obj.lugar;
+      detalles.innerHTML = obj.detalles;
+      //Termina lo agregado por Marlon
+
+      strong.innerHTML = obj.actividad;
+      fecha.innerHTML = obj.fecha;
+      hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
       actividad.appendChild(strong);
       actividad.appendChild(fecha);
       actividad.appendChild(hora);
-      document.querySelector('#tabla__actividades').appendChild(actividad);
-    });
-  } else {
-    console.log(actividades);
+
+      //Agregado por Marlon
+      actividad.appendChild(lugar);
+      actividad.appendChild(detalles);
+      //Termina lo agregado por Marlon
+    })
+
   }
-
-
 };
 
 let marcarEstrella = (event) => {
@@ -229,7 +246,7 @@ let mostrar_noticias = () => {
         bloques += '<p class="hora__noticia">Fecha: ' + objeto.fecha + '</p>';
 
         bloques += '<p class="informacion"> ' + objeto.informacion + '</p>';
-  
+
 
         bloques += '</div>';
       });
@@ -241,50 +258,6 @@ let mostrar_noticias = () => {
   }
 
 };
-
-let crearActividades = () => {
-
-  let id = localStorage.getItem('verPerfilCEdu');
-
-  let actividades = listar_todas_actividades(id);
-
-  if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
-    actividades.forEach(obj => {
-
-      let actividad = document.createElement('div');
-      actividad.classList.add('actividad');
-
-      let strong = document.createElement('strong');
-      strong.classList.add('nombre__actividad');
-
-      let fecha = document.createElement('p');
-      fecha.classList.add('fecha__actividad');
-
-      let hora = document.createElement('p');
-      hora.classList.add('hora__actividad');
-
-      //Agregado por Marlon, para que muestre los datos faltantes
-      let lugar = document.createElement('p');
-      lugar.classList.add('lugar__actividad');
-
-      let detalles = document.createElement('p');
-      detalles.classList.add('detalles__actividad');
-
-     lugar.innerHTML = 'Lugar: ' + obj.lugar;
-      detalles.innerHTML = obj.detalles;
-      //Termina lo agregado por Marlon
-
-      strong.innerHTML = obj.actividad;
-      fecha.innerHTML = obj.fecha;
-      hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
-      actividad.appendChild(strong);
-      actividad.appendChild(fecha);
-      actividad.appendChild(hora);
-
-      //Agregado por Marlon
-      actividad.appendChild(lugar);
-      actividad.appendChild(detalles);
-      //Termina lo agregado por Marlon
 
 //creado por Johan para las crads servicios 
 let cards_servicios = (id) => {
