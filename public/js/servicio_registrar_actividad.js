@@ -120,7 +120,7 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles,pidActividad,) => {
+let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles, pidActividad) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_actividad/",
