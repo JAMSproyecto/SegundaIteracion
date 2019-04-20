@@ -40,6 +40,7 @@ let crearActividades = () => {
 
       let actividad = document.createElement('div');
       actividad.classList.add('actividad');
+      
 
       let strong = document.createElement('strong');
       strong.classList.add('nombre__actividad');
