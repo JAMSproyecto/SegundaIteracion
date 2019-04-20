@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
 
-
+ 
 </head>
 
 <body>
-
+    
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
@@ -34,11 +34,11 @@
             </div>
 
             <div class="bloqueHeader__logo">
-                <a href="perfil_centro.html">
-                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                </a>
-
-            </div>
+                    <a href="perfil_centro.html">
+                            <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </a>
+                  
+                </div>
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
@@ -114,19 +114,19 @@
                 <li><a class="utiles" href="javascript:void(0)"> Citas</a>
                     <ul>
                         <li>
-                            <a href="lista_citas.html">lista de citas
+                            <a href="lista_citas.html">lista de  citas
                             </a></li>
                     </ul>
                 </li>
 
-
+              
                 <li>
-                    <a class="reporte">Servicios</a>
-                    <ul>
-                        <li><a href="javascript:void(0)">Registrar servicios</a></li>
-                        <li><a href="javascript:void(0)">Lista de servicios</a></li>
-                    </ul>
-                </li>
+                        <a class="reporte">Servicios</a>
+                        <ul>
+                            <li><a href="javascript:void(0)">Registrar servicios</a></li>
+                            <li><a href="javascript:void(0)">Lista de servicios</a></li>
+                        </ul>
+                    </li>
                 <li>
                     <a class="reporte">Preguntas frecuentes</a>
                     <ul>
@@ -138,13 +138,10 @@
             </ul>
         </nav>
     </header>
-    <main id="main">
-        <div class="tituloPrincipal">
-            <h1>Registrar servicios</h1>
-        </div>
-
-        <section class="bloque bloqueServicios">
-            <div class="bloqueServicios__registrarServicios">
+    <main>
+        <h1 class="tituloPrincipal">Registrar servicios</h1>
+        <section class="bloque__principal">
+            <div class="formulario__servicios">
                 <div class="bloqueDato">
                     <label for="txt_nombre">Nombre</label>
                     <input type="text" id="txt_nombre">
@@ -172,14 +169,14 @@
             </div>
             </div>
         </section>
-        <div class="bloqueBoton">
-            <button type="button" class="btn--amarillo" id="btn_agregar">Registrar</button>
-        </div>
-
-
+        <div class="bloque__boton">
+                <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
+            </div>
+        
+       
 
     </main>
-    <footer>
+	<footer>
         <div class="footer__cuerpo">
             <div class="footer__flex">
                 <ul class="footer__lista__top">
@@ -247,7 +244,7 @@
             </div>
         </div>
     </footer>
-    <script src="./js/controlador_nav.js"></script>
+	<script src="./js/controlador_nav.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8">
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

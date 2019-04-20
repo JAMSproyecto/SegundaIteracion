@@ -1,24 +1,16 @@
 #cards_centros div {
-
+    width: 295px;
+    height: 355px;
     display: inline-block;
-   
+    border: 1px solid black;
     margin: 10px;
 }
 
-#cards_centros h1 {
-    font-size: 20px;
-    /* float: right; */
+div h1 {
+    font-size: 18px;
     text-align: center;
-    background: #253b80;
-    color: #fff;
-
 }
 
-
-.tabla__responsive{
-    width: 1278px;
-    margin: 0 auto;
+h2 {
+text-align: right;
 }
-
-
-
