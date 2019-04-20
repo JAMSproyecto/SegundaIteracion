@@ -32,25 +32,23 @@ let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacio
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
     });
 
-    request.done(function (msg) {
-        if (msg.success) {
-            console.log(msg);
-        } else {
+    request.done(res => {
+        if (res.success) {
             swal.fire({
                 type: 'success',
-                title: 'Los datos fueron guardados exitosamente',
-                text: 'El centro ha recibido un total de ' + pestrellasMep + ' estrellas'
+                title: res.msg,
+                text: 'La calificación total es: ' + pestrellasMep + ' '
             });
-
+        } else {
+            swal.fire({
+            type: 'error',
+            title: res.msg,
+            text: 'Error al registrar'
+            });  
         }
-
     });
     request.fail(function (jqXHR, textStatus) {
-        swal.fire({
-            type: 'error',
-            title: 'Los datos no pudieron ser guardados',
-            text: 'Error al registrar'
-        });
+		console.error('Ocurrió un error al registrar la calificación');    
     });
 }; 
 
