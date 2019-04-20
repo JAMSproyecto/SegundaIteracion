@@ -6,8 +6,8 @@ const input_anno = document.querySelector('#txt_anno');
 const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
-const label_centro = document.querySelector('#label_centro');
 const bloqueOcultar = document.querySelector('#bloqueCentrosOcultar');
+const bloqueOcultar2 = document.querySelector('#bloqueCentrosOcultar2');
 
 
 let response = obtener_lista_utiles();
@@ -80,11 +80,8 @@ window.onload = () => {
             input_tipo.addEventListener('change', mostrar_centros);
 
         }else {
-            input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
-            input_tipo.selectedIndex = 0;
-            input_tipo.classList.add('ocultar');
-            let nombre = response.nombreCentro;
-            titulo_centro.innerHTML = nombre;
+            bloqueOcultar.classList.add('ocultar');
+            bloqueOcultar2.classList.add('ocultar');
         }
     } else {
         console.error('No se encontró el tipo de usuario');
@@ -97,9 +94,9 @@ function mostrar_centros(){
         localStorage.setItem('id', '1999');
         bloqueOcultar.classList.remove('ocultar');
     }else{
-        input_centros.classList.remove('ocultar');
-        label_centro.classList.remove('ocultar');
+        bloqueOcultar.classList.add('ocultar');
         input_centros.addEventListener('change', obtener_codigo_centro);
+        
     }
 };
 
