@@ -16,7 +16,7 @@ const servicio_api = require('./servicios.api');
 router.route('/registrar_servicio')
     .post(
         function(req, res){
-            servicio_api.registrar(req, res);
+            servicio_api.registrar_servicio(req, res);
         }
     );
 
