@@ -3,7 +3,7 @@
     background-color: #f5f6fa;
     width: 45%;
     margin: auto;
-    margin-bottom: 30px;
+ 
     border: 1px solid #bdc3c7;
   }
 
@@ -85,10 +85,20 @@
     margin: auto;
 }
 
-.bloqueBoton{
+
+#btn,
+#btn_agregar,
+#btn_registrar_rubro,
+#btnRegistrar{
    background:  #179bd7;
+   color: #fff;
 }
 
+.bloqueBoton{
+    width: 150px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
 
 /*jeison*/
