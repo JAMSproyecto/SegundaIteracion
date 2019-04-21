@@ -1,6 +1,6 @@
 'use strict';
 
-const cards_centros = 
+const CardsCentros = document.querySelector('#cards_centros');
 
 let cargarCEdu = () => {
 
@@ -40,7 +40,7 @@ let cargarCEdu = () => {
                                 card.appendChild(verMas);
                                 
 
-                            cards_centros.appendChild(card);
+                            CardsCentros.appendChild(card);
                     });
 
             }

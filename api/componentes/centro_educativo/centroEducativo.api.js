@@ -4,6 +4,7 @@ const Tiza = require('chalk');
 const ModelRegistrarCEdu = require('./centroEducativo.model');
 const ModelUsuario = require('./../usuarios/usuario.model');
 const ModelCalificacionMEP = require('./../calificacionMep/calificacionMep.model');
+const ObtenerProvCantDist = require('./../funciones_genericas/obtenerProvCantDist');
 const ObtenerPin = require('./../funciones_genericas/obtenerPin');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
 
@@ -141,7 +142,13 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
 module.exports.obtener_todos_centro_educativo = async (req, res) => {
     try {
-        const resultado = await ModelRegistrarCEdu.find().select('fotoCentro nombreComercial direccion nombre correo telefono').sort({_id: 'desc'});
+
+        let calificacionesMEP = await ModelCalificacionMEP.find({ 'calificacionTotal': { $ne: '' } }, { '_id': 0 }).select('idCentro calificacionTotal');
+
+        const cantCalificacionesMEP = Object.keys(calificacionesMEP).length;
+
+        const filtro = { _id: { $ne: 1999 } };
+        const resultado = await ModelRegistrarCEdu.find(filtro).select('fotoCentro nombreComercial direccion nombre correo telefono').sort({ _id: 'desc' });
         if (!!Object.keys(resultado).length) {
 
             let listarResultado = [];
@@ -150,25 +157,52 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
             for (key in resultado) {
                 if (!has.call(resultado, key)) continue;
 
-
-                let calificacionMEP = await ModelCalificacionMEP.findOne({ 'idCentro': resultado[key]['_id'] }, { '_id': 0 }).select('calificacionTotal');
-
-                if (calificacionMEP) {
-                    if (Object.keys(calificacionMEP).length < 1) {
-                        calificacionMEP = '';
-                    } else {
-                        calificacionMEP = '' + calificacionMEP.calificacionTotal;
+                let calificacionMEP = '0';
+                if (cantCalificacionesMEP > 0) {
+                    //calificacionesMEP
+                    let keyCalMEP;
+                    for (keyCalMEP in calificacionesMEP) {
+                        if (!has.call(calificacionesMEP, keyCalMEP)) continue;
+                        if (resultado[key]['_id'] === calificacionesMEP[keyCalMEP]['idCentro']) {
+                            calificacionMEP = calificacionesMEP[keyCalMEP]['calificacionTotal'];
+                            break;
+                        }
                     }
-                } else {
-                    calificacionMEP = '';
                 }
+
+                let laProvincia = '';
+                let elCanton = '';
+                let elDistrito = '';
+                let laDireccion = '';
+
+                if (resultado[key]['direccion']) {
+                    resultado[key]['direccion'].forEach(obj2 => {
+                        if ('undefined' != typeof obj2['idProvincia']) {
+                            laProvincia = ObtenerProvCantDist.getProvincia(obj2['idProvincia']);
+                        }
+                        if ('undefined' != typeof obj2['idCanton']) {
+                            elCanton = ObtenerProvCantDist.getCanton(obj2['idCanton']);
+                        }
+                        if ('undefined' != typeof obj2['idDistrito']) {
+                            elDistrito = ObtenerProvCantDist.getDistrito(obj2['idDistrito']);
+                        }
+                        if ('undefined' != typeof obj2['sennas']) {
+                            laDireccion = obj2['sennas'];
+                        }
+
+                    });
+                }
+
 
                 listarResultado.push({
                     '_id': resultado[key]['_id'] || 0,
                     'fotoCentro': resultado[key]['fotoCentro'] || '',
                     'nombre': resultado[key]['nombre'] || '',
                     'nombreComercial': resultado[key]['nombreComercial'] || '',
-                    'direccion': resultado[key]['direccion'] || '',
+                    'direccion': laDireccion,
+                    'provincia': laProvincia,
+                    'canton': elCanton,
+                    'distrito': elDistrito,
                     'telefono': resultado[key]['telefono'] || '',
                     'correo': resultado[key]['correo'] || '',
                     'calificacionMEP': calificacionMEP
