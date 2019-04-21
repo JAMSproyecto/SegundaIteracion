@@ -71,11 +71,10 @@ window.onload = () => {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
 
     if (null !== tipoUsuario) {
-     
+
 
         if (tipoUsuario === 'SuperAdmin') {
             input_tipo.classList.remove('ocultar');
-            input_centros.classList.remove('ocultar');
             input_tipo.innerHTML = '<option value="">Seleccione el tipo de lista</option><option value="MEP">MEP</option><option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
             cargarCEdu();
@@ -87,6 +86,8 @@ window.onload = () => {
             input_tipo.selectedIndex = 0;
             bloqueOcultar.classList.add('ocultar');
             bloqueOcultar2.classList.add('ocultar');
+            let nombre = response.nombreCentro;
+            titulo_centro.innerHTML = nombre;
         }
     } else {
         console.error('No se encontró el tipo de usuario');
