@@ -49,7 +49,7 @@ let mostrar_datos = () => {
     }
    
     let lista_utiles = response.coleccion_utiles;
-    let nombre = response.nombreCentro;
+    let nombre = response.nombre_centro;
     if (response.success == true) {
         titulo.innerHTML = nombre;
         for (let i = 0; i < lista_utiles.length; i++) {

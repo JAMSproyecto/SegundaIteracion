@@ -13,8 +13,8 @@ label_centro.classList.add('ocultar2');
 input_centros.classList.add('ocultar2');
 bloqueOcultar2.classList.add('ocultar');
 
-let response = obtener_lista_utiles();
 
+let response = obtener_lista_utiles();
 
 const boton_crear = document.querySelector('#btn_agregar');
 
@@ -86,7 +86,7 @@ window.onload = () => {
             input_tipo.selectedIndex = 0;
             bloqueOcultar.classList.add('ocultar');
             bloqueOcultar2.classList.add('ocultar');
-            let nombre = response.nombreCentro;
+            let nombre = response.nombre_centro;
             titulo_centro.innerHTML = nombre;
         }
     } else {

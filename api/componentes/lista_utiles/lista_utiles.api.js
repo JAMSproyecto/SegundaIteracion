@@ -51,7 +51,7 @@ module.exports.obtener_todos = (req, res) =>{
                             {
                                 success : true,
                                 coleccion_utiles : utiles,
-                                nombreCentro: centro.nombre
+                                nombre_centro: centro.nombre
                             }
                         )
                     }
