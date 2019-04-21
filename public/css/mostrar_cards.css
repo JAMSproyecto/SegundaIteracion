@@ -1,6 +1,14 @@
+#cards_centros {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+
 #cards_centros div {
-    width: 295px;
-    height: 355px;
+    width: 250px;
+    height: 320px;
     display: inline-block;
     border: 1px solid black;
     margin: 10px;
@@ -11,12 +19,11 @@ div h1 {
     text-align: center;
 }
 
-h2 {
-text-align: right;
-}
+#cards_centros span {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+};
 
-.text__center {
-	text-align:center;
-}
 
 
