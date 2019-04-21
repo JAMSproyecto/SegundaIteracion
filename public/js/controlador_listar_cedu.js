@@ -1,46 +1,5 @@
 'use strict';
 
-const tablaCuerpo = document.querySelector('#tblCentrosEducativos tbody');
-
-let cargarDataTable = () => {
-
-    //Nota: en esta función (cargarDataTable) no se utilizan funciones de flecha al propio para poder usar this.
-
-    $('#tblCentrosEducativos thead tr:eq(1) th:not(.sinFiltro)').each(function () {
-        let titulo = $(this).text();
-        $(this).html('<input type="text" class="icon-buscar" placeholder="" value="" >');
-    });
-
-    let tablaDatos = $('#tblCentrosEducativos').DataTable({
-        language: {
-            sSearch: 'Filtrar',
-            sZeroRecords: 'No se encontraron centros educativos filtrados',
-            sEmptyTable: 'No se encontraron centros educativos'
-        },
-        paging: false,
-        orderCellsTop: true,
-        pagingType: 'full_numbers',
-        ordering: true,
-        iDisplayLength: -1,
-        bDestroy: false,
-        bFilter: true,
-        searching: true,
-        bSort: true,
-        order: [[4, 'desc'], [3, 'desc']],
-        dom: '<f><t>'
-    });
-
-    $('#tblCentrosEducativos thead').on('keyup', '.icon-buscar', function () {
-        tablaDatos
-            .column($(this).parent().index())
-            .search(this.value)
-            .draw();
-    });
-
-
-
-};
-
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
 
@@ -58,74 +17,59 @@ let irAlPerfil = (idCEdu) => {
     }
 };
 
-let mostrarCalificacionMEP = (pId) => {
-
-        let calificacionMEP = listar_calificacion_CEdu(pId);
-if ('object' == typeof (calificacionMEP)){
-    console.log(calificacionMEP['calificacionTotal']);
-    return calificacionMEP['calificacionTotal'];
-} else {
-    console.log(calificacionMEP);
-    return '';
-}
-        
-}
-
-
 let cargarCEdu = () => {
 
     listarCEdu((pSuccess, pMessage) => {
         if (pSuccess) {
             if ('object' == typeof (pMessage)) {
-                    pMessage.forEach(obj => {
-                            let card = document.createElement('div');
-                            
+                pMessage.forEach(obj => {
+                    let card = document.createElement('div');
 
 
-                            let centro_nombre = document.createElement('h1');
-                            centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
 
-                            let telefono = document.createElement('span');
-                            telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+                    let centro_nombre = document.createElement('h1');
+                    centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
 
-                            let correo = document.createElement('span');
-                            correo.innerHTML = 'Correo: ' + obj['correo'];
+                    let telefono = document.createElement('span');
+                    telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
 
-                            let provincia = document.createElement('span');
-                            let direccion = document.createElement('span');
-                            obj['direccion'].forEach(obj2 => {
-                                    provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
-                                    direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
-                            });
+                    let correo = document.createElement('span');
+                    correo.innerHTML = 'Correo: ' + obj['correo'];
 
-
-                                let calificacionMEP = document.createElement('p');
-                                calificacionMEP.innerHTML = 'Calificación MEP :' + mostrarCalificacionMEP(obj['_id']);
-
-                                console.log(obj['_id']);
-
-
-                            let verMas = document.createElement('a');
-                            verMas.addEventListener('click', () => {
-                                    irAlPerfil(obj['_id']);
-                            }, false);
-                            verMas.innerHTML = '<i class="fas fa-id-card"></i>';
-
-                                card.appendChild(centro_nombre);
-                                card.appendChild(telefono);
-                                card.appendChild(correo);
-                                card.appendChild(provincia);
-                                card.appendChild(direccion);
-                                card.appendChild(calificacionMEP);
-                                card.appendChild(verMas);
-                                
-
-                            cards_centros.appendChild(card);
+                    let provincia = document.createElement('span');
+                    let direccion = document.createElement('span');
+                    obj['direccion'].forEach(obj2 => {
+                        provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
+                        direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
                     });
 
+
+                    let calificacionMEP = document.createElement('p');
+
+                    if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
+                        calificacionMEP.innerHTML = 'Calificación MEP :' + obj['calificacionMEP'];
+                    }
+                    let verMas = document.createElement('a');
+                    verMas.addEventListener('click', () => {
+                        irAlPerfil(obj['_id']);
+                    }, false);
+                    verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+
+                    card.appendChild(centro_nombre);
+                    card.appendChild(telefono);
+                    card.appendChild(correo);
+                    card.appendChild(provincia);
+                    card.appendChild(direccion);
+                    card.appendChild(calificacionMEP);
+                    card.appendChild(verMas);
+
+
+                    cards_centros.appendChild(card);
+                });
+
             }
-    }
-});
+        }
+    });
 };
 
 window.onload = () => {
