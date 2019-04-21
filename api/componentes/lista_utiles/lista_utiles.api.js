@@ -3,7 +3,7 @@
 const model_utiles = require('./lista_utiles.model');
 const model_cedu = require('../centro_educativo/centroEducativo.model');
 
-
+//para registrar lista de utiles 
 module.exports.registrar = (req, res) =>{
     let lista_utiles_nuevo = new model_utiles(
         {
@@ -36,7 +36,7 @@ lista_utiles_nuevo.save(
 );
 };
 
-
+//para obtener la lista de útiles por id del centro
 module.exports.obtener_todos = (req, res) =>{
     model_utiles.find({codigo : req.body.codigo}).then(
         function (utiles){
@@ -72,9 +72,9 @@ module.exports.obtener_todos = (req, res) =>{
     )
 };
 
-
+//para agregar articulos a la lista de útiles
 module.exports.agregar_articulos = (req, res) =>{
-console.log(req.body.id_lista);
+
     model_utiles.findByIdAndUpdate(
         { _id : req.body.id_lista},
 
@@ -110,7 +110,7 @@ console.log(req.body.id_lista);
     );
 };
 
-
+//para buscar una lista de útiles por id especifico
 module.exports.buscar_por_id = (req, res) => {
     model_utiles.find({_id : req.body.id }).then(
         function (lista){
@@ -173,8 +173,7 @@ module.exports.obtener_todos_general = (req, res) =>{
 
 //funcion para eliminar articulos de la lista 
 module.exports.eliminar_articulo_lista = function(req, res){
-    console.log('lista', req.body.id_lista)
-    console.log('articulo',  req.body.id_articulo)
+    
     model_utiles.updateOne(
         { _id : req.body.id_lista},
 
@@ -211,8 +210,7 @@ module.exports.eliminar_articulo_lista = function(req, res){
 
 //funcion para modificar articulos de la lista 
 module.exports.modificar_articulo_lista = function(req, res){
-    console.log('lista', req.body.id_lista)
-    console.log('articulo',  req.body.id_articulo)
+    
     model_utiles.findOneAndUpdate(
         { _id : req.body.id_lista, "articulos.codigo" :req.body.id_articulo},
 
@@ -246,7 +244,7 @@ module.exports.modificar_articulo_lista = function(req, res){
 
 //funcion para modificar la lista lista de utiles
 module.exports.modificar_lista_utiles = function(req, res){
-    console.log('lista', req.body.id_lista)
+
     model_utiles.findOneAndUpdate(
         { _id : req.body.id_lista},
     
@@ -303,7 +301,7 @@ module.exports.activar_desactivar = function(req, res){
 
 //para eliminar la lista de útiles 
 module.exports.eliminar_lista = function(req, res){
-    console.log(req.body.id);
+    
     model_utiles.findByIdAndRemove(req.body.id,
 
         function(error){

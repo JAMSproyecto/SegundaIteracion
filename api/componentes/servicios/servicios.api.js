@@ -133,3 +133,53 @@ module.exports.obtener_nombre_centro_id = (req, res) => {
         }
     )
 };
+
+//funcion para modificar el articulo
+module.exports.modificar_servicios = function(req, res){
+    
+    model_servicio.findOneAndUpdate(
+        { _id : req.body.id_servicio},
+    
+        {
+            $set:
+            {
+                nombre : req.body.nombre,
+                descripcion: req.body.descripcion
+                
+            }
+
+        },
+        function(error){
+            if (error) {
+                res.json(
+                    {
+                        success : false,
+                        msg : `No se pudo modificar el servicio, ocurrió el siguiente error ${error}`
+                    }
+                )
+            } else {
+                res.json(
+                    {
+                        success : true,
+                        msg : `Se modificó el servicio con éxito `
+                    }
+                )
+            }
+        }
+    );
+};
+
+//para eliminar servicios
+module.exports.eliminar_servicio = function(req, res){
+    
+    model_servicio.findByIdAndRemove(req.body.codigo,
+
+        function(error){
+            if(error){
+                res.json({success: false ,msg: 'No se pudo eliminar el servicio'});
+            }else{
+                res.json({success: true ,msg: 'el servicio se eliminó con éxito'}); 
+            }
+        }
+    )
+};

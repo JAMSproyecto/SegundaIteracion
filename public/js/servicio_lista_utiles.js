@@ -43,7 +43,7 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
   });
 };
 
-
+//para obtener la lista de utiles por el id del centro
 let obtener_lista_utiles = () => {
   let coleccion_utiles = []
   let codigo = localStorage.getItem('id');
@@ -68,6 +68,8 @@ let obtener_lista_utiles = () => {
   return coleccion_utiles;
 
 };
+
+//para obtener todas listas de útiles existentes
 let obtener_lista_utiles_todos = () => {
   let coleccion_utiles = [];
   let request = $.ajax({
@@ -92,7 +94,7 @@ let obtener_lista_utiles_todos = () => {
 
 };
 
-//agregar articulos a la lista de utiles 
+//para agregar articulos a una lista de utiles 
 let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
 
   let request = $.ajax({
@@ -120,7 +122,7 @@ let agregar_articulo = (pid_lista, pcodigo_articulo, pcantidad) => {
   });
 };
 
-
+//para buscar una lista de 
 let buscar_por_id = (id) => {
   let lista = [];
   let request = $.ajax({
@@ -144,7 +146,8 @@ let buscar_por_id = (id) => {
   return lista;
 };
 
-//para buscar centro por id 
+
+//para buscar centro por id que esta en la lista de utiles
 let buscar_centro_por_id = (id) => {
     if ('undefined' == typeof id || null === id) {
         throw new Error('Error al obtener el perfil: El identificador no puede estar vacio');
@@ -198,7 +201,7 @@ let  eliminar_articulo_de_lista_utiles = (id_art) => {
 
 };
 
-//función para modificar los aericulos de la lista de utiles 
+//función para modificar los articulos de la lista de utiles 
 let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
   let id_lista = localStorage.getItem('lista');
   let request = $.ajax({
@@ -236,7 +239,7 @@ let modificar_articulos_de_lista_utiles = (id_art,pcantidad) =>{
 
 };
 
-//funcion para modificar el nombre de la lista de utiles  
+//funcion para modificar el nombre y el año de la lista de utiles  
 let modificar_lista_utiles = (id_lista,pnombre,panno) =>{
   let request = $.ajax({
     url: "http://localhost:4000/api/modificar_lista_utiles" ,
@@ -330,7 +333,7 @@ let  eliminar_lista = (id) => {
       title: 'La lista de útiles fue eliminada de forma exitosa'
     }).then((result) => {
       if (result.value) {
-        window.location.href = 'lisar_lista_utiles.html';
+       
     }
 })
   });
