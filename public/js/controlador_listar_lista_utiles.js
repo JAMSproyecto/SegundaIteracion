@@ -134,7 +134,7 @@ let mostrar_datos = () => {
                }else{
                  //se agrego el boton para activar 
                  let btn_activar = document.createElement('a');
-                 btn_activar.classList.add('fas','fa-user-minus');
+                 btn_activar.classList.add('fas','desactivo','fa-user-minus');
                  btn_activar.dataset.id_lista = lista_utiles[i]['_id'];
                  btn_activar.dataset.estado = lista_utiles[i]['estado'];
                  btn_activar.addEventListener('click',activar_desactivar_lista_utiles);

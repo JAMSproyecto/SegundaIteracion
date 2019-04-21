@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @return {Number} pIdProvincia
+ * @param {Number} pIdProvincia
  * @return {String}
  */
 let obtenerProvinciaPorID = (pIdProvincia) => {
@@ -23,7 +23,7 @@ let obtenerProvinciaPorID = (pIdProvincia) => {
 };
 
 /**
- * @return {Number} pIdCanton
+ * @param {Number} pIdCanton
  * @return {String}
  */
 let obtenerCantonPorID = (pIdCanton) => {
@@ -45,7 +45,7 @@ let obtenerCantonPorID = (pIdCanton) => {
 };
 
 /**
- * @return {Number} pIdDistrito
+ * @param {Number} pIdDistrito
  * @return {String}
  */
 let obtenerDistritoPorID = (pIdDistrito) => {

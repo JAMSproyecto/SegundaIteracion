@@ -1,5 +1,7 @@
 'use strict';
 
+const CardsCentros = document.querySelector('#cards_centros');
+
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
 
@@ -20,15 +22,20 @@ let irAlPerfil = (idCEdu) => {
 let cargarCEdu = () => {
 
     listarCEdu((pSuccess, pMessage) => {
+
         if (pSuccess) {
-            if ('object' == typeof (pMessage)) {
+            if ('object' == typeof pMessage) {
+
+                //Limpiamos antes de añadir los cards:
+                CardsCentros.innerHTML = '';
+
                 pMessage.forEach(obj => {
                     let card = document.createElement('div');
 
 
 
                     let centro_nombre = document.createElement('h1');
-                    centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
+                    centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
 
                     let telefono = document.createElement('span');
                     telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
@@ -37,17 +44,15 @@ let cargarCEdu = () => {
                     correo.innerHTML = 'Correo: ' + obj['correo'];
 
                     let provincia = document.createElement('span');
-                    let direccion = document.createElement('span');
-                    obj['direccion'].forEach(obj2 => {
-                        provincia.innerHTML = 'Provincia: ' + obtenerProvinciaPorID(obj2['idProvincia']);
-                        direccion.innerHTML = 'Dirección: ' + obj2['sennas'];
-                    });
+                    provincia.innerHTML = 'Provincia: ' + obj['provincia'];
 
+                    let direccion = document.createElement('span');
+                    direccion.innerHTML = 'Dirección: ' + obj['direccion'];
 
                     let calificacionMEP = document.createElement('p');
 
                     if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
-                        calificacionMEP.innerHTML = 'Calificación MEP :' + obj['calificacionMEP'];
+                        calificacionMEP.innerHTML = 'Calificación MEP: ' + obj['calificacionMEP'];
                     }
                     let verMas = document.createElement('a');
                     verMas.addEventListener('click', () => {
@@ -64,10 +69,16 @@ let cargarCEdu = () => {
                     card.appendChild(verMas);
 
 
-                    cards_centros.appendChild(card);
+                    CardsCentros.appendChild(card);
                 });
 
+            } else {
+                CardsCentros.innerHTML = '';
+                console.error(pMessage);
             }
+        } else {
+            CardsCentros.innerHTML = '<h4>' + pMessage + '</h4>';
+            console.error(pMessage);
         }
     });
 };

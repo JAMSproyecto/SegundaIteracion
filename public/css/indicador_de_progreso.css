@@ -1,0 +1,148 @@
+/**
+ * Estilo sólo para registrar centro educativo
+*/
+
+.indicador_de_progreso {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 99.6%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 80%;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+.indicador_de_progreso>li {
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    flex: 1;
+    list-style: none;
+    text-align: center;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    text-overflow: ellipsis;
+    color: #bbbbbb;
+    display: block;
+}
+
+.indicador_de_progreso>li:hover {
+    color: #6e6e6e;
+}
+
+.indicador_de_progreso>li .burbuja {
+    border-radius: 1000px;
+    width: 20px;
+    height: 20px;
+    background: #bbbbbb;
+    display: block;
+    margin: 0 auto .500em 0;
+    border-bottom: 1px solid #888888;
+}
+
+.indicador_de_progreso>li .burbuja:before, .indicador_de_progreso>li .burbuja:after {
+    display: block;
+    position: absolute;
+    top: 0.600em;
+    width: 100%;
+    height: 0.394em;
+    content: '';
+    background: #bbbbbb;
+}
+
+.indicador_de_progreso>li .burbuja:before {
+    left: 0;
+}
+
+.indicador_de_progreso>li .burbuja:after {
+    right: 0;
+}
+
+.indicador_de_progreso>li.completo, .indicador_de_progreso>li.en_progreso {
+    color: #5ba8cc;
+}
+
+.indicador_de_progreso>li.completo .burbuja, .indicador_de_progreso>li.en_progreso .burbuja, .indicador_de_progreso>li.completo .burbuja:after {
+    background: #1f9fd9;
+    color: #1f9fd9;
+    border-color: #3e7d9b;
+}
+
+.indicador_de_progreso>li.completo .burbuja:before {
+    top: 4px;
+    left: 3px;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-display: auto;
+    content: "\f00c";
+    z-index: 1;
+}
+
+.indicador_de_progreso>li.en_progreso .burbuja:after {
+    background: #1f9fd9;
+    background: -moz-linear-gradient(left, #1f9fd9 0%, #bbbbbb 100%);
+    background: -webkit-linear-gradient(left, #1f9fd9 0%, #bbbbbb 100%);
+    background: linear-gradient(to right, #1f9fd9 0%, #bbbbbb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#07c', endColorstr='#bbbbbb', GradientType=1);
+    border-color: #3e7d9b;
+}
+
+.indicador_de_progreso>li.en_progreso .burbuja:before {
+    background: none;
+    filter: none;
+    border: none;
+    text-align: left;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-display: auto;
+    content: "\f111";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0.394em;
+}
+
+.indicador_de_progreso>li:not(:last-child).en_progreso .burbuja:before {
+    top: .250em;
+    left: .250em;
+}
+
+.indicador_de_progreso>li:last-child.en_progreso .burbuja:before {
+    top: .250em;
+    left: .275em;
+}
+
+.indicador_de_progreso>li:last-child .burbuja:before, .indicador_de_progreso>li:last-child .burbuja:after {
+    border: 0px solid transparent;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.indicador_de_progreso>li a:hover .burbuja, .indicador_de_progreso>li a:hover .burbuja:before, .indicador_de_progreso>li a:hover .burbuja:after {
+    background: #568fd0;
+    color: #568fd0;
+    border-color: #4b76a8;
+    cursor: pointer;
+}
+
+@media handheld, screen and (max-width: 400px) {
+    .indicador_de_progreso {
+        font-size: 60%;
+        width: 95%;
+    }
+    .indicador_de_progreso>li.completo .burbuja:before, .indicador_de_progreso>li.en_progreso .burbuja:before {
+        font-size: 1.280em;
+    }
+}

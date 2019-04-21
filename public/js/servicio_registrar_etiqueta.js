@@ -15,18 +15,13 @@ let registrar_etiqueta = (pnombre) => {
         if (msg.success) {
             swal.fire({
                 type: 'success',
-                title: 'Registro completo',
-                text: 'Se ha registrado la etiqueta en la base de datos',
-                onAfterClose: function () {
-                    window.location.replace('#');
-                  }
+                title: msg.msg
             });     
         }
         else {
             swal.fire({
                 type: 'error',
-                title: 'Los datos no se guardados',
-                text: 'Error al registrar'
+                title: msg.msg
             });
 
         }
