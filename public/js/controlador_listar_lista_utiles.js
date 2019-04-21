@@ -4,11 +4,12 @@ const tabla = document.querySelector('#tbl_lista_utiles tbody');
 const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 const th_centro = document.querySelector('#th_centro');
+//
 if (localStorage.getItem('tipoUsuario') === 'SuperAdmin') {
     th_centro.classList.add('ocultar');
 }
 
-
+//funcion que redirige a la pagina para ver los articulos que ya estan agregado a la lista de útiles
 function ver_info_lista() {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;
@@ -20,6 +21,7 @@ function ver_info_lista() {
     }
 };
 
+// funcion pque redirige a la pagina para agregar artículos a la lista de útiles
 function seleccionar_lista() {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;

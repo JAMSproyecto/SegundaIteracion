@@ -6,9 +6,12 @@ const input_anno = document.querySelector('#txt_anno');
 const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
+const label_centro = document.querySelector('#label_centro');
 const bloqueOcultar = document.querySelector('#bloqueCentrosOcultar');
 const bloqueOcultar2 = document.querySelector('#bloqueCentrosOcultar2');
-
+label_centro.classList.add('ocultar2');
+input_centros.classList.add('ocultar2');
+bloqueOcultar2.classList.add('ocultar');
 
 let response = obtener_lista_utiles();
 
@@ -80,6 +83,8 @@ window.onload = () => {
             input_tipo.addEventListener('change', mostrar_centros);
 
         }else {
+            input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
+            input_tipo.selectedIndex = 0;
             bloqueOcultar.classList.add('ocultar');
             bloqueOcultar2.classList.add('ocultar');
         }
@@ -91,12 +96,15 @@ window.onload = () => {
   
 function mostrar_centros(){
     if(this.value != 'centro_educativo'){
+        label_centro.classList.add('ocultar2');
+        input_centros.classList.add('ocultar2');
+        bloqueOcultar2.classList.add('ocultar');
         localStorage.setItem('id', '1999');
-        bloqueOcultar.classList.remove('ocultar');
     }else{
-        bloqueOcultar.classList.add('ocultar');
+        bloqueOcultar2.classList.remove('ocultar');
+        label_centro.classList.remove('ocultar2');
+        input_centros.classList.remove('ocultar2');
         input_centros.addEventListener('change', obtener_codigo_centro);
-        
     }
 };
 

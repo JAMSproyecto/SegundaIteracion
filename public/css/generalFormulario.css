@@ -426,7 +426,10 @@ select:not(.error_input):focus,
  
 /*creado por Johan */
 .ocultar{
-   /* visibility: hidden;*/
+  
    display: none;
 }
-
+/*creado por Johan*/
+.ocultar2{
+    visibility: hidden;
+}
