@@ -36,7 +36,7 @@ let mostrar_datos = () => {
       let btn_modificar = document.createElement('a');
       btn_modificar.dataset.id_articulo = articulo[0]['_id'];
       btn_modificar.href = '#';
-      btn_modificar.classList.add('fas', 'fa-pencil-alt');
+      btn_modificar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
 
       //funcion para modificar articulos de la lista de utiles 
       btn_modificar.addEventListener('click', function () {

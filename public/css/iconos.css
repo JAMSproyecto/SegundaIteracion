@@ -16,8 +16,27 @@
 
 
 
-.fa-user-minus{
-    font-size: 25px;
-    color: #179bd7;
+.fas{
+    font-size: 19px;
+    cursor:pointer;
+    color: #253b80;
+    
+}
+.fas:visited{
+    color: red;
 }
 
+.fas:hover{
+    color: #179bd7;
+    font-weight: bold;
+font-weight: 900;
+ 
+}
+
+
+.fa-trash-alt:hover{
+    color: #ff6000;
+}
+.desactivo{
+    color: #ff6000;
+}

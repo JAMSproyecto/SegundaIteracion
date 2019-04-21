@@ -30,7 +30,7 @@ const noticias = listar_todas_noticias();
 
 
             let boton_editar = document.createElement('a');
-            boton_editar.innerHTML = '<i class="fas fa-pen"></i> ';
+            boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
             boton_editar.href = `actualizar_noticia.html?idCentro=${noticias[i]['_id']}`;
             //a esa variable le agrego un elemento como hijo
             celda_actualizar.appendChild(boton_editar);
@@ -38,7 +38,7 @@ const noticias = listar_todas_noticias();
 
 
             let boton_eliminar = document.createElement('a');
-            boton_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
+            boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = noticias[i]['_id'];
 
             boton_eliminar.addEventListener('click', function () {

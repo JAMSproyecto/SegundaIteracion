@@ -28,7 +28,7 @@ let mostrar_datos = () => {
         fila.insertCell().innerHTML = rubros[i]['rubro'];
 
         let boton_desactivar = document.createElement('a');
-        boton_desactivar.innerHTML = '<i class="fas fa-user-minus"></i>';
+        boton_desactivar.innerHTML = '<i class="fas  desactivo fa-user-minus"></i>';
         boton_desactivar.dataset.id_rubro = rubros[i]['_id'];
         fila.insertCell().appendChild(boton_desactivar);
         boton_desactivar.addEventListener('click', function () {
