@@ -213,7 +213,7 @@ header .header__nav .menu__palanca > ul {
   display: none;
   z-index: 1000;
   overflow: hidden;
-  width: 100%;
+  width: auto;
   max-width: 300px;
   position: absolute;
   /*
