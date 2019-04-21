@@ -130,44 +130,29 @@
         </nav>
     </header>
     <main id="main">
-        <section>
-            <div class="centros__aprobados">
-                <div class="titulo__tablas">
-                    <strong>Lista de centros educativos por aprobar</strong>
-                </div>
-                <table id="tbl_centro">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Centro</th>
-                            <th>Cédula Juridica</th>
-                            <th>Correo</th>
-                            <th>Ubicación</th>
-                            <th>Fecha</th>
-
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="centros__atrasados">
-                <div class="titulo__tablas">
-                    <strong>Lista de centros educativos atrasados</strong>
-                </div>
-                <table id="tbl_centro">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Centro</th>
-                            <th>Cédula Juridica</th>
-                            <th>Correo</th>
-                            <th>Ubicación</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </section>
+            <section>
+                    <div class="tituloPrincipal">
+                        <h1>Centros educativos pendientes de aprobación</h1>
+                    </div>
+                    <div class="tabla__responsive">
+                        <input type="text" name="" id="filtrar_cards">
+                        <div id="cards_centros">
+        
+                        </div>
+                    </div>
+                </section>
     </main>
 </body>
 
 <script src="./js/controlador_nav.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="./js/general.js"></script>
+
+<script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
+<script src="./js/direccionUbicacion/controladorListar.js"></script>
+<script src="./js/servicio_listar_cedu.js"></script>
+<script src="./js/controlador_perfil_admin.js"></script>
 
 </html>
