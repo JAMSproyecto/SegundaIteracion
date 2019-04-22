@@ -7,16 +7,11 @@
     <script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link rel="stylesheet" href="css/reset.min.css">
-    <link rel="stylesheet" href="css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="css/headerGeneral.css" />
-    <link rel="stylesheet" href="css/formularios.css" />
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/tablas.css" />
+
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css">
+    <link rel="stylesheet" href="./css/tablas.css">
     <link rel="stylesheet" href="css/mostrar_cards.css">
 </head>
 
@@ -34,7 +29,7 @@
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
- 
+
                 <div class="bloqueHeader__nombreCed">
                     <span class="titulo_centro_educativo"></span>
                 </div>
@@ -101,19 +96,19 @@
                         <li><a href="listar_padres.html">Lista de padres de familia</a></li>
                     </ul>
                 </li>
-                <li><a  href="#"> Etiquetas de búsqueda</a>
+                <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a  href="#">Registrar etiquetas</a></li>
-                        <li><a  href="#">Listar etiquetas</a>
+                        <li><a href="#">Registrar etiquetas</a></li>
+                        <li><a href="#">Listar etiquetas</a>
                         </li>
                     </ul>
                 </li>
-              
+
                 <li><a class="utiles" href="#"> Preguntas frecuentes</a>
                     <ul>
                         <li><a class="subtitulos" href="registrarPreguntaFrecuenteGeneral.html">Registrar
                                 FAQ</a></li>
-                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Lista de 
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Lista de
                                 FAQ</a></li>
                     </ul>
 
@@ -131,28 +126,26 @@
         </nav>
     </header>
     <main id="main">
-            <section>
-                    <div class="tituloPrincipal">
-                        <h1>Centros educativos pendientes de aprobación</h1>
-                    </div>
-                    <div class="tabla__responsive">
-                        <input type="text" name="" id="filtrar_cards">
-                        <div id="cards_centros">
-        
-                        </div>
-                    </div>
-                </section>
+        <section>
+            <div class="tituloPrincipal">
+                <h1>Centros educativos pendientes de aprobación</h1>
+            </div>
+            <div class="tabla__responsive">
+                <input type="text" name="" id="filtrar_cards">
+                <div id="cards_centros">
+
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 
 <script src="./js/controlador_nav.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-<script src="./js/general.js"></script>
+<script src="./js/sweetalert2.all.min.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
 
-<script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
-<script src="./js/direccionUbicacion/controladorListar.js"></script>
+<script src="./js/combux.js"></script>
 <script src="./js/servicio_listar_cedu.js"></script>
 <script src="./js/controlador_perfil_admin.js"></script>
 

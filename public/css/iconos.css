@@ -14,7 +14,16 @@
 
 }
 
-
+.fa-flask,
+.fa-mug-hot,
+.fa-user-nurse,
+.fa-bus,
+.fa-user-friends,
+.fa-futbol,
+.fa-book,
+.fa-music {
+  padding: 15px;
+}
 
 .fas{
     font-size: 19px;
@@ -22,9 +31,7 @@
     color: #253b80;
     
 }
-.fas:visited{
-    color: red;
-}
+
 
 .fas:hover{
     color: #179bd7;
@@ -40,3 +47,28 @@ font-weight: 900;
 .desactivo{
     color: #ff6000;
 }
+
+.faq {
+    font-size: 25px;
+    color: #fff;
+    background: #17c0eb;
+    padding: 5px;
+    border-radius: 20px;
+    float: left;
+  }
+
+  .fa-newspaper{
+    font-size: 67px;
+    color: #253b80;
+    float: left;
+    padding-left: 29px;
+}
+
+.fat {
+    position: relative;
+    left: 49px;
+    /* width: 20px; */
+    font-size: 22px;
+    color: #17c0eb;
+  }
+  
