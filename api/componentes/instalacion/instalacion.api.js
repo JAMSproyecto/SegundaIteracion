@@ -102,7 +102,7 @@ let insertarAdministrador = async () => {
 module.exports.instalacion = async (req, res) => {
     if (req === 'RWwgU2XDsW9yIGVzIG1pIGx1eiB5IG1pIHNhbHZhY2nDs24uIChTYWxtbyAyNywxKQ==') {
         try {
-            const cantNiveles = await ModelCEduNiveles.find().count();
+            const cantNiveles = await ModelCEduNiveles.find().countDocuments();
             let respuesta = [];
             if (cantNiveles < 1) {
                 const Resultado = await insertarNiveles();
@@ -139,7 +139,7 @@ module.exports.instalacion = async (req, res) => {
             //Instalar el administrador.
 
             //validamos si ya fué creado:
-            const cantAdmins = await ModelAdmin.find().count();
+            const cantAdmins = await ModelAdmin.find().countDocuments();
 
             if (cantAdmins > 0) {
                 respuesta.push({

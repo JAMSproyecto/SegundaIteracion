@@ -14,7 +14,7 @@ let get_param = (param) => {
 
 let id = get_param('idCentro');
 
-console.log(id);
+
 
 let noticia = buscar_noticia(id);
 if (noticia) {

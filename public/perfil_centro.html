@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/estiloGeneral.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-  
+
 
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="css/estilosCE.css" />
     <link rel="stylesheet" href="./css/headerGeneral.css" />
-   <link rel="stylesheet" href="./css/estiloGeneral.css">
+
+    <link rel="stylesheet" href="./css/iconos.css">
 </head>
 
 <body>
@@ -31,12 +32,12 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
 
-            <div class="bloqueHeader__logo">
+            <div class="bloqueLogo__admin bloqueHeader__logo">
                 <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
         </div>
@@ -44,7 +45,7 @@
             <div class="bloqueHeader__contendorArriba">
 
                 <div class="bloqueHeader__nombreCed">
-                    <span class="titulo_centro_educativo"></span>
+                    <span style="display:none"   class="titulo_centro_educativo"></span>
                 </div>
 
                 <div class="header__nav">
@@ -73,7 +74,7 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-                <span>Nuestra Institución les da la bienvenida</span>
+
             </div>
         </div>
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
@@ -136,7 +137,7 @@
         </nav>
     </header>
 
-    <main class="mainPerfil-CE" id="main">
+    <main id="main">
         <section id="bloqueResennia">
             <div>
                 <h2 class="titulo__secundario">Reseña Historica</h2>
@@ -202,8 +203,8 @@
                     <div id="tabla__noticias"></div>
                 </div>
                 <div class="tabla__noticias">
-                        <div id="tabla__noticias"></div>
-                    </div>
+                    <div id="tabla__noticias"></div>
+                </div>
             </section>
             <section id="contenedorActividades">
                 <div>
@@ -216,13 +217,17 @@
         </section>
 
 
-        <section class="bloque__descripcion">
-                <div class="titulo__servicios">
-                    <h2 class="titulo__secundario">Nuestros servicios</h2>
+        <section class="bloqueServicios">
+            <div class="bloqueServicios__titulo">
+                <h2 class="titulo__secundario">Nuestros servicios</h2>
+            </div>
+            <div class="tabla__servicios">
+
+                <div id="tabla__servicios">
+                   
                 </div>
-                <div class="tabla__servicios">  
-                        <div id="tabla__servicios" ></div>
-                </div>
+
+            </div>
         </section>
 
 
