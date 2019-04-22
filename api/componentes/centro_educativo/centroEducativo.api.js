@@ -41,6 +41,26 @@ let enviarCorreo = (pCorreoPara, pNombre, pPin) => {
 };
 
 
+
+let obtenerSoloFecha = (pFecha) => {
+    if ('string' == typeof pFecha && pFecha.length > 0) {
+        const fecha = new Date(pFecha);
+        const anio = fecha.getFullYear();
+        let dia_mes = fecha.getDate();
+        let mes = fecha.getMonth();
+        mes += 1;
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        if (dia_mes < 10) {
+            dia_mes = '0' + dia_mes;
+        }
+        return dia_mes + '/' + mes + '/' + anio;
+    } else {
+        return '';
+    }
+};
+
 module.exports.registrar_centro_educativo = async (req, res) => {
     try {
 
@@ -345,7 +365,8 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                             'distrito': elDistrito,
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
-                            'fechaSolicitud': fechaSolicitud
+                            'fechaSolicitud': fechaSolicitud,
+                            'fechaSolicitudCorta': obtenerSoloFecha(fechaSolicitud)
                         });
 
                     }
