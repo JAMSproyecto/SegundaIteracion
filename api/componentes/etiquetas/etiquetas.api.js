@@ -6,7 +6,7 @@ const model_etiqueta = require('./etiquetas.model');
 module.exports.registrar_etiqueta = (req, res) =>{
     let etiqueta = new model_etiqueta(
         {
-            nombre : req.body.nombre
+            nombre : req.body.nombre,
         }
     );
      

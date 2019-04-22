@@ -2,11 +2,14 @@
 
 const CardsCentros = document.querySelector('#cards_centros');
 const filtroCards = document.querySelector('#filtrar_cards');
+//Agregado por Marlon. 4/22
+const selectEtiquetas = document.querySelector('#select_etiquetas')
+const tipoUsuario = localStorage.getItem('tipoUsuario');
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
 
-    const tipoUsuario = localStorage.getItem('tipoUsuario');
+   
     switch (tipoUsuario.toLowerCase()) {
         case 'superadmin':
             location.replace('./perfilCentroAdmin.html');
@@ -19,6 +22,33 @@ let irAlPerfil = (idCEdu) => {
             break;
     }
 };
+
+
+//Agregado por Marlon. 4/22
+let llenarSelectEtiquetas = () => {
+    let listaEtiquetas = listar_etiquetas();
+    for (let i = 0; i < listaEtiquetas.length; i++) {
+        let opcionEtiqueta = document.createElement('option');
+        opcionEtiqueta.innerHTML = listaEtiquetas[i]['nombre'];
+        selectEtiquetas.appendChild(opcionEtiqueta);
+    };   
+};
+
+let filtrarPorEtiqueta = () => {
+
+
+};
+
+
+
+
+
+
+
+//Fin agregado por Marlon. 4/22
+
+
+
 
 let cargarCEdu = () => {
 
@@ -95,6 +125,11 @@ let cargarCEdu = () => {
 
 window.onload = () => {
     cargarCEdu();
+
+
+        llenarSelectEtiquetas();
+    
 };
 
 filtroCards.addEventListener('keyup', cargarCEdu);
+selectEtiquetas.addEventListener('blur', filtrarPorEtiqueta);//Me falta hacer la función que filtra

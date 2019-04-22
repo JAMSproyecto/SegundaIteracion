@@ -138,9 +138,94 @@ let eliminar_etiqueta = (pid) => {
   request.fail(function (res) {
     swal.fire({
       type: 'error',
-      title: 'Proceso no realizado',
+      title: 'Proceso no realizado', 
       text: res.msg
     });
 
   });
+};
+
+
+//Para el componente de agregar etiquetas a la lista del centro
+
+
+
+let agregar_etiqueta_en_lista  = (pid, pidEtiqueta, pNombre) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/agregar_a_lista_etiqueta",
+    method: "POST",
+    data: {
+      idCentro: pid,
+              _id : pidEtiqueta,
+              nombre: pNombre
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+  });
+
+  request.done(function (msg) {
+
+    if ("object" == typeof msg) {
+      if (msg.success) {
+        swal.fire({
+          type: 'success',
+          title: 'Se han modificado los datos de manera exitosa',
+          text: msg.message,
+        });
+      } else {
+        swal.fire({
+          type: 'error',
+          title: 'Error al actualizar los datos: ' + msg.message,
+          timer: 10000,
+          position: 'center'
+        });
+      }
+
+    } else {
+      console.error(msg);
+      swal.fire({
+        type: 'error',
+        title: 'Error al actualizar',
+        timer: 10000,
+        position: 'center',
+        text: 'Ocurrió un error inesperado'
+      });
+    }
+
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+    swal.fire({
+      type: 'error',
+      title: 'Error al actualizar',
+      timer: 10000,
+      position: 'center',
+      text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+    });
+  });
+};
+
+
+let lista_etiquetas_centro = (pidCentro) => {
+  let etiquetas_array = [];
+  let request = $.ajax({
+    url: "http://localhost:4000/api/lista_etiquetas_en_centro/" + pidCentro,
+    method: "GET",
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    etiquetas_array = res.msg;
+
+  });
+
+
+  request.fail(function (jqXHR, textStatus) {
+
+
+  });
+  return etiquetas_array;
+
 };

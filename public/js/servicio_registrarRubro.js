@@ -184,7 +184,6 @@ let agregar_rubro = (pid, prubro_seleccionado) => {
 */
 
 let activar_rubro = (pid, pcantidad_activos) => {
-console.log("pcantidad_activos: " + pcantidad_activos);
   if (pcantidad_activos < 11) {
     let request = $.ajax({
       url: "http://localhost:4000/api/activar_Rubros",
