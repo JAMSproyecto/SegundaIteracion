@@ -13,17 +13,18 @@
     <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/tablas.css">
     <link rel="stylesheet" href="css/mostrar_cards.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
 </head>
 
 <body>
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
-            <div class="bloqueHeader__logo">
+            <div class="bloqueLogo__admin bloqueHeader__logo">
                 <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
         </div>
@@ -47,11 +48,7 @@
                             <li>
                                 <a href="javascript:void(0)">Modificar perfil</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                          
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -76,7 +73,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="calificaciones" href="#">Calificaciones</a>
+                    <a class="calificaciones" href="#">Rubros</a>
                     <ul>
                         <li><a href="#">Registrar un rubro</a></li>
                         <li><a href="./agregar_rubros_a_evaluar.html">Lista de rubros</a></li>
@@ -85,7 +82,7 @@
                 <li><a href="#">Útiles</a>
                     <ul>
                         <li><a href="registrar_articulos.html">Registrar artículos</a></li>
-                        <li><a href="listar_articulos.html">Listar artículos</a></li>
+                        <li><a href="listar_articulos.html">Lista de artículos</a></li>
                         <li><a href="registrar_lista_utiles.html">Registrar lista de útiles</a></li>
                         <li><a href="listar_lista_utiles.html">Lista de útiles</a></li>
                     </ul>
@@ -98,8 +95,8 @@
                 </li>
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a href="registrar_etiquetas.html">Registrar etiquetas</a></li>
-                        <li><a href="listaEtiquetas.html">Listar etiquetas</a>
+                        <li><a href="registrar_etiquetas.html">Registrar etiqueta</a></li>
+                        <li><a href="listaEtiquetas.html">Lista de etiquetas</a>
                         </li>
                     </ul>
                 </li>

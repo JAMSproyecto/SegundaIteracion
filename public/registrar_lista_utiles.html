@@ -24,15 +24,16 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
-            <div class="bloqueHeader__logo">
-                    <a href="perfil_admin.html">
-                        <img src="./imgs/logo_mep.png" class="imagen_mep">
-                    </a>
-                </div>
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <a href="perfil_admin.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
+
+            </div>
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
@@ -40,6 +41,7 @@
                 <div class="bloqueHeader__nombreCed">
                     <span class="titulo_centro_educativo"></span>
                 </div>
+
 
                 <div class="header__nav">
                     <div class="menu__palanca menu__palanca__izq">
@@ -54,11 +56,6 @@
                             <li>
                                 <a href="javascript:void(0)">Modificar perfil</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -105,8 +102,8 @@
                 </li>
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a href="#">Registrar etiquetas</a></li>
-                        <li><a href="#">Listar etiquetas</a>
+                        <li><a href="registrar_etiquetas.html">Registrar etiqueta</a></li>
+                        <li><a href="listaEtiquetas.html">Lista de etiquetas</a>
                         </li>
                     </ul>
                 </li>
@@ -136,25 +133,25 @@
 
     <main>
         <div class="tituloPrincipal">
-                <h1>Crear lista de útiles</h1>
+            <h1>Crear lista de útiles</h1>
         </div>
-        
+
         <h2 id="titulo_centro" class="titulo__principal"></h2>
         <section class="bloque bloqueUtiles-CE">
-                
-            <form >
+
+            <form>
                 <div class=" bloqueDato">
                     <label for="txt_tipo">Tipo</label>
                     <select id="txt_tipo">
-                        <option value="">Seleccione el tipo de lista</option> 
+                        <option value="">Seleccione el tipo de lista</option>
                     </select>
                 </div>
-                <div  class="bloqueDato" id="bloqueCentrosOcultar2">
+                <div class="bloqueDato" id="bloqueCentrosOcultar2">
                     <label for="lista_centros" id="label_centro">Centro educativo</label>
-                        <input list = "lista" id="lista_centros">
-                        <datalist id="lista">
+                    <input list="lista" id="lista_centros">
+                    <datalist id="lista">
 
-                        </datalist>
+                    </datalist>
                 </div>
                 <div class="bloqueDato">
                     <label for="txt_nombre">Nombre</label>
@@ -170,83 +167,83 @@
         <div class="bloqueBoton">
             <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
         </div>
-      
-		
+
+
     </main>
     <footer>
-            <div class="footer__cuerpo">
-                <div class="footer__flex">
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Contacto</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="fa fas fa-phone"></i> Tel&eacute;fono:
-                                22-24-66-88</a></li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="fa fas fa-fax"></i> Fax:
-                                29-53-55-22</a></li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
-                                educacion@ucenfotec.com</a></li>
-                    </ul>
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Direcci&oacute;n</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
-                                Jos&eacute;,
-                                Barrio Cristo
-                                Rey</a></li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24, calle
-                                12</a></li>
-                    </ul>
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Citas</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="far fa-calendar-alt"></i> Agendar</a></li>
-                    </ul>
-                    <section class="footer__social__seccion footer__flex">
-                        <span class="footer__social__traslapar footer__social__conectate">
-                            Conectate <span class="footer__social__pequeno">con</span> nosotros
-                        </span>
-                        <span class="footer__social__traslapar footer__social__iconos__envoltura">
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Facebook"><i class="fab fa-facebook-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
-                                    class="fab fa-twitter-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
-                                    class="fab fa-youtube"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
-                        </span>
-                    </section>
-                    <section class="footer__inferior__seccion footer__flex">
-                        <div class="footer__inferior__envoltura">
-                            <i class="fa fa-copyright"></i> 2019
-                            <address class="footer__direccion__compania">JAMS</address>
-                            <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
-                        </div>
-                        <div class="footer__inferior__envoltura">
-                            <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
-                                class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
-                        </div>
-                    </section>
-                </div>
+        <div class="footer__cuerpo">
+            <div class="footer__flex">
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Contacto</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                            22-24-66-88</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-fax"></i> Fax:
+                            29-53-55-22</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                            educacion@ucenfotec.com</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Direcci&oacute;n</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
+                            Jos&eacute;,
+                            Barrio Cristo
+                            Rey</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24, calle
+                            12</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Citas</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="far fa-calendar-alt"></i> Agendar</a></li>
+                </ul>
+                <section class="footer__social__seccion footer__flex">
+                    <span class="footer__social__traslapar footer__social__conectate">
+                        Conectate <span class="footer__social__pequeno">con</span> nosotros
+                    </span>
+                    <span class="footer__social__traslapar footer__social__iconos__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
+                                class="fab fa-twitter-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
+                    </span>
+                </section>
+                <section class="footer__inferior__seccion footer__flex">
+                    <div class="footer__inferior__envoltura">
+                        <i class="fa fa-copyright"></i> 2019
+                        <address class="footer__direccion__compania">JAMS</address>
+                        <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
+                    </div>
+                    <div class="footer__inferior__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
+                            class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
+                    </div>
+                </section>
             </div>
-        </footer>
+        </div>
+    </footer>
 
     <script src="./js/controlador_nav.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="js/servicio_listar_cedu.js"></script>
+    <script src="js/servicio_listar_cedu.js"></script>
     <script src="js/servicio_lista_utiles.js"></script>
     <script src="js/controlador_registrar_lista_utiles.js"></script>
 

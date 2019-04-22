@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const registrar_actividad_api = require('./registrar_actividad.api');
 
-router.param('idCentro', function(req,res, next, pidCentro){
-    req.body.idCentro = pidCentro;
+router.param('idActividad', function(req,res, next, pidActividad){
+    req.body.idActividad = pidActividad;
 
     next();
     }
@@ -25,8 +25,8 @@ router.route('/listar_todas_actividades/:idCentro')
         }
     );
 
-
-router.route('/buscar_actividad/:idCentro')
+//creo una nueva ruta para buscar una actividad
+router.route('/buscar_actividad/:idActividad')
     .get(
         function (req, res) {
             registrar_actividad_api.buscar_por_id(req, res);
