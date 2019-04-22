@@ -39,7 +39,7 @@ module.exports.registrar_calificacionMEP = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `La calificación no pudo ser registrada, ocurrió el siguiente error ${error}`
+                        msg: `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
@@ -47,7 +47,7 @@ module.exports.registrar_calificacionMEP = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `Se registró la calificación de manera exitosa`
+                        msg: `¡El proceso se registró de manera exitosa!`
                     }
                 )
             }
@@ -74,7 +74,7 @@ module.exports.listar_calificacionMEP = (req, res) => {
                         res.json(
                             {
                                 success: false,
-                                msg: 'Datos no encontrados'
+                                msg: '¡No se encontraron los datos!'
                             }
                         )
                     }
@@ -82,7 +82,7 @@ module.exports.listar_calificacionMEP = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: 'Datos no encontrados'
+                        msg: '¡No se encontraron los datos!'
                     }
                 )
             }

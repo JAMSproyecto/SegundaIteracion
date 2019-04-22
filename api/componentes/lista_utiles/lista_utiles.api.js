@@ -21,14 +21,14 @@ lista_utiles_nuevo.save(
             res.json(
                 {
                     success : false,
-                    msg : `No se pudo guardar la lista de útiles, ocurrió el siguiente error ${error}`
+                    msg : `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error}!`
                 }
             )
         } else {
             res.json(
                 {
                     success : true,
-                    msg : `Se registró la lista de útiles de forma correcta`
+                    msg : `¡El proceso se registró de manera exitosa!`
                 }
             )
         }
@@ -63,7 +63,7 @@ module.exports.obtener_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `No se encontraron listas de útiles registradas`
+                        coleccion_utiles : `¡No se encontraron los datos!`
                     }
                 )
             }
@@ -94,14 +94,14 @@ module.exports.agregar_articulos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo guardar el artículo, ocurrió el siguiente error ${error}`
+                        msg : `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error}!`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se registró el artículo con éxito `
+                        msg : `¡El proceso se registró de manera exitosa!`
                     }
                 )
             }
@@ -125,7 +125,7 @@ module.exports.buscar_por_id = (req, res) => {
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `No se encontraron listas de útiles registradas`
+                        coleccion_utiles : `¡No se encontraron los datos!`
                     }
                 )
             }
@@ -162,7 +162,7 @@ module.exports.obtener_todos_general = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        coleccion_utiles : `no se encontraron lista de útiles registrados`
+                        coleccion_utiles : `¡No se encontraron los datos!`
                     }
                 )
             }
@@ -193,14 +193,14 @@ module.exports.eliminar_articulo_lista = function(req, res){
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo rliminar el artículo, ocurrió el siguiente error ${error}`
+                        msg : `¡El proceso no fue realizado con éxito, ocurrió el siguiente error ${error}!`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se eliminó el artículo con éxito `
+                        msg : `¡El proceso se realizó de manera exitosa! `
                     }
                 )
             }
@@ -227,14 +227,14 @@ module.exports.modificar_articulo_lista = function(req, res){
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo modificar el artículo, ocurrió el siguiente error ${error}`
+                        msg : `¡El proceso no fue realizado con éxito, ocurrió el siguiente error ${error}!`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se modificó el artículo con éxito `
+                        msg : `¡El proceso se realizó de manera exitosa! `
                     }
                 )
             }
@@ -262,14 +262,14 @@ module.exports.modificar_lista_utiles = function(req, res){
                 res.json(
                     {
                         success : false,
-                        msg : `No se pudo modificar la lista de utiles, ocurrió el siguiente error ${error}`
+                        msg : `¡El proceso no fue realizado con éxito, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
                 res.json(
                     {
                         success : true,
-                        msg : `Se modificó la lista de utiles con éxito `
+                        msg : `¡El proceso se realizó de manera exitosa! `
                     }
                 )
             }
@@ -291,9 +291,9 @@ module.exports.activar_desactivar = function(req, res){
       }},
         function(error){
             if(error){
-                res.json({success: false ,msg: 'No se pudo activar la lista de útiles '});
+                res.json({success: false ,msg: '¡No se pudo activar la lista de útiles!'});
             }else{
-                res.json({success: true ,msg: 'la lista de útiles se activó con éxito'}); 
+                res.json({success: true ,msg: '¡La lista de útiles se activó con éxito!'}); 
             }
         }
     )

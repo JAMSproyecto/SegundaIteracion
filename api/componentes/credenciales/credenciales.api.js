@@ -17,7 +17,7 @@ module.exports.verificar_credenciales = async (arr, res) => {
             if (resultado['activo'] === true) {
                 res.json({
                     success: true,
-                    message: 'Se ha ingresado el pin de forma correcta'
+                    message: '¡Los datos se ingresaron exitosamente!'
                 });
             } else {
 //Si se encontró el pin y no está activo, entonces inserte la contraseña:
