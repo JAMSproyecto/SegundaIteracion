@@ -61,6 +61,20 @@ let obtenerSoloFecha = (pFecha) => {
     }
 };
 
+
+let obtenerDias = (pFecha) => {
+    if ('string' == typeof pFecha && pFecha.length > 0) {
+        const hoy = new Date();
+        const fecha = new Date(pFecha);
+        let diferencia = hoy.getTime() - fecha.getTime();
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+        return dias;
+    } else {
+        return '';
+    }
+};
+
 module.exports.registrar_centro_educativo = async (req, res) => {
     try {
 
@@ -366,7 +380,8 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
                             'fechaSolicitud': fechaSolicitud,
-                            'fechaSolicitudCorta': obtenerSoloFecha(fechaSolicitud)
+                            'fechaSolicitudCorta': obtenerSoloFecha(fechaSolicitud),
+                            'diasSolicitudPendiente': obtenerDias(fechaSolicitud)
                         });
 
                     }
