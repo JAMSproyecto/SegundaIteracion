@@ -33,7 +33,7 @@ let llenarContenido = () => {
 
     elContenedor.forEach(obj => {
 
-        if (cantFiltros < 1 || compararStrings(filtros, obj['nombre'], false)) {
+        if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
 
             let card = document.createElement('div');
 
