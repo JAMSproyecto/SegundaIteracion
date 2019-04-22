@@ -41,7 +41,7 @@ let llenarContenido = () => {
             centro_nombre.innerHTML = '<strong class="descripcion">Nombre: </strong>' + obj['nombre'];
 
             let telefono = document.createElement('p');
-            telefono.innerHTML = '<strong class="descripcion">Telefono: </strong>' + obj['telefono'];
+            telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' + obj['telefono'];
 
             let correo = document.createElement('p');
             correo.innerHTML = '<strong class="descripcion">Correo: </strong>'+ obj['correo'];
@@ -63,7 +63,7 @@ let llenarContenido = () => {
             if (obj['solicitudDiasHabiles'] > 3) {
                 diasSolicitud.innerHTML = 'Días hábiles pendientes: <span style="color:#ED4C67;">' + obj['solicitudDiasHabiles'] + '</span>';
             } else {
-                diasSolicitud.innerHTML = 'Días pendientes: ' + obj['solicitudDiasHabiles'];
+                diasSolicitud.innerHTML = 'Días hábiles pendientes: ' + obj['solicitudDiasHabiles'];
             }
 
             let verMas = document.createElement('a');
