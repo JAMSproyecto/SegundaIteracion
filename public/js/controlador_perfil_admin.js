@@ -22,7 +22,7 @@ let irAlPerfil = (idCEdu) => {
 
 let cargarCEdu = () => {
 
-    listarCEdu((pSuccess, pMessage) => {
+    listarCEdu_sin_aprobar((pSuccess, pMessage) => {
 
         if (pSuccess) {
             if ('object' == typeof pMessage) {
