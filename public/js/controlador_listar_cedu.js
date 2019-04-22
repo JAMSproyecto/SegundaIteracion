@@ -41,7 +41,7 @@ let cargarCEdu = () => {
 
 
                         let centro_nombre = document.createElement('h1');
-                        centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
+                        centro_nombre.innerHTML = '<p class=" >Nombre:' + obj['nombre'];
     
                         let telefono = document.createElement('p');
                         telefono.innerHTML = 'telefono: '+ obj['telefono'];
