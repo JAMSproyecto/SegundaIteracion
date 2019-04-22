@@ -1,7 +1,9 @@
 'use strict';
 
 const CardsCentros = document.querySelector('#cards_centros');
-const filtroCards = document.querySelector('#filtrar_cards');
+const FiltroCards = document.querySelector('#filtrar_cards');
+
+let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
@@ -20,68 +22,80 @@ let irAlPerfil = (idCEdu) => {
     }
 };
 
+
+let llenarContenido = () => {
+
+    const filtros = FiltroCards.value;
+    const cantFiltros = filtros.trim().length;
+
+    //Limpiamos antes de añadir los cards:
+    CardsCentros.innerHTML = '';
+
+    elContenedor.forEach(obj => {
+
+        if (cantFiltros < 1 || compararStrings(filtros, obj['nombre'], false)) {
+
+            let card = document.createElement('div');
+
+            let centro_nombre = document.createElement('h1');
+            centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
+
+            let telefono = document.createElement('span');
+            telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+
+            let correo = document.createElement('span');
+            correo.innerHTML = 'Correo: ' + obj['correo'];
+
+            let provincia = document.createElement('span');
+            provincia.innerHTML = 'Provincia: ' + obj['provincia'];
+
+            let direccion = document.createElement('span');
+            direccion.innerHTML = 'Dirección: ' + obj['direccion'];
+
+            let fechaSolicitud = document.createElement('p');
+
+            fechaSolicitud.innerHTML = 'Fecha de solicitud: ' + obj['solicitudFechaCorta'];
+
+
+            // Obtenemos la cantidad de "días hábiles" que lleva pendiente de aprobación.
+            let diasSolicitud = document.createElement('p');
+
+            if (obj['solicitudDiasHabiles'] > 3) {
+                diasSolicitud.innerHTML = 'Días hábiles pendientes: <span style="color:#ED4C67;">' + obj['solicitudDiasHabiles'] + '</span>';
+            } else {
+                diasSolicitud.innerHTML = 'Días pendientes: ' + obj['solicitudDiasHabiles'];
+            }
+
+            let verMas = document.createElement('a');
+            verMas.addEventListener('click', () => {
+                irAlPerfil(obj['_id']);
+            }, false);
+            verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+
+            card.appendChild(centro_nombre);
+            card.appendChild(telefono);
+            card.appendChild(correo);
+            card.appendChild(provincia);
+            card.appendChild(direccion);
+            card.appendChild(fechaSolicitud);
+            card.appendChild(diasSolicitud);
+            card.appendChild(verMas);
+
+            CardsCentros.appendChild(card);
+
+        };
+    });
+};
+
 let cargarCEdu = () => {
-
     listarCEdu_sin_aprobar((pSuccess, pMessage) => {
-
         if (pSuccess) {
             if ('object' == typeof pMessage) {
 
-                let filtros = filtroCards.value;
-                //Limpiamos antes de añadir los cards:
-                CardsCentros.innerHTML = '';
-
-                pMessage.forEach(obj => {
-
-    
-                    if (obj['nombre'].toLowerCase().includes(filtros.toLowerCase())) {
-
-                        let card = document.createElement('div');
-
-
-
-                        let centro_nombre = document.createElement('h1');
-                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
-    
-                        let telefono = document.createElement('span');
-                        telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
-    
-                        let correo = document.createElement('span');
-                        correo.innerHTML = 'Correo: ' + obj['correo'];
-    
-                        let provincia = document.createElement('span');
-                        provincia.innerHTML = 'Provincia: ' + obj['provincia'];
-    
-                        let direccion = document.createElement('span');
-                        direccion.innerHTML = 'Dirección: ' + obj['direccion'];
-    
-                        let calificacionMEP = document.createElement('p');
-    
-                        if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
-                            calificacionMEP.innerHTML = 'Calificación MEP: ' + obj['calificacionMEP'];
-                        }
-                        let verMas = document.createElement('a');
-                        verMas.addEventListener('click', () => {
-                            irAlPerfil(obj['_id']);
-                        }, false);
-                        verMas.innerHTML = '<i class="fas fa-id-card"></i>';
-    
-                        card.appendChild(centro_nombre);
-                        card.appendChild(telefono);
-                        card.appendChild(correo);
-                        card.appendChild(provincia);
-                        card.appendChild(direccion);
-                        card.appendChild(calificacionMEP);
-                        card.appendChild(verMas);
-    
-    
-                        CardsCentros.appendChild(card);
-
-
-                    };
-
-                    
-                });
+                FiltroCards.value = '';
+                FiltroCards.addEventListener('keyup', llenarContenido);
+                elContenedor = pMessage;
+                llenarContenido();
 
             } else {
                 CardsCentros.innerHTML = '';
@@ -98,4 +112,3 @@ window.onload = () => {
     cargarCEdu();
 };
 
-filtroCards.addEventListener('keyup', cargarCEdu);
