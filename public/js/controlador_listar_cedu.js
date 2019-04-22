@@ -41,25 +41,24 @@ let cargarCEdu = () => {
 
 
                         let centro_nombre = document.createElement('h1');
-                        centro_nombre.innerHTML = 'Nombre:' + obj['nombre'];
+                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
     
                         let telefono = document.createElement('p');
-                        telefono.innerHTML = 'telefono: '+ obj['telefono'];
+                        telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
     
                         let correo = document.createElement('p');
-                        correo.innerHTML = 'Correo: '+ obj['correo'];
+                        correo.innerHTML = 'Correo: ' + obj['correo'];
     
                         let provincia = document.createElement('p');
-                        provincia.innerHTML = 'Provincia:' + obj['provincia'];
+                        provincia.innerHTML = 'Provincia: ' + obj['provincia'];
     
                         let direccion = document.createElement('p');
-                        direccion.innerHTML = 'Direccion:' + obj['direccion'];
-    
+                        direccion.innerHTML = 'Dirección: ' + obj['direccion'];
+
                         let calificacionMEP = document.createElement('p');
-    
-                        if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
-                            calificacionMEP.innerHTML ='<strong class="Calificacion ">Calificacion MEP:</strong>'+ obj['calificacionMEP'];
-                        }
+
+                        calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + obj['calificacionMEP'];
+
                         let verMas = document.createElement('a');
                         verMas.addEventListener('click', () => {
                             irAlPerfil(obj['_id']);
