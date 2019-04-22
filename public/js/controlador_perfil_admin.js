@@ -38,21 +38,21 @@ let llenarContenido = () => {
             let card = document.createElement('div');
 
             let centro_nombre = document.createElement('h1');
-            centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
+            centro_nombre.innerHTML = '<strong class="descripcion">Nombre: </strong>' + obj['nombre'];
 
-            let telefono = document.createElement('span');
-            telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+            let telefono = document.createElement('p');
+            telefono.innerHTML = '<strong class="descripcion">Telefono: </strong>' + obj['telefono'];
 
-            let correo = document.createElement('span');
-            correo.innerHTML = 'Correo: ' + obj['correo'];
+            let correo = document.createElement('p');
+            correo.innerHTML = '<strong class="descripcion">Correo: </strong>'+ obj['correo'];
 
             let provincia = document.createElement('span');
-            provincia.innerHTML = 'Provincia: ' + obj['provincia'];
+            provincia.innerHTML = '<strong class="descripcion">Provincia: </strong>' + obj['provincia'];
 
             let direccion = document.createElement('span');
-            direccion.innerHTML = 'Dirección: ' + obj['direccion'];
+            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>'+ obj['direccion'];
 
-            let fechaSolicitud = document.createElement('p');
+            let fechaSolicitud = document.createElement('span');
 
             fechaSolicitud.innerHTML = 'Fecha de solicitud: ' + obj['solicitudFechaCorta'];
 
