@@ -62,16 +62,41 @@ let obtenerSoloFecha = (pFecha) => {
 };
 
 
-let obtenerDias = (pFecha) => {
+let obtenerDias = (pFecha, soloHabiles) => {
     if ('string' == typeof pFecha && pFecha.length > 0) {
         const hoy = new Date();
         const fecha = new Date(pFecha);
-        let diferencia = hoy.getTime() - fecha.getTime();
-        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const cantDias = Math.floor((hoy.getTime() - fecha.getTime()) / (1000 * 60 * 60 * 24));
 
-        return dias;
+        soloHabiles = soloHabiles || false;
+        if (soloHabiles === false) {
+            return cantDias;
+        } else {
+            if (cantDias < 1) {
+                return 0;
+            } else {
+                // Restamos sábados y domingos
+                let fechaCalculo = fecha;
+                fechaCalculo.setDate(fechaCalculo.getDate() - 1);
+
+                const diasRecorrer = cantDias + 1; // Se suma el día de hoy.
+                let noHabiles = 0, i = 0;
+                for (i; i < diasRecorrer; ++i) {
+                    fechaCalculo.setDate(fechaCalculo.getDate() + 1);
+                    const diasemana = fechaCalculo.getDay();
+                    if (diasemana == 0 || diasemana == 6) {
+                        ++noHabiles;
+                    }
+                }
+
+                //console.log("cantDias: "+cantDias+" - noHabiles: "+noHabiles+" ="+(cantDias - noHabiles));
+
+                return (cantDias - noHabiles);
+
+            }
+        }
     } else {
-        return '';
+        return -1;
     }
 };
 
@@ -379,9 +404,10 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                             'distrito': elDistrito,
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
-                            'fechaSolicitud': fechaSolicitud,
-                            'fechaSolicitudCorta': obtenerSoloFecha(fechaSolicitud),
-                            'diasSolicitudPendiente': obtenerDias(fechaSolicitud)
+                            'solicitudFecha': fechaSolicitud,
+                            'solicitudFechaCorta': obtenerSoloFecha(fechaSolicitud),
+                            'solicitudDias': obtenerDias(fechaSolicitud),
+                            'solicitudDiasHabiles': obtenerDias(fechaSolicitud, true)
                         });
 
                     }
