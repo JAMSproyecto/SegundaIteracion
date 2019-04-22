@@ -128,7 +128,7 @@ module.exports.listar_todas_actividades = (req, res) => {
 
 
 module.exports.buscar_por_id = function (req, res) {
-    model_registrar_actividad.find({ _id: req.body.idCentro }).then(
+    model_registrar_actividad.find({ _id: req.body.idActividad }).then(
         function (actividad) {
             if (actividad) {
                 res.json(

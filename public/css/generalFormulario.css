@@ -85,8 +85,10 @@
     margin: auto;
 }
 
-
+#btn-registrar,
+#btn_actualizar,
 #btn,
+#btn_enviar,
 #btn_agregar,
 #btn_registrar_rubro,
 #btnRegistrar{
