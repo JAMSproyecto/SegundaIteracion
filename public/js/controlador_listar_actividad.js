@@ -32,7 +32,7 @@ let mostrar_datos = () => {
 
 
             let boton_editar = document.createElement('a');
-            boton_editar.innerHTML = '<i class="fas fa-pen"></i> ';
+            boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
             boton_editar.href = `actualizar_actividad.html?idActividad=${actividades[i]['_id']}`;
 
             celda_actualizar.appendChild(boton_editar);
@@ -40,7 +40,7 @@ let mostrar_datos = () => {
 
 
             let boton_eliminar = document.createElement('a');
-            boton_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
+            boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = actividades[i]['_id'];
             celda_eliminar.appendChild(boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
