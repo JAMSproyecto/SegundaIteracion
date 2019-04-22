@@ -298,33 +298,17 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
             if (cantResultados > 0) {
                 try {
 
-                    let calificacionesMEP = await ModelCalificacionMEP.find({ 'calificacionTotal': { $ne: '' } }, { '_id': 0 }).select('idCentro calificacionTotal');
-
-                    const cantCalificacionesMEP = Object.keys(calificacionesMEP).length;
-
                     let listarResultado = [];
                     const has = Object.prototype.hasOwnProperty;
                     let key;
                     for (key in resultado) {
                         if (!has.call(resultado, key)) continue;
 
-                        let calificacionMEP = '0';
-                        if (cantCalificacionesMEP > 0) {
-                            let keyCalMEP;
-                            for (keyCalMEP in calificacionesMEP) {
-                                if (!has.call(calificacionesMEP, keyCalMEP)) continue;
-                                if (resultado[key]['_id'] === calificacionesMEP[keyCalMEP]['idCentro']) {
-                                    calificacionMEP = calificacionesMEP[keyCalMEP]['calificacionTotal'];
-                                    break;
-                                }
-                            }
-                        }
-
-
                         let laProvincia = '';
                         let elCanton = '';
                         let elDistrito = '';
                         let laDireccion = '';
+                        let fechaSolicitud = '';
 
                         if (resultado[key]['direccion']) {
                             resultado[key]['direccion'].forEach(obj2 => {
@@ -344,6 +328,12 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                             });
                         }
 
+                        if (resultado[key]['cuenta']) {
+                            resultado[key]['cuenta'].forEach(obj3 => {
+                                fechaSolicitud = obj3['fechaCreado'];
+                            });
+                        }
+
                         listarResultado.push({
                             '_id': resultado[key]['_id'] || 0,
                             'fotoCentro': resultado[key]['fotoCentro'] || '',
@@ -355,7 +345,7 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                             'distrito': elDistrito,
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
-                            'calificacionMEP': parseInt(calificacionMEP, 10)
+                            'fechaSolicitud': fechaSolicitud
                         });
 
                     }
