@@ -279,7 +279,28 @@ let cards_servicios = (id) => {
       let div_servicio = document.createElement('div');
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
-
+      let btn_descripcion = document.createElement('button');
+      btn_descripcion.textContent ='ver más';
+      btn_descripcion.addEventListener('click',function(){
+        Swal.fire({
+          title: '<strong>HTML <u>example</u></strong>',
+          type: 'info',
+          html:
+            'You can use <b>bold text</b>, ' +
+            '<a href="//github.com">links</a> ' +
+            'and other HTML tags',
+          showCloseButton: true,
+          showCancelButton: false,
+          focusConfirm: false,
+          confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Great!',
+          confirmButtonAriaLabel: 'Thumbs up, great!',
+          cancelButtonText:
+            '<i class="fa fa-thumbs-down"></i>',
+          cancelButtonAriaLabel: 'Thumbs down',
+        })
+      });
+     
       switch (object.tipo) {
         case 'actividades':
           div_servicio.classList.add('ser__actividad', 'servicio');
@@ -297,6 +318,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          
           break;
 
         case 'artes':
@@ -372,10 +394,12 @@ let cards_servicios = (id) => {
           div_servicio.appendChild(logo);
           break;
       }
-
+      div_servicio.appendChild(btn_descripcion);
       tablaServicios.appendChild(div_servicio);
+
     });
   }
+ 
 };
 
 window.onload = () => {
