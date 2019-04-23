@@ -28,6 +28,9 @@ let irAlPerfil = (idCEdu) => {
 let llenarSelectEtiquetas = () => {
     let listaEtiquetas = listar_etiquetas();
     listaEtiquetas.innerHTML = '';
+    let opcionEtiqueta = document.createElement('option');
+    opcionEtiqueta.innerHTML = '';
+    selectEtiquetas.appendChild(opcionEtiqueta);
     for (let i = 0; i < listaEtiquetas.length; i++) {
         let opcionEtiqueta = document.createElement('option');
         opcionEtiqueta.innerHTML = listaEtiquetas[i]['nombre'];

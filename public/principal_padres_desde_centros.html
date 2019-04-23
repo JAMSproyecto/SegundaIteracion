@@ -134,80 +134,75 @@
         </nav>
     </header>
 
-
-    <section class="bloquePerfil-PF">
-        <div class="bloquePerfil-PF__contenedor">
-            <div class="tituloPrincipal-PF">
-                <h1>Datos Personales</h1>
-              
-            
-              
-
-            </div>
-            <div class="bloquePerfil-PF__datos">
-                <div class="bloquePerfil-PF__columnas">
-                    <div class="bloquePerfil-PF__columIzquierda">
-                        <div class="imagePerfil">
-                            <img src="./imgs/profile.jpg" alt="">
-                        </div>
-
+<main>
+        <section class="lista_centros">
+                <div class=" grey padres">
+                    <h2>Datos Personales</h2>
+                    <div class="bloque_izquierdo">
+                        <img src="./imgs/profile.jpg" alt="">
                     </div>
-                    <div class="bloquePerfil-PF__columDerecha">
-                        <div class="dato nombre">
-                            <strong>Nombre del Padre:</strong>
-                            <p id="nombre_completo_padre"></p>
+                    <div class="bloque_derecho">
+                        <div class="nombre">
+                            <strong>
+                                Nombre del Padre:
+                            </strong>
+                            <span id="nombre_completo_padre"></span>
                         </div>
-
-
-                        <div class="dato correo">
-                            <strong>Correo padre:</strong>
-                            <p id="correo_padre"></p>
+    
+                        <div class="correo">
+                            <strong>
+                                Correo padre:
+                            </strong>
+                            <span id="correo_padre"></span>
                         </div>
-
-                        <div class="dato telefono">
+    
+                        <div class="telefono">
                             <strong>
                                 Telefono del Padre:
                             </strong>
-                            <p id="telefono_padre"></p>
-
-
+                            <span id="telefono_padre"></span>
                         </div>
-                        <div class="dato cedula">
+    
+                        <div class="cedula">
                             <strong>
                                 Cedula:
                             </strong>
-                            <p id="identificacion_padre"></p>
-
+                            <span id="identificacion_padre"></span>
                         </div>
-                        <div class="dato provincia">
+    
+                        <div class="provincia">
                             <strong>
                                 Provincia:
                             </strong>
-                            <p id="provincia_padre"></p>
-
+                            <span id="provincia_padre"></span>
                         </div>
-
-                        <div class="dato canton">
+    
+                        <div class="canton">
                             <strong>
                                 Cantón:
                             </strong>
-                            <p id="canton_padre"></p>
-
+                            <span id="canton_padre"></span>
                         </div>
-                        <div class="dato distrito">
-
+    
+                        <div class="distrito">
                             <strong>
                                 Distrito:
                             </strong>
-                            <p id="distrito_padre"></p>
+                            <span id="distrito_padre"></span>
+                            </p>
+                        </div>
+    
+                        <div class="distrito">
+                            <strong>
+                                Edad:
+                            </strong>
+                            <span id="edad_padre"></span>
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+            </section>
+</main>
 
-    </section>
     <footer>
         <div class="footer__cuerpo">
             <div class="footer__flex">
@@ -280,17 +275,14 @@
     <script src="./js/controlador_nav.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <script src="js/servicio_perfil_padres.js"></script>
-    <script src="js/controlador_perfil_padre.js"></script>
-
-    <script src="./js/general.js"></script>
-
+    
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controladorListar.js"></script>
-    <script src="./js/servicio_listar_cedu.js"></script>
-    <script src="./js/controlador_listar_cedu.js"></script>
-
+    
+    <script src="js/servicio_perfil_padres.js"></script>
+    <script src="js/controlador_perfil_padre.js"></script>
+    
+    <script src="./js/general.js"></script>
 
 </body>
 

@@ -120,17 +120,27 @@
             </ul>
         </nav>
     </header>
-
-    <main id="main">
+    <main>
 
         <section>
-            <div>
-                <h1 class="titulo__principal">Centros educativos</h1>
-                <input type="text" name="" id="filtrar_cards">
+            <div class="tituloPrincipal">
+                <h1>Centros educativos</h1>
             </div>
-            <div id="cards_centros">
-                  
-                <p class="titulo__secundario text__center">Cargando...</p>
+            <div class="tabla__responsive">
+              <div>
+                    <label for="filtrar_cards">Búsqueda por nombre</label>
+                    <input type="text" name="" id="filtrar_cards">
+              </div>  
+              <div>
+                  <label for="select_etiquetas">Filtro por etiquetas</label>
+                  <select id="select_etiquetas"></select>
+                  <option value=""> </option>
+              </div>
+
+
+                <div id="cards_centros">
+
+                </div>
             </div>
         </section>
     </main>
@@ -212,6 +222,7 @@
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controladorListar.js"></script>
 
+    <script src="./js/servicio_registrar_etiqueta.js"></script>
     <script src="./js/servicio_listar_cedu.js"></script>
     <script src="./js/controlador_listar_cedu.js"></script>
 
