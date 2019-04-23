@@ -3,17 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
     <script src="./js/administrador_sesion.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+	
     <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/estiloBasico.css">
     <link rel="stylesheet" href="./css/headerGeneral.css">
-    <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="css/estrellas.css" />
-    <link rel="stylesheet" href="css/estilosCE.css" />
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/tablaDatos.css">
+    <link rel="stylesheet" href="./css/estrellas.css">
+
     <link rel="stylesheet" href="./css/estilosCE.css">
 
 </head>
@@ -24,7 +29,7 @@
     <header class="bloqueHeader">
             <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
                     <div class="bloqueHeader__iconolateral">
-                        <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+                        <span style="display:none;" onclick="menuNavVisible(true); return false;">&#9776;</span>
                     </div>
                     <div class="bloqueLogo__admin bloqueHeader__logo">
                         <img src="./imgs/logo_mep.png" class="imagen_mep">
@@ -296,8 +301,6 @@
 
         <script src="./js/sweetalert2.all.min.js"></script>
         <script src="./js/jquery-3.3.1.min.js"></script>
-
-        <script src="./js/carrusel.js"></script>
 
         <script src="./js/servicios_cita.js"></script>
         <script src="./js/servicio_noticia.js"></script>
