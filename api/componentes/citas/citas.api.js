@@ -42,7 +42,7 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `No se pudo guardar la etiqueta, ocurrió el siguiente error ${error} `
+                        msg: `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error} !`
                     });
 
                   
@@ -108,7 +108,7 @@ module.exports.registrar = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `La cita se registró correctamente`
+                        msg: `¡El proceso se registró de manera exitosa!`
                     }
                 );
             }

@@ -17,7 +17,7 @@ module.exports.obtener_todos_bitacora = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontraron datos en la bitácora'
+                message: '¡No se encontraron datos en la bitácora!'
             });
         }
     } catch (err) {
