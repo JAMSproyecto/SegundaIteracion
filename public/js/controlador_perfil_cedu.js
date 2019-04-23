@@ -33,7 +33,7 @@ let crearActividades = () => {
 
   let actividades = listar_todas_actividades();
 
-
+  console.log(actividades);
 
   if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
     actividades.forEach(obj => {
@@ -281,14 +281,21 @@ let cards_servicios = (id) => {
       let logo = document.createElement('i');
       let btn_descripcion = document.createElement('button');
       btn_descripcion.textContent ='ver más';
+      //btn_descripcion.document.classList.add('btn_agregar');
       btn_descripcion.addEventListener('click',function(){
         Swal.fire({
-          title: '<strong>HTML <u>example</u></strong>',
+          title: '<strong>Desc</strong>',
           type: 'info',
           html:
             'You can use <b>bold text</b>, ' +
             '<a href="//github.com">links</a> ' +
             'and other HTML tags',
+          title2: '<strong>DEscripción</strong>',
+          type: 'info',
+          html:
+              'You can use <b>bold text</b>, ' +
+              '<a href="//github.com">links</a> ' +
+              'and other HTML tags',
           showCloseButton: true,
           showCancelButton: false,
           focusConfirm: false,
