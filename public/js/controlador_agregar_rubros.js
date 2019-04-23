@@ -11,6 +11,8 @@ let rubros = listar_rubros();
 
 let mostrar_datos = () => {
 
+
+
   let filtro = input_filtrar.value;
   let filtro_inactivos = input_filtrar_inactivos.value;
 
