@@ -2,7 +2,7 @@
 
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
-const BtnComentar = document.querySelector('#btnComentar');
+const BtnCalificar = document.querySelector('#BtnCalificar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const mostrarActividad = document.querySelector('#tabla__actividades');
@@ -449,8 +449,8 @@ window.onload = () => {
 
     case 'padrefamilia':
       id = localStorage.getItem('verPerfilCEdu');
-      if (BtnComentar) {
-        BtnComentar.addEventListener('click', agregarCalificacion, false);
+      if (BtnCalificar) {
+        BtnCalificar.addEventListener('click', agregarCalificacion, false);
       }
       break;
 
