@@ -107,7 +107,7 @@ let cargarCalificaciones = (pId) => {
 };
 
 let agregarCalificacion = () => {
-  const texto = TxtEditorComentario.value.trim();
+  const elComentario = TxtEditorComentario.value.trim();
 
   if (calificacionSeleccionada < 1) {
     Swal.fire({
@@ -122,10 +122,26 @@ let agregarCalificacion = () => {
       showConfirmButton: true
     });
   } else {
-    if (texto.length > 0) {
-      console.log(texto);
-    }
-    console.log(calificacionSeleccionada);
+	  
+	asignar_calificacion_padre(calificacionSeleccionada, elComentario,
+	(pSuccess, pMessage, pIdPadre, pIdCentro) => {
+        if (pSuccess) {
+            console.log(pMessage);
+            console.log("pIdPadre: "+pIdPadre);
+            console.log("pIdCentro: "+pIdCentro);
+            alert(pMessage);
+			
+			// TODO: Listar las calificaciones (buscar_calificaciones_padre_por_idCentro).
+			
+			
+        } else {
+            Swal.fire({
+                type: 'error',
+                title: pMessage
+            });
+            console.error(pMessage);
+        }
+    });
   }
 };
 let calificarMEP = () => {
