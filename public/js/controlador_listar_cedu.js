@@ -2,11 +2,14 @@
 
 const CardsCentros = document.querySelector('#cards_centros');
 const filtroCards = document.querySelector('#filtrar_cards');
+//Agregado por Marlon. 4/22
+const selectEtiquetas = document.querySelector('#select_etiquetas')
+const tipoUsuario = localStorage.getItem('tipoUsuario');
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
 
-    const tipoUsuario = localStorage.getItem('tipoUsuario');
+
     switch (tipoUsuario.toLowerCase()) {
         case 'superadmin':
             location.replace('./perfilCentroAdmin.html');
@@ -20,6 +23,23 @@ let irAlPerfil = (idCEdu) => {
     }
 };
 
+
+//Agregado por Marlon. 4/22
+let llenarSelectEtiquetas = () => {
+    let listaEtiquetas = listar_etiquetas();
+    for (let i = 0; i < listaEtiquetas.length; i++) {
+        let opcionEtiqueta = document.createElement('option');
+        opcionEtiqueta.innerHTML = listaEtiquetas[i]['nombre'];
+        selectEtiquetas.appendChild(opcionEtiqueta);
+    };
+};
+//Fin agregado por Marlon. 4/22
+
+
+
+
+
+
 let cargarCEdu = () => {
 
     listarCEdu((pSuccess, pMessage) => {
@@ -31,27 +51,31 @@ let cargarCEdu = () => {
                 //Limpiamos antes de añadir los cards:
                 CardsCentros.innerHTML = '';
 
+                let etiquetaSeleccionada = selectEtiquetas.value;
+
                 pMessage.forEach(obj => {
 
-    
                     if (obj['nombre'].toLowerCase().includes(filtros.toLowerCase())) {
 
                         let card = document.createElement('div');
 
+                        let div_card = document.createElement('div');
+                        div_card.classList.add('contenedor_cards');
 
 
                         let centro_nombre = document.createElement('h1');
-                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
-    
+                        centro_nombre.innerHTML = obj['nombre'];
+
+
                         let telefono = document.createElement('p');
                         telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
-    
+
                         let correo = document.createElement('p');
                         correo.innerHTML = 'Correo: ' + obj['correo'];
-    
+
                         let provincia = document.createElement('p');
                         provincia.innerHTML = 'Provincia: ' + obj['provincia'];
-    
+
                         let direccion = document.createElement('p');
                         direccion.innerHTML = 'Dirección: ' + obj['direccion'];
 
@@ -64,22 +88,24 @@ let cargarCEdu = () => {
                             irAlPerfil(obj['_id']);
                         }, false);
                         verMas.innerHTML = '<i class="fas fa-id-card"></i>';
-    
+
                         card.appendChild(centro_nombre);
-                        card.appendChild(telefono);
-                        card.appendChild(correo);
-                        card.appendChild(provincia);
-                        card.appendChild(direccion);
-                        card.appendChild(calificacionMEP);
-                        card.appendChild(verMas);
-    
-    
+                        div_card.appendChild(telefono);
+                        div_card.appendChild(correo);
+                        div_card.appendChild(provincia);
+                        div_card.appendChild(direccion);
+
+
+                        div_card.appendChild(calificacionMEP);
+                        div_card.appendChild(verMas);
+
+                        card.appendChild(div_card);
                         CardsCentros.appendChild(card);
 
 
                     };
 
-                    
+
                 });
 
             } else {
@@ -95,6 +121,10 @@ let cargarCEdu = () => {
 
 window.onload = () => {
     cargarCEdu();
+
+
+    llenarSelectEtiquetas();
+
 };
 
 filtroCards.addEventListener('keyup', cargarCEdu);
