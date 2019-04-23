@@ -120,7 +120,8 @@ let buscar_actividad = (idActividad) => {
 };
 
 
-let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles, pidActividad) => {
+let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar,  pdetalles, pidCentro) => {
+  
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_actividad/",
@@ -132,7 +133,7 @@ let actualizar_actividad = ( pactividad, pfecha, phora_inicio, pfinaliza, plugar
             finaliza: pfinaliza,
             lugar: plugar,
             detalles:pdetalles,
-            id: pidActividad
+            id: pidCentro
         },
         dataType: "json",
         async: false,

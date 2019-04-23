@@ -154,7 +154,7 @@ module.exports.buscar_por_id = function (req, res) {
 
 
 module.exports.actualizar_actividad = function (req, res) {
-    console.log(req.body);
+    console.log(req.body.id);
     model_registrar_actividad.findByIdAndUpdate(req.body.id, { $set: req.body }, function (error) {
         if (error) {
             res.json(
