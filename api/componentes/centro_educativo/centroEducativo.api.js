@@ -343,19 +343,7 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
             console.log(Tiza.bold.yellow.bgBlack(err));
             res.json({
                 success: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 message: 'Error al obtener los centros educativos'
-=======
-                message: 'No se encontraron centros educativos'
->>>>>>> parent of 0587924... Ortografía
-=======
-                message: 'No se encontraron centros educativos'
->>>>>>> parent of 0587924... Ortografía
-=======
-                message: 'No se encontraron centros educativos'
->>>>>>> parent of 0587924... Ortografía
             });
         } else {
 
@@ -444,14 +432,7 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                 });
             }
         }
-    } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
-        res.json({
-            success: false,
-            message: 'Error al obtener los centros educativos'
-        });
-    }
+    });
 };
 
 
