@@ -51,7 +51,7 @@ module.exports.registrar_actividad = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error}!`
+                        msg: `La actividad no pudo ser registrada, ocurrió el siguiente error ${error}`
                     }
                 )
             } else {
@@ -59,7 +59,7 @@ module.exports.registrar_actividad = (req, res) => {
                 res.json(
                     {
                         success: true,
-                        msg: `¡El proceso se registró de manera exitosa!`
+                        msg: `Se registró la actividad de manera exitosa`
                     }
                 )
             }
@@ -109,7 +109,7 @@ module.exports.listar_todas_actividades = (req, res) => {
                 res.json(
                     {
                         success: false,
-                        msg: '¡No se encontraron los datos!'
+                        msg: 'No se encontraron actividades'
                     }
                 )
             }
@@ -117,7 +117,7 @@ module.exports.listar_todas_actividades = (req, res) => {
             res.json(
                 {
                     success: false,
-                    msg: '¡No se encontraron los datos!'
+                    msg: 'No se encontraron actividades'
                 }
             )
         }
@@ -141,7 +141,7 @@ module.exports.buscar_por_id = function (req, res) {
                 res.json(
                     {
                         success: false,
-                        msg: '¡No se encontraron los datos!'
+                        msg: 'No se encontró la actividad'
                     }
                 )
 
@@ -160,7 +160,7 @@ module.exports.actualizar_actividad = function (req, res) {
             res.json(
                 {
                     success: false,
-                    msg: `¡No se pueden actualizar los datos, ocurrió el siguiente error ${error}!`
+                    msg: `No se puede actualizar la actividad, ocurrió el siguiente error ${error}`
                 }
             );
 
@@ -168,7 +168,7 @@ module.exports.actualizar_actividad = function (req, res) {
             res.json(
                 {
                     success: true,
-                    msg: '¡Los datos se actualizaron exitosamente!'
+                    msg: 'La actividad se actualizó exitosamente'
                 }
             );
 
@@ -184,14 +184,14 @@ module.exports.eliminar = function (req, res) {
                 res.json(
                     {
                         success: false,
-                        msg: `¡No se pudo eliminar la actividad, ocurrió el siguiente error ${error}!`
+                        msg: `No se pudo eliminar la actividad, ocurrió el siguiente error ${error}`
                     }
                 );
             } else {
                 res.json(
                     {
                         success: true,
-                        msg: '¡Los datos se eliminaron exitosamente!'
+                        msg: 'La actividad se elimino  exitosamente'
                     }
                 );
             }
