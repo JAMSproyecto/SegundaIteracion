@@ -43,18 +43,18 @@ module.exports.asignar_calificacion_padre = async (objectReq, res) => {
 
         res.json({
             success: true,
-            message: 'La calificación se asignó correctamente'
+            message: '¡La calificación se asignó de manera exitosa!'
         });
 
     } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('Error al asignar la calificación del padre:'));
+        console.log(Tiza.bold.yellow.bgBlack('¡La calificación no fue asignada con éxito!'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
 
         const log = await insertarBitacora('PadreFamilia', `Ocurrió un error cuando el padre #${objectReq.idPadre} asignaba la calificación '${objectReq.calificacion}' al centro educativo #${objectReq.idCentro}. Comentario: ${objectReq.comentario}`);
 
         res.json({
             success: false,
-            message: 'Error al asignar la calificación'
+            message: 'La calificación no fue asignada con éxito'
         });
     }
 };
@@ -94,7 +94,7 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontraron calificaciones'
+                message: '¡No se encontraron los datos!'
             });
         }
     } catch (err) {
@@ -102,7 +102,7 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: 'Error al obtener los calificaciones'
+            message: '¡No se pudieron obtener los datos'
         });
     }
 };
@@ -142,7 +142,7 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontró la calificación'
+                message: '¡No se pudieron obtener los datos!'
             });
         }
     } catch (err) {
@@ -150,7 +150,7 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: 'Error al obtener la calificación'
+            message: '¡No se pudieron obtener los datos!'
         });
     }
 };
@@ -190,7 +190,7 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontró la calificación'
+                message: '¡No se pudieron obtener los datos!'
             });
         }
     } catch (err) {
@@ -198,7 +198,7 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: 'Error al obtener la calificación'
+            message: '¡No se pudieron obtener los datos!'
         });
     }
 };
@@ -206,9 +206,9 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
 module.exports.actualizar_comentario_calificacion_padre = (objectReq, res) => {
     ModelCalificacionPadre.findByIdAndUpdate(objectReq.id, { comentario: objectReq.comentario }, err => {
         if (err) {
-            console.log(Tiza.bold.yellow.bgBlack(`No se pudo actualizar el comentario de la calificación: ${objectReq.id} :`));
+            console.log(Tiza.bold.yellow.bgBlack(`¡No se pudo actualizar el comentario de la calificación: ${objectReq.id} :!`));
             console.log(Tiza.bold.yellow.bgBlack(err));
-            const log = insertarBitacora('PadreFamilia', `No se pudo actualizar el comentario de la calificación: ${objectReq.id}`);
+            const log = insertarBitacora('PadreFamilia', `¡No se pudo actualizar el comentario de la calificación: ${objectReq.id}!`);
             res.json({ success: false, message: 'No se pudo actualizar el comentario de la calificación' });
         } else {
             const log = insertarBitacora('PadreFamilia', `Se actualizó correctamente el comentario de la calificación: ${objectReq.id}`);
