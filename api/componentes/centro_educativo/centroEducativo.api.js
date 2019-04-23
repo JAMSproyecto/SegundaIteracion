@@ -116,7 +116,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
             res.json({
                 success: true,
-                message: 'El centro educativo se registró correctamente'
+                message: '¡El proceso se registró de manera exitosa!'
             });
         } else {
             const mensaje = 'El usuario ' + req.body.primerNombre + ' ' + req.body.primerApellido + ' ya existe';
@@ -134,7 +134,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
         res.json({
             success: false,
-            message: 'Error al registrar el centro educativo'
+            message: '¡El proceso no fue registrado con éxito!'
         });
     }
 
@@ -201,6 +201,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 3e0c2c3... commit
                 message: 'Error al obtener los centros educativos'
@@ -222,6 +223,9 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 =======
                 message: 'No se encontraron centros educativos'
 >>>>>>> parent of 0587924... Ortografía
+=======
+                message: 'Error al obtener los centros educativos'
+>>>>>>> parent of 7c3de2b... fix silvia ortografia
             });
         } else {
 
@@ -337,7 +341,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: 'Error al obtener los centros educativos'
+            message: '¡No se encontraron los datos!'
         });
     }
 };
@@ -356,7 +360,7 @@ module.exports.obtener_centro_por_id = (req, res) => {
             res.json(
                 {
                     success: false,
-                    message: 'No se encontró el centro educativo'
+                    message: '¡No se encontraron los datos!'
                 }
             )
         }
