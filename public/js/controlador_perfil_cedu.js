@@ -33,7 +33,7 @@ let crearActividades = () => {
 
   let actividades = listar_todas_actividades();
 
-  console.log(actividades);
+
 
   if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
     actividades.forEach(obj => {
@@ -279,7 +279,32 @@ let cards_servicios = (id) => {
       let div_servicio = document.createElement('div');
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
+<<<<<<< HEAD
 
+=======
+      let btn_descripcion = document.createElement('button');
+      btn_descripcion.textContent ='ver más';
+      btn_descripcion.addEventListener('click',function(){
+        Swal.fire({
+          title: '<strong>HTML <u>example</u></strong>',
+          type: 'info',
+          html:
+            'You can use <b>bold text</b>, ' +
+            '<a href="//github.com">links</a> ' +
+            'and other HTML tags',
+          showCloseButton: true,
+          showCancelButton: false,
+          focusConfirm: false,
+          confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Great!',
+          confirmButtonAriaLabel: 'Thumbs up, great!',
+          cancelButtonText:
+            '<i class="fa fa-thumbs-down"></i>',
+          cancelButtonAriaLabel: 'Thumbs down',
+        })
+      });
+     
+>>>>>>> parent of 69e82a2... commit 22_04
       switch (object.tipo) {
         case 'actividades':
           div_servicio.classList.add('ser__actividad', 'servicio');
