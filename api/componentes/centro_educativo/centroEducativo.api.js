@@ -344,7 +344,11 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
             res.json({
                 success: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 message: 'Error al obtener los centros educativos'
+=======
+                message: 'No se encontraron centros educativos'
+>>>>>>> parent of 0587924... Ortografía
 =======
                 message: 'No se encontraron centros educativos'
 >>>>>>> parent of 0587924... Ortografía
