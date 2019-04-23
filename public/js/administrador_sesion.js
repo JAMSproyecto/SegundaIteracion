@@ -14,11 +14,11 @@ let cerrar_sesion = (esAuto) => {
 	const conectado = localStorage.getItem('conectado');
 	if (null === conectado || 'false' === conectado || false === conectado) {
         console.log('Acceso restringido, no está conectado');
-        cerrar_sesion(true);
+        cerrar_sesion(false);
     }else{
 		const tiempoConexion = localStorage.getItem('tiempoConexion');
 		if(null === tiempoConexion){
-			cerrar_sesion(true);
+			cerrar_sesion(false);
 		}else{
 			
 			const msAhora = (new Date()).getTime();
