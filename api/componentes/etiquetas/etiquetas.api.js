@@ -16,14 +16,14 @@ module.exports.registrar_etiqueta = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        msg : `¡El proceso no fue registrado con éxito, ocurrió el siguiente error ${error}!`
+                        msg : `No se puede guardar la etiqueta, ocurrió el siguiente error ${error}`
                     }
                 )
             }else{
                 res.json(
                     {
                         success : true,
-                        msg : `¡El proceso se registró de manera exitosa!`
+                        msg : `Se registró la etiqueta de forma correcta`
                     }
                 )
             }

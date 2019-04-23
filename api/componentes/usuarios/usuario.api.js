@@ -36,15 +36,15 @@ module.exports.obtener_todos_usuarios = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: '¡No se encontraron los datos!'
+                message: 'No se encontraron usuarios'
             });
         }
     } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('¡No se encontraron los datos!'));
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener los usuarios:'));
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: '¡No se encontraron los datos!'
+            message: 'Error al obtener los usuarios'
         });
     }
 };
@@ -84,15 +84,15 @@ module.exports.obtener_usuarios_activos = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: '¡No se encontraron usuarios activos!'
+                message: 'No se encontraron usuarios activos'
             });
         }
     } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('¡No se encontraron usuarios activos!'));
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener los usuarios activos:'));
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: '¡No se encontraron usuarios activos!'
+            message: 'Error al obtener los usuarios activos'
         });
     }
 };
@@ -137,15 +137,15 @@ module.exports.obtener_usuarios_pendientes = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: '¡No se encontraron usuarios pendientes de aprobación!'
+                message: 'No se encontraron usuarios pendientes'
             });
         }
     } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('¡No se encontraron usuarios pendientes de aprobación!'));
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener los usuarios pendientes:'));
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: '¡No se encontraron usuarios pendientes de aprobación!'
+            message: 'Error al obtener los usuarios pendientes'
         });
     }
 };
@@ -220,7 +220,7 @@ module.exports.validar_credenciales = (req, res) => {
                                 //Si no se encontraron resultados es porque el usuario no existe:
                                 responder = {
                                     success: false,
-                                    message: '¡El usuario ingresado no existe!'
+                                    message: 'El usuario no existe'
                                 };
                             }
                         } else {
@@ -228,7 +228,7 @@ module.exports.validar_credenciales = (req, res) => {
                             //Si no obtuvimos respuesta de la base de datos, asumimos que el usuario no existe:
                             responder = {
                                 success: false,
-                                message: '¡El usuario ingresado no existe!'
+                                message: 'El usuario no existe'
                             };
                         }
                         break;
@@ -289,7 +289,7 @@ module.exports.validar_credenciales = (req, res) => {
                                 //Si no se encontraron resultados es porque el usuario no existe:
                                 responder = {
                                     success: false,
-                                    message: '¡El usuario ingresado no existe!'
+                                    message: 'El usuario no existe'
                                 };
                             }
                         } else {
@@ -297,7 +297,7 @@ module.exports.validar_credenciales = (req, res) => {
                             //Si no obtuvimos respuesta de la base de datos, asumimos que el usuario no existe:
                             responder = {
                                 success: false,
-                                message: '¡El usuario ingresado no existe!'
+                                message: 'El usuario no existe'
                             };
                         }
 
@@ -353,7 +353,7 @@ module.exports.validar_credenciales = (req, res) => {
                                 //Si no se encontraron resultados es porque el usuario no existe:
                                 responder = {
                                     success: false,
-                                    message: '¡El usuario ingresado no existe!'
+                                    message: 'El usuario no existe'
                                 };
                             }
                         } else {
@@ -361,7 +361,7 @@ module.exports.validar_credenciales = (req, res) => {
                             //Si no obtuvimos respuesta de la base de datos, asumimos que el usuario no existe:
                             responder = {
                                 success: false,
-                                message: '¡El usuario ingresado no existe!'
+                                message: 'El usuario no existe'
                             };
                         }
 
@@ -372,7 +372,7 @@ module.exports.validar_credenciales = (req, res) => {
                         //Si el tipo de usuario no es alguno de los anteriores (case), debemos dar alguna respuesta:
                         responder = {
                             success: false,
-                            message: '¡El tipo de usuario es desconocido!'
+                            message: 'Tipo de usuario desconocido'
                         };
                         break;
                 }
@@ -383,13 +383,13 @@ module.exports.validar_credenciales = (req, res) => {
             } else {
                 res.json({
                     success: false,
-                    message: '¡La contraseña ingresada es inválida!'
+                    message: 'Contraseña inválida'
                 });
             }
         } else {
             res.json({
                 success: false,
-                message: '¡El usuario no está registrado!'
+                message: 'El usuario no está registrado'
             });
         }
     }

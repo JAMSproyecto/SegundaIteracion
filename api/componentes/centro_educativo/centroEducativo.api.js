@@ -116,7 +116,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
             res.json({
                 success: true,
-                message: '¡El proceso se registró de manera exitosa!'
+                message: 'El centro educativo se registró correctamente'
             });
         } else {
             const mensaje = 'El usuario ' + req.body.primerNombre + ' ' + req.body.primerApellido + ' ya existe';
@@ -134,7 +134,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
         res.json({
             success: false,
-            message: '¡El proceso no fue registrado con éxito!'
+            message: 'Error al registrar el centro educativo'
         });
     }
 
@@ -336,14 +336,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                 message: 'No se encontraron centros educativos'
             });
         }
-    } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
-        res.json({
-            success: false,
-            message: '¡No se encontraron los datos!'
-        });
-    }
+    });
 };
 
 
@@ -360,7 +353,7 @@ module.exports.obtener_centro_por_id = (req, res) => {
             res.json(
                 {
                     success: false,
-                    message: '¡No se encontraron los datos!'
+                    message: 'No se encontró el centro educativo'
                 }
             )
         }

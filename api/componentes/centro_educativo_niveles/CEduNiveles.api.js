@@ -26,15 +26,15 @@ module.exports.obtener_todos_niveles_cedu = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: '¡No se encontraron los datos!'
+                message: 'No se encontraron niveles del centro educativo'
             });
         }
     } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('¡No se encontraron los datos!'));
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener los niveles del centro educativo:'));
         console.log(Tiza.bold.yellow.bgBlack(err));
         res.json({
             success: false,
-            message: '¡No se encontraron los datos!'
+            message: 'Error al obtener los niveles del centro educativo'
         });
     }
 };

@@ -17,9 +17,9 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
             fecha: ObtenerFecha.get() || ''
         });
         let guardarAccion = await bitacora_nuevo.save();
-        console.log(`¡Los datos se registraron exitosamente: ${pAccion}!`);
+        console.log(`Se han registrado los datos en la bitácora: ${pAccion}`);
     } catch (err) {
-        console.log(`¡No se pueden registrar los datos'${pAccion}':!`);
+        console.log(`Error al registrar en la bitácora '${pAccion}':`);
         console.log(err.message);
         return false;
     }
@@ -42,24 +42,24 @@ articulo_nuevo.save(
      function(error){
         if (error){
 			
-			const log = insertarBitacora('CentroEducativo', `¡El proceso no fue realizado con éxito: ${req.body.nombre} | ${error}!`);
+			const log = insertarBitacora('CentroEducativo', `Error al registrar el artículo: ${req.body.nombre} | ${error}`);
 			
-			console.error(`¡El proceso no fue realizado con éxito, ocurrió el siguiente error: ${error} !`);
+			console.error(`No se pudo guardar el artículo, ocurrio el siguiente error: ${error} `);
 			
             res.json(
                 {
                     success : false,
-                    msg : '¡El proceso no fue realizado con éxito!'
+                    msg : 'El artículo no fue guardado de manera correcta'
                 }
             );
         } else {
 			
-			const log = insertarBitacora('CentroEducativo', `¡Se registró el artículo: ${req.body.nombre} - ${req.body.descripcion}!`);
+			const log = insertarBitacora('CentroEducativo', `Se registró el artículo: ${req.body.nombre} - ${req.body.descripcion}`);
 			
             res.json(
                 {
                     success : true,
-                    msg :  '¡El proceso fue registrado con éxito!'
+                    msg :  'El artículo fue registrado de forma exitosa'
                 }
             );
         }
@@ -82,7 +82,7 @@ module.exports.listar_todos = (req, res) =>{
                 res.json(
                     {
                         success : false,
-                        articulos : `¡No se encontraron los datos!`
+                        articulos : `No se encontraron artículos registrados`
                     }
                 )
             }
@@ -107,7 +107,7 @@ module.exports.buscar_por_id = (req, res) => {
                 res.json(
                     {
                         success : false,
-                        articulo : `¡No se encontraron los datos!`
+                        articulo : `No se encontraron artículos registrados`
                     }
                 )
             }
@@ -122,9 +122,9 @@ module.exports.actualizar = function(req, res){
     model_articulo.findByIdAndUpdate(req.body.id, { $set: req.body },
         function (error){
             if(error){
-                res.json({success : false , msg : '¡No se pueden actualizar los datos!'});
+                res.json({success : false , msg : 'No se pudo actualizar el artículo'});
             }else{
-                res.json({success: true , msg : '¡Los datos se actualizaron exitosamente!'});
+                res.json({success: true , msg : 'El artículo se actualizó con éxito'});
             }
         }
     
@@ -157,9 +157,9 @@ module.exports.activar_desactivar = function(req, res){
 			}
 			
             if(error){
-                res.json({success: false ,msg: `¡No se pudo ${cambioError} el artículo!`});
+                res.json({success: false ,msg: `No se pudo ${cambioError} el artículo`});
             }else{
-                res.json({success: true ,msg: `¡El artículo se ${cambioOk} con éxito!`});
+                res.json({success: true ,msg: `El artículo se ${cambioOk} con éxito`});
             }
         }
     )
@@ -172,9 +172,9 @@ module.exports.eliminar_articulo = function(req, res){
 
         function(error){
             if(error){
-                res.json({success: false ,msg: '¡No se pudo eliminar el artículo!'});
+                res.json({success: false ,msg: 'No se pudo eliminar el artículo'});
             }else{
-                res.json({success: true ,msg: '¡Los datos se eliminaron exitosamente!'}); 
+                res.json({success: true ,msg: 'El articulo se eliminó con éxito'}); 
             }
         }
     )
