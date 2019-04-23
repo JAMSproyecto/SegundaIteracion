@@ -9,6 +9,7 @@ let registrar_etiqueta = (pnombre) => {
         },
         dataType: "json",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+<<<<<<< HEAD
     });
 
     request.done(function (msg) {
@@ -85,49 +86,36 @@ let agregar_etiqueta_en_lista = (pid, pidEtiqueta, pNombre) => {
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
   });
-
-  request.done(function (msg) {
-
-    if ("object" == typeof msg) {
-      if (msg.success) {
-        swal.fire({
-          type: 'success',
-          title: 'Se han modificado los datos de manera exitosa',
-          text: msg.message,
-        });
-      } else {
-        swal.fire({
-          type: 'error',
-          title: 'Error al actualizar los datos: ' + msg.message,
-          timer: 10000,
-          position: 'center'
-        });
-      }
-
-    } else {
-      console.error(msg);
-      swal.fire({
-        type: 'error',
-        title: 'Error al actualizar',
-        timer: 10000,
-        position: 'center',
-        text: 'Ocurrió un error inesperado'
-      });
-    }
-
-  });
-
-  request.fail(function (jqXHR, textStatus) {
-    swal.fire({
-      type: 'error',
-      title: 'Error al actualizar',
-      timer: 10000,
-      position: 'center',
-      text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+=======
     });
-  });
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+
+    request.done(function (msg) {
+        if (msg.success) {
+            swal.fire({
+                type: 'success',
+                title: msg.msg
+            });     
+        }
+        else {
+            swal.fire({
+                type: 'error',
+                title: msg.msg
+            });
+
+        }
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        swal.fire({
+            type: 'error',
+            title: 'La actividad no pude ser registrada',
+            text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+        });
+    });
 };
 
+<<<<<<< HEAD
 
 let lista_etiquetas_centro = (pidCentro) => {
   let etiquetas_array = [];
@@ -152,5 +140,7 @@ let lista_etiquetas_centro = (pidCentro) => {
   return etiquetas_array;
 
 };
+=======
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion

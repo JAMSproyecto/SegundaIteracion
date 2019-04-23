@@ -74,6 +74,9 @@ let cargarCEdu = () => {
                         centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
     
                         let telefono = document.createElement('span');
+<<<<<<< HEAD
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                         telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
     
