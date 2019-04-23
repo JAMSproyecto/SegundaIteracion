@@ -336,7 +336,18 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                 message: 'No se encontraron centros educativos'
             });
         }
+<<<<<<< HEAD
     });
+=======
+    } catch (err) {
+        console.log(Tiza.bold.yellow.bgBlack('Error:'));
+        console.log(Tiza.bold.yellow.bgBlack(err));
+        res.json({
+            success: false,
+            message: 'Error al obtener los centros educativos'
+        });
+    }
+>>>>>>> parent of 0587924... Ortografía
 };
 
 
