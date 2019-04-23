@@ -152,6 +152,12 @@ let enviarDatos = async () => {
         Niveles = JSON.stringify(obtenerValoresSelect(InputNiveles)) || '';
     }
 
+    const arrEtiquetas = obtenerValoresSelect(selectEtiquetas);
+    let Etiquetas = '';
+    if (arrEtiquetas.length > 0) {
+        Etiquetas = JSON.stringify(obtenerValoresSelect(selectEtiquetas)) || '';
+    }
+
     const IdProvincia = parseInt(InputProvincia.value, 10) || 0;
     const IdCanton = parseInt(InputCanton.value, 10) || 0;
     const IdDistrito = parseInt(InputDistrito.value, 10) || 0;
@@ -305,7 +311,7 @@ let enviarDatos = async () => {
 
     let fotoCentro = '';
 
-    registrarCentroEducativo(Nombre, NombreComercial, CedulaJuridica, CorreoCentro, AnnoFundacion, Resenna, TelefonoCentro, Fax, TipoInstitucion, Niveles, IdProvincia, IdCanton, IdDistrito, DirSennas, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, CorreoContacto, IdentificacionContacto, DepartamentoContacto, TelefonoContacto, fotoCentro);
+    registrarCentroEducativo(Nombre, NombreComercial, CedulaJuridica, CorreoCentro, AnnoFundacion, Resenna, TelefonoCentro, Fax, TipoInstitucion, Niveles, Etiquetas, IdProvincia, IdCanton, IdDistrito, DirSennas, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, CorreoContacto, IdentificacionContacto, DepartamentoContacto, TelefonoContacto, fotoCentro);
 };
 
 BotonRegistrar.addEventListener('click', enviarDatos, false);
