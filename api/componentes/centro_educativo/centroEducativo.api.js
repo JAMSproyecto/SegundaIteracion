@@ -293,7 +293,8 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                             'distrito': elDistrito,
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
-                            'calificacionMEP': parseInt(calificacionMEP, 10)
+                            'calificacionMEP': parseInt(calificacionMEP, 10),
+                            'etiquetas': resultado[key]['etiquetas']|| ''
                         });
 
                     }
