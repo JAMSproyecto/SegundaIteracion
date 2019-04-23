@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #cards_centros {
     width: 80%;
     text-align: center;
@@ -9,6 +10,11 @@
 #cards_centros div {
     width: 250px;
     height: 320px;
+=======
+#cards_centros div {
+    width: 295px;
+    height: 355px;
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
     display: inline-block;
     border: 1px solid black;
     margin: 10px;
@@ -19,11 +25,21 @@ div h1 {
     text-align: center;
 }
 
+<<<<<<< HEAD
 #cards_centros span {
     display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 };
 
+=======
+h2 {
+text-align: right;
+}
+
+.text__center {
+	text-align:center;
+}
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 
 

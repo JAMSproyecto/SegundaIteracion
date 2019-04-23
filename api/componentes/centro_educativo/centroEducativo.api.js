@@ -170,6 +170,7 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                     }
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 let laProvincia = '';
                 let elCanton = '';
@@ -271,14 +272,25 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                 let laDireccion = '';
 
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+
+                let laProvincia = '';
+                let elCanton = '';
+                let elDistrito = '';
+                let laDireccion = '';
+
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                 if (resultado[key]['direccion']) {
                     resultado[key]['direccion'].forEach(obj2 => {
                         if ('undefined' != typeof obj2['idProvincia']) {
                             laProvincia = ObtenerProvCantDist.getProvincia(obj2['idProvincia']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                         }
                         if ('undefined' != typeof obj2['idCanton']) {
                             elCanton = ObtenerProvCantDist.getCanton(obj2['idCanton']);
