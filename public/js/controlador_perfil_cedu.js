@@ -281,6 +281,7 @@ let cards_servicios = (id) => {
       let logo = document.createElement('i');
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
       let btn_descripcion = document.createElement('button');
@@ -309,6 +310,9 @@ let cards_servicios = (id) => {
 =======
 
 >>>>>>> parent of e909713... mostrar boton descripción del servicio
+=======
+
+>>>>>>> parent of db88ddc... Revert "Revert "Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion""
       switch (object.tipo) {
         case 'actividades':
           div_servicio.classList.add('ser__actividad', 'servicio');
