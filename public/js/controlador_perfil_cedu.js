@@ -275,10 +275,34 @@ let cards_servicios = (id) => {
 
   if (cantidadServicios > 0) {
     servicio.forEach(function (object) {
-
+      let div_contenedor = document.createElement('div');
+      div_contenedor.classList.add('contenedor_servicios');
       let div_servicio = document.createElement('div');
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
+      let descripcion = object.descripcion;
+      let btn_descripcion = document.createElement('button');
+      btn_descripcion.textContent ='ver más';
+      btn_descripcion.classList.add('btn');
+      //funcion para msotrar la descripción del servicio 
+      btn_descripcion.addEventListener('click',function(){
+        Swal.fire({
+          title: '<strong>Descripción de la noticia:</strong>',
+          type: 'info',
+          html:
+            '<b>'+descripcion+'</b>',
+          showCloseButton: true,
+          showCancelButton: false,
+          focusConfirm: false,
+          confirmButtonText:
+            '<i class="fas fa-reply-all"></i> Regresar ',
+          confirmButtonAriaLabel: 'Thumbs up, great!',
+          cancelButtonText:
+            '<i class="fa fa-thumbs-down"></i>',
+          cancelButtonAriaLabel: 'Thumbs down',
+        })
+      });
+     
 
       switch (object.tipo) {
         case 'actividades':
@@ -288,6 +312,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'alimentacion':
@@ -297,6 +322,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'artes':
@@ -306,6 +332,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'cientifico':
@@ -315,6 +342,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
 
@@ -325,6 +353,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'musica':
@@ -334,6 +363,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'religion':
@@ -343,6 +373,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'salud':
@@ -352,6 +383,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'transporte':
@@ -361,6 +393,7 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
 
         case 'estudio':
@@ -370,9 +403,10 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
+          div_contenedor.appendChild(div_servicio);
           break;
       }
-
+      div_servicio.appendChild(btn_descripcion);
       tablaServicios.appendChild(div_servicio);
     });
   }
