@@ -5,6 +5,34 @@ const ModelCalificacionPadre = require('./calificacion_padre.model');
 const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
 
+
+let formatearFecha = (pFecha) => {
+    if (pFecha.length > 0) {
+        const fecha = new Date(pFecha);
+        const anio = fecha.getFullYear();
+        let dia_mes = fecha.getDate();
+        let mes = fecha.getMonth();
+        let h = fecha.getHours();
+        let m = fecha.getMinutes();
+        mes += 1;
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        if (dia_mes < 10) {
+            dia_mes = '0' + dia_mes;
+        }
+        if (h < 10) {
+            h = '0' + h;
+        }
+        if (m < 10) {
+            m = '0' + m;
+        }
+        return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+    } else {
+        return '';
+    }
+};
+
 /**
  * Función para insertar en la bitácora
  * @param  {String} pRealizadaPor Sólo acepta: 'Instalador'|'SuperAdmin'|'CentroEducativo'|'PadreFamilia'.
@@ -83,7 +111,8 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
@@ -131,7 +160,8 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
@@ -179,7 +209,8 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
