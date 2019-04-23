@@ -58,22 +58,32 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
 
 module.exports.asignar_calificacion_padre = async (objectReq, res) => {
     try {
-        let registro = new ModelCalificacionPadre();
-        registro.idPadre = objectReq.idPadre;
-        registro.idCentro = objectReq.idCentro;
-        registro.calificacion = objectReq.calificacion;
-        registro.comentario = objectReq.comentario;
-        registro.fecha = ObtenerFecha.get();
 
-        let guardarRegistro = await registro.save();
+        const elPadreYaCalifico = await ModelCalificacionPadre.find({ idPadre: objectReq.idPadre, idCentro: objectReq.idCentro }).countDocuments();
 
-        const log = await insertarBitacora('PadreFamilia', `El padre #${objectReq.idPadre} asignó la calificación '${objectReq.calificacion}' al centro educativo #${objectReq.idCentro}. Comentario: ${objectReq.comentario}`);
+        if (elPadreYaCalifico > 0) {
+            res.json({
+                success: false,
+                message: 'Ya has calificado a esta institución'
+            });
+        } else {
 
-        res.json({
-            success: true,
-            message: 'La calificación se asignó de manera exitosa'
-        });
+            let registro = new ModelCalificacionPadre();
+            registro.idPadre = objectReq.idPadre;
+            registro.idCentro = objectReq.idCentro;
+            registro.calificacion = objectReq.calificacion;
+            registro.comentario = objectReq.comentario;
+            registro.fecha = ObtenerFecha.get();
 
+            let guardarRegistro = await registro.save();
+
+            const log = await insertarBitacora('PadreFamilia', `El padre #${objectReq.idPadre} asignó la calificación '${objectReq.calificacion}' al centro educativo #${objectReq.idCentro}. Comentario: ${objectReq.comentario}`);
+
+            res.json({
+                success: true,
+                message: 'La calificación se asignó de manera exitosa'
+            });
+        }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error al asignar la calificación del padre:'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
