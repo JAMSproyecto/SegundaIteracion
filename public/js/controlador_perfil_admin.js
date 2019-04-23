@@ -36,6 +36,11 @@ let llenarContenido = () => {
         if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
 
             let card = document.createElement('div');
+            card.classList.add('contendedor_card_principal');
+
+            let contenedor_card = document.createElement('div');
+            contenedor_card.classList.add('contendedor_cards');
+
 
             let centro_nombre = document.createElement('h1');
             centro_nombre.innerHTML = '<strong class="descripcion">Nombre: </strong>' + obj['nombre'];
@@ -73,14 +78,15 @@ let llenarContenido = () => {
             verMas.innerHTML = '<i class="fas fa-id-card"></i>';
 
             card.appendChild(centro_nombre);
-            card.appendChild(telefono);
-            card.appendChild(correo);
-            card.appendChild(provincia);
-            card.appendChild(direccion);
-            card.appendChild(fechaSolicitud);
-            card.appendChild(diasSolicitud);
-            card.appendChild(verMas);
+            contenedor_card.appendChild(telefono);
+            contenedor_card.appendChild(correo);
+            contenedor_card.appendChild(provincia);
+            contenedor_card.appendChild(direccion);
+            contenedor_card.appendChild(fechaSolicitud);
+            contenedor_card.appendChild(diasSolicitud);
+            contenedor_card.appendChild(verMas);
 
+            card.appendChild(contenedor_card);
             CardsCentros.appendChild(card);
 
         };
