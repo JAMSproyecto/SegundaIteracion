@@ -4,9 +4,11 @@ const Tiza = require('chalk');
 const ModelCEdu = require('./centroEducativo.model');
 const ModelUsuario = require('./../usuarios/usuario.model');
 const ModelCalificacionMEP = require('./../calificacionMep/calificacionMep.model');
+const ModelCalificacionPadre = require('./../calificacion_padre/calificacion_padre.model');
 const ObtenerProvCantDist = require('./../funciones_genericas/obtenerProvCantDist');
 const ObtenerPin = require('./../funciones_genericas/obtenerPin');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
+const RankingPadres = require('./../funciones_genericas/rankingPadres');
 
 const nodemailer = require('nodemailer');
 
@@ -174,9 +176,10 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
             let enviar = enviarCorreo(req.body.correoContacto, req.body.primerNombre + ' ' + req.body.primerApellido, elPin);
 
+            console.log(Tiza.bold.yellow.bgBlack('El centro educativo se registró correctamente'));
             res.json({
                 success: true,
-                message: 'El centro educativo se registró correctamente'
+                message: 'El proceso se realizó de manera exitosa'
             });
         } else {
             const mensaje = 'El usuario ' + req.body.primerNombre + ' ' + req.body.primerApellido + ' ya existe';
@@ -194,7 +197,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
         res.json({
             success: false,
-            message: 'Error al registrar el centro educativo'
+            message: 'El proceso no fue realizado con éxito'
         });
     }
 
@@ -218,11 +221,11 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
     { $match: filtroCEdu }
     ]).exec(async (err, entradas) => {
         if (err) {
-            console.log(Tiza.bold.yellow.bgBlack('Ocurrió el siguiente error: '));
+            console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos: '));
             console.log(Tiza.bold.yellow.bgBlack(err));
             res.json({
                 success: false,
-                message: 'Error al obtener los centros educativos'
+                message: 'Error al encontrar los datos'
             });
         } else {
 
@@ -236,9 +239,18 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
             if (cantResultados > 0) {
                 try {
 
+
                     let calificacionesMEP = await ModelCalificacionMEP.find({ 'calificacionTotal': { $ne: '' } }, { '_id': 0 }).select('idCentro calificacionTotal');
 
                     const cantCalificacionesMEP = Object.keys(calificacionesMEP).length;
+
+
+
+                    const calificacionesPadre = await ModelCalificacionPadre.find({}, { _id: 0 }).select('idCentro calificacion');
+                    console.log(calificacionesPadre);
+
+                    const cantCalificacionesPadre = Object.keys(calificacionesPadre).length;
+
 
                     let listarResultado = [];
                     const has = Object.prototype.hasOwnProperty;
@@ -257,6 +269,32 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                                 }
                             }
                         }
+                        //------------------------------------
+
+                        let calificacionPadres = '0';
+                        if (cantCalificacionesPadre > 0) {
+                            let keyCalPadre;
+                            let arrCalPadre = [];
+                            for (keyCalPadre in calificacionesPadre) {
+                                if (!has.call(calificacionesPadre, keyCalPadre)) continue;
+                                if (resultado[key]['_id'] === calificacionesPadre[keyCalPadre]['idCentro']) {
+                                    arrCalPadre.push({ calificacion: calificacionesPadre[keyCalPadre]['calificacion'] });
+                                }
+                            }
+
+                            const elRankingPadres = await RankingPadres.get(arrCalPadre);
+                            if (elRankingPadres < 0) {
+                                console.log(Tiza.bold.yellow.bgBlack('Error: No se pudo obtener la calificación del padre'));
+                                res.json({
+                                    success: false,
+                                    message: 'Error al encontrar los datos'
+                                });
+                            } else {
+                                calificacionPadres = '' + elRankingPadres;
+                            }
+                        }
+
+                        //------------------------------------
 
 
                         let laProvincia = '';
@@ -294,7 +332,8 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                             'telefono': resultado[key]['telefono'] || 0,
                             'correo': resultado[key]['correo'] || '',
                             'calificacionMEP': parseInt(calificacionMEP, 10),
-                            'etiquetas': resultado[key]['etiquetas']|| ''
+                            'calificacionPadres': parseInt(calificacionPadres, 10),
+                            'etiquetas': resultado[key]['etiquetas'] || ''
                         });
 
                     }
@@ -305,17 +344,17 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                     });
 
                 } catch (err2) {
-                    console.log(Tiza.bold.yellow.bgBlack('Error:'));
+                    console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos: '));
                     console.log(Tiza.bold.yellow.bgBlack(err2));
                     res.json({
                         success: false,
-                        message: 'Error al obtener los centros educativos'
+                        message: 'Error al encontrar los datos'
                     });
                 }
             } else {
                 res.json({
                     success: false,
-                    message: 'No se encontraron centros educativos'
+                    message: 'No se encontraron datos'
                 });
             }
         }
@@ -341,11 +380,11 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
     { $match: filtroCEdu }
     ]).exec(async (err, entradas) => {
         if (err) {
-            console.log(Tiza.bold.yellow.bgBlack('Ocurrió el siguiente error: '));
+            console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos: '));
             console.log(Tiza.bold.yellow.bgBlack(err));
             res.json({
                 success: false,
-                message: 'Error al obtener los centros educativos'
+                message: 'Error al encontrar los datos'
             });
         } else {
 
@@ -420,17 +459,17 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
                     });
 
                 } catch (err2) {
-                    console.log(Tiza.bold.yellow.bgBlack('Error:'));
+                    console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos:'));
                     console.log(Tiza.bold.yellow.bgBlack(err2));
                     res.json({
                         success: false,
-                        message: 'Error al obtener los centros educativos'
+                        message: 'Error al encontrar los datos'
                     });
                 }
             } else {
                 res.json({
                     success: false,
-                    message: 'No se encontraron centros educativos'
+                    message: 'No se encontraron datos'
                 });
             }
         }
@@ -448,10 +487,11 @@ module.exports.obtener_centro_por_id = (req, res) => {
                 }
             )
         } else {
+            console.log(Tiza.bold.yellow.bgBlack(`No se encontró el centro educativo #${req.body.id}`));
             res.json(
                 {
                     success: false,
-                    message: 'No se encontró el centro educativo'
+                    message: 'No se encontraron datos'
                 }
             )
         }

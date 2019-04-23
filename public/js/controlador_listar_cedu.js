@@ -92,6 +92,10 @@ let llenarContenido = () => {
 
                 calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + obj['calificacionMEP'];
 
+                let calificacionPadres = document.createElement('p');
+
+                calificacionPadres.innerHTML = '<strong class="Calificacion ">Calificación de los padres de familia: </strong>' + obj['calificacionPadres'];
+
                 let verMas = document.createElement('a');
                 verMas.addEventListener('click', () => {
                     irAlPerfil(obj['_id']);
@@ -105,6 +109,7 @@ let llenarContenido = () => {
                 div_card.appendChild(direccion);
 
                 div_card.appendChild(calificacionMEP);
+                div_card.appendChild(calificacionPadres);
                 div_card.appendChild(verMas);
 
                 card.appendChild(div_card);
