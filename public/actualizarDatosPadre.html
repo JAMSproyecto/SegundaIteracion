@@ -21,22 +21,51 @@
 
 </head>
 
-<header>
-    <div class="column__arriba">
-        <nav class="menu__arriba">
-            <div class="colum__abajo">
-                <nav class="menu__registrarse">
-                    <ul>
-                        <li><a href="./principal_padres.html">Regresar</a></li>
-                        <li>
-                            <button class="btn btn--amarillo" id="boton_cerrar">Iniciar Sesión</button>
-                        </li>
-                    </ul>
-                </nav>
+<header class="bloqueHeader">
+        <div class="bloqueHeader__nombreInstitucion">
+           
+            <div class="bloqueHeader__logo">
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
-        </nav>
-    </div>
-</header>
+        </div>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                            <span class="menu__palanca__btn__intercalar"></span>
+                        </a>
+                        <ul id="menuOpciones" class="menu_opciones">
+                            <li>
+                                <a href="./perfil_padre.html">Ver perfil</a>
+                            </li>
+                            <li>
+                                <a href="./actualizarDatosPadre.html">Modificar perfil</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li>
+                                <a href="javascript:void(0)">Cuenta de usuario</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+
+            </div>
+        </div>
+       
+    </header>
 
 
 <main class="formulario">
