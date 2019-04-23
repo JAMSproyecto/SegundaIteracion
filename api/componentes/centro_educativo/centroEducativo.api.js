@@ -133,6 +133,7 @@ module.exports.registrar_centro_educativo = async (req, res) => {
             cEduNuevo.redesSociales = (req.body.redesSociales || '');
             cEduNuevo.tipoInstitucion = req.body.tipoInstitucion;
             cEduNuevo.nivel = req.body.niveles;
+            cEduNuevo.etiquetas = req.body.etiquetas;
             cEduNuevo.direccion = [{
                 idProvincia: req.body.idProvincia,
                 idCanton: req.body.idCanton,
