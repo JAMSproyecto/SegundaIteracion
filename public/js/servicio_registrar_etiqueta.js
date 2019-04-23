@@ -11,6 +11,7 @@ let registrar_etiqueta = (pnombre) => {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     });
 
     request.done(function (msg) {
@@ -127,6 +128,26 @@ let agregar_etiqueta_en_lista = (pid, pidEtiqueta, pNombre) => {
     });
 
 >>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+    });
+
+    request.done(function (msg) {
+        if (msg.success) {
+            swal.fire({
+                type: 'success',
+                title: msg.msg
+            });     
+        }
+        else {
+            swal.fire({
+                type: 'error',
+                title: msg.msg
+            });
+
+        }
+    });
+
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
             type: 'error',
@@ -136,6 +157,7 @@ let agregar_etiqueta_en_lista = (pid, pidEtiqueta, pNombre) => {
     });
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -166,5 +188,7 @@ let lista_etiquetas_centro = (pidCentro) => {
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion

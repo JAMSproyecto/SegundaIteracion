@@ -2,10 +2,13 @@
 
 const CardsCentros = document.querySelector('#cards_centros');
 <<<<<<< HEAD
+<<<<<<< HEAD
 const filtroCards = document.querySelector('#filtrar_cards');
 //Agregado por Marlon. 4/22
 const selectEtiquetas = document.querySelector('#select_etiquetas')
 const tipoUsuario = localStorage.getItem('tipoUsuario');
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 
@@ -60,6 +63,7 @@ let cargarCEdu = () => {
                 pMessage.forEach(obj => {
                     let card = document.createElement('div');
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     
                     if (obj['nombre'].toLowerCase().includes(filtros.toLowerCase())) {
@@ -119,6 +123,8 @@ let cargarCEdu = () => {
 
                     
 =======
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 
 
                     let centro_nombre = document.createElement('h1');
@@ -157,6 +163,9 @@ let cargarCEdu = () => {
 
 
                     CardsCentros.appendChild(card);
+<<<<<<< HEAD
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
 >>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                 });
 
@@ -179,8 +188,11 @@ window.onload = () => {
     
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 filtroCards.addEventListener('keyup', cargarCEdu);
 selectEtiquetas.addEventListener('blur', filtrarPorEtiqueta);//Me falta hacer la función que filtra
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 =======
 >>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
