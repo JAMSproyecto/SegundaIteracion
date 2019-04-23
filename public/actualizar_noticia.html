@@ -30,14 +30,17 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
 
-            <div class="bloqueHeader__logo">
-                <img src="./imgs/logo_mep.png" class="imagen_mep">
-            </div>
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                    <a href="perfil_centro.html">
+                            <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </a>
+                  
+                </div>
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
@@ -74,7 +77,7 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-                <span>Nuestra Institución les da la bienvenida</span>
+             
             </div>
         </div>
 
@@ -156,7 +159,10 @@
                 </form>
             </div>
         </section>
-        <button type="button" class="btn  btn--amarillo" id="btn_actualizar">Registrar</button>
+        <div class="bloqueBoton">
+                <button type="button" class="btn  btn--amarillo" id="btn_actualizar">Registrar</button>
+        </div>
+        
     </main>
     <footer>
         <div class="footer__cuerpo">
