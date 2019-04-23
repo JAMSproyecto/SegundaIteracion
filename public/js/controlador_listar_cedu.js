@@ -1,10 +1,16 @@
 'use strict';
 
 const CardsCentros = document.querySelector('#cards_centros');
+<<<<<<< HEAD
+<<<<<<< HEAD
 const filtroCards = document.querySelector('#filtrar_cards');
 //Agregado por Marlon. 4/22
 const selectEtiquetas = document.querySelector('#select_etiquetas')
 const tipoUsuario = localStorage.getItem('tipoUsuario');
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
@@ -51,12 +57,14 @@ let cargarCEdu = () => {
         if (pSuccess) {
             if ('object' == typeof pMessage) {
 
-                let filtros = filtroCards.value;
                 //Limpiamos antes de añadir los cards:
                 CardsCentros.innerHTML = '';
 
                 pMessage.forEach(obj => {
+                    let card = document.createElement('div');
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     
                     if (obj['nombre'].toLowerCase().includes(filtros.toLowerCase())) {
 
@@ -65,25 +73,35 @@ let cargarCEdu = () => {
 
 
                         let centro_nombre = document.createElement('h1');
+<<<<<<< HEAD
                         centro_nombre.innerHTML = obj['nombre'];
 
 
                         let telefono = document.createElement('p');
+=======
+                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
+    
+                        let telefono = document.createElement('span');
+<<<<<<< HEAD
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                         telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
     
-                        let correo = document.createElement('p');
+                        let correo = document.createElement('span');
                         correo.innerHTML = 'Correo: ' + obj['correo'];
     
-                        let provincia = document.createElement('p');
+                        let provincia = document.createElement('span');
                         provincia.innerHTML = 'Provincia: ' + obj['provincia'];
     
-                        let direccion = document.createElement('p');
+                        let direccion = document.createElement('span');
                         direccion.innerHTML = 'Dirección: ' + obj['direccion'];
-
+    
                         let calificacionMEP = document.createElement('p');
-
-                        calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + obj['calificacionMEP'];
-
+    
+                        if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
+                            calificacionMEP.innerHTML = 'Calificación MEP: ' + obj['calificacionMEP'];
+                        }
                         let verMas = document.createElement('a');
                         verMas.addEventListener('click', () => {
                             irAlPerfil(obj['_id']);
@@ -104,6 +122,51 @@ let cargarCEdu = () => {
                     };
 
                     
+=======
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+
+
+                    let centro_nombre = document.createElement('h1');
+                    centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
+
+                    let telefono = document.createElement('span');
+                    telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+
+                    let correo = document.createElement('span');
+                    correo.innerHTML = 'Correo: ' + obj['correo'];
+
+                    let provincia = document.createElement('span');
+                    provincia.innerHTML = 'Provincia: ' + obj['provincia'];
+
+                    let direccion = document.createElement('span');
+                    direccion.innerHTML = 'Dirección: ' + obj['direccion'];
+
+                    let calificacionMEP = document.createElement('p');
+
+                    if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
+                        calificacionMEP.innerHTML = 'Calificación MEP: ' + obj['calificacionMEP'];
+                    }
+                    let verMas = document.createElement('a');
+                    verMas.addEventListener('click', () => {
+                        irAlPerfil(obj['_id']);
+                    }, false);
+                    verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+
+                    card.appendChild(centro_nombre);
+                    card.appendChild(telefono);
+                    card.appendChild(correo);
+                    card.appendChild(provincia);
+                    card.appendChild(direccion);
+                    card.appendChild(calificacionMEP);
+                    card.appendChild(verMas);
+
+
+                    CardsCentros.appendChild(card);
+<<<<<<< HEAD
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                 });
 
             } else {
@@ -124,6 +187,12 @@ window.onload = () => {
         llenarSelectEtiquetas();
     
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 filtroCards.addEventListener('keyup', cargarCEdu);
 selectEtiquetas.addEventListener('blur', filtrarPorEtiqueta);//Me falta hacer la función que filtra
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
+=======
+>>>>>>> parent of 4477e80... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion

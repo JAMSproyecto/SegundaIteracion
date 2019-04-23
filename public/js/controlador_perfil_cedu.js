@@ -279,23 +279,22 @@ let cards_servicios = (id) => {
       let div_servicio = document.createElement('div');
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
       let btn_descripcion = document.createElement('button');
       btn_descripcion.textContent ='ver más';
-      //btn_descripcion.document.classList.add('btn_agregar');
       btn_descripcion.addEventListener('click',function(){
         Swal.fire({
-          title: '<strong>Desc</strong>',
+          title: '<strong>HTML <u>example</u></strong>',
           type: 'info',
           html:
             'You can use <b>bold text</b>, ' +
             '<a href="//github.com">links</a> ' +
             'and other HTML tags',
-          title2: '<strong>DEscripción</strong>',
-          type: 'info',
-          html:
-              'You can use <b>bold text</b>, ' +
-              '<a href="//github.com">links</a> ' +
-              'and other HTML tags',
           showCloseButton: true,
           showCancelButton: false,
           focusConfirm: false,
@@ -308,6 +307,16 @@ let cards_servicios = (id) => {
         })
       });
      
+>>>>>>> parent of 69e82a2... commit 22_04
+=======
+
+>>>>>>> parent of e909713... mostrar boton descripción del servicio
+=======
+
+>>>>>>> parent of db88ddc... Revert "Revert "Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion""
+=======
+
+>>>>>>> parent of e909713... mostrar boton descripción del servicio
       switch (object.tipo) {
         case 'actividades':
           div_servicio.classList.add('ser__actividad', 'servicio');
@@ -325,7 +334,6 @@ let cards_servicios = (id) => {
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
           div_servicio.appendChild(logo);
-          
           break;
 
         case 'artes':
@@ -401,12 +409,10 @@ let cards_servicios = (id) => {
           div_servicio.appendChild(logo);
           break;
       }
-      div_servicio.appendChild(btn_descripcion);
-      tablaServicios.appendChild(div_servicio);
 
+      tablaServicios.appendChild(div_servicio);
     });
   }
- 
 };
 
 window.onload = () => {

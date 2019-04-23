@@ -16,10 +16,6 @@ Router.route('/obtener_todos_centro_educativo').get((req, res) => {
     RegistrarCEduApi.obtener_todos_centro_educativo(req, res);
 });
 
-Router.route('/obtener_centros_educativos_sin_aprobar').get((req, res) => {
-    RegistrarCEduApi.obtener_centros_educativos_sin_aprobar(req, res);
-});
-
 Router.route('/obtener_centro_por_id/:id').get((req, res) => {
     RegistrarCEduApi.obtener_centro_por_id(req, res);
 });

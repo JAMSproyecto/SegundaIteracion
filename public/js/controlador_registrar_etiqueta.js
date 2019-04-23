@@ -1,17 +1,17 @@
 'use strict';
 
-const input_etiqueta = document.querySelector('#txt_nombre');
+const nombre_etiqueta = document.querySelector('#txt_nombre');
 
 const Boton_Registrar = document.querySelector('#btn-registrar');
 
 let validar = () => {
     let error = false;
 
-    if (input_etiqueta.value == '') {
+    if (nombre_etiqueta.value == '') {
         error = true;
-        input_etiqueta.classList.add('error_input');
+        nombre_etiqueta.classList.add('error_input');
     } else {
-        input_etiqueta.classList.remove('error_input');
+        nombre_etiqueta.classList.remove('error_input');
     }
   
     return error; 
@@ -19,7 +19,7 @@ let validar = () => {
 
 let obtener_datos = () =>{
     if (validar() == false) {
-        let nombre_etiqueta = input_etiqueta.value;
+        let nombre_etiqueta = nombre_etiqueta.value;
         registrar_etiqueta(nombre_etiqueta);
      
     } else {
