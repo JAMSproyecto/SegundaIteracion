@@ -346,16 +346,22 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 3e0c2c3... commit
                 message: 'Error al obtener los centros educativos'
 =======
                 message: 'No se encontraron centros educativos'
 >>>>>>> parent of 0587924... Ortografía
+<<<<<<< HEAD
 =======
                 message: 'No se encontraron centros educativos'
 >>>>>>> parent of 0587924... Ortografía
 =======
                 message: 'No se encontraron centros educativos'
 >>>>>>> parent of 0587924... Ortografía
+=======
+>>>>>>> parent of 3e0c2c3... commit
             });
         } else {
 
