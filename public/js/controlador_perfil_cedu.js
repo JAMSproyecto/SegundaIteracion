@@ -280,6 +280,7 @@ let cards_servicios = (id) => {
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
       let btn_descripcion = document.createElement('button');
@@ -305,6 +306,9 @@ let cards_servicios = (id) => {
       });
      
 >>>>>>> parent of 69e82a2... commit 22_04
+=======
+
+>>>>>>> parent of e909713... mostrar boton descripción del servicio
       switch (object.tipo) {
         case 'actividades':
           div_servicio.classList.add('ser__actividad', 'servicio');
