@@ -4,6 +4,7 @@ const Tiza = require('chalk');
 const ModelCalificacionPadre = require('./calificacion_padre.model');
 const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
+const RankingPadres = require('./../funciones_genericas/rankingPadres');
 
 
 let formatearFecha = (pFecha) => {
@@ -276,29 +277,19 @@ module.exports.eliminar_comentario_calificacion_padre = (pId, res) => {
 
 module.exports.obtener_calificacion_padre_de_centro = async (pId, res) => {
     try {
-        const VALOR_PORCENTUAL = 5;	// 5% -> 5 estrellitas.		  
-
         const calificaciones = await ModelCalificacionPadre.find({ idCentro: pId }, { _id: 0 }).select('calificacion');
-        const cantCalificaciones = Object.keys(calificaciones).length;
-        const valorItems = cantCalificaciones * VALOR_PORCENTUAL;
-
-        let resultadoTotal = 0;
-        
-        if (cantCalificaciones > 0) {
-			let puntosObtenidos = 0;
-            calificaciones.forEach(res => (puntosObtenidos += res.calificacion));
-
-            //Redondear hacia arriba:
-            resultadoTotal = Math.round((puntosObtenidos / valorItems) * VALOR_PORCENTUAL);
-            if (resultadoTotal > 5) {
-                resultadoTotal = 5;
-            }
+        const elRankingPadres = await RankingPadres.get(calificaciones);
+        if (elRankingPadres < 0) {
+            res.json({
+                success: false,
+                message: 'No se pudo obtener la calificación'
+            });
+        } else {
+            res.json({
+                success: true,
+                message: elRankingPadres
+            });
         }
-
-        res.json({
-            success: true,
-            message: resultadoTotal
-        });
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error al obtener la calificación-padre del centro:'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
