@@ -92,7 +92,7 @@ module.exports.asignar_calificacion_padre = async (objectReq, res) => {
 
         res.json({
             success: false,
-            message: `No se pudo asignar la calificación, ocurrió el siguiente error: #${err}`
+            message: `No se pudo asignar la calificación, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -138,10 +138,10 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err}`
+            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -187,10 +187,10 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err}`
+            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -236,10 +236,10 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err}`
+            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -272,3 +272,41 @@ module.exports.eliminar_comentario_calificacion_padre = (pId, res) => {
         }
     });
 };
+
+
+module.exports.obtener_calificacion_padre_de_centro = async (pId, res) => {
+    try {
+        const VALOR_PORCENTUAL = 5;	// 5% -> 5 estrellitas.		  
+
+        const calificaciones = await ModelCalificacionPadre.find({ idCentro: pId }, { _id: 0 }).select('calificacion');
+        const cantCalificaciones = Object.keys(calificaciones).length;
+        const valorItems = cantCalificaciones * VALOR_PORCENTUAL;
+
+        let resultadoTotal = 0;
+        
+        if (cantCalificaciones > 0) {
+			let puntosObtenidos = 0;
+            calificaciones.forEach(res => (puntosObtenidos += res.calificacion));
+
+            //Redondear hacia arriba:
+            resultadoTotal = Math.round((puntosObtenidos / valorItems) * VALOR_PORCENTUAL);
+            if (resultadoTotal > 5) {
+                resultadoTotal = 5;
+            }
+        }
+
+        res.json({
+            success: true,
+            message: resultadoTotal
+        });
+    } catch (err) {
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener la calificación-padre del centro:'));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
+
+        res.json({
+            success: false,
+            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`
+        });
+    }
+};
+
