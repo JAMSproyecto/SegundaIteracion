@@ -233,7 +233,15 @@ let calificarMEP = () => {
             sumValues += values[i];
           }
           let prom = (sumValues / values.length);
-          let estrellasMep = Math.floor(prom / 2);
+		  
+		  //Redondea hacia arriba:
+          let estrellasMep = Math.round(prom / 2);
+		  
+		  //Al redondear puede que el resultado sea mayor a 5, entonces se iguala a 5:
+		  if(estrellasMep > 5){
+			  estrellasMep = 5;
+		  }
+		  
           Swal.fire({
             title: 'Calificación completada',
             html:
