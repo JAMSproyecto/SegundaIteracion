@@ -11,28 +11,25 @@ let registrar_etiqueta = (pnombre) => {
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
   });
 
-  request.done(function (msg) {
-    if (msg.success) {
+  request.done(function (res) {
+    if (res.success) {
       swal.fire({
         type: 'success',
-        title: msg.msg
+        title: res.msg
       });
     }
     else {
       swal.fire({
         type: 'error',
-        title: msg.msg
+        title: res.msg
       });
 
     }
   });
 
   request.fail(function (jqXHR, textStatus) {
-    swal.fire({
-      type: 'error',
-      title: 'La actividad no pude ser registrada',
-      text: 'Ocurrió un error inesperado, por favor intente de nuevo'
-    });
+	console.error(textStatus);
+	console.error(jqXHR);
   });
 };
 
@@ -47,14 +44,18 @@ let listar_etiquetas = () => {
   });
 
   request.done(function (res) {
-    etiquetas_array = res.msg;
+	if(res.success){
+        etiquetas_array = res.msg;
+	} else {
+		console.log(res.msg);
+	}
 
   });
 
 
   request.fail(function (jqXHR, textStatus) {
-
-
+	console.error(textStatus);
+	console.error(jqXHR);
   });
   return etiquetas_array;
 
@@ -72,45 +73,25 @@ let actualizar_etiqueta = (pid, petiqueta) => {
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
   });
 
-  request.done(function (msg) {
-
-    if ("object" == typeof msg) {
-      if (msg.success) {
-        swal.fire({
-          type: 'success',
-          title: 'Se han modificado los datos de manera exitosa',
-          text: msg.message,
-        });
-      } else {
-        swal.fire({
-          type: 'error',
-          title: 'Error al actualizar los datos: ' + msg.message,
-          timer: 10000,
-          position: 'center'
-        });
-      }
-
-    } else {
-      console.error(msg);
+  request.done(function (res) {
+    if (res.success) {
       swal.fire({
-        type: 'error',
-        title: 'Error al actualizar',
-        timer: 10000,
-        position: 'center',
-        text: 'Ocurrió un error inesperado'
+        type: 'success',
+        title: res.msg
       });
     }
+    else {
+      swal.fire({
+        type: 'error',
+        title: res.msg
+      });
 
+    }
   });
 
   request.fail(function (jqXHR, textStatus) {
-    swal.fire({
-      type: 'error',
-      title: 'Error al actualizar',
-      timer: 10000,
-      position: 'center',
-      text: 'Ocurrió un error inesperado, por favor intente de nuevo'
-    });
+	console.error(textStatus);
+	console.error(jqXHR);
   });
 };
 
@@ -127,20 +108,23 @@ let eliminar_etiqueta = (pid) => {
   });
 
   request.done(function (res) {
-    swal.fire({
-      type: 'success',
-      title: 'Proceso realizado con éxito',
-      text: res.msg
-    });
+    if (res.success) {
+      swal.fire({
+        type: 'success',
+        title: res.msg
+      });
+    }
+    else {
+      swal.fire({
+        type: 'error',
+        title: res.msg
+      });
 
+    }
   });
 
-  request.fail(function (res) {
-    swal.fire({
-      type: 'error',
-      title: 'Proceso no realizado',
-      text: res.msg
-    });
-
+  request.fail(function (jqXHR, textStatus) {
+	console.error(textStatus);
+	console.error(jqXHR);
   });
 };
