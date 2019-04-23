@@ -21,7 +21,7 @@ let mostrar_datos = () => {
             let boton_eliminar = document.createElement('a');
 
 
-         
+
 
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
@@ -45,33 +45,33 @@ let mostrar_datos = () => {
 
             boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = noticias[i]['_id'];
-            celda_actualizar.appendChild(boton_eliminar);
+            //celda_actualizar.appendChild(boton_eliminar);
             celda_eliminar.appendChild(boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
-                {
-                    Swal.fire({
-                        title: '¿Está seguro que desea eliminar la noticia?',
-                        text: "Ésta acción no se puede revertir",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: '¡Sí, estoy seguro!'
-                    }).then((result) => {
-                        if (result.value) {
-                            eliminar_noticia(this.dataset.idCentro);
-                            mostrar_datos();
-                            Swal.fire(
-                                '¡Noticia eliminada!',
-                                'La lista ya no posee la noticia',
-                                'success'
-                            )
-                        }
-                    })
 
-                    //a esa variable le agrego un elemento como hijo
+                Swal.fire({
+                    title: '¿Está seguro que desea eliminar la noticia?',
+                    text: "Ésta acción no se puede revertir",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, estoy seguro!'
+                }).then((result) => {
+                    if (result.value) {
+                        eliminar_noticia(this.dataset.idCentro);
+                        mostrar_datos();
+                        Swal.fire(
+                            '¡Noticia eliminada!',
+                            'La lista ya no posee la noticia',
+                            'success'
+                        )
+                    }
+                })
 
-                }
+                //a esa variable le agrego un elemento como hijo
+
+
 
 
             }

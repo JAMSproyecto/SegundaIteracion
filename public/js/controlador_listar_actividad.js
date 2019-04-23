@@ -24,7 +24,7 @@ let mostrar_actividad = () => {
 
             let celda_editar = fila.insertCell();//esta es la celda que es dinamica
             let celda_eliminar = fila.insertCell();//donde coloco los iconos
-
+            let boton_eliminar = document.createElement('a');
             //creación del icono editar
             let boton_editar = document.createElement('a');//creo un elemento de html
             boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
@@ -33,18 +33,37 @@ let mostrar_actividad = () => {
 
 
             //creación del icono eliminar
-            let boton_eliminar = document.createElement('a');
+
             boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = actividades[i]['_id'];
             celda_eliminar.appendChild(boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
-                eliminar_actividad(this.dataset.idCentro);
-                mostrar_actividad();
-            });
+
+                Swal.fire({
+                    title: '¿Está seguro que desea eliminar la actividad?',
+                    text: "Ésta acción no se puede revertir",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, estoy seguro!'
+                }).then((result) => {
+                    if (result.value) {
+                        eliminar_actividad(this.dataset.idCentro);
+                        mostrar_actividad();
+                        Swal.fire(
+                            '¡Actividad eliminada!',
+                            'La lista ya no posee la actividad',
+                            'success'
+                        )
+                    }
+                })
+
+            }
+            )
         }
-    }
-};
+    };
 
-input_filtrar.addEventListener('keyup', mostrar_actividad);
-
+    input_filtrar.addEventListener('keyup', mostrar_actividad);
+}
 mostrar_actividad();
