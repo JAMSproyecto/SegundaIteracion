@@ -169,7 +169,6 @@ module.exports.actualizar_noticia = function (req, res) {
 
 
 module.exports.eliminar= function (req, res) {
-    console.log(req.body);
     model_registrar_noticia.findByIdAndRemove(req.body.id,  
         function (error) {
         if (error) {

@@ -25,6 +25,7 @@ router.route('/actualizar_noticia')
             registrar_noticia_api.actualizar_noticia(req, res);
         }
     );
+    
 router.route('/listar_todas_noticias/:idCentro')
     .get(
         function (req, res) {

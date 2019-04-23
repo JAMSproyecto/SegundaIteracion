@@ -177,7 +177,6 @@ module.exports.actualizar_actividad = function (req, res) {
 }
 
 module.exports.eliminar = function (req, res) {
-    console.log(req.body);
     model_registrar_actividad.findByIdAndRemove(req.body.id,
         function (error) {
             if (error) {
