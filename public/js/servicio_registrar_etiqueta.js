@@ -138,7 +138,7 @@ let eliminar_etiqueta = (pid) => {
   request.fail(function (res) {
     swal.fire({
       type: 'error',
-      title: 'Proceso no realizado', 
+      title: 'Proceso no realizado',
       text: res.msg
     });
 
@@ -150,14 +150,14 @@ let eliminar_etiqueta = (pid) => {
 
 
 
-let agregar_etiqueta_en_lista  = (pid, pidEtiqueta, pNombre) => {
+let agregar_etiqueta_en_lista = (pid, pidEtiqueta, pNombre) => {
   let request = $.ajax({
     url: "http://localhost:4000/api/agregar_a_lista_etiqueta",
     method: "POST",
     data: {
       idCentro: pid,
-              _id : pidEtiqueta,
-              nombre: pNombre
+      idEtiqueta: pidEtiqueta,
+      nombre: pNombre
     },
     dataType: "json",
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8'

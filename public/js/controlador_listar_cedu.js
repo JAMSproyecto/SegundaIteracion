@@ -39,12 +39,6 @@ let filtrarPorEtiqueta = () => {
 
 };
 
-
-
-
-
-
-
 //Fin agregado por Marlon. 4/22
 
 
@@ -71,8 +65,9 @@ let cargarCEdu = () => {
 
 
                         let centro_nombre = document.createElement('h1');
-                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
-    
+                        centro_nombre.innerHTML = obj['nombre'];
+
+
                         let telefono = document.createElement('p');
                         telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
     
@@ -102,7 +97,6 @@ let cargarCEdu = () => {
                         card.appendChild(direccion);
                         card.appendChild(calificacionMEP);
                         card.appendChild(verMas);
-    
     
                         CardsCentros.appendChild(card);
 

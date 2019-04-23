@@ -139,9 +139,6 @@ app.use('/api', noticias);
 const etiquetas = require ('./componentes/etiquetas/etiquetas.route');
 app.use('/api', etiquetas);
 
-const listaEtiquetas = require ('./componentes/listaetiquetasCentro/listaetiquetasCentro.route');
-app.use('/api', listaEtiquetas);
-
 const rubros = require ('./componentes/rubros/rubros.route');
 app.use('/api', rubros);
 
