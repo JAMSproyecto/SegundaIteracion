@@ -29,8 +29,20 @@ const InputDepartamentoContacto = document.querySelector('#txtDepartamentoContac
 const InputTelefonoContacto = document.querySelector('#txtTelefonoContacto');
 
 
+
 const BotonRegistrar = document.querySelector('#btnRegistrar');
 
+
+const selectEtiquetas = document.querySelector('#select_etiquetas')
+
+let llenarSelectEtiquetas = () => {
+    let listaEtiquetas = listar_etiquetas();
+    for (let i = 0; i < listaEtiquetas.length; i++) {
+        let opcionEtiqueta = document.createElement('option');
+        opcionEtiqueta.innerHTML = listaEtiquetas[i]['nombre'];
+        selectEtiquetas.appendChild(opcionEtiqueta);
+    };   
+};
 
 let mostrarAlerta = (mensaje, input) => {
 	if (input) {
@@ -341,6 +353,7 @@ window.onload = () => {
         InputNombre.select();
         InputNombre.focus();
     }
+    llenarSelectEtiquetas();
 };
 
 
