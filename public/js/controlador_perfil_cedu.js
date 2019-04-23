@@ -2,7 +2,7 @@
 
 const TxtEditorComentario = document.querySelector('#txtEditorComentario');
 const TblAddComentario = document.querySelector('#tblAddComentario');
-const BtnCalificar = document.querySelector('#btnCalificar');
+const BtnCalificar = document.querySelector('#btnCalificarPadre');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const mostrarActividad = document.querySelector('#tabla__actividades');
