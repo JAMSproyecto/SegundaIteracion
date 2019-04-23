@@ -33,7 +33,7 @@ let crearActividades = () => {
 
   let actividades = listar_todas_actividades();
 
-
+  console.log(actividades);
 
   if ('object' == typeof actividades && Object.keys(actividades).length > 0) {
     actividades.forEach(obj => {

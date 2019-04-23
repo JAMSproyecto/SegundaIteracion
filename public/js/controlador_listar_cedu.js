@@ -65,25 +65,32 @@ let cargarCEdu = () => {
 
 
                         let centro_nombre = document.createElement('h1');
+<<<<<<< HEAD
                         centro_nombre.innerHTML = obj['nombre'];
 
 
                         let telefono = document.createElement('p');
+=======
+                        centro_nombre.innerHTML = 'Nombre: ' + obj['nombre'];
+    
+                        let telefono = document.createElement('span');
+>>>>>>> parent of 16d022a... Merge branch 'master' of https://github.com/JAMSproyecto/SegundaIteracion
                         telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
     
-                        let correo = document.createElement('p');
+                        let correo = document.createElement('span');
                         correo.innerHTML = 'Correo: ' + obj['correo'];
     
-                        let provincia = document.createElement('p');
+                        let provincia = document.createElement('span');
                         provincia.innerHTML = 'Provincia: ' + obj['provincia'];
     
-                        let direccion = document.createElement('p');
+                        let direccion = document.createElement('span');
                         direccion.innerHTML = 'Dirección: ' + obj['direccion'];
-
+    
                         let calificacionMEP = document.createElement('p');
-
-                        calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + obj['calificacionMEP'];
-
+    
+                        if ('string' == typeof obj['calificacionMEP'] && obj['calificacionMEP'].length > 0) {
+                            calificacionMEP.innerHTML = 'Calificación MEP: ' + obj['calificacionMEP'];
+                        }
                         let verMas = document.createElement('a');
                         verMas.addEventListener('click', () => {
                             irAlPerfil(obj['_id']);

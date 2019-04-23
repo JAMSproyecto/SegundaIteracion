@@ -1,53 +1,29 @@
 #cards_centros {
-    width: 85%;
+    width: 80%;
     text-align: center;
     margin: auto;
     padding-bottom: 100px;
-  
 }
 
 
 #cards_centros div {
-    width: 301px;
-    height: 229px;
-    display: inline-table;
+    width: 250px;
+    height: 320px;
+    display: inline-block;
     border: 1px solid black;
     margin: 10px;
 }
 
-#cards_centros div h1 {
-    background: #253b80;
-    color: #fff;
-    padding: 10px;
-    margin: 0;
+div h1 {
     font-size: 18px;
+    text-align: center;
 }
 
+#cards_centros span {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+};
 
-#cards_centros span{
-    text-align: left;
-    margin: 10px;
-    display: inline-block;
-   
-}
-
-#cards_centros .descripcion{
-    font-weight: bold;
-
-}
-#cards_centros a{
-    position: relative
-}
-
-#cards_centros .fa-id-card{
-    font-size: 25px;
-    left: 24px;
-    /* float: left; */
-    float: right;
-    /* margin-top: 44px; */
-    margin: 17px 10px;
-   
-    top: 20px;
-}
 
 

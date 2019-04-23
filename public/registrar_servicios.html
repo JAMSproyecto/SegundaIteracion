@@ -28,18 +28,18 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-            <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
-                    <div class="bloqueHeader__iconolateral">
-                        <span onclick="menuNavVisible(true); return false;">&#9776;</span>
-                    </div>
-        
-                    <div class="bloqueLogo__admin bloqueHeader__logo">
-                            <a href="perfil_centro.html">
-                                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                            </a>
-                          
-                        </div>
+        <div class="bloqueHeader__nombreInstitucion">
+            <div class="bloqueHeader__iconolateral">
+                <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+            </div>
+
+            <div class="bloqueHeader__logo">
+                    <a href="perfil_centro.html">
+                            <img src="./imgs/logo_mep.png" class="imagen_mep">
+                    </a>
+                  
                 </div>
+        </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
 
@@ -75,7 +75,7 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-              
+                <span>Nuestra Institución les da la bienvenida</span>
             </div>
         </div>
 
@@ -139,12 +139,9 @@
         </nav>
     </header>
     <main>
-        <div class="tituloPrincipal">
-                <h1 class="tituloPrincipal">Registrar servicios</h1>
-        </div>
-       
-        <section class="bloque bloqueServicios">
-            <form >
+        <h1 class="tituloPrincipal">Registrar servicios</h1>
+        <section class="bloque__principal">
+            <div class="formulario__servicios">
                 <div class="bloqueDato">
                     <label for="txt_nombre">Nombre</label>
                     <input type="text" id="txt_nombre">
@@ -172,7 +169,7 @@
             </div>
             </div>
         </section>
-        <div class="bloqueBoton">
+        <div class="bloque__boton">
                 <button type="button" class="btn btn--amarillo" id="btn_agregar">Registrar</button>
             </div>
         

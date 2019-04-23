@@ -1,14 +1,18 @@
 'use strict';
 
+
 const tabla = document.querySelector('#tbl_listar_actividad tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
-let mostrar_actividad = () => {
+
+let mostrar_datos = () => {
     const actividades = listar_todas_actividades();
+
     let filtros = input_filtrar.value;
     tabla.innerHTML = '';
 
     for (let i = 0; i < actividades.length; i++) {
+
         if (actividades[i]['actividad'].toLowerCase().includes(filtros.toLowerCase())) {
 
             let fila = tabla.insertRow();
@@ -20,30 +24,40 @@ let mostrar_actividad = () => {
             fila.insertCell().innerHTML = actividades[i]['finaliza'];
             fila.insertCell().innerHTML = actividades[i]['lugar'];
             fila.insertCell().innerHTML = actividades[i]['detalles'];
+          
 
-            let celda_editar = fila.insertCell();//esta es la celda que es dinamica
-            let celda_eliminar = fila.insertCell();//donde coloco los iconos
-
-            //creación del icono editar
-            let boton_editar = document.createElement('a');//creo un elemento de html
-            boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
-            boton_editar.href = `actualizar_actividad.html?idActividad=${actividades[i]['_id']}`;//accedo a la propiedades de los elementos enlace
-            celda_editar.appendChild(boton_editar);//le agrego a al celda un elemento de hijo
+            let celda_actualizar = fila.insertCell();
+            let celda_eliminar = fila.insertCell();
 
 
-            //creación del icono eliminar
+
+            let boton_editar = document.createElement('a');
+            boton_editar.innerHTML = '<i class="fas fa-pen"></i> ';
+            boton_editar.href = `actualizar_actividad.html?idActividad=${actividades[i]['_id']}`;
+
+            celda_actualizar.appendChild(boton_editar);
+
+
+
             let boton_eliminar = document.createElement('a');
-            boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
+            boton_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = actividades[i]['_id'];
             celda_eliminar.appendChild(boton_eliminar);
             boton_eliminar.addEventListener('click', function () {
                 eliminar_actividad(this.dataset.idCentro);
-                mostrar_actividad();
+
+                mostrar_datos();
+
+
             });
+
+
         }
+
+
     }
 };
 
-input_filtrar.addEventListener('keyup', mostrar_actividad);
+input_filtrar.addEventListener('keyup', mostrar_datos);
 
-mostrar_actividad();
+mostrar_datos();

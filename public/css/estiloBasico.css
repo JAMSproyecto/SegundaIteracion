@@ -815,5 +815,20 @@ textarea {
   padding-right: 30px;
 }
 
+.titulo__principal {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.titulo__secundario {
+  color: #17c0eb;
+  font-size: 21px;
+  font-weight: 600;
+  padding: 10px 49px;
+}
+
+.titulo__secundario__registro {
+  padding: 10px 0px;
+}
 
 

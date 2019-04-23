@@ -1,5 +1,6 @@
 
 /*estilos resennia*/
+
 #bloqueResennia{
   width: 90%;
   margin: 0 auto;
@@ -11,6 +12,7 @@
   font-style: italic;
     font-size: 18px;
 }
+
 /*fin estilos resennia*/
 
 
@@ -21,6 +23,7 @@
 
 
 /*estilos actividad*/
+
 #contenedorActividades{
   float: right
 
@@ -40,6 +43,25 @@
   font-weight: bold;
   font-size: 24px;
 }
+
+.hora__noticia{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.fa-newspaper{
+        
+    font-size: 67px;
+  
+    color: #253b80;
+    float: left;
+    
+    padding-left: 29px;
+    
+  
+}
+
+
 
 
 .noticia {
@@ -66,10 +88,101 @@
 }
 /*fin estilos noticias*/
 
-/*estilo servicios*/
-.bloqueServicios{
-  background: #179bd7;
+
+/*fin oferta academica*/
+.menu__editar {
+  position: relative;
+  left: 90%;
+  color: #17c0eb;
 }
+
+.fat {
+  position: relative;
+  left: 49px;
+  /* width: 20px; */
+  font-size: 22px;
+  color: #17c0eb;
+}
+
+.fat:hover {
+  color: #34495e;
+}
+
+.menu__editar a {
+  text-decoration: none;
+  color: #17c0eb;
+}
+
+.bloque__comentarios {
+  width: 1345px;
+  margin: auto;
+  /*background: #17c0eb;*/
+  /* background:  #ffb142;*/
+  background: #81c784;
+  padding: 20px;
+}
+
+.contenedor__tabla {
+  display: table;
+}
+
+.bloque__comentarios h2 {
+
+  /* color: #17c0eb; */
+  font-size: 21px;
+  font-weight: 600;
+  margin-top: 0px;
+  color: #fff;
+  margin-bottom: 51px;
+  font-size: 29px;
+}
+
+.titulo__comentarios {
+  text-align: center;
+}
+
+.tabla__servicios {
+  width: 1110px;
+  margin: auto;
+}
+
+.titulo_oferta {
+  text-align: center;
+}
+
+.titulo__servicios {
+  text-align: center;
+  margin-bottom: 10px;
+  /* margin-top: 92px; */
+}
+
+.titulo__secundario {
+  font-size: 29px;
+  width: 100%;
+  margin: 0 auto;
+  color: #34495e;
+  text-align: center;
+}
+
+.faq {
+  font-size: 25px;
+  color: #fff;
+  background: #17c0eb;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.fa-flask,
+.fa-mug-hot,
+.fa-user-nurse,
+.fa-bus,
+.fa-user-friends,
+.fa-futbol,
+.fa-book,
+.fa-music {
+  padding: 10px;
+}
+
 .servicio p {
   margin-top: 5px;
   text-align: center;
@@ -78,26 +191,20 @@
 
 .servicio {
   border: 1px solid #2d3436;
- padding: 20px;
+  width: 250px;
   box-shadow: 0 0 3px #78909c;
   margin: 10px;
   display: inline-block;
   border-radius: 12px; 
   background: #fff;
-  width: 300px;
-}
-
-.servicio:hover{
-  box-shadow: 0 0 10px #78909c;
 }
 
 .servicio span {
-  font-size: 20px;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 19px;
 }
 
-
-/*fin estilo servios*/
-/*
 .comentario {
   background: #fff;
   width: 237px;
@@ -105,19 +212,99 @@
   bottom: 67px;
   background: #fff;
   position: relative;
-   top: 20px; 
+  /* top: 20px; */
   left: 130px;
   padding: 20px;
   font-family: 'Cinzel', serif;
   font-size: 13px;
-   color: #000; 
+  /* color: #000; */
   font-weight: 800;
   display: inline-block;
   margin: 8px;
-}*/
+}
 
+
+
+.servicio:hover {
+  box-shadow: 0 0 10px #78909c;
+}
+
+.ser__actividad,
+.ser__alimentacion,
+.ser__arte,
+.ser__cientifico,
+.ser__deporte,
+.ser__musica,
+.ser__religion,
+.ser__salud,
+.ser__transporte,
+.ser__estudio{
+  padding: 24px 30px;
+}
+
+.preescolar,
+.primaria,
+.secundaria {
+  display: table-cell;
+  padding: 20px;
+}
+
+.preescolar p,
+.primaria p,
+.secundaria p {
+  text-align: center;
+  font-size: 30px;
+}
+
+.contenedor__tabla {
+  margin: 50px auto;
+  width: 1000px;
+}
+
+.oferta__academica {
+  display: table;
+}
+
+
+.secundaria img {
+  width: 300px;
+}
+
+.preescolar img {
+  width: 309px;
+}
+
+.primaria img,
+.secundaria img {
+  width: 300px;
+}
+/*carrusel noticias*/
+
+
+
+
+.noticias__uno p {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+
+
+
+.tabla__noticias,
+.tabla__actividades {
+  background: #f9f9f9;
+  margin-bottom: 25px;
+}
+
+
+
+.noticia  strong {
+  font-size: 24px;
+  text-transform: uppercase;
+}
 
 /*estilos cita*/
+
 button.fc-button {
   background-image: none;
   background: #17c0eb;
