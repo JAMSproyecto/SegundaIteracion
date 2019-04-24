@@ -43,16 +43,16 @@ let crearActividades = () => {
       
 
       let strong = document.createElement('strong');
-      strong.classList.add('nombre__actividad');
+      strong.classList.add('dato_card');
 
       let lugar = document.createElement('p');
-      lugar.classList.add('lugar__actividad');
+      lugar.classList.add('dato_card');
 
       let fecha = document.createElement('p');
-      fecha.classList.add('fecha__actividad');
+      fecha.classList.add('dato_card');
 
       let hora = document.createElement('p');
-      hora.classList.add('hora__actividad');
+      hora.classList.add('dato_card');
 
       //Agregado por Marlon, para que muestre los datos faltantes
   
@@ -272,12 +272,12 @@ let mostrar_noticias = () => {
 
       let bloques = '';
       noticias.forEach(function (objeto) {
-        bloques += '<div class="noticia not">';
+        bloques += '<div class="noticia">';
         bloques += '<i class="far fa-newspaper"></i>';
         bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
-        bloques += '<p class="hora__noticia">Fecha: ' + objeto.fecha + '</p>';
+        bloques += '<p class="dato_card">Fecha: ' + objeto.fecha + '</p>';
 
-        bloques += '<p class="informacion"> ' + objeto.informacion + '</p>';
+        bloques += '<p class="dato_card"> ' + objeto.informacion + '</p>';
 
 
         bloques += '</div>';
