@@ -7,6 +7,7 @@ const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const mostrarActividad = document.querySelector('#tabla__actividades');
 const div_noticias = document.querySelector('#tabla__noticias');
+const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
 
 
@@ -462,6 +463,9 @@ window.onload = () => {
       id = localStorage.getItem('verPerfilCEdu');
       if (BtnCalificar) {
         BtnCalificar.addEventListener('click', agregarCalificacion, false);
+      }
+      if (Lnk_Cita) {
+        Lnk_Cita.setAttribute('href','registrar_cita.html');
       }
       break;
 
