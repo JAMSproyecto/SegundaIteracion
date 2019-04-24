@@ -7,8 +7,7 @@ const API = require('./calificacion_padre.api');
 Router.param('id', (req, res, next, parametro) => {
 	req.body.id = parametro;
 	next();
-}
-);
+});
 
 Router.param('idInt', (req, res, next, parametro) => {
 	try {
