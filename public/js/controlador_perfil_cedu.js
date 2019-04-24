@@ -465,7 +465,10 @@ window.onload = () => {
       if (BtnCalificar) {
         BtnCalificar.addEventListener('click', agregarCalificacion, false);
       }
-      Lnk_Cita.setAttribute('href','registrar_cita.html');
+      if (Lnk_Cita) {
+        Lnk_Cita.setAttribute('href','registrar_cita.html');
+      }
+
       break;
 
     default:
