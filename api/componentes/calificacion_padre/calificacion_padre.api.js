@@ -157,7 +157,7 @@ module.exports.buscar_calificacion_padre_por_id = (pId, res) => {
     } catch (e) { }
 
     try {
-		
+
         const filtroCalificacion = { _id: { $eq: elParametro } };
 
         const seleccionar = { _id: 1, idPadre: 1, idCentro: 1, calificacion: 1, comentario: 1, fecha: 1, eliminado: 1, padreFamilia: 1 };
