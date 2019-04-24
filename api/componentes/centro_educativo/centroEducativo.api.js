@@ -333,7 +333,8 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
                             'correo': resultado[key]['correo'] || '',
                             'calificacionMEP': parseInt(calificacionMEP, 10),
                             'calificacionPadres': parseInt(calificacionPadres, 10),
-                            'etiquetas': resultado[key]['etiquetas'] || ''
+                            'etiquetas': resultado[key]['etiquetas'] || '',
+                            'tipoInstitucion': resultado[key]['tipoInstitucion'] || ''
                         });
 
                     }
