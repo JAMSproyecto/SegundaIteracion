@@ -98,14 +98,8 @@ let llenarContenido = () => {
     
             card.appendChild(div_card);
             listaPrivados.appendChild(card);
-
-
         }
-
-       
-
     });
-
 };
 
 let cargarCEdu = () => {
