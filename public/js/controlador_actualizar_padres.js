@@ -55,46 +55,46 @@ if (infoPadres) {
 
 
     for(let i = 0; i < opciones_provincias.length; i++){
-        if(opciones_provincias[i].textContent ==   slt_provincias.value == infoPadre['provincia']){
+        if(opciones_provincias[i].textContent ==   slt_provincias.value == infoPadres['provincia']){
             opciones_provincias[i].selected = true;
             llenar_cantones();
-            slt_provincias.value == infoPadre['provincia'];
+            slt_provincias.value == infoPadres['provincia'];
         }
     }
 
     let opciones_cantones = document.querySelectorAll('#slt_cantones option');
 
     for(let i = 0; i < opciones_cantones.length; i++){
-        if(opciones_cantones[i].textContent == slt_cantones.value == infoPadre['canton']){
+        if(opciones_cantones[i].textContent == slt_cantones.value == infoPadres['canton']){
             opciones_cantones[i].selected = true;
-            slt_cantones.value == infoPadre['canton'];
+            slt_cantones.value == infoPadres['canton'];
         }
     }
   
     let opciones_distritos = document.querySelectorAll('#slt_distritos option');
 
     for(let i = 0; i < opciones_distritos.length; i++){
-        if(opciones_distritos[i].textContent == slt_cantones.value == slt_distritos.value == infoPadre['distrito']){
+        if(opciones_distritos[i].textContent == slt_cantones.value == slt_distritos.value == infoPadres['distrito']){
             opciones_distritos[i].selected = true;
-            slt_distritos.value == infoPadre['distrito'];
+            slt_distritos.value == infoPadres['distrito'];
         }
     }
     
     //Aquí termina lo que tengo que corregir
 
-    txt_direccion.value = infoPadre['direccion'];
-    cant_hijos.value = infoPadre['cantidadHijos'];
-    nombre_hijo.value = infoPadre['nombreHijo'];
-    edad_hijo.value = infoPadre['edadHijo'];
-    nombre_hijo2.value = infoPadre['nombreHijo2'];
-    edad_hijo2.value = infoPadre['edadHijo2'];
-    nombre_hijo3.value = infoPadre['nombreHijo3'];
-    edad_hijo3.value = infoPadre['edadHijo3'];
-    nombre_hijo4.value = infoPadre['nombreHijo4'];
-    edad_hijo4.value = infoPadre['edadHijo4'];
+    txt_direccion.value = infoPadres['direccion'];
+    cant_hijos.value = infoPadres['cantidadHijos'];
+    nombre_hijo.value = infoPadres['nombreHijo'];
+    edad_hijo.value = infoPadres['edadHijo'];
+    nombre_hijo2.value = infoPadres['nombreHijo2'];
+    edad_hijo2.value = infoPadres['edadHijo2'];
+    nombre_hijo3.value = infoPadres['nombreHijo3'];
+    edad_hijo3.value = infoPadres['edadHijo3'];
+    nombre_hijo4.value = infoPadres['nombreHijo4'];
+    edad_hijo4.value = infoPadres['edadHijo4'];
 
 } else {
-    console.log(infoPadre[0]);
+    console.log(infoPadres[0]);
 };
 
 

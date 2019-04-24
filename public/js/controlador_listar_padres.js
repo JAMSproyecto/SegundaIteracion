@@ -29,8 +29,10 @@ let mostrar_datos = () => {
             fila.insertCell().innerHTML = padresFamilia[i]['apellido'];
             fila.insertCell().innerHTML = padresFamilia[i]['segundoApellido'];
             fila.insertCell().innerHTML = padresFamilia[i]['correo'];
-            fila.insertCell().innerHTML = padresFamilia[i]['provincia'];
-            fila.insertCell().innerHTML = padresFamilia[i]['canton'];
+
+             
+            let provincia = obtenerProvinciaPorID(parseInt(padresFamilia[i]['provincia'], 10));
+            fila.insertCell().innerHTML = provincia;
             fila.insertCell().innerHTML = '<a href="#" class="ver" onClick="irAlPerfil('+padresFamilia[i]['_id']+'); return false;"><i class="fas  fa-eye"></i></button>';
         }
     }

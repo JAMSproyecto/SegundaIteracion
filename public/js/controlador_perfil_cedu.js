@@ -83,6 +83,11 @@ let crearActividades = () => {
       mostrarActividad.appendChild(actividad);
     })
 
+  } else {
+    let actividad = document.createElement('div');
+    actividad.classList.add('actividad');
+    actividad.innerHTML = "No hay actividades registradas";
+    mostrarActividad.appendChild(actividad);
   }
 };
 
@@ -286,9 +291,15 @@ let mostrar_noticias = () => {
       });
       div_noticias.innerHTML = bloques;
     } else {
+      let bloques = '';
+        bloques += '<div class="noticia">';
+        bloques += 'No hay noticias registradas';
+        bloques += '</div>';
+      div_noticias.innerHTML = bloques;
     }
   } else {
     console.error('Error al obtener las noticias');
+    
   }
 
 };
@@ -438,6 +449,14 @@ let cards_servicios = (id) => {
       div_contenedor.appendChild(div_contenedor_btn);
       tablaServicios.appendChild(div_contenedor);
     });
+  } else {
+    let div_contenedor = document.createElement('div');
+    div_contenedor.classList.add('contenedor_servicios' , 'servicio');
+    let div_servicio = document.createElement('span');
+    div_servicio.innerHTML = 'No hay servicios registrados';
+
+    div_contenedor.appendChild(div_servicio);
+    tablaServicios.appendChild(div_contenedor);
   }
 };
 
