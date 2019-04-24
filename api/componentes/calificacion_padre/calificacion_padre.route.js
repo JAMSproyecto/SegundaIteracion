@@ -5,9 +5,9 @@ const API = require('./calificacion_padre.api');
 
 /* Este método nos permite buscar un parámetro que viene dentro de la url del endPoint, sacandolo del url y metiendolo en el body para poderlo usar. */
 Router.param('id', (req, res, next, parametro) => {
-    req.body.id = parametro;
-    next();
-    }
+	req.body.id = parametro;
+	next();
+}
 );
 
 Router.param('idInt', (req, res, next, parametro) => {
@@ -15,18 +15,18 @@ Router.param('idInt', (req, res, next, parametro) => {
 		const n = parseInt(parametro, 10);
 		if (isNaN(n)) {
 			res.json({
-                success: false,
-                message: 'El parámetro es inválido'
-            });
+				success: false,
+				message: 'El parámetro es inválido'
+			});
 		} else {
 			req.body.id = n;
 			next();
 		}
 	} catch (e) {
 		res.json({
-                success: false,
-                message: 'El parámetro es inválido'
-            });
+			success: false,
+			message: 'El parámetro es inválido'
+		});
 	}
 });
 
