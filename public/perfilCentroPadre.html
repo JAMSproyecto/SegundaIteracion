@@ -10,7 +10,7 @@
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
-	
+
     <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/estiloBasico.css">
@@ -27,14 +27,14 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-            <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
-                    <div class="bloqueHeader__iconolateral">
-                        <span style="display:none;" onclick="menuNavVisible(true); return false;">&#9776;</span>
-                    </div>
-                    <div class="bloqueLogo__admin bloqueHeader__logo">
-                        <img src="./imgs/logo_mep.png" class="imagen_mep">
-                    </div>
-                </div>
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+            <div class="bloqueHeader__iconolateral">
+                <span style="display:none;" onclick="menuNavVisible(true); return false;">&#9776;</span>
+            </div>
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
+            </div>
+        </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
 
@@ -86,7 +86,7 @@
             <div class="my__60">
                 <div class="contenedor cuerpo">
                     <div class="contenedor contenido">
-                        <section>
+                        <section class="conentedor_calificacion_padre">
 
                             <div>
                                 <h2 class="titulo__secundario">Calific&aacute; nuestra instituci&oacute;n</h2>
@@ -148,9 +148,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
-
-
                         </section>
                         <section>
                     </div>
@@ -164,65 +161,41 @@
             </div>
 
 
+            <section class="bloqueInformacion">
+                <section id="contenedorNoticias">
+                    <div>
+                        <h2 class="titulo__secundario">Noticias</h2>
+                    </div>
+                    <div class="tabla__noticias">
+                        <div id="tabla__noticias"></div>
+                    </div>
+                    <div class="tabla__noticias">
+                        <div id="tabla__noticias"></div>
+                    </div>
+                </section>
+                <section id="contenedorActividades">
+                    <div>
+                        <h2 class="titulo__secundario">Actividades</h2>
+                    </div>
+                    <div class="tabla__actividades">
+                        <div id="tabla__actividades" class="contenedor__actividades"></div>
+                    </div>
+                </section>
+            </section>
 
 
-            <section class="bloque__descripcion">
-                <div class="titulo__servicios">
+            <section class="bloqueServicios">
+                <div class="bloqueServicios__titulo">
                     <h2 class="titulo__secundario">Nuestros servicios</h2>
                 </div>
                 <div class="tabla__servicios">
-                    <div id="tabla__servicios"></div>
-                </div>
-            </section>
 
-            <div class="tabla__oferta">
-                <div class="contenedor__tabla">
-                    <div class="titulo_oferta">
-                        <h2 class="titulo__secundario">Oferta académica</h2>
+                    <div id="tabla__servicios">
+
                     </div>
-                    <div class="oferta__academica">
-                        <div class="preescolar">
-                            <img src="./imgs/Niños-felices.png" />
 
-                            <p>Prescolar</p>
-                        </div>
-                        <div class="primaria">
-                            <img src="./imgs/primariajpg.jpg" />
-                            <p>Primaria</p>
-                        </div>
-                        <div class="secundaria">
-                            <img src="./imgs/secundaria.jpeg" />
-                            <p>Secundaria</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-
-
-            <section id="contenedorNoticias">
-                <div>
-                    <h2 class="titulo__secundario">Noticias</h2>
-                </div>
-                <div class="tabla__noticias">
-                    <div id="tabla__noticias" class="contenedor__noticias"></div>
                 </div>
             </section>
-            <section id="contenedorActividades">
-                <div>
-                    <h2 class="titulo__secundario">Actividades</h2>
-                </div>
-                <div class="tabla__actividades">
-                    <div id="tabla__actividades" class="contenedor__actividades"></div>
-                </div>
-            </section>
-
-
-
-
-
-
-
 
         </main>
 

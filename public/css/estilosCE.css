@@ -31,7 +31,13 @@
 /*estilos noticias*/
 #contenedorNoticias{
   float: left;
-  width: 58%;
+  width: 49%;
+
+}
+
+#contenedorActividades{
+  float: right;
+  width: 49%;
 
 }
 
@@ -43,6 +49,20 @@
 
 
 .noticia {
+  display: inline-block;
+  width: 373px;
+  box-shadow: 0 0 3px #78909c;
+  margin: 19px;
+  /* padding: 50px 20px; */
+  /* display: table-cell; */
+  border-radius: 12px;
+  height: 200px;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.actividad {
   display: inline-block;
   width: 373px;
   box-shadow: 0 0 3px #78909c;
