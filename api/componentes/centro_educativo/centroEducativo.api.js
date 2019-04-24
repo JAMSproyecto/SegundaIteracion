@@ -3,6 +3,7 @@
 const Tiza = require('chalk');
 const ModelCEdu = require('./centroEducativo.model');
 const ModelUsuario = require('./../usuarios/usuario.model');
+const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ModelCalificacionMEP = require('./../calificacionMep/calificacionMep.model');
 const ModelCalificacionPadre = require('./../calificacion_padre/calificacion_padre.model');
 const ObtenerProvCantDist = require('./../funciones_genericas/obtenerProvCantDist');
@@ -29,7 +30,7 @@ let enviarCorreo = (pCorreoPara, pNombre, pPin) => {
         to: pCorreoPara,
         subject: 'Verificación de correo electrónico',
 
-        html: '<table border=0 cellSpacing=0 cellPadding=0 width="100%" bgColor="#f9f9f9"><tr><td style="font-size: 17px;background-color: #104E8B;color: #FFFFFF;font-weight: 700; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;">Estimado(a) ' + pNombre + '</td></tr> <tr><td style="font-size: 16px;background-color: #FFFFFF;color: #333333;font-weight: 500; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;border-top-color: #CCCCCC;border-right-color: #CCCCCC;border-bottom-color: #CCCCCC;border-left-color: #CCCCCC;">Gracias por registrarse en nuestro sistema, para completar el perfil de usuario necesita el siguiente PIN de validaci&oacute;n:</td></tr><tr><td style="font-size: 22px;background-color: #FFFFFF;color: #565656;font-weight: 800; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;border-top-color: #CCCCCC;border-right-color: #CCCCCC;border-bottom-color: #CCCCCC;border-left-color: #CCCCCC;text-align:center;">' + pPin + '</td></tr></table>'
+        html: '<table border=0 cellSpacing=0 cellPadding=0 width="100%" bgColor="#f9f9f9"><tr><td style="font-size: 17px;background-color: #104E8B;color: #FFFFFF;font-weight: 700; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;">Estimado(a) ' + pNombre + '</td></tr> <tr><td style="font-size: 16px;background-color: #FFFFFF;color: #333333;font-weight: 500; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;border-top-color: #CCCCCC;border-right-color: #CCCCCC;border-bottom-color: #CCCCCC;border-left-color: #CCCCCC;">Su solicitud de usuario fue aprobada, para completar el proceso acceda a <a href="http://127.0.0.1:3000/public/credenciales.html" target="_blank">http://127.0.0.1:3000/public/credenciales.html</a> e ingrese los datos solicitados. El PIN de validaci&oacute;n es:</td></tr><tr><td style="font-size: 22px;background-color: #FFFFFF;color: #565656;font-weight: 800; line-height:30px;font-family: Arial;padding-top: 4px;padding-right: 10px;padding-bottom: 4px;padding-left: 10px;margin-top: 3px;margin-right: 3px;margin-bottom: 3px;margin-left: 3px;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;border-top-color: #CCCCCC;border-right-color: #CCCCCC;border-bottom-color: #CCCCCC;border-left-color: #CCCCCC;text-align:center;">' + pPin + '</td></tr></table>'
     };
 
     transporteCorreo.sendMail(opcionesCorreo, (error, info) => {
@@ -43,6 +44,28 @@ let enviarCorreo = (pCorreoPara, pNombre, pPin) => {
 };
 
 
+/**
+ * Función para insertar en la bitácora
+ * @param  {String} pRealizadaPor Sólo acepta: 'Instalador'|'SuperAdmin'|'CentroEducativo'|'PadreFamilia'.
+ * @param  {String} pAccion Descripción de lo que se va a registrar.
+ * @return {Boolean}
+ */
+let insertarBitacora = async (pRealizadaPor, pAccion) => {
+    try {
+        let bitacora_nuevo = new ModelBitacora({
+            realizadaPor: pRealizadaPor || '',
+            accion: pAccion || '',
+            fecha: ObtenerFecha.get() || ''
+        });
+        let guardarAccion = await bitacora_nuevo.save();
+        console.log(`Se registró en la bitácora: ${pAccion}`);
+    } catch (err) {
+        console.log(`Error al registrar en la bitácora '${pAccion}':`);
+        console.log(err.message);
+        return false;
+    }
+    return true;
+};
 
 let obtenerSoloFecha = (pFecha) => {
     if ('string' == typeof pFecha && pFecha.length > 0) {
@@ -109,11 +132,9 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
         if (existeUsuario < 1) {
 
-            const elPin = ObtenerPin.get();
-
             let registroUsuario = new ModelUsuario();
             registroUsuario.correo = req.body.correoCentro;
-            registroUsuario.pin = elPin;
+            registroUsuario.pin = '_PENDIENTE_';
             registroUsuario.tipo = 'CentroEducativo';
             registroUsuario.fechaCreado = ObtenerFecha.get();
 
@@ -174,9 +195,8 @@ module.exports.registrar_centro_educativo = async (req, res) => {
 
             let guardarCedu = await cEduNuevo.save();
 
-            let enviar = enviarCorreo(req.body.correoContacto, req.body.primerNombre + ' ' + req.body.primerApellido, elPin);
-
             console.log(Tiza.bold.yellow.bgBlack('El centro educativo se registró correctamente'));
+            const log = insertarBitacora('CentroEducativo', `El centro educativo ${req.body.nombre} se registró correctamente`);
             res.json({
                 success: true,
                 message: 'El proceso se realizó de manera exitosa'
@@ -194,6 +214,8 @@ module.exports.registrar_centro_educativo = async (req, res) => {
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error al registrar el centro educativo:'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
+
+        const log = insertarBitacora('CentroEducativo', `Error al registrar el centro educativo ${req.body.nombre}`);
 
         res.json({
             success: false,
@@ -497,5 +519,58 @@ module.exports.obtener_centro_por_id = (req, res) => {
             )
         }
     });
+};
+
+
+module.exports.aprobar_centro_educativo = async (pId, res) => {
+
+    //Obtenemos el correo del centro para hacer el update y el correo del contacto para enviar la notificación por correo. 
+    const elCentro = await ModelCEdu.findOne({ _id: pId }, { _id: 0 }).select('correo contacto');
+
+    if (null === elCentro || 'undefined' === typeof elCentro) {
+
+        console.log(Tiza.bold.yellow.bgBlack(`Error al aprobar el centro educativo: no se encontró el id: ${pId}`));
+        const log = insertarBitacora('SuperAdmin', `Error al aprobar el centro educativo: no se encontró el id #${pId}`);
+
+        res.json({
+            success: false,
+            message: 'No se pudo aprobar el centro educativo'
+        });
+    } else {
+        const correoCentro = elCentro.correo;
+        const correoContacto = elCentro.contacto[0].correo;
+        const nombreContacto = elCentro.contacto[0].primerNombre + ' ' + elCentro.contacto[0].primerApellido;
+        const elPin = ObtenerPin.get();
+
+        const nuevosDatos = { aprobado: true, fechaActualizado: ObtenerFecha.get(), pin: elPin };
+
+
+        ModelUsuario.findOneAndUpdate({ correo: correoCentro }, { $set: nuevosDatos }, { new: true },
+            (err, cambiosRealizados) => {
+                if (err) {
+                    console.log(Tiza.bold.yellow.bgBlack('Error al aprobar el centro educativo:'));
+                    console.log(Tiza.bold.yellow.bgBlack(err));
+
+                    const log = insertarBitacora('SuperAdmin', `Error al aprobar el centro educativo: ${correoCentro}`);
+
+                    res.json({
+                        success: false,
+                        message: 'No se pudo aprobar el centro educativo'
+                    });
+                } else {
+
+                    //enviar el correo
+                    let enviar = enviarCorreo(correoContacto, nombreContacto, elPin);
+
+                    //registrar bitácora
+                    const log = insertarBitacora('SuperAdmin', `El centro educativo ${correoCentro} se aprobó exitosamente`);
+
+                    res.json({
+                        success: true,
+                        message: 'El centro educativo se aprobó exitosamente'
+                    });
+                }
+            });
+    }
 };
 
