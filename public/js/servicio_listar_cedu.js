@@ -35,17 +35,7 @@ let listarCEdu = (pCallback) => {
 
         const elError = 'Error listarCEdu: ' + jqXHR.statusText + ' [' + jqXHR.status + ']  -  ' + jqXHR.responseText;
 
-        console.log(elError);
-
-        //Verificamos que pCallback sea una función
-        if ('function' == typeof (pCallback)) {
-
-            //Ejecutamos la función pCallback
-            pCallback(false, elError);
-
-        } else {
-            throw new Error(elError);
-        }
+        throw new Error(elError);
     });
 };
 
@@ -80,17 +70,7 @@ let listarCEdu_sin_aprobar = (pCallback) => {
 
         const elError = 'Error listarCEdu: ' + jqXHR.statusText + ' [' + jqXHR.status + ']  -  ' + jqXHR.responseText;
 
-        console.log(elError);
-
-        //Verificamos que pCallback sea una función
-        if ('function' == typeof (pCallback)) {
-
-            //Ejecutamos la función pCallback
-            pCallback(false, elError);
-
-        } else {
-            throw new Error(elError);
-        }
+        throw new Error(elError);
     });
 };
 

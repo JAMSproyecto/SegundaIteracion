@@ -96,8 +96,8 @@ let asignar_calificacion_padre = (pCalificacion, pComentario, pCallback) => {
 
     const elError = 'Error asignar_calificacion_padre: ' + jqXHR.statusText + ' [' + jqXHR.status + ']  -  ' + jqXHR.responseText;
 
-    console.log(elError);
-    console.log(textStatus);
+    console.error(elError);
+    console.error(textStatus);
   });
 };
 
