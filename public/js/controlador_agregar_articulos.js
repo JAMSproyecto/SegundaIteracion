@@ -67,7 +67,7 @@ let seleccionar_articulos =() =>{
   if(error || articulos_seleccionados.length <= 0){
     swal.fire({
       type: 'warning',
-      title: '¡Los artículos no fueron agregados de forma correcta!',
+      title: 'Los artículos no fueron agregados de forma correcta',
       text: 'Favor completar los espacios señalados en rojo'
     });
   }else{
