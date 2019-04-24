@@ -269,7 +269,6 @@ module.exports.obtener_todos_centro_educativo = async (req, res) => {
 
 
                     const calificacionesPadre = await ModelCalificacionPadre.find({}, { _id: 0 }).select('idCentro calificacion');
-                    console.log(calificacionesPadre);
 
                     const cantCalificacionesPadre = Object.keys(calificacionesPadre).length;
 
