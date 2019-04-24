@@ -5,7 +5,7 @@ const ModelCalificacionPadre = require('./calificacion_padre.model');
 const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
 const RankingPadres = require('./../funciones_genericas/rankingPadres');
-
+const Mongoose = require('mongoose');
 
 let formatearFecha = (pFecha) => {
     if (pFecha.length > 0) {
@@ -147,94 +147,112 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
     }
 };
 
-module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
+
+module.exports.buscar_calificacion_padre_por_id = (pId, res) => {
+    //https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/		
+
+    let elParametro = '';
     try {
-        const resultado = await ModelCalificacionPadre.findOne({ _id: pId }).select('idPadre idCentro calificacion comentario fecha eliminado');
-        const cantidadResutados = Object.keys(resultado).length;
-        if (cantidadResutados > 0) {
+        elParametro = Mongoose.Types.ObjectId(pId);
+    } catch (e) { }
 
-            let listarResultado = [];
-            const has = Object.prototype.hasOwnProperty;
-            let key;
-            for (key in resultado) {
-                if (!has.call(resultado, key)) continue;
+    try {
 
-                //Si eliminado = true entonces manda vacio el campo de comentario.
-                let elComentario = '';
-                if (false === resultado[key]['eliminado']) {
-                    elComentario = resultado[key]['comentario'] || '';
+        const filtroCalificacion = { _id: { $eq: elParametro } };
+
+        const seleccionar = { _id: 1, idPadre: 1, idCentro: 1, calificacion: 1, comentario: 1, fecha: 1, eliminado: 1, padreFamilia: 1 };
+
+        ModelCalificacionPadre.aggregate([{
+            $lookup: {
+                from: 'padres_familia_',
+                let: { pIdPadre: '$idPadre' },
+                pipeline: [
+                    {
+                        $match:
+                        {
+                            $expr:
+                            {
+                                $and:
+                                    [
+                                        { $eq: ['$_id', '$$pIdPadre'] }
+                                    ]
+                            }
+                        }
+                    },
+                    { $project: { _id: 0, nombre: 1, segundoNombre: 1, apellido: 1, segundoApellido: 1 } }
+                ],
+                as: 'padreFamilia'
+            }
+        },
+        { $sort: { fecha: 1 } },
+        { $project: seleccionar },
+        { $match: filtroCalificacion }
+        ]).exec((err, resultado) => {
+            if (err) {
+                console.log(Tiza.bold.yellow.bgBlack('No se pudo obtener la calificación del padre: '));
+                console.log(Tiza.bold.yellow.bgBlack(err));
+                res.json({
+                    success: false,
+                    message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err}`
+                });
+            } else {
+
+                const cantidadResutados = Object.keys(resultado).length;
+                if (cantidadResutados > 0) {
+
+                    let listarResultado = [];
+                    const has = Object.prototype.hasOwnProperty;
+                    let key;
+                    for (key in resultado) {
+                        if (!has.call(resultado, key)) continue;
+
+                        //Si eliminado = true entonces manda vacio el campo de comentario.
+                        let elComentario = '';
+                        if (false === resultado[key]['eliminado']) {
+                            elComentario = resultado[key]['comentario'] || '';
+                        }
+
+                        let nombrePadre = resultado[key]['padreFamilia'][0].nombre.trim();
+
+                        //Si acaso existe el segundo nombre del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer nombre:
+                        if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoNombre && resultado[key]['padreFamilia'][0].segundoNombre.length > 0) {
+                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoNombre.trim();
+                        }
+
+                        //Añadimos el primer apellido del padreFamilia
+                        nombrePadre += ' ' + resultado[key]['padreFamilia'][0].apellido.trim();
+
+                        //Si acaso existe el segundo apellido del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer apellido:
+                        if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoApellido && resultado[key]['padreFamilia'][0].segundoApellido.length > 0) {
+                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoApellido.trim();
+                        }
+
+
+                        listarResultado.push({
+                            'idCalificacion': resultado[key]['_id'] || 0,
+                            'idCentro': resultado[key]['idCentro'] || 0,
+                            'idPadre': resultado[key]['idPadre'] || 0,
+                            'nombrePadre': nombrePadre || '',
+                            'calificacion': resultado[key]['calificacion'] || 0,
+                            'comentario': elComentario,
+                            'fecha': resultado[key]['fecha'] || '',
+                            'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
+                        });
+                    }
+
+                    res.json({
+                        success: true,
+                        message: listarResultado
+                    });
+                } else {
+                    res.json({
+                        success: false,
+                        message: 'No se encontraron datos'
+                    });
                 }
 
-                listarResultado.push({
-                    'idCalificacion': resultado[key]['_id'] || 0,
-                    'idPadre': resultado[key]['idPadre'] || 0,
-                    'idCentro': resultado[key]['idCentro'] || 0,
-                    'calificacion': resultado[key]['calificacion'] || 0,
-                    'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || '',
-                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
-                });
             }
-
-            res.json({
-                success: true,
-                message: listarResultado
-            });
-        } else {
-            res.json({
-                success: false,
-                message: 'No se encontraron datos'
-            });
-        }
-    } catch (err) {
-        console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err.message));
-        res.json({
-            success: false,
-            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err.message}`
         });
-    }
-};
-
-module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
-    try {
-        const resultado = await ModelCalificacionPadre.find({ idCentro: pId }).select('idPadre idCentro calificacion comentario fecha eliminado').sort({ fecha: 'asc' });
-        const cantidadResutados = Object.keys(resultado).length;
-        if (cantidadResutados > 0) {
-
-            let listarResultado = [];
-            const has = Object.prototype.hasOwnProperty;
-            let key;
-            for (key in resultado) {
-                if (!has.call(resultado, key)) continue;
-
-                //Si eliminado = true entonces manda vacio el campo de comentario.
-                let elComentario = '';
-                if (false === resultado[key]['eliminado']) {
-                    elComentario = resultado[key]['comentario'] || '';
-                }
-
-                listarResultado.push({
-                    'idCalificacion': resultado[key]['_id'] || 0,
-                    'idPadre': resultado[key]['idPadre'] || 0,
-                    'idCentro': resultado[key]['idCentro'] || 0,
-                    'calificacion': resultado[key]['calificacion'] || 0,
-                    'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || '',
-                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
-                });
-            }
-
-            res.json({
-                success: true,
-                message: listarResultado
-            });
-        } else {
-            res.json({
-                success: false,
-                message: 'No se encontraron datos'
-            });
-        }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
@@ -244,6 +262,118 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
         });
     }
 };
+
+
+module.exports.buscar_calificaciones_padre_por_idCentro = (pId, res) => {
+    //https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/		
+    try {
+
+        //Este filtro valida el tipo de dato al usar aggregate, es decir: si idCentro es un int, entonces pId debe ser un int.
+        const filtroCalificacion = { idCentro: { $eq: pId } };
+
+        const seleccionar = { _id: 1, idPadre: 1, idCentro: 1, calificacion: 1, comentario: 1, fecha: 1, eliminado: 1, padreFamilia: 1 };
+
+        ModelCalificacionPadre.aggregate([{
+            $lookup: {
+                from: 'padres_familia_',
+                let: { pIdPadre: '$idPadre' },
+                pipeline: [
+                    {
+                        $match:
+                        {
+                            $expr:
+                            {
+                                $and:
+                                    [
+                                        { $eq: ['$_id', '$$pIdPadre'] }
+                                    ]
+                            }
+                        }
+                    },
+                    { $project: { _id: 0, nombre: 1, segundoNombre: 1, apellido: 1, segundoApellido: 1 } }
+                ],
+                as: 'padreFamilia'
+            }
+        },
+        { $sort: { fecha: 1 } },
+        { $project: seleccionar },
+        { $match: filtroCalificacion }
+        ]).exec((err, resultado) => {
+            if (err) {
+                console.log(Tiza.bold.yellow.bgBlack('No se pudo obtener la calificación del padre: '));
+                console.log(Tiza.bold.yellow.bgBlack(err));
+                res.json({
+                    success: false,
+                    message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err}`
+                });
+            } else {
+
+                const cantidadResutados = Object.keys(resultado).length;
+                if (cantidadResutados > 0) {
+
+                    let listarResultado = [];
+                    const has = Object.prototype.hasOwnProperty;
+                    let key;
+                    for (key in resultado) {
+                        if (!has.call(resultado, key)) continue;
+
+                        //Si eliminado = true entonces manda vacio el campo de comentario.
+                        let elComentario = '';
+                        if (false === resultado[key]['eliminado']) {
+                            elComentario = resultado[key]['comentario'] || '';
+                        }
+
+                        let nombrePadre = resultado[key]['padreFamilia'][0].nombre.trim();
+
+                        //Si acaso existe el segundo nombre del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer nombre:
+                        if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoNombre && resultado[key]['padreFamilia'][0].segundoNombre.length > 0) {
+                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoNombre.trim();
+                        }
+
+                        //Añadimos el primer apellido del padreFamilia
+                        nombrePadre += ' ' + resultado[key]['padreFamilia'][0].apellido.trim();
+
+                        //Si acaso existe el segundo apellido del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer apellido:
+                        if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoApellido && resultado[key]['padreFamilia'][0].segundoApellido.length > 0) {
+                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoApellido.trim();
+                        }
+
+
+                        listarResultado.push({
+                            'idCalificacion': resultado[key]['_id'] || 0,
+                            'idCentro': resultado[key]['idCentro'] || 0,
+                            'idPadre': resultado[key]['idPadre'] || 0,
+                            'nombrePadre': nombrePadre || '',
+                            'calificacion': resultado[key]['calificacion'] || 0,
+                            'comentario': elComentario,
+                            'fecha': resultado[key]['fecha'] || '',
+                            'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
+                        });
+                    }
+
+                    res.json({
+                        success: true,
+                        message: listarResultado
+                    });
+                } else {
+                    res.json({
+                        success: false,
+                        message: 'No se encontraron datos'
+                    });
+                }
+
+            }
+        });
+    } catch (err) {
+        console.log(Tiza.bold.yellow.bgBlack('Error:'));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
+        res.json({
+            success: false,
+            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`
+        });
+    }
+};
+
 
 module.exports.actualizar_comentario_calificacion_padre = (objectReq, res) => {
     ModelCalificacionPadre.findByIdAndUpdate(objectReq.id, { comentario: objectReq.comentario }, err => {
