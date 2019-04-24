@@ -128,7 +128,10 @@ let schemaRegistrarCEdu = new Mongoose.Schema(
 		su propia lista de utiles y relacionar los articulos.
 		* aquí sólo sería poner un array con la lista de los ids de los nivel del centro.
 		*/
-		nivel: {type: TiposEsquema.String, required: true},
+        nivel: {type: TiposEsquema.String, required: true},
+        
+
+        etiquetas: {type: TiposEsquema.String, required: true},
         /*nivel: [{
             idNivel: {type: TiposEsquema.ObjectId, ref: 'centro_educativo_nivel_', required: true},
             listaUtiles: [{

@@ -29,8 +29,20 @@ const InputDepartamentoContacto = document.querySelector('#txtDepartamentoContac
 const InputTelefonoContacto = document.querySelector('#txtTelefonoContacto');
 
 
+
 const BotonRegistrar = document.querySelector('#btnRegistrar');
 
+
+const selectEtiquetas = document.querySelector('#select_etiquetas')
+
+let llenarSelectEtiquetas = () => {
+    let listaEtiquetas = listar_etiquetas();
+    for (let i = 0; i < listaEtiquetas.length; i++) {
+        let opcionEtiqueta = document.createElement('option');
+        opcionEtiqueta.innerHTML = listaEtiquetas[i]['nombre'];
+        selectEtiquetas.appendChild(opcionEtiqueta);
+    };   
+};
 
 let mostrarAlerta = (mensaje, input) => {
 	if (input) {
@@ -138,6 +150,12 @@ let enviarDatos = async () => {
     let Niveles = '';
     if (arrNiveles.length > 0) {
         Niveles = JSON.stringify(obtenerValoresSelect(InputNiveles)) || '';
+    }
+
+    const arrEtiquetas = obtenerValoresSelect(selectEtiquetas);
+    let Etiquetas = '';
+    if (arrEtiquetas.length > 0) {
+        Etiquetas = JSON.stringify(obtenerValoresSelect(selectEtiquetas)) || '';
     }
 
     const IdProvincia = parseInt(InputProvincia.value, 10) || 0;
@@ -293,7 +311,7 @@ let enviarDatos = async () => {
 
     let fotoCentro = '';
 
-    registrarCentroEducativo(Nombre, NombreComercial, CedulaJuridica, CorreoCentro, AnnoFundacion, Resenna, TelefonoCentro, Fax, TipoInstitucion, Niveles, IdProvincia, IdCanton, IdDistrito, DirSennas, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, CorreoContacto, IdentificacionContacto, DepartamentoContacto, TelefonoContacto, fotoCentro);
+    registrarCentroEducativo(Nombre, NombreComercial, CedulaJuridica, CorreoCentro, AnnoFundacion, Resenna, TelefonoCentro, Fax, TipoInstitucion, Niveles, Etiquetas, IdProvincia, IdCanton, IdDistrito, DirSennas, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, CorreoContacto, IdentificacionContacto, DepartamentoContacto, TelefonoContacto, fotoCentro);
 };
 
 BotonRegistrar.addEventListener('click', enviarDatos, false);
@@ -341,6 +359,7 @@ window.onload = () => {
         InputNombre.select();
         InputNombre.focus();
     }
+    llenarSelectEtiquetas();
 };
 
 

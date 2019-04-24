@@ -50,4 +50,20 @@ let modificar_padre =() => {
 };
 
 
-btn_actualizar.addEventListener('click', modificar_padre);
+
+let mostrar_boton = () =>{
+
+    let tipoUsuario = localStorage.getItem('tipoUsuario');
+    console.log(tipoUsuario);
+
+    if (tipoUsuario == 'SuperAdmin') {
+        
+    } else {
+        btn_actualizar.addEventListener('click', modificar_padre);
+    };
+
+};
+
+
+mostrar_boton();
+

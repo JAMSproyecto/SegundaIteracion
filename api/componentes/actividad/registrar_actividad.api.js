@@ -68,12 +68,12 @@ module.exports.registrar_actividad = (req, res) => {
     );
 };
 
-/** 
+/**
  * Listar actividades 
  * @param req {body:idCentro}
  */
 module.exports.listar_todas_actividades = (req, res) => {
-    const filtros = { idCentro: req.body.idCentro };
+    const filtros = { idCentro : req.body.idCentro };
     model_registrar_actividad.find(filtros).sort({ fecha: 'desc' }).then(
         function (resultado) {
             if (resultado) {
@@ -154,7 +154,7 @@ module.exports.buscar_por_id = function (req, res) {
 
 
 module.exports.actualizar_actividad = function (req, res) {
-    console.log(req.body);
+    console.log(req.body.id);
     model_registrar_actividad.findByIdAndUpdate(req.body.id, { $set: req.body }, function (error) {
         if (error) {
             res.json(
@@ -177,7 +177,6 @@ module.exports.actualizar_actividad = function (req, res) {
 }
 
 module.exports.eliminar = function (req, res) {
-    console.log(req.body);
     model_registrar_actividad.findByIdAndRemove(req.body.id,
         function (error) {
             if (error) {

@@ -7,44 +7,29 @@
     <script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    <link rel="stylesheet" href="css/reset.min.css">
-
-
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
 
-    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
-    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="./css/generalFormulario.css">
-    <link rel="stylesheet" href="css/estilosCE.css" />
-    <link rel="stylesheet" href="./css/estilosPadres.css">
     <link rel="stylesheet" href="./css/mostrar_cards.css">
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
 </head>
 
 <body>
-
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__perfil-CE">
+        <div class="bloqueHeader__nombreInstitucion">
+           
             <div class="bloqueHeader__logo">
-                <a href="perfil_padre.html">
-                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                </a>
-            </div>
-            <div class="institucion">
-              
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
+
                 <div class="bloqueHeader__nombreCed">
-                    <span class="titulo_centro_educativo tituloCE"></span>
+                    <span class="titulo_centro_educativo"></span>
                 </div>
 
                 <div class="header__nav">
@@ -55,10 +40,10 @@
                         </a>
                         <ul id="menuOpciones" class="menu_opciones">
                             <li>
-                                <a href="javascript:void(0)">Ver perfil</a>
+                                <a href="./perfil_padre.html">Ver perfil</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Modificar perfil</a>
+                                <a href="./actualizarDatosPadre.html">Modificar perfil</a>
                             </li>
                             <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li>
@@ -73,18 +58,29 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-             
+
             </div>
         </div>
+       
     </header>
 
-    <main id="main">
+    <main>
 
         <section>
             <div class="tituloPrincipal">
                 <h1>Centros educativos</h1>
             </div>
             <div class="tabla__responsive">
+              <div>
+                    <label for="filtrar_cards">Búsqueda por nombre</label>
+                    <input type="text" name="" id="filtrar_cards">
+              </div>  
+              <div>
+                  <label for="select_etiquetas">Filtro por etiquetas</label>
+                  <select id="select_etiquetas"></select>
+              </div>
+
+
                 <div id="cards_centros">
 
                 </div>
@@ -161,23 +157,15 @@
         </div>
     </footer>
 
-    <script src="./js/controlador_nav.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="./js/controlador_nav.js"></script>
 
-    <script src="./js/general.js"></script>
+<script src="./js/sweetalert2.all.min.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/combux.js"></script>
 
-    <!-- datatable -->
-    <script src="./js/dataTables/Buttons/jszip.min.js"></script>
-    <script src="./js/dataTables/jquery.dataTables.es.min.js"></script>
-    <script src="./js/dataTables/Buttons/dataTables.buttons.min.js"></script>
-    <!-- /datatable -->
-
-    <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
-    <script src="./js/direccionUbicacion/controladorListar.js"></script>
-    <script src="./js/servicio_listar_cedu.js"></script>
-    <script src="./js/servicio_calificacionMep.js"></script>
-    <script src="./js/controlador_listar_cedu.js"></script>
+<script src="./js/servicio_registrar_etiqueta.js"></script>
+<script src="./js/servicio_listar_cedu.js"></script>
+<script src="./js/controlador_listar_cedu.js"></script>
 
 </body>
 

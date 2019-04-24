@@ -41,5 +41,12 @@ Router.route('/eliminar_comentario_calificacion_padre/:id').get((req, res) => {
     API.eliminar_comentario_calificacion_padre(req.body.id, res);
 });
 
+/*
+ * Por medio del id obtiene la calificación total del ranking de los padres de familia. Es decir, el número de  estrellitas del centro educativo del 1 al 5.
+*/
+Router.route('/obtener_calificacion_padre_de_centro/:id').get((req, res) => {
+    API.obtener_calificacion_padre_de_centro(req.body.id, res);
+});
+
 module.exports = Router;
 

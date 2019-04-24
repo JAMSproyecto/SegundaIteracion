@@ -24,7 +24,7 @@ module.exports.verificar_credenciales = async (arr, res) => {
 
 
                 const Filtro = {correo: resultado['correo']};
-                const NuevosValores = {$set: {contrasena: arr.contrasenna, pin: ''}};
+                const NuevosValores = {$set: {activo: true, contrasena: arr.contrasenna, pin: ''}};
 
                 ModelUsuarios.updateOne(Filtro, NuevosValores, (err) => {
                     if (err) {

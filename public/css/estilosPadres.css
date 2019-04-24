@@ -1,113 +1,50 @@
-.bloqueHeader__perfil-CE{
-        background: #ff6000 none repeat scroll 0 0;
-        color: #fff;
-        float: left;
-        font-size: 18px;
-        font-weight: bold;
-        position: absolute;
-        width: 320px;
-        height: 70px;
-        padding: 16px;
-      }
-
-.bloqueHeader__perfil-CE::after {
-        border-left: 16px solid #ff6000;
-        border-top: 71px solid rgba(0, 0, 0, 0);
-        content: "";
-        display: inline;
-        float: right;
-        position: absolute;
-        right: -16px;
-        bottom: 0;
-}
-
-
-.bloqueHeader .institucion{
-    margin: 9px 0 0 118px;
-}
-      
-
-.bloqueHeader .bloqueHeader__nombreCed span {
-    font-weight: bold;
-    float: left;
-    padding: 24px 0px;
-    color: #fff;
-    font-size: 17px;
-    margin-left: 23%;
-  }
-  /*--------------------------*/
--------------  
-.padres strong{
-    font-weight: 700;
-    color: #000;
-}
-
-
-.padres span{
-    font-size: 20px;
-}
-.bloque_izquierdo img{
-    padding-left: 64px;
-}
-
-.bloque_derecho{
-    padding-right: 40px;
-}
-.nombre{
-    position: relative;
-    right: 30%;
-    margin: 10px;
-}
-
-.correo{
-    position: relative;
-    right: 48px;
-    margin: 10px;
-}
-
-.telefono{
-    position: relative;
-    right: 25%;
-    margin: 10px;
-}
-
-.cedula{
-    position: relative;
-    right: 38%;
-    margin: 10px;
-}
-
-.provincia{
-    
-        position: relative;
-        right: 47%;
-        margin: 10px;
-}
-
-.canton{
-    position: relative;
-    /* right: 129px; */
-    right: 48%;
-    margin: 10px;
-}
-
-.distrito{
-    position: relative;
-    right: 47%;
-}
-
-.padres{
-    border: 1px solid #b2bec3;
-}
-
-.centros h2{
+.tituloPrincipal-PF h1{
+    font-size: 33px;
+    margin: 0;
     text-align: center;
-    color: #000;
-    font-size: 27px;
-    margin: 26px 0 32px;
-    font-weight: 500px;
-   }
+ 
+    background: #253b80;
+    color:#fff;
+    padding: 10px;
+}
+
+
+.bloquePerfil-PF__columIzquierda img{
+    height: 284px;
+    width: 308px;
+}
+
+.bloquePerfil-PF__contenedor{
+    border: 2px solid #253b80;
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    height: 348px;
+}
 
 
 
+.bloquePerfil-PF__columnas{
+    display: flow-root;
   
+}
+.bloquePerfil-PF .bloquePerfil-PF__columIzquierda{
+    float: left;
+}
+
+
+
+.bloquePerfil-PF .bloquePerfil-PF__columDerecha{
+    float: right;
+    width: 53%;
+    padding: 10px 0;
+}
+
+
+
+.dato{
+    margin: 15px;
+}
+
+
+

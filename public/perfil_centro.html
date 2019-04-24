@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <title>MEP</title>
     <script src="./js/administrador_sesion.js"></script>
 
@@ -15,13 +15,16 @@
     <link rel="stylesheet" href="./css/estiloGeneral.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
+
 
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="./css/tablaDatos.css" />
     <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="css/estilosCE.css" />
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+
+    <link rel="stylesheet" href="./css/iconos.css">
 </head>
 
 <body>
@@ -29,12 +32,12 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
 
-            <div class="bloqueHeader__logo">
+            <div class="bloqueLogo__admin bloqueHeader__logo">
                 <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
         </div>
@@ -42,7 +45,7 @@
             <div class="bloqueHeader__contendorArriba">
 
                 <div class="bloqueHeader__nombreCed">
-                    <span class="titulo_centro_educativo"></span>
+                    <span style="display:none"   class="titulo_centro_educativo"></span>
                 </div>
 
                 <div class="header__nav">
@@ -71,7 +74,7 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-                <span>Nuestra Institución les da la bienvenida</span>
+
             </div>
         </div>
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
@@ -80,26 +83,26 @@
                     title="Cerrar menú"><i class="far fa-times-circle"></i></a>
             </p>
             <ul>
-                <li><a  href="javascript:void(0)">Actividad</a>
+                <li><a href="javascript:void(0)">Actividad</a>
                     <ul>
-                        <li><a  href="registrar_actividad.html">Registrar actividad</a>
+                        <li><a href="registrar_actividad.html">Registrar actividad</a>
                         </li>
-                        <li><a  href="listar_actividad.html">Lista de actividades</a></li>
+                        <li><a href="listar_actividad.html">Lista de actividades</a></li>
                     </ul>
                 </li>
-                <li><a  href="javascript:void(0)">Noticias</a>
+                <li><a href="javascript:void(0)">Noticias</a>
                     <ul>
                         <li><a href="registrar_noticia.html">Registrar noticias</a></li>
-                        <li><a  href="listar_noticia.html">Lista de noticias</a></li>
+                        <li><a href="listar_noticia.html">Lista de noticias</a></li>
                     </ul>
                 </li>
                 <li><a class="utiles" href="javascript:void(0)"> Útiles</a>
                     <ul>
                         <li>
-                            <a href="registrarListaUtilesCentro.html">Registrar lista de
+                            <a class="subtitulos" href="registrarListaUtilesCentro.html">Registrar lista de
                                 útiles</a></li>
 
-                        <li><a href="listaUtilesCentroEducativo.html">Ver lista de
+                        <li><a class="subtitulos" href="listaUtilesCentroEducativo.html">Ver lista de
                                 útiles</a>
                         </li>
                     </ul>
@@ -108,7 +111,7 @@
                 <li><a class="utiles" href="javascript:void(0)"> Citas</a>
                     <ul>
                         <li>
-                            <a class="subtitulos" href="lista_citas.html">lista de citas
+                            <a class="subtitulos" href="lista_citas.html">Lista de citas
                             </a></li>
                     </ul>
                 </li>
@@ -141,124 +144,91 @@
                 <p id='mostrarResennia'></p>
             </div>
         </section>
-        <section id="contenedorNoticias">
-            <div>
-                <h2 class="titulo__secundario">Noticias</h2>
-            </div>
-            <div class="tabla__noticias">
-                <div id="tabla__noticias"></div>
-            </div>
-        </section>
-        <section id="contenedorActividades">
-            <div>
-                <h2 class="titulo__secundario">Actividades</h2>
-            </div>
-            <div class="tabla__actividades">
-                <div id="tabla__actividades" class="contenedor__actividades"></div>
-            </div>
-        </section>
 
-        <section class="bloque__descripcion">
-            <div class="contenedor__servicios">
 
-                <div class="titulo__servicios">
-                    <h2 class="titulo__secundario">Nuestros servicios</h2>
+        <div class="my__60">
+            <div class="contenedor cuerpo">
+                <div class="contenedor contenido">
+                    <section>
+
+                        <div>
+                            <h2 class="titulo__secundario">Comentarios</h2>
+                        </div>
+
+                        <div class="tblAddComentario tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" maxlength="500" rows="2"
+                                                placeholder="Haz un comentario..."></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+
+                                            <div class="text__right">
+                                                <button type="button" class="btn btn--amarillo"
+                                                    id="btnComentar">Agregar</button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="tabla tabla__minimalista" id="tblComentarios">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </section>
+                    <section>
+                        <div class="bloque_calendario">
+                            <h2 class="titulo__secundario">Citas</h2>
+                            <div id="calendario"></div>
+
+                        </div>
+                    </section>
                 </div>
-                <div class="tabla__servicios">
-                    <div class="fila__arriba">
-                        <div class="ser__cafeteria servicio">
-                            <i class="fas faq fa-mug-hot"></i>
-                            <span>Cafetería</span>
-                        </div>
-                        <div class="ser__enfermeria servicio">
-                            <i class="fas faq  fa-user-nurse"></i>
-                            <span>Enfermería</span>
-                        </div>
-                        <div class="ser__transporte servicio">
-                            <span><i class="fas faq  fa-bus"></i></span>
-                            <span>Transporte</span>
-                        </div>
-                        <div class="ser__estudio servicio">
-                            <i class="fas faq fa-user-friends"></i>
-                            <span>Excursiones</span>
-                        </div>
-                    </div>
-                    <div class="fila__abajo">
-                        <div class="ser__laboratorio servicio">
-                            <i class="fas faq fa-flask"></i>
-                            <span>Laboratorio</span>
-                        </div>
-                        <div class="ser__deportes servicio">
-                            <i class="fas faq fa-futbol"></i>
-                            <span>Deportes</span>
-                        </div>
-                        <div class="ser__biblioteca servicio">
-                            <i class="fas faq fa-book"></i>
-                            <span>Biblioteca</span>
-                        </div>
-                        <div class="ser__musica servicio">
-                            <i class="fas faq fa-music"></i>
-                            <span>Música</span>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <section class="bloqueInformacion">
+            <section id="contenedorNoticias">
+                <div>
+                    <h2 class="titulo__secundario">Noticias</h2>
+                </div>
+                <div class="tabla__noticias">
+                    <div id="tabla__noticias"></div>
+                </div>
+                <div class="tabla__noticias">
+                    <div id="tabla__noticias"></div>
+                </div>
+            </section>
+            <section id="contenedorActividades">
+                <div>
+                    <h2 class="titulo__secundario">Actividades</h2>
+                </div>
+                <div class="tabla__actividades">
+                    <div id="tabla__actividades" class="contenedor__actividades"></div>
+                </div>
+            </section>
+        </section>
 
 
-                    <div class="my__60">
-                        <div class="contenedor cuerpo">
-                            <div class="contenedor contenido">
-                                <section>
+        <section class="bloqueServicios">
+            <div class="bloqueServicios__titulo">
+                <h2 class="titulo__secundario">Nuestros servicios</h2>
+            </div>
+            <div class="tabla__servicios">
 
-                                    <div>
-                                        <h2 class="titulo__secundario">Comentarios</h2>
-                                    </div>
+                <div id="tabla__servicios">
+                   
+                </div>
 
-                                    <div class="tblAddComentario tabla__responsive">
-                                        <table class="tabla tabla__minimalista" id="tblAddComentario">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <textarea id="txtEditorComentario" maxlength="500" rows="2"
-                                                            placeholder="Haz un comentario..."></textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-
-
-                                                        <div class="text__right">
-                                                            <button type="button" class="btn btn--amarillo"
-                                                                id="btnComentar">Agregar</button>
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <table class="tabla tabla__minimalista" id="tblComentarios">
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-
-
-                                </section>
-                                <section>
-                                    <div class="bloque_calendario">
-                                        <h2 class="titulo__secundario">Citas</h2>
-                                        <div id="calendario"></div>
-
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
+            </div>
+        </section>
 
 
     </main>
@@ -351,6 +321,7 @@
 
     <script src="./js/servicios_cita.js"></script>
     <script src="./js/servicio_noticia.js"></script>
+    <script src="./js/servicio_servicios.js"></script>
     <script src="./js/servicio_registrar_actividad.js"></script>
     <script src="./js/servicio_perfil_cedu.js"></script>
 

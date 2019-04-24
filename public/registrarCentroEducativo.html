@@ -3,26 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>MEP</title>
     <script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    <link rel="stylesheet" href="css/reset.min.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/animate.min.css">
 
-    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
-    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="./css/generalFormulario.css">
-    <link rel="stylesheet" href="css/estilosCE.css" />
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <link rel="stylesheet" href="./css/estiloBasico.css">
     <link rel="stylesheet" href="./css/generalRegistrarCentro.css">
+<link rel="stylesheet" href="./css/generalFormulario.css">
+    <link rel="stylesheet" href="./css/indicador_de_progreso.css">
 </head>
 
 <body>
@@ -30,16 +28,14 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
-
-            <div class="bloqueHeader__logo">
-                <a href="perfil_admin.html">
-                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                </a>
-
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                    <a href="perfil_admin.html">
+                            <img src="./imgs/logo_mep.png" class="imagen_mep">
+                        </a>
             </div>
         </div>
         <div class="bloqueHeader__filaArriba">
@@ -62,11 +58,6 @@
                             <li>
                                 <a href="javascript:void(0)">Modificar perfil</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -88,59 +79,48 @@
                     <ul>
                         <li><a href="registrarCentroEducativo.html">Registrar centro educativo</a></li>
                         <li><a href="listaCEdu.html">Lista de centros educativos</a></li>
-
-
                     </ul>
                 </li>
-
                 <li>
-                    <a href="#">Rubros</a>
+                    <a class="calificaciones" href="#">Calificaciones</a>
                     <ul>
-
                         <li><a href="registrarRubros.html">Registrar un rubro</a></li>
-                        <li><a href="./agregar_rubros_a_evaluar.html">Rubros</a></li>
-
+                        <li><a href="./agregar_rubros_a_evaluar.html">Lista de rubros</a></li>
                     </ul>
-
                 </li>
-
-
-                <li><a class="utiles" href="#">Útiles</a>
+                <li><a href="#">Útiles</a>
                     <ul>
                         <li><a href="registrar_articulos.html">Registrar artículos</a></li>
                         <li><a href="listar_articulos.html">Listar artículos</a></li>
                         <li><a href="registrar_lista_utiles.html">Registrar lista de útiles</a></li>
-                        <li><a href="listar_lista_utiles.html">Listar útiles</a></li>
+                        <li><a href="listar_lista_utiles.html">Lista de útiles</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#">Usuarios padres de familia</a>
+                <li><a class="padres" href="#">Usuarios padres de familia</a>
                     <ul>
                         <li><a href="listar_padres.html">Lista de padres de familia</a></li>
-
                     </ul>
-
                 </li>
-
-
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a class="subtitulos" href="#">Registrar etiquetas</a></li>
-                        <li><a class="subtitulos" href="#">Listar etiquetas</a>
+                        <li><a href="#">Registrar etiquetas</a></li>
+                        <li><a href="#">Listar etiquetas</a>
                         </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="#"> Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuenteGeneral.html">Registrar
+                                FAQ</a></li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Lista de
+                                FAQ</a></li>
                     </ul>
 
                 </li>
-                <li><a href="#"> Preguntas frecuentes</a>
-                    <ul>
-                        <li><a href="registrarPreguntaFrecuenteGeneral.html">Registrar
-                                FAQ</a></li>
-                        <li><a href="listarPreguntasFrecuentesGenerales.html">Listar
-                                FAQ</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a>Reportes</a>
+                    <a class="reporte">Reportes</a>
                     <ul>
                         <li><a href="#">Ranking:Padres de familia</a></li>
                         <li><a href="#">Ranking:MEP</a></li>
@@ -150,192 +130,270 @@
                 </li>
             </ul>
         </nav>
-
     </header>
-    <div class="text_center">
-        <h1>Registro de centros educativos</h1>
-    </div>
-    <main class="formulario">
-        <section id="informacionGeneral">
 
-            <div class="text_center">
-                <h2>Informaci&oacute;n general</h2>
-            </div>
+    <section id="main">
+        <div class="text__center">
+            <h1 class="titulo__principal">Registro de centros educativos</h1>
+        </div>
 
-            <div class="datos_izq text_center">
+        <div class="barra_progreso">
+            <ul class="indicador_de_progreso">
+                <li id="progreso1" class="en_progreso"><span class="burbuja"></span></li>
+                <li id="progreso2" class=""><span class="burbuja"></span></li>
+                <li id="progreso3" class=""><span class="burbuja"></span></li>
+            </ul>
+        </div>
 
-                <div class="text_center">
-                    <label for="txtNombre">Nombre:</label>
-                    <input id="txtNombre" type="text">
+        <main class="formulario">
+            <section id="informacionGeneral">
+
+                <div class="text__center">
+                    <h2>Informaci&oacute;n general</h2>
                 </div>
-                <div class="text_center">
-                    <label for="txtNombreComercial">Nombre comercial:</label>
-                    <input id="txtNombreComercial" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtCedulaJuridica">C&eacute;dula jur&iacute;dica:</label>
-                    <input id="txtCedulaJuridica" type="number">
-                </div>
-                <div class="text_center">
-                    <label for="txtCorreoCentro">Correo electr&oacute;nico:</label>
-                    <input id="txtCorreoCentro" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtAnnoFundacion">A&ntilde;o de fundaci&oacute;n:</label>
-                    <input id="txtAnnoFundacion" type="number">
-                </div>
-                <div class="text_center">
-                    <label for="fotoCentroEdu">Foto:</label>
-                    <div id="fotoCentroEduArrastrar" class="fotoCentroEdu mb_15">
-                        <div class="fotoCentroEdu__Previa text_center"><img id="fotoCentroEduPrevia" alt=" "
-                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-                        </div>
-                        <div class="text_center mb_15"><span id="pesoFotoCentroEdu"></span></div>
-                        <div class="text_center">
-                            <div class="fotoCentroEdu__archivo">
-                                <button>Buscar...</button>
-                                <input id="fotoCentroEdu" type="file" accept=".jpg,.jpeg,.png">
+
+                <div class="datos_izq text__center">
+
+                    <div class="text__center">
+                        <label for="txtNombre">Nombre:</label>
+                        <input id="txtNombre" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtNombreComercial">Nombre comercial:</label>
+                        <input id="txtNombreComercial" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtCedulaJuridica">C&eacute;dula jur&iacute;dica:</label>
+                        <input id="txtCedulaJuridica" type="number">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtCorreoCentro">Correo electr&oacute;nico:</label>
+                        <input id="txtCorreoCentro" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtAnnoFundacion">A&ntilde;o de fundaci&oacute;n:</label>
+                        <input id="txtAnnoFundacion" type="number">
+                    </div>
+                    <div class="text__center">
+                        <label for="fotoCentroEdu">Foto:</label>
+                        <div id="fotoCentroEduArrastrar" class="fotoCentroEdu mb__15">
+                            <div class="fotoCentroEdu__Previa text__center"><img id="fotoCentroEduPrevia" alt=" "
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                            </div>
+                            <div class="text__center mb__15"><span id="pesoFotoCentroEdu"></span></div>
+                            <div class="text__center">
+                                <div class="fotoCentroEdu__archivo">
+                                    <button>Buscar...</button>
+                                    <input id="fotoCentroEdu" type="file" accept=".jpg,.jpeg,.png">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="datos_der text_center">
+                <div class="datos_der text__center">
 
-                <div class="text_center">
-                    <label for="txtTelefonoCentro">Tel&eacute;fono:</label>
-                    <input id="txtTelefonoCentro" type="number">
-                </div>
-                <div class="text_center">
-                    <label for="txtFax">Fax:</label>
-                    <input id="txtFax" type="number">
-                </div>
-                <div class="text_center">
-                    <label for="sltTipoInstitucion">Tipo de instituci&oacute;n:</label>
-                    <select id="sltTipoInstitucion">
-                        <option value="" disabled selected>Seleccione el tipo de instituci&oacute;n...</option>
-                        <option value="Pública">P&uacute;blica</option>
-                        <option value="Privada">Privada</option>
-                    </select>
-                </div>
-                <div class="text_center">
-                    <label for="sltNiveles">Oferta acad&eacute;mica:</label>
-                    <p>Puede seleccionar una o m&aacute;s</p>
-                    <select id="sltNiveles" multiple>
-                        <option value="Preescolar">Preescolar</option>
-                        <option value="Primaria">Primaria</option>
-                        <option value="Secundaria">Secundaria</option>
-                        <option value="Superior">Superior</option>
-                    </select>
-                </div>
-                <div class="text_center">
-                    <label for="txtResenna">Rese&ntilde;a hist&oacute;rica:</label>
-                    <textarea id="txtResenna"></textarea>
-                </div>
-            </div>
-
-        </section>
-        <div>
-            <hr class="estilo1">
-        </div>
-        <section id="direccion">
-            <div class="text_center">
-                <h2>Direcci&oacute;n</h2>
-            </div>
-            <div class="datos_izq text_center">
-                <div class="text_center">
-                    <label for="sltProvincia">Provincia:</label>
-                    <select id="sltProvincia">
-                        <option value="" disabled selected>Seleccione una provincia...</option>
-                    </select>
-                </div>
-                <div class="text_center">
-                    <label for="sltCanton">Cant&oacute;n:</label>
-                    <select id="sltCanton">
-                        <option value="" disabled selected>Seleccione un cant&oacute;n...</option>
-                    </select>
-                </div>
-                <div class="text_center">
-                    <label for="sltDistrito">Distrito:</label>
-                    <select id="sltDistrito">
-                        <option value="" disabled selected>Seleccione un distrito...</option>
-                    </select>
-                </div>
-                <div class="text_center">
-                    <label for="txtDirSennas">Direcci&oacute;n con se&ntilde;as:</label>
-                    <textarea id="txtDirSennas"></textarea>
-                </div>
-            </div>
-            <div class="datos_der text_center">
-                <div class="text_center">
-                    <label for="contenedorMapa">Ubicaci&oacute;n:</label>
-                    <!-- Si se pone class no se muestra el mapa -->
-                    <div id="contenedorMapa"
-                        style="width: 80%; height: 240px;border: 1px dashed #565656; background: #f1f1f1; margin:0 auto;">
+                    <div class="text__center">
+                        <label for="txtTelefonoCentro">Tel&eacute;fono:</label>
+                        <input id="txtTelefonoCentro" type="number">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtFax">Fax:</label>
+                        <input id="txtFax" type="number">
+                    </div>
+                    <div class="text__center">
+                        <label for="sltTipoInstitucion">Tipo de instituci&oacute;n:</label>
+                        <select id="sltTipoInstitucion">
+                            <option value="" disabled selected>Seleccione el tipo de instituci&oacute;n...</option>
+                            <option value="Pública">P&uacute;blica</option>
+                            <option value="Privada">Privada</option>
+                        </select>
+                    </div>
+                    <div class="text__center">
+                        <label for="sltNiveles">Oferta acad&eacute;mica:</label>
+                        <p>Puede seleccionar una o m&aacute;s</p>
+                        <select id="sltNiveles" multiple>
+                            <option value="Preescolar">Preescolar</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Superior">Superior</option>
+                        </select>
+                    </div>
+                    <div class="text__center">
+                        <label for="txtResenna">Rese&ntilde;a hist&oacute;rica:</label>
+                        <textarea id="txtResenna"></textarea>
                     </div>
                 </div>
+
+            </section>
+            <div>
+                <hr class="estilo1">
             </div>
-        </section>
-        <div>
-            <hr class="estilo1">
+            <section id="direccion">
+                <div class="text__center">
+                    <h2>Direcci&oacute;n</h2>
+                </div>
+                <div class="datos_izq text__center">
+                    <div class="text__center">
+                        <label for="sltProvincia">Provincia:</label>
+                        <select id="sltProvincia">
+                            <option value="" disabled selected>Seleccione una provincia...</option>
+                        </select>
+                    </div>
+                    <div class="text__center">
+                        <label for="sltCanton">Cant&oacute;n:</label>
+                        <select id="sltCanton">
+                            <option value="" disabled selected>Seleccione un cant&oacute;n...</option>
+                        </select>
+                    </div>
+                    <div class="text__center">
+                        <label for="sltDistrito">Distrito:</label>
+                        <select id="sltDistrito">
+                            <option value="" disabled selected>Seleccione un distrito...</option>
+                        </select>
+                    </div>
+                    <div class="text__center">
+                        <label for="txtDirSennas">Direcci&oacute;n con se&ntilde;as:</label>
+                        <textarea id="txtDirSennas"></textarea>
+                    </div>
+                </div>
+                <div class="datos_der text__center">
+                    <div class="text__center">
+                        <label for="contenedorMapa">Ubicaci&oacute;n:</label>
+                        <!-- Si se pone class no se muestra el mapa -->
+                        <div id="contenedorMapa"
+                            style="width: 80%; height: 240px;border: 1px dashed #565656; background: #f1f1f1; margin:0 auto;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div>
+                <hr class="estilo1">
+            </div>
+            <section id="contacto">
+                <div class="text__center">
+                    <h2>Contacto</h2>
+                </div>
+                <div class="datos_izq text__center">
+                    <div class="text__center">
+                        <label for="txtPrimerNombre">Primer nombre:</label>
+                        <input id="txtPrimerNombre" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtSegundoNombre">Segundo nombre:</label>
+                        <input id="txtSegundoNombre" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtPrimerApellido">Primer apellido:</label>
+                        <input id="txtPrimerApellido" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtSegundoApellido">Segundo apellido:</label>
+                        <input id="txtSegundoApellido" type="text">
+                    </div>
+                </div>
+                <div class="datos_der text__center">
+
+                    <div class="text__center">
+                        <label for="txtCorreoContacto">Correo electr&oacute;nico:</label>
+                        <input id="txtCorreoContacto" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtIdentificacionContacto">Identificaci&oacute;n:</label>
+                        <input id="txtIdentificacionContacto" type="number">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtDepartamentoContacto">Departamento:</label>
+                        <input id="txtDepartamentoContacto" type="text">
+                    </div>
+                    <div class="text__center">
+                        <label for="txtTelefonoContacto">Tel&eacute;fono:</label>
+                        <input id="txtTelefonoContacto" type="number">
+                    </div>
+                </div>
+            </section>
+            <div class="mb__15">
+                <hr class="estilo1">
+            </div>
+
+
+
+
+        </main>
+        <div class="bloqueBoton text__center mb__15">
+            <button class="btn btn--amarillo btn--celeste mb__15" id="btnRegistrar">Registrar</button>
         </div>
-        <section id="contacto">
-            <div class="text_center">
-                <h2>Contacto</h2>
-            </div>
-            <div class="datos_izq text_center">
-                <div class="text_center">
-                    <label for="txtPrimerNombre">Primer nombre:</label>
-                    <input id="txtPrimerNombre" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtSegundoNombre">Segundo nombre:</label>
-                    <input id="txtSegundoNombre" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtPrimerApellido">Primer apellido:</label>
-                    <input id="txtPrimerApellido" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtSegundoApellido">Segundo apellido:</label>
-                    <input id="txtSegundoApellido" type="text">
-                </div>
-            </div>
-            <div class="datos_der text_center">
+    </section>
 
-                <div class="text_center">
-                    <label for="txtCorreoContacto">Correo electr&oacute;nico:</label>
-                    <input id="txtCorreoContacto" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtIdentificacionContacto">Identificaci&oacute;n:</label>
-                    <input id="txtIdentificacionContacto" type="number">
-                </div>
-                <div class="text_center">
-                    <label for="txtDepartamentoContacto">Departamento:</label>
-                    <input id="txtDepartamentoContacto" type="text">
-                </div>
-                <div class="text_center">
-                    <label for="txtTelefonoContacto">Tel&eacute;fono:</label>
-                    <input id="txtTelefonoContacto" type="number">
-                </div>
+    <footer>
+        <div class="footer__cuerpo">
+            <div class="footer__flex">
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Contacto</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                            22-24-66-88</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-fax"></i> Fax:
+                            29-53-55-22</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                            educacion@ucenfotec.com</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Direcci&oacute;n</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
+                            Jos&eacute;,
+                            Barrio Cristo
+                            Rey</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24,
+                            calle
+                            12</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Citas</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="far fa-calendar-alt"></i> Agendar</a></li>
+                </ul>
+                <section class="footer__social__seccion footer__flex">
+                    <span class="footer__social__traslapar footer__social__conectate">
+                        Conectate <span class="footer__social__pequeno">con</span> nosotros
+                    </span>
+                    <span class="footer__social__traslapar footer__social__iconos__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
+                                class="fab fa-twitter-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
+                    </span>
+                </section>
+                <section class="footer__inferior__seccion footer__flex">
+                    <div class="footer__inferior__envoltura">
+                        <i class="fa fa-copyright"></i> 2019
+                        <address class="footer__direccion__compania">JAMS</address>
+                        <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
+                    </div>
+                    <div class="footer__inferior__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
+                            class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
+                    </div>
+                </section>
             </div>
-        </section>
-        <div class="mb_15">
-            <hr class="estilo1">
         </div>
-
-
-
-
-    </main>
-
-    <div class="bloqueBoton">
-        <button class=" btn--amarillo" id="btnRegistrar">Registrar</button>
-    </div>
-
-
+    </footer>
 
 
     <script src="./js/controlador_nav.js"></script>

@@ -59,23 +59,34 @@ module.exports.registrar_calificacionMEP = (req, res) => {
 
 module.exports.listar_calificacionMEP = (req, res) => {
     const filtros = { idCentro: req.body.idCentro };
-    modelCalificacionMEP.find(filtros).then(
+    modelCalificacionMEP.findOne(filtros).then(
         function (data) {
-            if (data.length > 0) {
-                res.json(
-                    {
-                        success: true,
-                        data: data
+            if(data){
+                const cantidadResutados = Object.keys(data).length;
+                if (cantidadResutados > 0) {
+                        res.json(
+                            {
+                                success: true,
+                                msg: data
+                            }
+                        )
+                    } else {
+                        res.json(
+                            {
+                                success: false,
+                                msg: 'Datos no encontrados'
+                            }
+                        )
                     }
-                )
-            } else {
+            }else{
                 res.json(
                     {
                         success: false,
-                        data: 'Datos no encontrados'
+                        msg: 'Datos no encontrados'
                     }
                 )
             }
+          
         }
     );
 };

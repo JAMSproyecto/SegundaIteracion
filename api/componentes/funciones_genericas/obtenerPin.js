@@ -1,3 +1,5 @@
+'use strict';
+
 let obtenerPin = () => {
     const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
     const string_length = 6;

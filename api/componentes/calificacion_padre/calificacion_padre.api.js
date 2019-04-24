@@ -4,6 +4,35 @@ const Tiza = require('chalk');
 const ModelCalificacionPadre = require('./calificacion_padre.model');
 const ModelBitacora = require('./../bitacora_transaccional/bitacora.model');
 const ObtenerFecha = require('./../funciones_genericas/obtenerFecha');
+const RankingPadres = require('./../funciones_genericas/rankingPadres');
+
+
+let formatearFecha = (pFecha) => {
+    if (pFecha.length > 0) {
+        const fecha = new Date(pFecha);
+        const anio = fecha.getFullYear();
+        let dia_mes = fecha.getDate();
+        let mes = fecha.getMonth();
+        let h = fecha.getHours();
+        let m = fecha.getMinutes();
+        mes += 1;
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        if (dia_mes < 10) {
+            dia_mes = '0' + dia_mes;
+        }
+        if (h < 10) {
+            h = '0' + h;
+        }
+        if (m < 10) {
+            m = '0' + m;
+        }
+        return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+    } else {
+        return '';
+    }
+};
 
 /**
  * Función para insertar en la bitácora
@@ -30,22 +59,32 @@ let insertarBitacora = async (pRealizadaPor, pAccion) => {
 
 module.exports.asignar_calificacion_padre = async (objectReq, res) => {
     try {
-        let registro = new ModelCalificacionPadre();
-        registro.idPadre = objectReq.idPadre;
-        registro.idCentro = objectReq.idCentro;
-        registro.calificacion = objectReq.calificacion;
-        registro.comentario = objectReq.comentario;
-        registro.fecha = ObtenerFecha.get();
 
-        let guardarRegistro = await registro.save();
+        const elPadreYaCalifico = await ModelCalificacionPadre.find({ idPadre: objectReq.idPadre, idCentro: objectReq.idCentro }).countDocuments();
 
-        const log = await insertarBitacora('PadreFamilia', `El padre #${objectReq.idPadre} asignó la calificación '${objectReq.calificacion}' al centro educativo #${objectReq.idCentro}. Comentario: ${objectReq.comentario}`);
+        if (elPadreYaCalifico > 0) {
+            res.json({
+                success: false,
+                message: 'Ya has calificado a esta institución'
+            });
+        } else {
 
-        res.json({
-            success: true,
-            message: 'La calificación se asignó correctamente'
-        });
+            let registro = new ModelCalificacionPadre();
+            registro.idPadre = objectReq.idPadre;
+            registro.idCentro = objectReq.idCentro;
+            registro.calificacion = objectReq.calificacion;
+            registro.comentario = objectReq.comentario;
+            registro.fecha = ObtenerFecha.get();
 
+            let guardarRegistro = await registro.save();
+
+            const log = await insertarBitacora('PadreFamilia', `El padre #${objectReq.idPadre} asignó la calificación '${objectReq.calificacion}' al centro educativo #${objectReq.idCentro}. Comentario: ${objectReq.comentario}`);
+
+            res.json({
+                success: true,
+                message: 'La calificación se asignó de manera exitosa'
+            });
+        }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error al asignar la calificación del padre:'));
         console.log(Tiza.bold.yellow.bgBlack(err.message));
@@ -54,7 +93,7 @@ module.exports.asignar_calificacion_padre = async (objectReq, res) => {
 
         res.json({
             success: false,
-            message: 'Error al asignar la calificación'
+            message: `No se pudo asignar la calificación, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -72,7 +111,7 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
                 if (!has.call(resultado, key)) continue;
 
                 //Si eliminado = true entonces manda vacio el campo de comentario.
-                const elComentario = '';
+                let elComentario = '';
                 if (false === resultado[key]['eliminado']) {
                     elComentario = resultado[key]['comentario'] || '';
                 }
@@ -83,7 +122,8 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
@@ -94,15 +134,15 @@ module.exports.obtener_todas_calificaciones_padre = async (req, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontraron calificaciones'
+                message: 'No se encontraron datos'
             });
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: 'Error al obtener los calificaciones'
+            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -120,7 +160,7 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
                 if (!has.call(resultado, key)) continue;
 
                 //Si eliminado = true entonces manda vacio el campo de comentario.
-                const elComentario = '';
+                let elComentario = '';
                 if (false === resultado[key]['eliminado']) {
                     elComentario = resultado[key]['comentario'] || '';
                 }
@@ -131,7 +171,8 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
@@ -142,15 +183,15 @@ module.exports.buscar_calificacion_padre_por_id = async (pId, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontró la calificación'
+                message: 'No se encontraron datos'
             });
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: 'Error al obtener la calificación'
+            message: `No se pudieron obtener las calificaciones, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -168,7 +209,7 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
                 if (!has.call(resultado, key)) continue;
 
                 //Si eliminado = true entonces manda vacio el campo de comentario.
-                const elComentario = '';
+                let elComentario = '';
                 if (false === resultado[key]['eliminado']) {
                     elComentario = resultado[key]['comentario'] || '';
                 }
@@ -179,7 +220,8 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
                     'idCentro': resultado[key]['idCentro'] || 0,
                     'calificacion': resultado[key]['calificacion'] || 0,
                     'comentario': elComentario,
-                    'fecha': resultado[key]['fecha'] || ''
+                    'fecha': resultado[key]['fecha'] || '',
+                    'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
                 });
             }
 
@@ -190,15 +232,15 @@ module.exports.buscar_calificaciones_padre_por_idCentro = async (pId, res) => {
         } else {
             res.json({
                 success: false,
-                message: 'No se encontró la calificación'
+                message: 'No se encontraron datos'
             });
         }
     } catch (err) {
         console.log(Tiza.bold.yellow.bgBlack('Error:'));
-        console.log(Tiza.bold.yellow.bgBlack(err));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
         res.json({
             success: false,
-            message: 'Error al obtener la calificación'
+            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`
         });
     }
 };
@@ -209,10 +251,10 @@ module.exports.actualizar_comentario_calificacion_padre = (objectReq, res) => {
             console.log(Tiza.bold.yellow.bgBlack(`No se pudo actualizar el comentario de la calificación: ${objectReq.id} :`));
             console.log(Tiza.bold.yellow.bgBlack(err));
             const log = insertarBitacora('PadreFamilia', `No se pudo actualizar el comentario de la calificación: ${objectReq.id}`);
-            res.json({ success: false, message: 'No se pudo actualizar el comentario de la calificación' });
+            res.json({ success: false, message: `No se pudo actualizar el comentario de la calificación, ocurrió el siguiente error: #${err}` });
         } else {
             const log = insertarBitacora('PadreFamilia', `Se actualizó correctamente el comentario de la calificación: ${objectReq.id}`);
-            res.json({ success: true, message: 'El comentario de la calificación se actualizó correctamente' });
+            res.json({ success: true, message: 'Los datos se actualizaron exitosamente' });
         }
     });
 };
@@ -224,10 +266,38 @@ module.exports.eliminar_comentario_calificacion_padre = (pId, res) => {
             console.log(Tiza.bold.yellow.bgBlack(`No se pudo eliminar el comentario de la calificación: ${pId} :`));
             console.log(Tiza.bold.yellow.bgBlack(err));
             const log = insertarBitacora('PadreFamilia', `No se pudo eliminar el comentario de la calificación: ${pId}`);
-            res.json({ success: false, message: 'No se pudo eliminar el comentario de la calificación' });
+            res.json({ success: false, message: `No se pudo eliminar el comentario de la calificación, ocurrió el siguiente error: #${err}` });
         } else {
             const log = insertarBitacora('PadreFamilia', `Se eliminó correctamente el comentario de la calificación: ${pId}`);
-            res.json({ success: true, message: 'El comentario de la calificación se eliminó correctamente' });
+            res.json({ success: true, message: 'El dato se eliminó exitosamente' });
         }
     });
 };
+
+
+module.exports.obtener_calificacion_padre_de_centro = async (pId, res) => {
+    try {
+        const calificaciones = await ModelCalificacionPadre.find({ idCentro: pId }, { _id: 0 }).select('calificacion');
+        const elRankingPadres = await RankingPadres.get(calificaciones);
+        if (elRankingPadres < 0) {
+            res.json({
+                success: false,
+                message: 'No se pudo obtener la calificación'
+            });
+        } else {
+            res.json({
+                success: true,
+                message: elRankingPadres
+            });
+        }
+    } catch (err) {
+        console.log(Tiza.bold.yellow.bgBlack('Error al obtener la calificación-padre del centro:'));
+        console.log(Tiza.bold.yellow.bgBlack(err.message));
+
+        res.json({
+            success: false,
+            message: `No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`
+        });
+    }
+};
+

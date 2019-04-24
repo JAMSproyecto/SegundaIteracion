@@ -14,13 +14,19 @@ let mostrar_datos = () =>{
        articulos[i]['descripcion'].toLowerCase().includes(filtro.toLowerCase())){
      
         let fila = tabla.insertRow();
+      
+
         fila.insertCell().innerHTML = articulos[i]['nombre'];
         fila.insertCell().innerHTML = articulos[i]['descripcion'];
-
+        let celda_actualizar = fila.insertCell();
         //se agrego el boton para Modificar 
         let btn_actualizar = document.createElement('a');
+        btn_actualizar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
         btn_actualizar.dataset.id_articulo = articulos[i]['_id'];
-        btn_actualizar.classList.add('fas', 'fa-pencil-alt');
+     
+        celda_actualizar.appendChild(btn_actualizar);
+
+
         //se llama a la función para Modificar el articulo
         btn_actualizar.addEventListener('click', function(){
           Swal.fire({
@@ -34,8 +40,7 @@ let mostrar_datos = () =>{
             }
           })
         });
-        let celda_actualizar = fila.insertCell();
-        celda_actualizar.appendChild(btn_actualizar);
+    
 
         //se agrego el boton para eliminar artículos
         let btn_eliminar = document.createElement('a');
@@ -61,7 +66,7 @@ let mostrar_datos = () =>{
           let btn_activar = document.createElement('a');
           btn_activar.dataset.id_articulo = articulos[i]['_id'];
           btn_activar.dataset.estado = articulos[i]['estado'];
-          btn_activar.classList.add('fas','fa-user-minus');
+          btn_activar.classList.add('fas','desactivo','fa-user-minus');
           btn_activar.addEventListener('click',activar_desactivar_articulos);
           celda_estado.appendChild(btn_activar);
         }

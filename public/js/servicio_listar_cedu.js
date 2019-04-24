@@ -35,17 +35,42 @@ let listarCEdu = (pCallback) => {
 
         const elError = 'Error listarCEdu: ' + jqXHR.statusText + ' [' + jqXHR.status + ']  -  ' + jqXHR.responseText;
 
-        console.log(elError);
+        throw new Error(elError);
+    });
+};
+
+
+let listarCEdu_sin_aprobar = (pCallback) => {
+    let request = $.ajax({
+        url: 'http://127.0.0.1:4000/api/obtener_centros_educativos_sin_aprobar',
+        method: 'GET',
+        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        cache: false
+    }).done((respuesta) => {
 
         //Verificamos que pCallback sea una función
         if ('function' == typeof (pCallback)) {
 
-            //Ejecutamos la función pCallback
-            pCallback(false, elError);
+            //Verificamos que respuesta sea un JSON
+            if ('object' == typeof (respuesta)) {
 
+                //Ejecutamos la función pCallback
+                pCallback(respuesta.success, respuesta.message);
+            } else {
+
+                //Ejecutamos la función pCallback
+                pCallback(false, respuesta);
+
+            }
         } else {
-            throw new Error(elError);
+            throw new Error('Se esperaba una función');
         }
+    }).fail((jqXHR, textStatus) => {
+
+        const elError = 'Error listarCEdu: ' + jqXHR.statusText + ' [' + jqXHR.status + ']  -  ' + jqXHR.responseText;
+
+        throw new Error(elError);
     });
 };
 

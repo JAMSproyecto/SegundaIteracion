@@ -10,34 +10,41 @@
     <link href="./css/reset.min.css" rel="stylesheet">
     <link href="./css/fontawesome/all.min.css" rel="stylesheet">
     <link href="./css/animate.min.css" rel="stylesheet">
-    <link href="./css/estiloGeneral.css" rel="stylesheet">
-    <link href="./css/headerCentro.css" rel="stylesheet">
+    <link href="./css/estiloBasico.css" rel="stylesheet">
+    <link href="./css/headerGeneral.css" rel="stylesheet">
     <link href="./css/tablaDatos.css" rel="stylesheet">
     <link href="./css/footer.css" rel="stylesheet">
     <link href="./css/landing_page.css" rel="stylesheet">
+    <link  href="./css/mostrar_cards.css">
 </head>
 
 <body>
-    <header>
-        <div class="column__arriba">
-		<div class="logo">
-                    <img src="imgs/logo_mep.png" class="imagen_mep">
-                </div>
-            <nav class="menu__arriba">
-                <div class="colum__abajo">
-                    <nav class="menu__registrarse">
-                        <ul>
-                            <li> <a class="btn_top" class="registrarse" href="registro_padres.html">Registrarse como padre de familia</a></li>
-                            <li><a class="btn_top" href="registroCentroLanpage.html">Registrarse como centro educativo</a></li>
-                            <li>
-							    <a class="btn btn--amarillo" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </nav>
+
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
+            </div>
         </div>
-    </header>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+                
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+<a class="menu__palanca__btn" href="registro_padres.html">Registrarse como padre de familia</a>
+<a class="menu__palanca__btn" href="registroCentroLanpage.html">Registrarse como centro educativo</a>
+<a class="btn btn--amarillo" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>     
+                    </div>
+                </div>
+            </div>
+        </div>
+     </header>
+
     <main class="mb__15">
         <section class="top10 mb__15">
 		    <div class="text__center">
@@ -47,32 +54,16 @@
             <div class="text__center">
                 <h2>P&uacute;blicos</h2>
             </div>
-            <div class="tabla__responsive mb__15">
-                <table id="tblCentrosEducativosPub" class="tabla tabla__rayada">
-                    <thead>
-                        <tr class="cabecera--celeste">
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="tabla__responsive mb__15" id="lista_publicos">
+
             </div>
             </div>			
             <div class="datos_der">
 			 <div class="text__center">
                 <h2>Privados</h2>
             </div>
-            <div class="tabla__responsive mb__15">
-                <table id="tblCentrosEducativosPriv" class="tabla tabla__rayada">
-                    <thead>
-                        <tr class="cabecera--celeste">
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="tabla__responsive mb__15" id="lista_privados">
+             
             </div>
             </div>
         </section>
@@ -153,9 +144,9 @@
 	
 	<script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/jquery-3.3.1.min.js"></script>
-	<script src="./js/servicio_landing_page.js"></script>
-	<script src="./js/controlador_landing_page.js"></script>
-	
+    <script src="./js/servicio_landing_page.js"></script>
+    <script src="./js/servicio_listar_cedu.js"></script>
+    <script src="./js/controlador_index.js"></script>
 	
 </body>
 </html>

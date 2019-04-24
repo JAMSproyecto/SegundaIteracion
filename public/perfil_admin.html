@@ -8,33 +8,23 @@
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <link rel="stylesheet" href="css/reset.min.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
-
-    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
-    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" href="./css/tablaDatos.css" />
-    <link rel="stylesheet" href="./css/generalFormulario.css">
-    <link rel="stylesheet" href="css/estilosCE.css" />
+    <link rel="stylesheet" href="./css/headerGeneral.css">
+    <link rel="stylesheet" href="./css/tablas.css">
+    <link rel="stylesheet" href="css/mostrar_cards.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
 </head>
 
 <body>
-
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
-
-            <div class="bloqueHeader__logo">
+            <div class="bloqueLogo__admin bloqueHeader__logo">
                 <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
         </div>
@@ -58,11 +48,7 @@
                             <li>
                                 <a href="javascript:void(0)">Modificar perfil</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                          
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -84,59 +70,48 @@
                     <ul>
                         <li><a href="registrarCentroEducativo.html">Registrar centro educativo</a></li>
                         <li><a href="listaCEdu.html">Lista de centros educativos</a></li>
-
-
                     </ul>
                 </li>
-
                 <li>
-                    <a href="#">Rubros</a>
+                    <a class="calificaciones" href="#">Rubros</a>
                     <ul>
-
-                        <li><a href="registrarRubros.html">Registrar un rubro</a></li>
-                        <li><a href="./agregar_rubros_a_evaluar.html">Rubros</a></li>
-
+                        <li><a href="#">Registrar un rubro</a></li>
+                        <li><a href="./agregar_rubros_a_evaluar.html">Lista de rubros</a></li>
                     </ul>
-
                 </li>
-
-
-                <li><a class="utiles" href="#">Útiles</a>
+                <li><a href="#">Útiles</a>
                     <ul>
                         <li><a href="registrar_articulos.html">Registrar artículos</a></li>
-                        <li><a href="listar_articulos.html">Listar artículos</a></li>
+                        <li><a href="listar_articulos.html">Lista de artículos</a></li>
                         <li><a href="registrar_lista_utiles.html">Registrar lista de útiles</a></li>
-                        <li><a href="listar_lista_utiles.html">Listar útiles</a></li>
+                        <li><a href="listar_lista_utiles.html">Lista de útiles</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#">Usuarios padres de familia</a>
+                <li><a class="padres" href="#">Usuarios padres de familia</a>
                     <ul>
                         <li><a href="listar_padres.html">Lista de padres de familia</a></li>
-
                     </ul>
-
                 </li>
-
-
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a class="subtitulos" href="#">Registrar etiquetas</a></li>
-                        <li><a class="subtitulos" href="#">Listar etiquetas</a>
+                        <li><a href="registrar_etiquetas.html">Registrar etiqueta</a></li>
+                        <li><a href="listaEtiquetas.html">Lista de etiquetas</a>
                         </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="#"> Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuenteGeneral.html">Registrar
+                                FAQ</a></li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Lista de
+                                FAQ</a></li>
                     </ul>
 
                 </li>
-                <li><a href="#"> Preguntas frecuentes</a>
-                    <ul>
-                        <li><a href="registrarPreguntaFrecuenteGeneral.html">Registrar
-                                FAQ</a></li>
-                        <li><a href="listarPreguntasFrecuentesGenerales.html">Listar
-                                FAQ</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a>Reportes</a>
+                    <a class="reporte">Reportes</a>
                     <ul>
                         <li><a href="#">Ranking:Padres de familia</a></li>
                         <li><a href="#">Ranking:MEP</a></li>
@@ -146,47 +121,29 @@
                 </li>
             </ul>
         </nav>
-
     </header>
-    <main>
+    <main id="main">
         <section>
-            <div class="centros__aprobados">
-                <div class="titulo__tablas">
-                    <strong>Lista de centros educativos por aprobar</strong>
-                </div>
-                <table id="tbl_centro">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Centro</th>
-                            <th>Cédula Juridica</th>
-                            <th>Correo</th>
-                            <th>Ubicación</th>
-                            <th>Fecha</th>
-
-                        </tr>
-                    </thead>
-                </table>
+            <div class="tituloPrincipal">
+                <h1>Centros educativos pendientes de aprobación</h1>
             </div>
-            <div class="centros__atrasados">
-                <div class="titulo__tablas">
-                    <strong>Lista de centros educativos atrasados</strong>
+            <div class="tabla__responsive">
+                <input type="text" name="" id="filtrar_cards">
+                <div id="cards_centros">
+
                 </div>
-                <table id="tbl_centro">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Centro</th>
-                            <th>Cédula Juridica</th>
-                            <th>Correo</th>
-                            <th>Ubicación</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                </table>
             </div>
         </section>
     </main>
 </body>
 
 <script src="./js/controlador_nav.js"></script>
+
+<script src="./js/sweetalert2.all.min.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+
+<script src="./js/combux.js"></script>
+<script src="./js/servicio_listar_cedu.js"></script>
+<script src="./js/controlador_perfil_admin.js"></script>
 
 </html>

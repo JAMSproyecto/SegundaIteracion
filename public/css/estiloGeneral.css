@@ -7,8 +7,8 @@ body {
 }
 
 
-h2{
-  text-align: center;
+.tituloCE {
+  margin-top: 60px;
 }
 
 .tituloPrincipal{
@@ -17,7 +17,26 @@ h2{
   margin: 31px 0px;
 
 }
+.tituloRubro h2 {
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+  font-size: 35px;
 
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.2;
+  font-weight: 500;
+}
 
 h1 {
   font-size: 33px;
@@ -31,5 +50,27 @@ h2 {
   font-weight: 700;
 }
 
+
+.mainPerfil-CE{
+  padding: 0;
+}
+
+
+.titulo__principal {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.titulo__secundario {
+  color: #17c0eb;
+  font-size: 21px;
+  font-weight: 600;
+  padding: 10px 49px;
+}
+
+.titulo__secundario__registro {
+  padding: 10px 0px;
+}
 
 

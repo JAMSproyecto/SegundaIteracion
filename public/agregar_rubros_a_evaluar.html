@@ -7,42 +7,35 @@
     <script src="./js/administrador_sesion.js"></script>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="css/reset.min.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
-
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
-    <link rel="stylesheet" href="./css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css" />
-
-    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
-    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" href="./css/tablaDatos.css" />
+    <link rel="stylesheet" href="css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="css/headerGeneral.css" />
+    <link rel="stylesheet" href="css/formularios.css" />
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/tablas.css" />
     <link rel="stylesheet" href="./css/generalFormulario.css">
-
-    <link rel="stylesheet" href="./css/tablas.css" />
-
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
+    <link rel="stylesheet" href="./css/iconos.css">
 </head>
 
 <body>
-
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
-            <div class="bloqueHeader__iconolateral">
-                <span onclick="menuNavVisible(true); return false;">&#9776;</span>
-            </div>
-
-            <div class="bloqueHeader__logo">
-                <a href="perfil_admin.html">
-                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                </a>
-
-            </div>
-        </div>
+            <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+                    <div class="bloqueHeader__iconolateral">
+                        <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+                    </div>
+                    <div class="bloqueLogo__admin bloqueHeader__logo">
+                            <a href="perfil_admin.html">
+                                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                                </a>
+                    </div>
+                </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
 
@@ -50,28 +43,24 @@
                     <span class="titulo_centro_educativo"></span>
                 </div>
 
+              
                 <div class="header__nav">
-                    <div class="menu__palanca menu__palanca__izq">
-                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
-                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
-                            <span class="menu__palanca__btn__intercalar"></span>
-                        </a>
-                        <ul id="menuOpciones" class="menu_opciones">
-                            <li>
-                                <a href="javascript:void(0)">Ver perfil</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">Modificar perfil</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
-                        </ul>
+                        <div class="menu__palanca menu__palanca__izq">
+                            <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                                <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                                <span class="menu__palanca__btn__intercalar"></span>
+                            </a>
+                            <ul id="menuOpciones" class="menu_opciones">
+                                <li>
+                                    <a href="javascript:void(0)">Ver perfil</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Modificar perfil</a>
+                                </li>
+                                <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
         <div class="bloqueHeader__filaAbajo">
@@ -89,48 +78,48 @@
                     <ul>
                         <li><a href="registrarCentroEducativo.html">Registrar centro educativo</a></li>
                         <li><a href="listaCEdu.html">Lista de centros educativos</a></li>
-
-
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Rubros</a>
+                    <a class="calificaciones" href="#">Calificaciones</a>
                     <ul>
                         <li><a href="registrarRubros.html">Registrar un rubro</a></li>
-                        <li><a href="./agregar_rubros_a_evaluar.html">Rubros</a></li>
+                        <li><a href="./agregar_rubros_a_evaluar.html">Lista de rubros</a></li>
                     </ul>
                 </li>
-                <li><a class="utiles" href="#">Útiles</a>
+                <li><a href="#">Útiles</a>
                     <ul>
                         <li><a href="registrar_articulos.html">Registrar artículos</a></li>
                         <li><a href="listar_articulos.html">Listar artículos</a></li>
                         <li><a href="registrar_lista_utiles.html">Registrar lista de útiles</a></li>
-                        <li><a href="listar_lista_utiles.html">Listar útiles</a></li>
+                        <li><a href="listar_lista_utiles.html">Lista de útiles</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Usuarios padres de familia</a>
+
+                <li><a class="padres" href="#">Usuarios padres de familia</a>
                     <ul>
                         <li><a href="listar_padres.html">Lista de padres de familia</a></li>
                     </ul>
                 </li>
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a class="subtitulos" href="#">Registrar etiquetas</a></li>
-                        <li><a class="subtitulos" href="#">Listar etiquetas</a>
+                        <li><a href="#">Registrar etiquetas</a></li>
+                        <li><a href="#">Listar etiquetas</a>
                         </li>
+                    </ul>
+                </li>
+
+                <li><a class="utiles" href="#"> Preguntas frecuentes</a>
+                    <ul>
+                        <li><a class="subtitulos" href="registrarPreguntaFrecuenteGeneral.html">Registrar
+                                FAQ</a></li>
+                        <li><a class="subtitulos" href="listarPreguntasFrecuentesGenerales.html">Lista de
+                                FAQ</a></li>
                     </ul>
 
                 </li>
-                <li><a href="#"> Preguntas frecuentes</a>
-                    <ul>
-                        <li><a href="registrarPreguntaFrecuenteGeneral.html">Registrar
-                                FAQ</a></li>
-                        <li><a href="listarPreguntasFrecuentesGenerales.html">Listar
-                                FAQ</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a>Reportes</a>
+                    <a class="reporte">Reportes</a>
                     <ul>
                         <li><a href="#">Ranking:Padres de familia</a></li>
                         <li><a href="#">Ranking:MEP</a></li>
@@ -141,23 +130,50 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="main">
         <section>
-            <div class="tituloPrincipal">
-                <h2>Rubros activos en lista</h2>
+            <div class="tituloRubro">
+                <h2>Rubros activos en lista</h1>
             </div>
 
-          
+            <div class="bloqueFiltro">
+                <label for="txt_filtrar">Filtrar</label>
+                <input type="text" id="txt_filtrar">
+            </div>
+            <table id="tbl_rubros">
+                <thead>
+                    <tr>
+                        <th>Rubro</th>
+                        <th>Desactivar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="tituloRubro">
+                <h2>Rubros inactivos en lista</h2>
+            </div>
+
+            <div class="wrapper">
                 <div class="bloqueFiltro">
-                    <label for="txt_filtrar">Filtrar</label>
-                    <input type="text" id="txt_filtrar">
+                    <label for="txt_filtrar_inactivos">Filtrar</label>
+                    <input type="text" id="txt_filtrar_inactivos">
                 </div>
                 <div class="contenedor_tabla">
-                    <table id="tbl_rubros">
+                    <table id="tbl_rubros_inactivos">
                         <thead>
                             <tr>
                                 <th>Rubro</th>
-                                <th>Desactivar</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                                <th>Activar</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -165,34 +181,7 @@
                         </tbody>
                     </table>
                 </div>
-        </section>
-        <section>
-            <div class="tituloPrincipal">
-                <h1>Rubros inactivos en lista</h1>
             </div>
-
-
-            <div class="bloqueFiltro">
-                <label for="txt_filtrar_inactivos">Filtrar</label>
-                <input type="text" id="txt_filtrar_inactivos">
-            </div>
-            
-                <table id="tbl_rubros_inactivos">
-                    <thead>
-                        <tr>
-                            <th>Rubro</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                            <th>Activar</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-         
-            
         </section>
 
 

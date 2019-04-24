@@ -33,11 +33,40 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
     });
   };
 
-  let obtener_por_id = () => {
+  //para obtener los servicios por el id del centro 
+  let obtener_servicios_por_id = (id_centro) => {
     let coleccion = [];
-    let codigo = localStorage.getItem('id');
+
     let request = $.ajax({
-      url: "http://localhost:4000/api/obtener_servicios_id/" + codigo,
+      url: "http://localhost:4000/api/obtener_servicios_id/" + id_centro,
+      type: "GET",
+      data: {
+      },
+      dataType: "json",
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      async: false
+    });
+
+    request.done(function (res) {
+      if(res.success){
+        coleccion = res.message;
+      }else{
+        console.log(res.message);
+      }
+    });
+    
+    request.fail(function (jqXHR, textStatus) {
+  
+    });
+    return coleccion;
+  };
+
+//para obtener el nombre del centro educativo
+  let obtener_nombre_centro_id = (id_centro) => {
+    let nombre;
+    
+    let request = $.ajax({
+      url: "http://localhost:4000/api/obtener_nombre_centro_id/" + id_centro,
       type: "GET",
       data: {
       },
@@ -47,12 +76,76 @@ let registrar_servicio = (pnombre, ptipo, pdescripcion, pEnviaResultado) => {
     });
   
     request.done(function (res) {
-      coleccion = res;
-      
+      nombre = res.nombre_centro;
+    
     });
     
     request.fail(function (jqXHR, textStatus) {
   
     });
-    return coleccion;
+    return nombre;
   };
+
+  //para modificar el servicio 
+  let modificar_servicio = (id_servicio, pnombre, pdescripcion)=>{
+
+    let request = $.ajax({
+      url: "http://localhost:4000/api/modificar_servicios" ,
+      type: "POST",
+      data: {
+        id_servicio : id_servicio,
+        nombre : pnombre,
+        descripcion : pdescripcion
+      },
+      dataType: "json",
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    });
+
+    request.done(function (res) {
+      swal.fire({
+        type: 'success',
+        title: 'El servicio fue actualizado de forma exitosa'
+        
+      }).then((result) => {
+        if (result.value) {
+
+      }
+      });
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+      swal.fire({
+        type: 'error',
+        title: 'El servicio no fue actualizado',
+        text: 'Ocurrió un error inesperado, por favor intente de nuevo'
+      });
+    });
+  };
+
+//función para eliminar servico 
+let  eliminar_servicio = (codigo) => {
+  let request = $.ajax({
+    url: "http://localhost:4000/api/eliminar_servicios/"+codigo ,
+    type: "GET",
+    data: {
+    },
+    dataType: "json",
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    async: false
+  });
+
+  request.done(function (res) {
+    swal.fire({
+      type: 'success',
+      title: 'El servicio fue eliminado de forma exitosa'
+    }).then((result) => {
+      if (result.value) {
+    }
+})
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+
+  });
+
+};

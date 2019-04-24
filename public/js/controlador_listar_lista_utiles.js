@@ -4,11 +4,12 @@ const tabla = document.querySelector('#tbl_lista_utiles tbody');
 const titulo = document.querySelector('#titulo');
 const input_filtrar = document.querySelector('#txt_filtrar');
 const th_centro = document.querySelector('#th_centro');
+//
 if (localStorage.getItem('tipoUsuario') === 'SuperAdmin') {
     th_centro.classList.add('ocultar');
 }
 
-
+//funcion que redirige a la pagina para ver los articulos que ya estan agregado a la lista de útiles
 function ver_info_lista() {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;
@@ -20,6 +21,7 @@ function ver_info_lista() {
     }
 };
 
+// funcion pque redirige a la pagina para agregar artículos a la lista de útiles
 function seleccionar_lista() {
     let tipoUsuario = localStorage.getItem('tipoUsuario');
     let id_lista = this.dataset.codigo;
@@ -47,7 +49,7 @@ let mostrar_datos = () => {
     }
    
     let lista_utiles = response.coleccion_utiles;
-    let nombre = response.nombreCentro;
+    let nombre = response.nombre_centro;
     if (response.success == true) {
         titulo.innerHTML = nombre;
         for (let i = 0; i < lista_utiles.length; i++) {
@@ -90,6 +92,7 @@ let mostrar_datos = () => {
                   })
             });    
 
+            //para buscar el titulo del centro si es super admin se quema el titulo en el codigo 
             let tipoUsuario = localStorage.getItem('tipoUsuario');
             if (tipoUsuario === 'SuperAdmin') {
                 let centro = buscar_centro_por_id(lista_utiles[i]['codigo']);
@@ -103,21 +106,20 @@ let mostrar_datos = () => {
                 }  
             };
 
-            fila.insertCell().innerHTML = lista_utiles[i]["nombre"];
-            fila.insertCell().innerHTML = lista_utiles[i]["anno"];
-            fila.insertCell().appendChild(boton_agregar);
-            fila.insertCell().appendChild(boton_ver);
-            fila.insertCell().appendChild(btn_modificar);
-            
-              
              //se agrego el boton para eliminar lista de útiles
             let btn_eliminar = document.createElement('a');
             btn_eliminar.dataset.id_lista =lista_utiles[i]['_id'];
             btn_eliminar.classList.add('fas' ,'fa-trash-alt');
             //se llama a la función para eliminar lista de útiles
             btn_eliminar.addEventListener('click',eliminar_lista_utiles);
-            fila.insertCell().appendChild(btn_eliminar);
 
+            fila.insertCell().innerHTML = lista_utiles[i]["nombre"];
+            fila.insertCell().innerHTML = lista_utiles[i]["anno"];
+            fila.insertCell().appendChild(boton_agregar);
+            fila.insertCell().appendChild(boton_ver);
+            fila.insertCell().appendChild(btn_modificar);
+            fila.insertCell().appendChild(btn_eliminar);
+           
              //función para activar o desactivar 
              let celda_estado = fila.insertCell();
              //para mostrar el  boton de activo o desactivo en la misma celda 
@@ -132,7 +134,7 @@ let mostrar_datos = () => {
                }else{
                  //se agrego el boton para activar 
                  let btn_activar = document.createElement('a');
-                 btn_activar.classList.add('fas','fa-user-minus');
+                 btn_activar.classList.add('fas','desactivo','fa-user-minus');
                  btn_activar.dataset.id_lista = lista_utiles[i]['_id'];
                  btn_activar.dataset.estado = lista_utiles[i]['estado'];
                  btn_activar.addEventListener('click',activar_desactivar_lista_utiles);
@@ -141,7 +143,6 @@ let mostrar_datos = () => {
         }
     }
     }
-
 };
 input_filtrar.addEventListener('keyup', mostrar_datos);
 mostrar_datos();
@@ -165,7 +166,6 @@ function eliminar_lista_utiles(){
       }).then((result) => {
         if (result.value) {
             eliminar_lista(this.dataset.id_lista);
-            //lista_utiles = response.coleccion_utiles;
             mostrar_datos();
           Swal.fire(
             '¡Artículo eliminado!',
@@ -174,5 +174,4 @@ function eliminar_lista_utiles(){
           )
         }
       })
- 
   };

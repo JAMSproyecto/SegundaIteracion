@@ -36,7 +36,7 @@ let mostrar_datos = () => {
     if (validar() == true) {
         Swal.fire({
             type: 'warning',
-            title: 'Los datos no fueron registrados de manera correcta',
+            title: 'La noticia no fue registrada de manera correcta',
             text: 'Favor completar los espacios señalados en rojo'
         }
         )

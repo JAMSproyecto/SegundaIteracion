@@ -39,7 +39,7 @@ let registrar_noticia = (pidCentro, ptema, pinformacion) => {
     request.fail(function (jqXHR, textStatus) {
         swal.fire({
             type: 'error',
-            title: 'El dato no pude ser registrado',
+            title: 'La noticia no puede ser registrada',
             text: 'Ocurrió un error inesperado, por favor intente de nuevo'
         });
     });
@@ -96,7 +96,7 @@ let buscar_noticia = (idCentro) => {
 
 
 
-let actualizar = (ptema, pinformacion, pid) => {
+let actualizar_noticia = (ptema, pinformacion, pid) => {
 
     let request = $.ajax({
         url: "http://localhost:4000/api/actualizar_noticia",
@@ -141,6 +141,9 @@ let actualizar = (ptema, pinformacion, pid) => {
 
 
 let eliminar_noticia = (pid) => {
+	if ('undefined' == typeof pid || null === pid) {
+        throw new Error('Error al eliminar noticia: El identificador no puede estar vacio');
+    }
     let request = $.ajax({
     url: "http://localhost:4000/api/eliminar_noticia",
     method: "POST",

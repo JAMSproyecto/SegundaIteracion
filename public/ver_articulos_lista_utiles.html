@@ -14,14 +14,13 @@
 
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
-
+    <link rel="stylesheet" href="./css/headerGeneral.css" />
+    <link rel="stylesheet" href="./css/generalFormulario.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
-    <link rel="stylesheet" href="./css/estiloGeneral.css">
-    <link rel="stylesheet" href="./css/generalFormulario.css">
-    <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/tablas.css">
-
+    <link rel="stylesheet" href="./css/iconos.css">
 
 
 </head>
@@ -37,7 +36,10 @@
             </div>
 
             <div class="bloqueHeader__logo">
-                <img src="./imgs/logo_mep.png" class="imagen_mep">
+                <a href="perfil_centro.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
+
             </div>
         </div>
         <div class="bloqueHeader__filaArriba">
@@ -75,7 +77,7 @@
         </div>
         <div class="bloqueHeader__filaAbajo">
             <div class="bloqueHeader__contenedorAbajo">
-                <span>Nuestra Institución les da la bienvenida</span>
+
             </div>
         </div>
 
@@ -90,13 +92,13 @@
                     <ul>
                         <li><a href="registrar_actividad.html">Registrar actividad</a>
                         </li>
-                        <li><a href="listar_actividad.html">Lista de actividades</a></li>
+                        <li><a href="listar_actividad.html">Listar actividad</a></li>
                     </ul>
                 </li>
                 <li><a class="centros" href="javascript:void(0)">Noticias</a>
                     <ul>
-                        <li><a href="registrar_noticia.html">Registrar noticia</a></li>
-                        <li><a href="listar_noticia.html">Lista de noticias</a></li>
+                        <li><a href="registrar_noticia.html">Registrar noticias</a></li>
+                        <li><a href="listar_noticia.html">Listar noticias</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0)"> Útiles</a>
@@ -114,7 +116,7 @@
                 <li><a class="utiles" href="javascript:void(0)"> Citas</a>
                     <ul>
                         <li>
-                            <a href="lista_citas.html">lista de citas
+                            <a href="lista_citas.html">listar citas
                             </a></li>
                     </ul>
                 </li>
@@ -124,50 +126,53 @@
                     <a class="reporte">Servicios</a>
                     <ul>
                         <li><a href="registrar_servicios.html">Registrar servicios</a></li>
-                        <li><a href="javascript:void(0)">Lista de servicios</a></li>
+                        <li><a href="listar_servicios.html">Lista de servicios</a></li>
                     </ul>
                 </li>
-                <a class="reporte">Preguntas frecuentes</a>
-                <ul>
-                    <li><a href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
-                    </li>
-                    <li><a href="listarPreguntasFrecuentes.html">Lita de FAQ</a></li>
-                </ul>
+                <li>
+                    <a class="reporte">Preguntas frecuentes</a>
+                    <ul>
+                        <li><a href="registrarPreguntaFrecuente.html">Registrar FAQ</a>
+                        </li>
+                        <li><a href="listarPreguntasFrecuentes.html">Litas FAQ</a></li>
+                    </ul>
                 </li>
             </ul>
         </nav>
     </header>
-    <main id="main">
-        <div class="tituloPrincipal">
-            <h1 id="titulo2" class="titulo"></h1>
-        </div>
+    <main>
+        <section>
+            <div class="tituloPrincipal">
+                <h1 id="titulo2" class="titulo"></h1>
+            </div>
 
-        <h2 id="titulo" class="titulo"></h2>
-       
-            <section>
-            
-                    <div class="bloqueFiltro">
-                        <label for="txt_filtrar">Filtrar</label>
-                        <input type="text" id="txt_filtrar">
-                      
-                    </div>
-                    <table id="tbl_articulos">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Cantidad</th>
-                                <th>Modificar</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <h2 id="titulo" class="titulo"></h2>
 
-                        </tbody>
-                    </table>
-                </div>
 
-        </div>
+            <form>
+                <div class="bloqueFiltro">
+                    <label for="txt_filtrar">Filtrar</label>
+                    <input type="text" id="txt_filtrar">
+
+            </form>
+            </div>
+            <table id="tbl_articulos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            </div>
+
+            </div>
 
         </section>
 

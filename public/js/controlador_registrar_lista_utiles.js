@@ -7,13 +7,14 @@ const titulo_centro = document.querySelector('#titulo_centro');
 const lista_centros = document.querySelector('#lista');
 const input_centros = document.querySelector('#lista_centros');
 const label_centro = document.querySelector('#label_centro');
-input_tipo.classList.add('ocultar');
-input_centros.classList.add('ocultar');
-label_centro.classList.add('ocultar');
+const bloqueOcultar = document.querySelector('#bloqueCentrosOcultar');
+const bloqueOcultar2 = document.querySelector('#bloqueCentrosOcultar2');
+label_centro.classList.add('ocultar2');
+input_centros.classList.add('ocultar2');
+bloqueOcultar2.classList.add('ocultar');
 
 
 let response = obtener_lista_utiles();
-
 
 const boton_crear = document.querySelector('#btn_agregar');
 
@@ -83,8 +84,9 @@ window.onload = () => {
         }else {
             input_tipo.innerHTML = '<option value="centro_educativo">Centro Educativo</option>';
             input_tipo.selectedIndex = 0;
-            input_tipo.classList.add('ocultar');
-            let nombre = response.nombreCentro;
+            bloqueOcultar.classList.add('ocultar');
+            bloqueOcultar2.classList.add('ocultar');
+            let nombre = response.nombre_centro;
             titulo_centro.innerHTML = nombre;
         }
     } else {
@@ -95,12 +97,14 @@ window.onload = () => {
   
 function mostrar_centros(){
     if(this.value != 'centro_educativo'){
-        input_centros.classList.add('ocultar');
-        label_centro.classList.add('ocultar');
-        localStorage.setItem('id', '1999')
+        label_centro.classList.add('ocultar2');
+        input_centros.classList.add('ocultar2');
+        bloqueOcultar2.classList.add('ocultar');
+        localStorage.setItem('id', '1999');
     }else{
-        input_centros.classList.remove('ocultar');
-        label_centro.classList.remove('ocultar');
+        bloqueOcultar2.classList.remove('ocultar');
+        label_centro.classList.remove('ocultar2');
+        input_centros.classList.remove('ocultar2');
         input_centros.addEventListener('change', obtener_codigo_centro);
     }
 };

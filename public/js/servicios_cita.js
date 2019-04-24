@@ -1,8 +1,7 @@
 'use strict';
 
 
-let registrar_cita = (pId, pNombre, pApellidos, pTelefono, pCorreo,
-     pfecha, phora, pmotivo, pcomentario) => {
+let registrar_cita = (pId, pNombre, pApellidos, pTelefono, pCorreo, pfecha, phora, pmotivo, pcomentario) => {
     let request = $.ajax({
             url: "http://localhost:4000/api/registrar_cita",
             type: "POST",

@@ -3,8 +3,8 @@ const tabla = document.querySelector('#tbl_listar_noticia tbody');
 const input_filtrar = document.querySelector('#txt_filtrar');
 
 
-let mostrar_noticias = () => {
-const noticias = listar_todas_noticias();
+let mostrar_datos = () => {
+    const noticias = listar_todas_noticias();
 
     let filtros = input_filtrar.value;
     tabla.innerHTML = '';
@@ -13,12 +13,21 @@ const noticias = listar_todas_noticias();
 
         if (noticias[i]['tema'].toLowerCase().includes(filtros.toLowerCase())) {
 
+            const ocultarHora = noticias[i]['fecha'].split(' ');
+
+
             let fila = tabla.insertRow();
-            
+            let boton_editar = document.createElement('a');
+            let boton_eliminar = document.createElement('a');
+
+
+
+
             //celda que toman los datos de la base de datos
             fila.insertCell().innerHTML = noticias[i]['tema'];
             fila.insertCell().innerHTML = noticias[i]['informacion']
-            fila.insertCell().innerHTML = noticias[i]['fecha'];
+            fila.insertCell().innerHTML = ocultarHora[0];
+
 
             let celda_actualizar = fila.insertCell();
             let celda_eliminar = fila.insertCell();
@@ -26,34 +35,50 @@ const noticias = listar_todas_noticias();
             //creacion del boton del editar de manera dinamica
 
 
-            let boton_editar = document.createElement('a');
-            boton_editar.innerHTML = '<i class="fas fa-pen"></i> ';
+
+            boton_editar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
             boton_editar.href = `actualizar_noticia.html?idCentro=${noticias[i]['_id']}`;
             //a esa variable le agrego un elemento como hijo
             celda_actualizar.appendChild(boton_editar);
-            
 
 
-            let boton_eliminar = document.createElement('a');
-            boton_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
+
+            boton_eliminar.innerHTML = '<i class="far fas fa-trash-alt"></i>';
             boton_eliminar.dataset.idCentro = noticias[i]['_id'];
-
-            boton_eliminar.addEventListener('click', function () {
-                eliminar_noticia(this.dataset.idCentro);
-               
-                mostrar_noticias();
-
-
-            });
-            //a esa variable le agrego un elemento como hijo
-           
+            //celda_actualizar.appendChild(boton_eliminar);
             celda_eliminar.appendChild(boton_eliminar);
-        }
+            boton_eliminar.addEventListener('click', function () {
+
+                Swal.fire({
+                    title: '¿Está seguro que desea eliminar la noticia?',
+                    text: "Ésta acción no se puede revertir",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, estoy seguro!'
+                }).then((result) => {
+                    if (result.value) {
+                        eliminar_noticia(this.dataset.idCentro);
+                        mostrar_datos();
+                        Swal.fire(
+                            '¡Noticia eliminada!',
+                            'La lista ya no posee la noticia',
+                            'success'
+                        )
+                    }
+                })
+
+                //a esa variable le agrego un elemento como hijo
 
 
+
+
+            }
+
+            )
+        };
     }
-};
-
-input_filtrar.addEventListener('keyup', mostrar_noticias);
-
-mostrar_noticias();
+    input_filtrar.addEventListener('keyup', mostrar_datos);
+}
+mostrar_datos();

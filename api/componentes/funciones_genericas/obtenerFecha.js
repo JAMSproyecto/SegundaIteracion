@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Retorna la fecha en el formato 'YYYY-MM-DD hh:mm:ss'
  * @return {String}
