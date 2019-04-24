@@ -19,6 +19,11 @@
   display: flow-root;
 }
 
+/*Lo agregó Marlon*/
+.datoCard {
+  padding-top: 20px;
+  text-align: center; 
+}
 
 /*estilos actividad*/
 #contenedorActividades{
@@ -50,35 +55,38 @@
 
 .noticia {
   display: inline-block;
-  width: 373px;
+  width: 320px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
   /* padding: 50px 20px; */
   /* display: table-cell; */
   border-radius: 12px;
-  height: 200px;
+  height: 180px;
   background: #fff;
   text-align: center;
   padding: 10px;
+  max-width: 320px;
+  max-height: 180px;
 }
 
 .actividad {
   display: inline-block;
-  width: 373px;
+  width: 320px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
   /* padding: 50px 20px; */
   /* display: table-cell; */
   border-radius: 12px;
-  height: 200px;
+  height: 180px;
   background: #fff;
   text-align: center;
   padding: 10px;
+  max-width: 320px;
+  max-height: 180px;
 }
 
 
 .informacion{
-  float: right;
   float: right;
   /* text-align: center; */
   font-style: italic;
