@@ -8,6 +8,7 @@
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <link rel="stylesheet" href="css/jquery.datetimepicker.min.css"/>
     <link rel="stylesheet" href="css/reset.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
@@ -17,8 +18,6 @@
     <link rel="stylesheet" href="./css/headerGeneral.css" />
     <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="./css/estiloGeneral.css">
-    <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
-    <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="./css/tablas.css">
 
 
@@ -142,12 +141,12 @@
             <form class="filtrar_formulario">
                 <div class="controlador_fech_inicio">
                     <label for="txt_inicio">Fecha Inicio</label>
-                    <input type="date" id="txt_inicio">
+                    <input type="text" id="txt_inicio">
                 </div>
 
                 <div class="controlador_fech_final">
                     <label for="txt_fin">Fecha final</label>
-                    <input type="date" id="txt_fin">
+                    <input type="text" id="txt_fin">
                 </div>
 
                 <button type="button" id="busqueda" class="btn btn-buscar">Buscar</button>
@@ -172,6 +171,7 @@
                         <th>Hora</th>
                         <th>Motivo</th>
                         <th>Comentario</th>
+                        <th>Cancelar</th>
                     </tr>
                 </thead>
                 <tbody id='tbl_body'>

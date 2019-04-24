@@ -60,6 +60,7 @@ let get_ListarPreguntasFrecuentes = (tabla_PreguntaFrecuente, idCentro) => {
 
     request.done(function (res) {
         if (res.exito) {
+            tabla_PreguntaFrecuente.innerHTML = '';
             for (let i = 0; i < res.preguntasFrecuentes.length; i++) {
                 let row = document.createElement('tr');
 
@@ -87,24 +88,41 @@ let get_ListarPreguntasFrecuentes = (tabla_PreguntaFrecuente, idCentro) => {
                 row.appendChild(cell);
 
                 //se agrego el boton para actualizar 
-                let btn_actualizar = document.createElement('button');
+                let btn_actualizar = document.createElement('a');
                 btn_actualizar.dataset.id_preguntaFrecuente = pregunta._id;
-                btn_actualizar.textContent = 'Actualizar';
+                btn_actualizar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
 
                 //se llama a la función para actualizar el articulo
                 btn_actualizar.addEventListener('click',
                     function () {
-                        localStorage.setItem('IdPreguntaFrecuente', this.dataset.id_preguntaFrecuente);
-                        window.location.href = "actualizarPreguntaFrecuente.html";
+                        Swal.fire({
+                            title: 'Modificar pregunta frecuente',
+                            html : `<input id="swal-input1" class="swal2-input" value = "${pregunta.pregunta}">`+
+                            `<input id="swal-input2" class="swal2-input" value = "${pregunta.respuesta}">`,
+                            showCancelButton: true,
+                            preConfirm: () => {
+                                let pregunta = document.querySelector('#swal-input1');
+                                let respuesta = document.querySelector('#swal-input2');
+                                if(pregunta.value == '' || respuesta.value == ''){
+                                    Swal.showValidationMessage(
+                                        `Por favor complete todos los campos requeridos`
+                                      );
+                                }
+                                else{
+                                    post_actualizarPreguntaFrecuente(pregunta.value, respuesta.value, this.dataset.id_preguntaFrecuente);    
+                                    get_ListarPreguntasFrecuentes(Tabla_PreguntaFrecuente); 
+                                }
+                            }
+                          })
                     }
                 );
                 let celda_actualizar = row.insertCell();
                 celda_actualizar.appendChild(btn_actualizar);
 
                 //se agrego el boton para eliminar artículos
-                let btn_eliminar = document.createElement('button');
+                let btn_eliminar = document.createElement('a');
                 btn_eliminar.dataset.id_preguntaFrecuente = pregunta._id;
-                btn_eliminar.textContent = 'Eliminar';
+                btn_eliminar.innerHTML = '<i class="fas fa-trash-alt"></i>';
 
                 //se llama a la función para eliminar articulos 
                 btn_eliminar.addEventListener('click', function () {
@@ -192,6 +210,7 @@ let get_ListarPreguntasFrecuentesGenerales = (tabla_PreguntaFrecuente) => {
 
     request.done(function (res) {
         if (res.exito) {
+            tabla_PreguntaFrecuente.innerHTML = '';
             for (let i = 0; i < res.preguntasFrecuentes.length; i++) {
                 let row = document.createElement('tr');
 
@@ -219,24 +238,43 @@ let get_ListarPreguntasFrecuentesGenerales = (tabla_PreguntaFrecuente) => {
                 row.appendChild(cell);
 
                 //se agrego el boton para actualizar 
-                let btn_actualizar = document.createElement('button');
+                let btn_actualizar = document.createElement('a');
                 btn_actualizar.dataset.id_preguntaFrecuente = pregunta._id;
-                btn_actualizar.textContent = 'Actualizar';
+                btn_actualizar.innerHTML = '<i class="fas fa-pencil-alt"></i>';
 
                 //se llama a la función para actualizar el articulo
                 btn_actualizar.addEventListener('click',
                     function () {
-                        localStorage.setItem('IdPreguntaFrecuente', this.dataset.id_preguntaFrecuente);
-                        window.location.href = "actualizarPreguntaFrecuente.html";
+                        Swal.fire({
+                            title: 'Modificar pregunta frecuente',
+                            html : `<input id="swal-input1" class="swal2-input" value = "${pregunta.pregunta}">`+
+                            `<input id="swal-input2" class="swal2-input" value = "${pregunta.respuesta}">`,
+                            showCancelButton: true,
+                            preConfirm: () => {
+                                let pregunta = document.querySelector('#swal-input1');
+                                let respuesta = document.querySelector('#swal-input2');
+                                if(pregunta.value == '' || respuesta.value == ''){
+                                    Swal.showValidationMessage(
+                                        `Por favor complete todos los campos requeridos`
+                                      );
+                                }
+                                else{
+                                    post_actualizarPreguntaFrecuente(pregunta.value, respuesta.value, this.dataset.id_preguntaFrecuente);    
+                                    get_ListarPreguntasFrecuentesGenerales(Tabla_PreguntaFrecuente); 
+                                }
+                            }
+                          })
+                        
+                        
                     }
                 );
                 let celda_actualizar = row.insertCell();
                 celda_actualizar.appendChild(btn_actualizar);
 
                 //se agrego el boton para eliminar artículos
-                let btn_eliminar = document.createElement('button');
+                let btn_eliminar = document.createElement('a');
                 btn_eliminar.dataset.id_preguntaFrecuente = pregunta._id;
-                btn_eliminar.textContent = 'Eliminar';
+                btn_eliminar.innerHTML = '<i class="far fa-trash-alt"></i>';
 
                 //se llama a la función para eliminar articulos 
                 btn_eliminar.addEventListener('click', function () {
@@ -266,14 +304,13 @@ let get_ListarPreguntasFrecuentesGenerales = (tabla_PreguntaFrecuente) => {
 };
 
 
-let post_actualizarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativo, pIdPreguntaFrecuente) => {
+let post_actualizarPreguntaFrecuente = (pPregunta, pRespuesta, pIdPreguntaFrecuente) => {
     let request = $.ajax({
             url: "http://localhost:4000/api/actualizar_preguntaFrecuente",
             method: "POST",
             data: {
                 pregunta: pPregunta,
                 respuesta: pRespuesta,
-                idCentroEducativo: pIdCentroEducativo,
                 id: pIdPreguntaFrecuente
             },
             dataType: "json",
@@ -288,9 +325,7 @@ let post_actualizarPreguntaFrecuente = (pPregunta, pRespuesta, pIdCentroEducativ
                 type: 'success',
                 title: 'Los datos fueron guardados exitosamente',
                 text: 'Nos comunicaremos con usted tan pronto como sea posible'
-            }).then((resultado) => {
-                window.location.replace('listarPreguntasFrecuentes.html');
-            });
+            })
         } else {
             swal.fire({
                 type: 'error',

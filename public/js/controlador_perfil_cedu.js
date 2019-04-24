@@ -11,6 +11,7 @@ const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
 
 
+
 const noticias = listar_todas_noticias();
 
 let calificacionSeleccionada = 0;
@@ -467,6 +468,7 @@ window.onload = () => {
       if (Lnk_Cita) {
         Lnk_Cita.setAttribute('href','registrar_cita.html');
       }
+
       break;
 
     default:
