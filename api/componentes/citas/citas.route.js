@@ -29,4 +29,11 @@ router.route('/obtener_citasCentro/:id')
         }
     )
 
+router.route('/eliminar_cita')
+    .post(
+        function (req, res) {
+            citas_api.eliminar_Cita(req, res);
+        }
+    );
+
 module.exports = router;

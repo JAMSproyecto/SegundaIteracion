@@ -6,6 +6,7 @@ const BtnComentar = document.querySelector('#btnComentar');
 const bloqueCalificacionMep = document.querySelector('#bloque_calificarMEP');
 const mostrarResennia = document.querySelector('#mostrarResennia');
 const div_noticias = document.querySelector('#tabla__noticias');
+const Lnk_Cita = document.querySelector('#lnk_calendario');
 
 
 let calificacionSeleccionada = 0;
@@ -280,6 +281,7 @@ window.onload = () => {
       if (BtnComentar) {
         BtnComentar.addEventListener('click', agregarCalificacion, false);
       }
+      Lnk_Cita.setAttribute('href','registrar_cita.html');
       break;
 
     default:

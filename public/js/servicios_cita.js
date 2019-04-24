@@ -70,3 +70,31 @@ let listar_citas = (id) => {
     return lista_citas;
 
 };
+
+let eliminar_cita = (pId) =>{
+    let request = $.ajax({
+        url: "http://localhost:4000/api/eliminar_cita/",
+        type: "POST",
+        data: {
+            id: pId
+        },
+        dataType: "json",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: false
+    });
+
+    request.done(function (res) {
+        swal.fire({
+            type: 'success',
+            title: 'La cita fue cancelada exitosamente'
+        });
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        swal.fire({
+            type: 'error',
+            title: 'Ocurrió un error inesperado al eliminar la cita'
+        });
+    });
+
+}

@@ -141,3 +141,17 @@ module.exports.obtener_citasCentro = (req, res) =>{
         }
     });
 }
+
+module.exports.eliminar_Cita = function(req, res){
+    console.log(req.body.id);
+    cita_modelo.findByIdAndRemove(req.body.id,
+
+        function(error){
+            if(error){
+                res.json({success: false});
+            }else{
+                res.json({success: true}); 
+            }
+        }
+    )
+};
