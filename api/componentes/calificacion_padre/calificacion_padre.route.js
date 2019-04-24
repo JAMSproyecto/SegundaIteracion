@@ -3,18 +3,31 @@ const Express = require('express');
 const Router = Express.Router();
 const API = require('./calificacion_padre.api');
 
+/* Este método nos permite buscar un parámetro que viene dentro de la url del endPoint, sacandolo del url y metiendolo en el body para poderlo usar. */
 Router.param('id', (req, res, next, parametro) => {
+    req.body.id = parametro;
+    next();
+    }
+);
+
+Router.param('idInt', (req, res, next, parametro) => {
 	try {
 		const n = parseInt(parametro, 10);
 		if (isNaN(n)) {
-			req.body.id = -1;
+			res.json({
+                success: false,
+                message: 'El parámetro es inválido'
+            });
 		} else {
 			req.body.id = n;
+			next();
 		}
 	} catch (e) {
-		req.body.id = -1;
+		res.json({
+                success: false,
+                message: 'El parámetro es inválido'
+            });
 	}
-	next();
 });
 
 //Asignar calificación como padre a un centro educativo:
@@ -28,7 +41,7 @@ Router.route('/buscar_calificacion_padre_por_id/:id').get((req, res) => {
 });
 
 //buscar todas las calificaciones de a cuerdo al id del centro educativo:
-Router.route('/buscar_calificaciones_padre_por_idCentro/:id').get((req, res) => {
+Router.route('/buscar_calificaciones_padre_por_idCentro/:idInt').get((req, res) => {
 	API.buscar_calificaciones_padre_por_idCentro(req.body.id, res);
 });
 
@@ -51,9 +64,9 @@ Router.route('/eliminar_comentario_calificacion_padre/:id').get((req, res) => {
 });
 
 /*
- * Por medio del id obtiene la calificación total del ranking de los padres de familia. Es decir, el número de  estrellitas del centro educativo del 1 al 5.
+ * Por medio del id del centro obtiene la calificación total del ranking de los padres de familia. Es decir, el número de  estrellitas del centro educativo del 1 al 5.
 */
-Router.route('/obtener_calificacion_padre_de_centro/:id').get((req, res) => {
+Router.route('/obtener_calificacion_padre_de_centro/:idInt').get((req, res) => {
 	API.obtener_calificacion_padre_de_centro(req.body.id, res);
 });
 
