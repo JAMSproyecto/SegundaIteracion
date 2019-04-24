@@ -300,14 +300,16 @@ let cards_servicios = (id) => {
   if (cantidadServicios > 0) {
     servicio.forEach(function (object) {
       let div_contenedor = document.createElement('div');
-      div_contenedor.classList.add('contenedor_servicios');
+      div_contenedor.classList.add('contenedor_servicios' , 'servicio');
+      let div_contenedor_btn = document.createElement('div');
+      div_contenedor_btn.classList.add('contenedor_btn');
       let div_servicio = document.createElement('div');
       let nombre = document.createElement('span');
       let logo = document.createElement('i');
       let descripcion = object.descripcion;
       let btn_descripcion = document.createElement('button');
       btn_descripcion.textContent ='ver más';
-      btn_descripcion.classList.add('btn');
+      btn_descripcion.classList.add('btn_servico');
       //funcion para msotrar la descripción del servicio 
       btn_descripcion.addEventListener('click',function(){
         Swal.fire({
@@ -330,7 +332,7 @@ let cards_servicios = (id) => {
 
       switch (object.tipo) {
         case 'actividades':
-          div_servicio.classList.add('ser__actividad', 'servicio');
+          div_servicio.classList.add('ser__actividad');
           logo.classList.add('fas', 'faq', 'fa-user-friends');
 
           nombre.innerHTML = object.nombre;
@@ -340,7 +342,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'alimentacion':
-          div_servicio.classList.add('ser__alimentacion', 'servicio');
+          div_servicio.classList.add('ser__alimentacion');
           logo.classList.add('fas', 'faq', 'fa-mug-hot');
 
           nombre.innerHTML = object.nombre;
@@ -350,7 +352,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'artes':
-          div_servicio.classList.add('ser__arte', 'servicio');
+          div_servicio.classList.add('ser__arte');
           logo.classList.add('fas', 'faq', 'fa-palette');
 
           nombre.innerHTML = object.nombre;
@@ -360,7 +362,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'cientifico':
-          div_servicio.classList.add('ser__cientifico', 'servicio');
+          div_servicio.classList.add('ser__cientifico');
           logo.classList.add('fas', 'faq', 'fa-flask');
 
           nombre.innerHTML = object.nombre;
@@ -371,7 +373,7 @@ let cards_servicios = (id) => {
 
 
         case 'deporte':
-          div_servicio.classList.add('ser__deporte', 'servicio');
+          div_servicio.classList.add('ser__deporte');
           logo.classList.add('fas', 'faq', 'fa-futbol');
 
           nombre.innerHTML = object.nombre;
@@ -381,8 +383,8 @@ let cards_servicios = (id) => {
           break;
 
         case 'musica':
-          div_servicio.classList.add('ser__musica', 'servicio');
-          logo.classList.add('fas', 'faq', 'fa-guita');
+          div_servicio.classList.add('ser__musica');
+          logo.classList.add('fas', 'faq', 'fa-guitar');
 
           nombre.innerHTML = object.nombre;
           div_servicio.appendChild(nombre);
@@ -391,7 +393,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'religion':
-          div_servicio.classList.add('ser__religion', 'servicio');
+          div_servicio.classList.add('ser__religion');
           logo.classList.add('fas', 'faq', 'fa-bible');
 
           nombre.innerHTML = object.nombre;
@@ -401,7 +403,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'salud':
-          div_servicio.classList.add('ser__salud', 'servicio');
+          div_servicio.classList.add('ser__salud');
           logo.classList.add('fas', 'faq', 'fa-user-nurse');
 
           nombre.innerHTML = object.nombre;
@@ -411,7 +413,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'transporte':
-          div_servicio.classList.add('ser__transporte', 'servicio');
+          div_servicio.classList.add('ser__transporte');
           logo.classList.add('fas', 'faq', 'fa-bus');
 
           nombre.innerHTML = object.nombre;
@@ -421,7 +423,7 @@ let cards_servicios = (id) => {
           break;
 
         case 'estudio':
-          div_servicio.classList.add('ser__estudio', 'servicio');
+          div_servicio.classList.add('ser__estudio');
           logo.classList.add('fas', 'faq', 'fa-book');
 
           nombre.innerHTML = object.nombre;
@@ -430,8 +432,9 @@ let cards_servicios = (id) => {
           div_contenedor.appendChild(div_servicio);
           break;
       }
-      div_servicio.appendChild(btn_descripcion);
-      tablaServicios.appendChild(div_servicio);
+      div_contenedor_btn.appendChild(btn_descripcion);
+      div_contenedor.appendChild(div_contenedor_btn);
+      tablaServicios.appendChild(div_contenedor);
     });
   }
 };
