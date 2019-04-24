@@ -436,7 +436,7 @@ select:not(.error_input):focus,
     visibility: hidden;
 }
 /*creado por johan para estilos del boton de servicios*/
-.btn{
+.btn_servico{
     background: #179bd7;
     color: #fff;
     border: 2px solid #179bd7;
