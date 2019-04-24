@@ -38,7 +38,7 @@ let actualizar_preguntaFrecuente = () => {
         swal.fire(
             {
                 type: 'warning',
-                title: 'La pregunta frecuente no fue registrada con exito',
+                title: 'La pregunta frecuente no puede ser registrada',
                 text: 'Favor completar los espacios señalados en rojo'
     
             }
