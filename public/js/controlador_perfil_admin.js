@@ -49,13 +49,13 @@ let llenarContenido = () => {
             telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' + obj['telefono'];
 
             let correo = document.createElement('p');
-            correo.innerHTML = '<strong class="descripcion">Correo: </strong>'+ obj['correo'];
+            correo.innerHTML = '<strong class="descripcion">Correo: </strong>' + obj['correo'];
 
             let provincia = document.createElement('span');
             provincia.innerHTML = '<strong class="descripcion">Provincia: </strong>' + obj['provincia'];
 
             let direccion = document.createElement('span');
-            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>'+ obj['direccion'];
+            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>' + obj['direccion'];
 
             let fechaSolicitud = document.createElement('span');
 
@@ -76,42 +76,36 @@ let llenarContenido = () => {
                 irAlPerfil(obj['_id']);
             }, false);
             verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+
+
             //se crea el boton para aprobar el centro educativo Creado por Johan 
             let btn_aprobar = document.createElement('button');
             btn_aprobar.type = 'button';
             btn_aprobar.textContent = 'Aprobar';
             btn_aprobar.dataset.idCEdu = obj['_id'];
+
             //se llama la función para aprobar el centro educativo 
             //con un seewtAlert para confimar si quiere aprobarlo 
-            btn_aprobar.addEventListener('click', function(){
+            btn_aprobar.addEventListener('click', function () {
+                const elId = this.dataset.idCEdu;
                 Swal.fire({
                     title: '¿Está seguro que desea aprobar el centro educativo?',
                     text: "Ésta acción no se puede revertir",
                     type: 'question',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '¡Sí, estoy seguro!'
-                  }).then((result) => {
-                    if (result.value) {
-                        aprobar_cedu( this.dataset.idCEdu);
-                        Swal.fire(
-                        {
-                            text: '¡Centro educativo aprobado con éxito!',
-                            type: 'success'
+                    confirmButtonText: '¡Sí, estoy seguro!',
+                    cancelButtonText: 'Cancelar'
+                }).then(async res => {
+                    if (res.value) {
+                        const fueAprobado = await aprobar_cedu(elId);
+                        if (fueAprobado === true) {
+                            cargarCEdu();
                         }
-                          )
-                     cargarCEdu();
-                    }else{
-                        Swal.fire(
-                            {
-                                text: '¡Centro educativo no fue aprobado!',
-                                type: 'info'
-                            }
-                        )
-                  }
+                    } else {
+                        return false;
+                    }
+                });
             });
-         });
 
             card.appendChild(centro_nombre);
             contenedor_card.appendChild(telefono);
@@ -122,7 +116,7 @@ let llenarContenido = () => {
             contenedor_card.appendChild(diasSolicitud);
             contenedor_card.appendChild(btn_aprobar);
             contenedor_card.appendChild(verMas);
-            
+
 
             card.appendChild(contenedor_card);
             CardsCentros.appendChild(card);
