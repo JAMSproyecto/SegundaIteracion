@@ -41,13 +41,14 @@ let llenarContenido = () => {
             let contenedor_card = document.createElement('div');
             contenedor_card.classList.add('contendedor_cards');
 
+            let div_dato = document.createElement('div');
+            div_dato.classList.add('contenedor_dato');
 
             let centro_nombre = document.createElement('h1');
-            centro_nombre.innerHTML = '<span>' + obj['nombre'] + '</span>';
+            centro_nombre.innerHTML = obj['nombre'];
 
             let telefono = document.createElement('p');
-            telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' +
-                '<p>' + obj['telefono'] + '</p>';
+    telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' + obj['telefono'];
 
             let correo = document.createElement('p');
             correo.innerHTML = '<strong class="descripcion">Correo electrónico: </strong>' + '<p>' + obj['correo'] + '</p>';
@@ -112,7 +113,7 @@ let llenarContenido = () => {
             });
 
             contenedorBtnAprobar.appendChild(btn_aprobar);
-
+            contenedor_card.appendChild(div_dato);
             card.appendChild(centro_nombre);
             contenedor_card.appendChild(telefono);
             contenedor_card.appendChild(correo);
