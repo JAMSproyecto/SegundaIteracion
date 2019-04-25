@@ -1,7 +1,8 @@
 'use strict';
 
-const CardsCentros = document.querySelector('#cards_centros');
+const CardsAdmin = document.querySelector('#cards_admin');
 const FiltroCards = document.querySelector('#filtrar_cards');
+const has = Object.prototype.hasOwnProperty;
 
 let elContenedor = [];
 
@@ -29,63 +30,77 @@ let llenarContenido = () => {
     const cantFiltros = filtros.trim().length;
 
     //Limpiamos antes de añadir los cards:
-    CardsCentros.innerHTML = '';
+    CardsAdmin.innerHTML = '';
 
     elContenedor.forEach(obj => {
 
         if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
 
             let card = document.createElement('div');
-            card.classList.add('contendedor_card_principal');
+            card.classList.add('contenedor_cards_principal');
 
             let contenedor_card = document.createElement('div');
-            contenedor_card.classList.add('contendedor_cards');
+            contenedor_card.classList.add('contenedor_dato');
 
-            let div_dato = document.createElement('div');
-            div_dato.classList.add('contenedor_dato');
 
             let centro_nombre = document.createElement('h1');
-            centro_nombre.innerHTML = obj['nombre'];
-
-            let telefono = document.createElement('p');
-    telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' + obj['telefono'];
-
-            let correo = document.createElement('p');
-            correo.innerHTML = '<strong class="descripcion">Correo electrónico: </strong>' + '<p>' + obj['correo'] + '</p>';
-
-            let provincia = document.createElement('p');
-            provincia.innerHTML = '<strong class="descripcion">Provincia: </strong>' + '<p>' + obj['provincia'] + '</p>';
-
-            let direccion = document.createElement('p');
-            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>' + '<p>' + obj['direccion'] + '</p>';
-
-            let fechaSolicitud = document.createElement('p');
-
-            fechaSolicitud.innerHTML = '<strong class="descripcion">Fecha de solicitud: </strong>' + '<p>' + obj['solicitudFechaCorta'] + '</p>';
+            centro_nombre.innerHTML = '<span>' + obj['nombre'] + '</span>';
 
 
-            // Obtenemos la cantidad de "días hábiles" que lleva pendiente de aprobación.
-            let diasSolicitud = document.createElement('p');
-
-            if (obj['solicitudDiasHabiles'] > 3) {
-                diasSolicitud.innerHTML = '<strong class="descripcion">Días hábiles pendientes: </strong>' + '<p style="color:#ED4C67;">' + obj['solicitudDiasHabiles'] + '</p>';
+            let diasSolicitud = '';
+            if (parseInt(obj['solicitudDiasHabiles'], 10) > 3) {
+                diasSolicitud = '<span style="color:#ED4C67; font-weight:600;">' + obj['solicitudDiasHabiles'] + '</span>';
             } else {
-                diasSolicitud.innerHTML = '<strong class="descripcion">Días hábiles pendientes: </strong>' + '<p>' + obj['solicitudDiasHabiles'] + '</p>';
+                diasSolicitud = '<span>' + obj['solicitudDiasHabiles'] + '</span>';
             }
 
-            let verMas = document.createElement('a');
-            verMas.addEventListener('click', () => {
+            let listaDetallada = document.createElement('table');
+            listaDetallada.style = 'border: none;';
+            const objListaDetallada = [
+                { "dt": "Teléfono:", "dd": obj['telefono'] },
+                { "dt": "Correo electrónico:", "dd": obj['correo'] },
+                { "dt": "Provincia:", "dd": obj['provincia'] },
+                { "dt": "Dirección:", "dd": obj['direccion'] },
+                { "dt": "Fecha de solicitud:", "dd": obj['solicitudFechaCorta'] },
+                { "dt": "Días hábiles pendientes:", "dd": diasSolicitud }
+            ];
+
+            const cantListaDetallada = Object.keys(objListaDetallada).length;
+            if (cantListaDetallada > 0) {
+                let elBody = document.createElement('tbody');
+                let key;
+                for (key in objListaDetallada) {
+                    if (!has.call(objListaDetallada, key)) continue;
+                    const obj2 = objListaDetallada[key];
+
+                    let elTr = document.createElement('tr');
+                    elTr.innerHTML = '<td style="text-align: right; font-weight:600;vertical-align: top;">' + obj2.dt + '</td>' +
+                        '<td style="padding-left:15px;vertical-align: bottom;">' + obj2.dd + '</td>';
+                    elBody.appendChild(elTr);
+                }
+
+                listaDetallada.appendChild(elBody);
+            }
+
+
+            let verMas = document.createElement('p');
+            verMas.style = 'text-align:right; width:100%;';
+            let verMas_a = document.createElement('a');
+            verMas_a.addEventListener('click', () => {
                 irAlPerfil(obj['_id']);
             }, false);
-            verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+            verMas_a.innerHTML = 'Ver más...';
+            verMas.appendChild(verMas_a);
 
-            let contenedorBotones = document.createElement('p');
+
+            let contenedorBotones = document.createElement('div');
+            contenedorBotones.classList.add('contenedor_btn_cards');
 
             let btn_aprobar = document.createElement('button');
-            btn_aprobar.classList.add('btn');
-            btn_aprobar.classList.add('btn--celeste');
+            btn_aprobar.classList.add('btn_cards');
+            btn_aprobar.classList.add('btn_cards--celeste');
             btn_aprobar.type = 'button';
-            btn_aprobar.textContent = 'Aprobar';
+            btn_aprobar.innerHTML = '<i class="fas fa-plus-circle"></i> Aprobar';
             btn_aprobar.dataset.idCEdu = obj['_id'];
 
             btn_aprobar.addEventListener('click', function () {
@@ -101,7 +116,7 @@ let llenarContenido = () => {
                     if (res.value) {
                         const fueAprobado = await aprobar_cedu(elId, true);
                         if (fueAprobado === true) {
-                            cargarCEdu();
+                            cargarPagina();
                         }
                     } else {
                         return false;
@@ -109,13 +124,11 @@ let llenarContenido = () => {
                 });
             });
 
-            contenedorBtnAprobar.appendChild(btn_aprobar);
-            contenedor_card.appendChild(div_dato);
 
             let btn_rechazar = document.createElement('button');
-            btn_rechazar.classList.add('btn');
+            btn_rechazar.classList.add('btn_cards');
             btn_rechazar.type = 'button';
-            btn_rechazar.textContent = 'Rechazar';
+            btn_rechazar.innerHTML = '<i class="fas fa-minus-circle"></i> Rechazar';
             btn_rechazar.dataset.idCEdu = obj['_id'];
 
             btn_rechazar.addEventListener('click', function () {
@@ -131,7 +144,7 @@ let llenarContenido = () => {
                     if (res.value) {
                         const fueRechazado = await aprobar_cedu(elId, false);
                         if (fueRechazado === true) {
-                            cargarCEdu();
+                            cargarPagina();
                         }
                     } else {
                         return false;
@@ -141,32 +154,29 @@ let llenarContenido = () => {
 
 
 
-let espacioVacio = document.createElement('span');
-                espacioVacio.innerHTML = '&nbsp;';
-            
-			contenedorBotones.appendChild(btn_aprobar);
+            let espacioVacio = document.createElement('span');
+            espacioVacio.innerHTML = '&nbsp;&nbsp;';
+
+            contenedorBotones.appendChild(btn_aprobar);
             contenedorBotones.appendChild(espacioVacio);
             contenedorBotones.appendChild(btn_rechazar);
 
-            card.appendChild(centro_nombre);
-            contenedor_card.appendChild(telefono);
-            contenedor_card.appendChild(correo);
-            contenedor_card.appendChild(provincia);
-            contenedor_card.appendChild(direccion);
-            contenedor_card.appendChild(fechaSolicitud);
-            contenedor_card.appendChild(diasSolicitud);
+            contenedor_card.appendChild(listaDetallada);
             contenedor_card.appendChild(contenedorBotones);
             contenedor_card.appendChild(verMas);
 
-
+            card.appendChild(centro_nombre);
             card.appendChild(contenedor_card);
-            CardsCentros.appendChild(card);
+            CardsAdmin.appendChild(card);
 
         };
     });
 };
 
-let cargarCEdu = () => {
+let cargarPagina = () => {
+
+    CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;color: #007bff;" href="javascript:void(0);"><h2>Cargando...</h2></a>';
+
     listarCEdu_sin_aprobar((pSuccess, pMessage) => {
         if (pSuccess) {
             if ('object' == typeof pMessage) {
@@ -177,11 +187,11 @@ let cargarCEdu = () => {
                 llenarContenido();
 
             } else {
-                CardsCentros.innerHTML = '';
+                CardsAdmin.innerHTML = '';
                 console.error(pMessage);
             }
         } else {
-            CardsCentros.innerHTML = '<h4>' + pMessage + '</h4>';
+            CardsAdmin.innerHTML = '<h4>' + pMessage + '</h4>';
             console.error(pMessage);
         }
     });
@@ -190,6 +200,10 @@ let cargarCEdu = () => {
 
 
 window.onload = () => {
-    cargarCEdu();
+    cargarPagina();
+    if (FiltroCards) {
+        FiltroCards.select();
+        FiltroCards.focus();
+    }
 };
 
