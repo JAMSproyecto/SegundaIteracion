@@ -5,6 +5,9 @@ const FiltroCards = document.querySelector('#filtrar_cards');
 const selectEtiquetas = document.querySelector('#select_etiquetas')
 const tipoUsuario = localStorage.getItem('tipoUsuario');
 
+const HtmlEstrellaAmarilla = '<i class="fas fa-star" style="color: rgb(255, 203, 49);"></i>';
+const HtmlEstrellaGris = '<i class="far fa-star" style="color: rgb(50, 50, 50);"></i>';
+
 const listaEtiquetas = listar_etiquetas();
 
 let elContenedor = [];
@@ -44,6 +47,18 @@ let llenarSelectEtiquetas = () => {
         selectEtiquetas.appendChild(opcionGrupo);
 
     }
+};
+
+let obtenerHtmlEstrellas = (pCantidad) => {
+    let TOP = 5, i = 0, resultado = '', laCantidad = parseInt('' + pCantidad, 10);
+    for (; i < TOP; ++i) {
+        if (i < laCantidad) {
+            resultado += HtmlEstrellaAmarilla;
+        } else {
+            resultado += HtmlEstrellaGris;
+        }
+    }
+    return resultado;
 };
 
 let llenarContenido = () => {
@@ -92,11 +107,11 @@ let llenarContenido = () => {
 
                 let calificacionMEP = document.createElement('p');
 
-                calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + obj['calificacionMEP'];
+                calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + '<p class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionMEP']) + '</p>';
 
                 let calificacionPadres = document.createElement('p');
 
-                calificacionPadres.innerHTML = '<strong class="Calificacion ">Calificación de los padres de familia: </strong>' + obj['calificacionPadres'];
+                calificacionPadres.innerHTML = '<strong class="Calificacion ">Calificación de los padres de familia: </strong>' + '<p class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</p>';
 
 
                 let div_button = document.createElement('div');
