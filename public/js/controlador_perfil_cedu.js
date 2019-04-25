@@ -42,7 +42,7 @@ let crearActividades = () => {
 
       let actividad = document.createElement('div');
       actividad.classList.add('actividad');
-      
+
 
       let strong = document.createElement('strong');
       strong.classList.add('dato_card');
@@ -57,7 +57,7 @@ let crearActividades = () => {
       hora.classList.add('dato_card');
 
       //Agregado por Marlon, para que muestre los datos faltantes
-  
+
 
       let detalles = document.createElement('p');
       detalles.classList.add('detalles__actividad');
@@ -129,34 +129,35 @@ let agregarCalificacion = () => {
       showConfirmButton: true
     });
   } else {
-	  
-	asignar_calificacion_padre(calificacionSeleccionada, elComentario,
-	(pSuccess, pMessage, pIdPadre, pIdCentro) => {
+
+    asignar_calificacion_padre(calificacionSeleccionada, elComentario,
+      (pSuccess, pMessage, pIdPadre, pIdCentro) => {
         if (pSuccess) {
-            console.log(pMessage);
-            console.log("pIdPadre: "+pIdPadre);
-            console.log("pIdCentro: "+pIdCentro);
-            alert(pMessage);
-			
-			// TODO: Listar las calificaciones (buscar_calificaciones_padre_por_idCentro).
-			
-			
+          console.log(pMessage);
+          console.log("pIdPadre: " + pIdPadre);
+          console.log("pIdCentro: " + pIdCentro);
+          alert(pMessage);
+
+          // TODO: Listar las calificaciones (buscar_calificaciones_padre_por_idCentro).
+
+
         } else {
-            Swal.fire({
-                type: 'error',
-                title: pMessage
-            });
-            console.error(pMessage);
+          Swal.fire({
+            type: 'error',
+            title: pMessage
+          });
+          console.error(pMessage);
         }
-    });
+      });
   }
 };
+
 let calificarMEP = () => {
 
   const tipoUsuario = localStorage.getItem('tipoUsuario');
   console.log(tipoUsuario);
 
-  if (tipoUsuario == 'SuperAdmin') {
+  if (tipoUsuario === 'SuperAdmin') {
     let idCentro = localStorage.getItem('verPerfilCEdu');
     console.log(idCentro);
 
@@ -168,99 +169,85 @@ let calificarMEP = () => {
     botonCalificarCentro.addEventListener('click', function () {
 
       let rubros = listar_rubros();
+      const cantRubros = rubros.length;
+
       let rubrosActivos = [];
-      let y = 0;
-      for (let i = 0; i < rubros.length; i++) {
+      let arrSteps = [];
+      let iSteps = 1;
+      let arrQueue = [];
 
-        if (rubros[i]['estado'] == 'Activo') {
-          rubrosActivos[y] = rubros[i];
-          y++;
+      for (let i = 0; i < cantRubros; i++) {
+        if (rubros[i]['estado'] === 'Activo') {
+          rubrosActivos.push(rubros[i]['rubro']);
+          arrSteps.push('' + iSteps);
+          ++iSteps;
+          arrQueue.push({ title: rubros[i]['rubro'] });
         }
-
-
       }
+
       Swal.mixin({
         input: 'select',
         inputOptions: {
-          1: 1,
-          2: 2,
-          3: 3,
-          4: 4,
-          5: 5,
-          6: 6,
-          7: 7,
-          8: 8,
+          10: 10,
           9: 9,
-          10: 10
+          8: 8,
+          7: 7,
+          6: 6,
+          5: 5,
+          4: 4,
+          3: 3,
+          2: 2,
+          1: 1
         },
-        width: 680,
+        width: 700,
         padding: 100,
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
-        progressSteps: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-      }).queue([
-        {
-          title: rubrosActivos[0]['rubro']
-        },
-        {
-          title: rubrosActivos[1]['rubro']
-        },
-        {
-          title: rubrosActivos[2]['rubro']
-        },
-        {
-          title: rubrosActivos[3]['rubro']
-        },
-        {
-          title: rubrosActivos[4]['rubro']
-        },
-        {
-          title: rubrosActivos[5]['rubro']
-        },
-        {
-          title: rubrosActivos[6]['rubro']
-        },
-        {
-          title: rubrosActivos[7]['rubro']
-        },
-        {
-          title: rubrosActivos[8]['rubro']
-        },
-        {
-          title: rubrosActivos[9]['rubro']
-        },
-
-      ]).then((result) => {
+        progressSteps: arrSteps
+      }).queue(arrQueue).then((result) => {
         if (result.value) {
           let values = [];
           values = (result.value);
+		  
+		  const cantValores = values.length;
           let sumValues = 0;
-          for (let i = 0; i < values.length; i++) {
-            values[i] = parseInt(values[i]);
+		  
+          for (let i = 0; i < 10; i++) {
+			  if ((i+1) > cantValores) {
+              values.push(0);
+            }else{
+			  values[i] = parseInt(values[i], 10);
+			}
             sumValues += values[i];
           }
-          let prom = (sumValues / values.length);
-		  
-		  //Redondea hacia arriba:
+          let prom = (sumValues / cantValores);
+
+          //Redondea hacia arriba:
           let estrellasMep = Math.round(prom / 2);
-		  
-		  //Al redondear puede que el resultado sea mayor a 5, entonces se iguala a 5:
-		  if(estrellasMep > 5){
-			  estrellasMep = 5;
-		  }
-		  
+
+          //Al redondear puede que el resultado sea mayor a 5, entonces se iguala a 5:
+          if (estrellasMep > 5) {
+            estrellasMep = 5;
+          }
+
+          const cantRubrosActivos = rubrosActivos.length;
+
+          for (let w = 1; w < 11; ++w) {
+            if (w > cantRubrosActivos) {
+              rubrosActivos.push('_');
+            }
+          }
+
           Swal.fire({
             title: 'Calificación completada',
             html:
               'El centro ha recibido una calificación total de: ' + prom + ', para total de: ' + estrellasMep + ' estrellas',
             confirmButtonText: 'Aceptar'
-          })
-          registrar_calificacionMEP(idCentro, estrellasMep, rubros[0].rubro, values[0], rubros[1].rubro, values[1], rubros[2].rubro, values[2], rubros[3].rubro, values[3], rubros[4].rubro, values[4], rubros[5].rubro, values[5], rubros[6].rubro, values[6], rubros[7].rubro, values[7], rubros[8].rubro, values[8], rubros[9].rubro, values[9]);
+          });
+		  
+          registrar_calificacionMEP(idCentro, estrellasMep, rubrosActivos[0], values[0], rubrosActivos[1], values[1], rubrosActivos[2], values[2], rubrosActivos[3], values[3], rubrosActivos[4], values[4], rubrosActivos[5], values[5], rubrosActivos[6], values[6], rubrosActivos[7], values[7], rubrosActivos[8], values[8], rubrosActivos[9], values[9]);
         }
-      })
-
-
-
+      });
     });
   }
 
@@ -292,14 +279,14 @@ let mostrar_noticias = () => {
       div_noticias.innerHTML = bloques;
     } else {
       let bloques = '';
-        bloques += '<div class="noticia">';
-        bloques += 'No hay noticias registradas';
-        bloques += '</div>';
+      bloques += '<div class="noticia">';
+      bloques += 'No hay noticias registradas';
+      bloques += '</div>';
       div_noticias.innerHTML = bloques;
     }
   } else {
     console.error('Error al obtener las noticias');
-    
+
   }
 
 };
@@ -313,7 +300,7 @@ let cards_servicios = (id) => {
   if (cantidadServicios > 0) {
     servicio.forEach(function (object) {
       let div_contenedor = document.createElement('div');
-      div_contenedor.classList.add('contenedor_servicios' , 'servicio');
+      div_contenedor.classList.add('contenedor_servicios', 'servicio');
       let div_contenedor_btn = document.createElement('div');
       div_contenedor_btn.classList.add('contenedor_btn');
       let div_servicio = document.createElement('div');
@@ -321,15 +308,15 @@ let cards_servicios = (id) => {
       let logo = document.createElement('i');
       let descripcion = object.descripcion;
       let btn_descripcion = document.createElement('button');
-      btn_descripcion.textContent ='ver más';
+      btn_descripcion.textContent = 'ver más';
       btn_descripcion.classList.add('btn_servico');
       //funcion para msotrar la descripción del servicio 
-      btn_descripcion.addEventListener('click',function(){
+      btn_descripcion.addEventListener('click', function () {
         Swal.fire({
           title: '<strong>Descripción de la noticia:</strong>',
           type: 'info',
           html:
-            '<b>'+descripcion+'</b>',
+            '<b>' + descripcion + '</b>',
           showCloseButton: true,
           showCancelButton: false,
           focusConfirm: false,
@@ -341,7 +328,7 @@ let cards_servicios = (id) => {
           cancelButtonAriaLabel: 'Thumbs down',
         })
       });
-     
+
 
       switch (object.tipo) {
         case 'actividades':
@@ -451,7 +438,7 @@ let cards_servicios = (id) => {
     });
   } else {
     let div_contenedor = document.createElement('div');
-    div_contenedor.classList.add('contenedor_servicios' , 'servicio');
+    div_contenedor.classList.add('contenedor_servicios', 'servicio');
     let div_servicio = document.createElement('span');
     div_servicio.innerHTML = 'No hay servicios registrados';
 
@@ -485,7 +472,7 @@ window.onload = () => {
         BtnCalificar.addEventListener('click', agregarCalificacion, false);
       }
       if (Lnk_Cita) {
-        Lnk_Cita.setAttribute('href','registrar_cita.html');
+        Lnk_Cita.setAttribute('href', 'registrar_cita.html');
       }
 
       break;
@@ -504,7 +491,7 @@ window.onload = () => {
     document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
   }
 
-let tipoUsuario = localStorage.getItem("tipoUsuario");
+  let tipoUsuario = localStorage.getItem("tipoUsuario");
 
   if (tipoUsuario == 'CentroEducativo') {
     crearCalendario(id);

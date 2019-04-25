@@ -9,12 +9,11 @@
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/estiloGeneral.css">
 
-    <link rel="stylesheet" href="./css/mostrar_cards.css">
+    <link rel="stylesheet" href="./css/mostrar_cards_listaCEdu.css">
 
 </head>
 
@@ -115,7 +114,7 @@
                         <li><a href="#">Ranking:Padres de familia</a></li>
                         <li><a href="#">Ranking:MEP</a></li>
                         <li><a href="#">Visitas a centros educativos</a></li>
-                        <li><a href="#">Bitacora transacional</a></li>
+                        <li><a href="#">Bitácora transaccional</a></li>
                     </ul>
                 </li>
             </ul>
@@ -127,20 +126,20 @@
             <div class="tituloPrincipal">
                 <h1>Centros educativos</h1>
             </div>
-            <div class="tabla__responsive">
-                <div class="filtar">
-                    <label for="filtrar_cards">Búsqueda por nombre</label>
-                    <input type="text" name="" id="filtrar_cards">
+			
+            <div class="contenedor_filtrar_cards">
+			     <div>
+                    <label for="filtrar_cards">Búsqueda por nombre:</label>
+                <input type="text" name="" id="filtrar_cards">
                 </div>
-                <div class="etiquetas">
-                    <label for="select_etiquetas">Filtro por etiquetas</label>
+				 <div>
+					 <label for="select_etiquetas">Filtro por etiquetas:</label>
                     <select id="select_etiquetas"></select>
-                    <option value=""> </option>
-                </div>
+					 </div>
             </div>
-            <div id="cards_centros">
-
-            </div>
+			
+            <div id="cards_centros"></div>
+			
         </section>
     </main>
     <footer>
@@ -167,13 +166,6 @@
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24,
                             calle
                             12</a></li>
-                </ul>
-                <ul class="footer__lista__top">
-                    <li>
-                        <h4 class="footer__lista__header">Citas</h4>
-                    </li>
-                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="far fa-calendar-alt"></i> Agendar</a></li>
                 </ul>
                 <section class="footer__social__seccion footer__flex">
                     <span class="footer__social__traslapar footer__social__conectate">
