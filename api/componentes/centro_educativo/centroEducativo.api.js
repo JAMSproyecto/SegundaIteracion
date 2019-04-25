@@ -412,7 +412,7 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
 
             //Filtramos los que NO están aprobados:
             const resultado = entradas.filter(entrada => {
-                return entrada.cuenta.some(obj => obj.aprobado === false);
+                return entrada.cuenta.some(obj => (obj.aprobado === false && obj.pin !== '_RECHAZADO_'));
             });
 
             const cantResultados = Object.keys(resultado).length;
@@ -567,6 +567,59 @@ module.exports.aprobar_centro_educativo = async (pId, res) => {
                     res.json({
                         success: true,
                         message: 'El centro educativo se aprobó exitosamente'
+                    });
+                }
+            });
+    }
+};
+
+
+module.exports.rechazar_centro_educativo = async (pId, res) => {
+
+    //Obtenemos el correo del centro para hacer el update y el correo del contacto para enviar la notificación por correo. 
+    const elCentro = await ModelCEdu.findOne({ _id: pId }, { _id: 0 }).select('correo contacto');
+
+    if (null === elCentro || 'undefined' === typeof elCentro) {
+
+        console.log(Tiza.bold.yellow.bgBlack(`Error al rechazar el centro educativo: no se encontró el id: ${pId}`));
+        const log = insertarBitacora('SuperAdmin', `Error al rechazar el centro educativo: no se encontró el id #${pId}`);
+
+        res.json({
+            success: false,
+            message: 'No se pudo rechazar el centro educativo'
+        });
+    } else {
+        const correoCentro = elCentro.correo;
+        const correoContacto = elCentro.contacto[0].correo;
+        const nombreContacto = elCentro.contacto[0].primerNombre + ' ' + elCentro.contacto[0].primerApellido;
+        const elPin = ObtenerPin.get();
+
+        const nuevosDatos = { aprobado: false, activo: false, fechaActualizado: ObtenerFecha.get(), pin: '_RECHAZADO_' };
+
+
+        ModelUsuario.findOneAndUpdate({ correo: correoCentro }, { $set: nuevosDatos }, { new: true },
+            (err, cambiosRealizados) => {
+                if (err) {
+                    console.log(Tiza.bold.yellow.bgBlack('Error al rechazar el centro educativo:'));
+                    console.log(Tiza.bold.yellow.bgBlack(err));
+
+                    const log = insertarBitacora('SuperAdmin', `Error al rechazar el centro educativo: ${correoCentro}`);
+
+                    res.json({
+                        success: false,
+                        message: 'No se pudo rechazar el centro educativo'
+                    });
+                } else {
+
+                    //enviar el correo
+                    let enviar = enviarCorreo(correoContacto, nombreContacto, elPin);
+
+                    //registrar bitácora
+                    const log = insertarBitacora('SuperAdmin', `El centro educativo ${correoCentro} se rechazó exitosamente`);
+
+                    res.json({
+                        success: true,
+                        message: 'El centro educativo se rechazó exitosamente'
                     });
                 }
             });
