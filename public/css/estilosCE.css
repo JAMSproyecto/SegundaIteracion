@@ -17,9 +17,14 @@
 .bloqueInformacion{
   background: #f9f9f9; 
   display: flow-root;
+  height: 350px;
 }
 
 /*Lo agregó Marlon*/
+#tabla__servicios{
+  margin-top: 80px;
+}
+
 .datoCard {
   padding-top: 20px;
   text-align: center; 
@@ -86,6 +91,21 @@
 }
 
 
+.detalles__actividad {
+margin-top: 15px;
+}
+
+.dato_card{
+  margin: 5px;
+}
+
+.fa-calendar-check {
+  font-size: 67px;
+  color: #253b80;
+  float: left;
+  padding-left: 29px;
+}
+
 .informacion{
   float: right;
   /* text-align: center; */
@@ -97,7 +117,11 @@
 /*estilo servicios*/
 .bloqueServicios{
   background: #179bd7;
+  text-align: center;
+  height: 350px; 
 }
+
+
 .servicio p {
   margin-top: 5px;
   text-align: center;
@@ -197,7 +221,7 @@ button.fc-button:focus {
 
 .my__60 {
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .contenedor {
@@ -234,7 +258,7 @@ button.fc-button:focus {
 }
 
 #calendario {
-  margin: 55px;
+  margin: 0px 75px 0px 75px;
 }
 
 /*fin estilos cita*/
@@ -279,9 +303,6 @@ button.fc-button:focus {
     background: #fff;
     box-shadow: 0 0 2px #cfcfcf;
 }
-
-
-
 
 
 

@@ -45,7 +45,12 @@ let crearActividades = () => {
 
 
       let strong = document.createElement('strong');
-      strong.classList.add('dato_card');
+      strong.classList.add('titulo');
+
+      let iconoActividad = document.createElement('p');
+    iconoActividad.innerHTML= '<i class="far fa-calendar-check"></i>';
+
+
 
       let lugar = document.createElement('p');
       lugar.classList.add('dato_card');
@@ -68,7 +73,9 @@ let crearActividades = () => {
 
       strong.innerHTML = obj.actividad;
       fecha.innerHTML = obj.fecha;
-      hora.innerHTML = `${obj.hora_inicio} - ${obj.finaliza}`;
+      hora.innerHTML = `Hora: ${obj.hora_inicio} - ${obj.finaliza}`;
+      
+      actividad.appendChild(iconoActividad);
       actividad.appendChild(strong);
       actividad.appendChild(lugar);
       actividad.appendChild(fecha);
