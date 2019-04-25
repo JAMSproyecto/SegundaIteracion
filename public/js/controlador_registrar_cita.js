@@ -1,52 +1,21 @@
 'uset strict';
 
-const input_nombre = document.querySelector('#txt_nombre');
-const input_apellidos = document.querySelector('#txt_apellidos');
-const input_telefono = document.querySelector('#txt_telefono');
-const input_correo = document.querySelector('#txt_correo');
 const input_fecha = document.querySelector('#fecha');
 const input_hora = document.querySelector('#hora');
 const input_comentario = document.querySelector('#comentario');
-
 const select = document.querySelector('#motivo_cita');
-
-
 const boton_registrar = document.querySelector('#btnRegistrarCita');
 
+const codigo = localStorage.getItem('verPerfilCEdu');
+
+let elNombre = '';
+let elApellido = '';
+let elTelefono = '';
+let elCorreo = '';
 
 let validar = () => {
     let error = false;
     let fecha = moment(`${input_fecha.value} ${input_hora.value}`, 'DD-MM-YYYY hh:mm');
-
-    if (input_nombre.value == '') {
-        error = true;
-        input_nombre.classList.add('error_input');
-    } else {
-        input_nombre.classList.remove('error_input');
-    }
-
-
-    if (input_apellidos.value == '') {
-        error = true;
-        input_apellidos.classList.add('error_input');
-    } else {
-        input_apellidos.classList.remove('error_input');
-    }
-
-
-    if (input_telefono.value == '') {
-        error = true;
-        input_telefono.classList.add('error_input');
-    } else {
-        input_telefono.classList.remove('error_input');
-    }
-
-    if (input_correo.value == '') {
-        error = true;
-        input_correo.classList.add('error_input');
-    } else {
-        input_correo.classList.remove('error_input');
-    }
 
     if (fecha.toString() == 'Invalid date' || fecha.isSameOrBefore(moment())) {
         error = true;
@@ -57,8 +26,6 @@ let validar = () => {
         input_hora.classList.remove('error_input');
     }
 
-
-    
     if (select.value == '') {
         error = true;
         select.classList.add('error_input');
@@ -66,7 +33,6 @@ let validar = () => {
     } else {
         select.classList.remove('error_input');
     }
-
 
     if (input_comentario.value == '') {
         error = true;
@@ -77,9 +43,7 @@ let validar = () => {
     }
 
     return error;
-
 };
-
 
 let mostrar_datos = () => {
     if (validar() == true) {//llamada a la función
@@ -92,28 +56,20 @@ let mostrar_datos = () => {
         );
 
     } else {
-        let nombre = input_nombre.value;
-        let apellidos = input_apellidos.value;
-        let telefono = input_telefono.value;
-        let correo = input_correo.value;
         let fecha = input_fecha.value;
         let hora = input_hora.value;
         let motivo = select.value;
-        let comentario = input_comentario.value;
-        
-        let codigo = localStorage.getItem('verPerfilCEdu'); 
-        
-        
-        
+        let comentario = input_comentario.value.trim();
 
 
+        if ('undefined' == typeof codigo || null === codigo) {
+            throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
+        }
 
-        registrar_cita(codigo,nombre, apellidos, telefono, correo, fecha, hora, motivo, comentario);
-
+        registrar_cita(codigo, elNombre, elApellido, elTelefono, elCorreo, fecha, hora, motivo, comentario);
 
     }
 };
-
 
 
 window.onload = () => {
@@ -122,13 +78,13 @@ window.onload = () => {
             var d = moment(date, format);
             return d.isValid() ? d.toDate() : false;
         },
-        
+
         formatDate: function (date, format) {
             return moment(date).format(format);
         },
-    
+
         //Optional if using mask input
-        formatMask: function(format){
+        formatMask: function (format) {
             return format
                 .replace(/Y{4}/g, '9999')
                 .replace(/Y{2}/g, '99')
@@ -143,28 +99,36 @@ window.onload = () => {
 
     $.datetimepicker.setLocale('es');
     $('#fecha').datetimepicker({
-        timepicker: false, datepicker: true, mask: true, format: 'DD-MM-YYYY',
-       
-        minDate: '2017-01-01'
+        timepicker: false, datepicker: true, mask: true, format: 'DD-MM-YYYY', minDate: '2019-01-01'
     });
- 
+
     let informacionPadre = buscar_padre(localStorage.getItem('id'));
 
-    input_nombre.value = informacionPadre.nombre;
-    input_apellidos.value = `${informacionPadre.apellido} ${informacionPadre.segundoApellido}`;
-    if(informacionPadre.numCasa != '' && typeof informacionPadre.numCasa != "undefined")
-        input_telefono.value = informacionPadre.numCasa;
-    else
-        input_telefono.value = informacionPadre.numCel;
-    
-    input_correo.value = informacionPadre.correo;
+    elNombre = informacionPadre.nombre;
+    elApellido = `${informacionPadre.apellido} ${informacionPadre.segundoApellido}`;
 
+    if ('undefined' != typeof informacionPadre.numCasa && null !== typeof informacionPadre.numCasa && informacionPadre.numCasa.trim() != '') {
+        elTelefono = informacionPadre.numCasa;
+    } else {
+        elTelefono = informacionPadre.numCel;
+    }
+
+    elCorreo = informacionPadre.correo;
+
+
+    if ('undefined' == typeof codigo || null === codigo) {
+        throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
+    }
+    const perfil = get_obtenerPerfil(codigo);
+
+    if ('undefined' !== typeof perfil.nombre) {
+        document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
+    }
 
 };
 
 
-
-
-boton_registrar.addEventListener('click', mostrar_datos);
-
+if (boton_registrar) {
+    boton_registrar.addEventListener('click', mostrar_datos);
+}
 
