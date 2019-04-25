@@ -206,7 +206,7 @@ button.fc-button:focus {
 
 .my__60 {
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .contenedor {
@@ -243,7 +243,7 @@ button.fc-button:focus {
 }
 
 #calendario {
-  margin: 55px;
+  margin: 0px 75px 0px 75px;
 }
 
 /*fin estilos cita*/
