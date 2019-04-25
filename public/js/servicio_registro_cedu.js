@@ -41,7 +41,7 @@ let registrarCentroEducativo = (pNombre, pNombreComercial, pCedulaJuridica, pCor
             if (res.success) {
                 Swal.fire({
                     type: 'success',
-                    title: res.message
+                    title: res.message,
                     onAfterClose: function () {
                         window.location.replace("credenciales.html");
                     }
