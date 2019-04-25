@@ -32,9 +32,13 @@ let llenarContenido = () => {
     //Limpiamos antes de añadir los cards:
     CardsAdmin.innerHTML = '';
 
+let encontroResultados = false;
+
     elContenedor.forEach(obj => {
 
         if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
+			
+			encontroResultados = true;
 
             let card = document.createElement('div');
             card.classList.add('contenedor_cards_principal');
@@ -169,13 +173,17 @@ let llenarContenido = () => {
             card.appendChild(contenedor_card);
             CardsAdmin.appendChild(card);
 
-        };
+        }
     });
+	
+	if(encontroResultados === false){
+		CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #cdcdcd;">¡No se encontraron resultados!</h2></a>';
+	}
 };
 
 let cargarPagina = () => {
 
-    CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;color: #007bff;" href="javascript:void(0);"><h2>Cargando...</h2></a>';
+    CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #007bff;">Cargando...</h2></a>';
 
     listarCEdu_sin_aprobar((pSuccess, pMessage) => {
         if (pSuccess) {
