@@ -91,6 +91,21 @@
 }
 
 
+.detalles__actividad {
+margin-top: 15px;
+}
+
+.dato_card{
+  margin: 5px;
+}
+
+.fa-calendar-check {
+  font-size: 67px;
+  color: #253b80;
+  float: left;
+  padding-left: 29px;
+}
+
 .informacion{
   float: right;
   /* text-align: center; */
