@@ -43,32 +43,33 @@ let llenarContenido = () => {
 
 
             let centro_nombre = document.createElement('h1');
-            centro_nombre.innerHTML = '<strong class="descripcion">Nombre: </strong>' + obj['nombre'];
+            centro_nombre.innerHTML = '<span>' + obj['nombre'] + '</span>';
 
             let telefono = document.createElement('p');
-            telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' + obj['telefono'];
+            telefono.innerHTML = '<strong class="descripcion">Teléfono: </strong>' +
+                '<p>' + obj['telefono'] + '</p>';
 
             let correo = document.createElement('p');
-            correo.innerHTML = '<strong class="descripcion">Correo: </strong>' + obj['correo'];
+            correo.innerHTML = '<strong class="descripcion">Correo electrónico: </strong>' + '<p>' + obj['correo'] + '</p>';
 
-            let provincia = document.createElement('span');
-            provincia.innerHTML = '<strong class="descripcion">Provincia: </strong>' + obj['provincia'];
+            let provincia = document.createElement('p');
+            provincia.innerHTML = '<strong class="descripcion">Provincia: </strong>' + '<p>' + obj['provincia'] + '</p>';
 
-            let direccion = document.createElement('span');
-            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>' + obj['direccion'];
+            let direccion = document.createElement('p');
+            direccion.innerHTML = '<strong class="descripcion">Dirección: </strong>' + '<p>' + obj['direccion'] + '</p>';
 
-            let fechaSolicitud = document.createElement('span');
+            let fechaSolicitud = document.createElement('p');
 
-            fechaSolicitud.innerHTML = 'Fecha de solicitud: ' + obj['solicitudFechaCorta'];
+            fechaSolicitud.innerHTML = '<strong class="descripcion">Fecha de solicitud: </strong>' + '<p>' + obj['solicitudFechaCorta'] + '</p>';
 
 
             // Obtenemos la cantidad de "días hábiles" que lleva pendiente de aprobación.
             let diasSolicitud = document.createElement('p');
 
             if (obj['solicitudDiasHabiles'] > 3) {
-                diasSolicitud.innerHTML = 'Días hábiles pendientes: <span style="color:#ED4C67;">' + obj['solicitudDiasHabiles'] + '</span>';
+                diasSolicitud.innerHTML = '<strong class="descripcion">Días hábiles pendientes: </strong>' + '<p style="color:#ED4C67;">' + obj['solicitudDiasHabiles'] + '</p>';
             } else {
-                diasSolicitud.innerHTML = 'Días hábiles pendientes: ' + obj['solicitudDiasHabiles'];
+                diasSolicitud.innerHTML = '<strong class="descripcion">Días hábiles pendientes: </strong>' + '<p>' + obj['solicitudDiasHabiles'] + '</p>';
             }
 
             let verMas = document.createElement('a');
@@ -77,9 +78,12 @@ let llenarContenido = () => {
             }, false);
             verMas.innerHTML = '<i class="fas fa-id-card"></i>';
 
+            let contenedorBtnAprobar = document.createElement('p');
 
             //se crea el boton para aprobar el centro educativo Creado por Johan 
             let btn_aprobar = document.createElement('button');
+            btn_aprobar.classList.add('btn');
+            btn_aprobar.classList.add('btn--celeste');
             btn_aprobar.type = 'button';
             btn_aprobar.textContent = 'Aprobar';
             btn_aprobar.dataset.idCEdu = obj['_id'];
@@ -107,6 +111,8 @@ let llenarContenido = () => {
                 });
             });
 
+            contenedorBtnAprobar.appendChild(btn_aprobar);
+
             card.appendChild(centro_nombre);
             contenedor_card.appendChild(telefono);
             contenedor_card.appendChild(correo);
@@ -114,7 +120,7 @@ let llenarContenido = () => {
             contenedor_card.appendChild(direccion);
             contenedor_card.appendChild(fechaSolicitud);
             contenedor_card.appendChild(diasSolicitud);
-            contenedor_card.appendChild(btn_aprobar);
+            contenedor_card.appendChild(contenedorBtnAprobar);
             contenedor_card.appendChild(verMas);
 
 
