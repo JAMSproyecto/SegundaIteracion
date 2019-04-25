@@ -15,7 +15,10 @@ let registrar_etiqueta = (pnombre) => {
     if (res.success) {
       swal.fire({
         type: 'success',
-        title: res.msg
+        title: res.msg,
+     onAfterClose: function () {
+          window.location.replace('./listaEtiquetas.html');
+        }   
       });
     }
     else {
@@ -77,7 +80,10 @@ let actualizar_etiqueta = (pid, petiqueta) => {
     if (res.success) {
       swal.fire({
         type: 'success',
-        title: res.msg
+        title: res.msg,
+        onAfterClose: function () {
+          window.location.replace('./listaEtiquetas.html');
+        }
       });
     }
     else {
@@ -111,7 +117,10 @@ let eliminar_etiqueta = (pid) => {
     if (res.success) {
       swal.fire({
         type: 'success',
-        title: res.msg
+        title: res.msg,
+        onAfterClose: function () {
+          window.location.replace('./listaEtiquetas.html');
+        }
       });
     }
     else {

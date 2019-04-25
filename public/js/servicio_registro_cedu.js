@@ -39,13 +39,14 @@ let registrarCentroEducativo = (pNombre, pNombreComercial, pCedulaJuridica, pCor
     request.done(res => {
         if ('object' == typeof res) {
             if (res.success) {
-                Swal.fire({
-                    type: 'success',
-                    title: res.message,
-                    onAfterClose: function () {
-                        window.location.replace("credenciales.html");
-                    }
-                });
+                    Swal.fire({
+                        type: 'success',
+                        title: res.message,
+                        html: 'Estará recibiendo un correo con el pin de validación, una vez que el MEP haya aprobado su centro',
+                        onAfterClose:   function () {
+                            window.location.replace("credenciales.html");
+                        }
+                    });
             } else {
                 Swal.fire({
                     type: 'error',
