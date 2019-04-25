@@ -215,7 +215,7 @@ header .header__nav .menu__palanca {
 header .header__nav .menu__palanca ul,
 header .header__nav .menu__palanca li {
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
 header .header__nav .menu__palanca:before,
@@ -334,7 +334,7 @@ header .header__nav .menu__palanca.menu__palanca__der {
 
 header .header__nav .menu__palanca.menu__palanca__izq {
   float: right;
-  margin-right: 15px;
+  margin-right: 39px;
   right: 0;
   top: 25px;
 }
@@ -415,11 +415,12 @@ main#main {
 
 
 
-
-
-
 .bloqueHeader .bloqueAdmin{
   width: 12%;
+}
+
+.menu__palanca  .menu_opciones{
+  padding: 10px;
 }
 
 

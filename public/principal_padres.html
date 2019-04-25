@@ -11,20 +11,21 @@
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/footer.css">
-
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
     <link rel="stylesheet" href="./css/mostrar_cards.css">
+
 </head>
 
 <body>
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
-           
-            <div class="bloqueHeader__logo">
-                    <a href="principal_padres.html">
-                            <img src="./imgs/logo_mep.png" class="imagen_mep">
-                        </a>
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+
+            <div class="bloqueLogo__admin  bloqueHeader__logo">
+                <a href="principal_padres.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
             </div>
         </div>
         <div class="bloqueHeader__filaArriba">
@@ -44,14 +45,12 @@
                             <li>
                                 <a href="./perfil_padre.html">Ver perfil</a>
                             </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li>
                                 <a href="./actualizarDatosPadre.html">Modificar perfil</a>
                             </li>
                             <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
+
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -63,7 +62,7 @@
 
             </div>
         </div>
-       
+
     </header>
 
     <main>
@@ -73,19 +72,20 @@
                 <h1>Centros educativos</h1>
             </div>
             <div class="tabla__responsive">
-              <div>
+                <div class="filtar">
                     <label for="filtrar_cards">Búsqueda por nombre</label>
                     <input type="text" name="" id="filtrar_cards">
-              </div>  
-              <div>
-                  <label for="select_etiquetas">Filtro por etiquetas</label>
-                  <select id="select_etiquetas"></select>
-              </div>
-
-
-                <div id="cards_centros">
-
                 </div>
+                <div class="etiquetas">
+                    <label for="select_etiquetas">Filtro por etiquetas</label>
+                    <select id="select_etiquetas"></select>
+                </div>
+
+
+
+            </div>
+            <div id="cards_centros">
+
             </div>
         </section>
     </main>
@@ -159,15 +159,15 @@
         </div>
     </footer>
 
-<script src="./js/controlador_nav.js"></script>
+    <script src="./js/controlador_nav.js"></script>
 
-<script src="./js/sweetalert2.all.min.js"></script>
-<script src="./js/jquery-3.3.1.min.js"></script>
-<script src="./js/combux.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/combux.js"></script>
 
-<script src="./js/servicio_registrar_etiqueta.js"></script>
-<script src="./js/servicio_listar_cedu.js"></script>
-<script src="./js/controlador_listar_cedu.js"></script>
+    <script src="./js/servicio_registrar_etiqueta.js"></script>
+    <script src="./js/servicio_listar_cedu.js"></script>
+    <script src="./js/controlador_listar_cedu.js"></script>
 
 </body>
 

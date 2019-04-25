@@ -1,14 +1,23 @@
 #cards_centros {
-    width: 85%;
     text-align: center;
     margin: auto;
     padding-bottom: 100px;
   
 }
 
+.contenedor_dato{
+    text-align: left;
+    padding: 10px;
+    min-height: 273px;
+    position: relative;
+}
 
-#cards_centros div {
-    width: 301px;
+
+.contenedor_dato p{
+    margin-bottom: 10px;
+}
+#cards_centros .contenedor_cards_principal {
+    width: 400px;
     height: 229px;
     display: inline-table;
     border: 1px solid black;
@@ -20,7 +29,7 @@
     color: #fff;
     padding: 10px;
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 
@@ -39,15 +48,51 @@
     position: relative
 }
 
-#cards_centros .fa-id-card{
-    font-size: 25px;
-    left: 24px;
-    /* float: left; */
+
+
+
+button{
     float: right;
-    /* margin-top: 44px; */
-    margin: 17px 10px;
-   
-    top: 20px;
+    background: #179bd7;
+    color: #fff;
+    border: 0px;
+    padding: 6px;
+    position: relative;
+    top: 41px;
+
+}
+
+.filtar{
+ float: left;
 }
 
 
+.etiquetas{
+    float: right;
+}
+
+.tabla__responsive{
+    display: flow-root;
+    width: 1233px;
+    margin: 40px auto;
+}
+
+.tabla__responsive label{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+
+.tabla__responsive input,
+.tabla__responsive select{
+    padding: 5px 0px;
+    width: 230px;
+    display: inline-block;
+ 
+
+
+}
+
+.tabla__responsive select{
+    font-size: 17px;
+}
