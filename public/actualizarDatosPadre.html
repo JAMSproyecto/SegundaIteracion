@@ -70,35 +70,35 @@
     </header>
 
 
-<main class="formulario">
-    <div class="text_center">
-        <h1>Actualizar de padres de familia</h1>
-        <h3>Realice los cambios necesarios y presione el botón de guardar</h3>
+<main class="formulario mb__15">
+    <div class="text__center">
+        <h1>Modificar perfil</h1>
+        <h4>Realice los cambios necesarios y presione el botón 'Actualizar'</h4>
     </div>
-    <section id="informacionGeneral">
-        <div class="text_center">
+    <section id="informacionGeneral" class="mb__15">
+        <div class="text__center">
             <h2>Información general</h2>
         </div>
-        <div class="datos_izq text_center">
-            <div class="text_center">
+        <div class="datos_izq text__center">
+            <div class="text__center">
                 <label for="txt_nombre">Nombre:</label>
                 <input type="text" id="txt_nombre">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="txt_segundo_nombre">Segundo nombre:</label>
                 <input type="text" id="txt_segundo_nombre">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="txt_apellido">Apellido:</label>
                 <input type="text" id="txt_apellido">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="txt_segundo_apellido">Segundo Apellido:</label>
                 <input type="text" id="txt_segundo_apellido">
             </div>
         </div>
-        <div class="datos_der text_center">
-            <div class="text_center">
+        <div class="datos_der text__center">
+            <div class="text__center">
                 <label for="lbl_tipo_id">Tipo de identificación:</label>
                 <input list="tipo_id" id="lbl_tipo_id">
                 <datalist id="tipo_id">
@@ -106,15 +106,15 @@
                     <option value="Pasaporte">
                     <option value="DNI">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="num_identidad">Número de identificación:</label>
                 <input type="number" id="num_identidad">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="txt_nacionalidad">Nacionalidad:</label>
                 <input type="text" id="txt_nacionalidad">
             </div>
-            <div class="text_center">
+            <div class="text__center">
                 <label for="fecha_nacimiento">Fecha de nacimiento:</label>
                 <input type="date" id="fecha_nacimiento">
             </div>
@@ -123,23 +123,23 @@
         <div id="contacto">
 
 
-            <div class="datos_izq text_center">
+            <div class="datos_izq text__center">
 
-                <div class="text_center">
+                <div class="text__center">
                     <label for="num_cel">Teléfono celular:</label>
                     <input type="number" id="num_cel">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="num_casa">Teléfono de domicilio:</label>
                     <input type="number" id="num_casa">
                 </div>
             </div>
-            <div class=" datos_der text_center">
-                <div class="text_center">
+            <div class=" datos_der text__center">
+                <div class="text__center">
                     <label for="email_correo">Correo electrónico:</label>
                     <input type="email" id="email_correo">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="email_correo2">Redigite su correo electrónico:</label>
                     <input type="email" id="email_correo2">
                 </div>
@@ -147,9 +147,9 @@
             </div>
         </div>
 
-        <div class="bloque_registro text_center">
+        <div class="bloque_registro text__center">
             <h2 class="titulo">Dirección</h2>
-            <div class="datos_izq text_center">
+            <div class="datos_izq text__center">
                 <div>
                     <label for="slt_provincias">Provincia</label>
                     <select id="slt_provincias">
@@ -168,13 +168,10 @@
                     <label for="slt_distritos">Distrito</label>
                     <select id="slt_distritos">
                         <option value="">--Selecciones un distrito--</option>
-                        <select id="sltDistrito">
-                            <option value="" disabled selected>Seleccione un distrito...</option>
-                        </select>
                     </select>
                 </div>
             </div>
-            <div class="datos_der text_center">
+            <div class="datos_der text__center">
                 <div>
                     <label for="txt_direccion">Dirección con señas:</label>
                     <textarea id="txt_direccion" cols="30" rows="10"></textarea>
@@ -194,26 +191,26 @@
                     <option value="">4</option>
                 </select>
             </div>
-            <div class="datos_izq text_center">
-                <div class="text_center">
+            <div class="datos_izq text__center">
+                <div class="text__center">
                     <label for="txt_nombre_hijo">Nombre del hijo:</label>
                     <input type="text" id="txt_nombre_hijo">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="num_edad_hijo">Edad:</label>
                     <input type="number" id="num_edad_hijo">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="txt_nombre_hijo2">Nombre del hijo:</label>
                     <input type="text" id="txt_nombre_hijo2">
                 </div>
 
-                <div class="text_center">
+                <div class="text__center">
                     <label for="num_edad_hijo2">Edad:</label>
                     <input type="number" id="num_edad_hijo2">
                 </div>
             </div>
-            <div class="datos_der text_center">
+            <div class="datos_der text__center">
                 <div>
                     <label for="txt_nombre_hijo3">Nombre del hijo:</label>
                     <input type="text" id="txt_nombre_hijo3">
@@ -238,10 +235,9 @@
 
 
     </section>
-
-    <div class="bloque_boton">
-        <button id="boton_registrar">Registrarse</button>
-    </div>
+ <div class="bloqueBoton text__center mb__15">
+            <button class="btn btn--amarillo btn--celeste mb__15" id="boton_registrar">Actualizar</button>
+        </div>
 </main>
 <footer>
     <div class="footer__cuerpo">
