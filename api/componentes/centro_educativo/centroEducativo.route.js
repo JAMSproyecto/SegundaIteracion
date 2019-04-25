@@ -28,5 +28,9 @@ Router.route('/aprobar_centro_educativo/:id').get((req, res) => {
     API.aprobar_centro_educativo(req.body.id, res);
 });
 
+Router.route('/rechazar_centro_educativo/:id').get((req, res) => {
+    API.rechazar_centro_educativo(req.body.id, res);
+});
+
 module.exports = Router;
 

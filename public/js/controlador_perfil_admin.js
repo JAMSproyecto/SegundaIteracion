@@ -79,9 +79,8 @@ let llenarContenido = () => {
             }, false);
             verMas.innerHTML = '<i class="fas fa-id-card"></i>';
 
-            let contenedorBtnAprobar = document.createElement('p');
+            let contenedorBotones = document.createElement('p');
 
-            //se crea el boton para aprobar el centro educativo Creado por Johan 
             let btn_aprobar = document.createElement('button');
             btn_aprobar.classList.add('btn');
             btn_aprobar.classList.add('btn--celeste');
@@ -89,20 +88,18 @@ let llenarContenido = () => {
             btn_aprobar.textContent = 'Aprobar';
             btn_aprobar.dataset.idCEdu = obj['_id'];
 
-            //se llama la función para aprobar el centro educativo 
-            //con un seewtAlert para confimar si quiere aprobarlo 
             btn_aprobar.addEventListener('click', function () {
                 const elId = this.dataset.idCEdu;
                 Swal.fire({
                     title: '¿Está seguro que desea aprobar el centro educativo?',
-                    text: "Ésta acción no se puede revertir",
+                    text: 'Esta acción no se puede revertir',
                     type: 'question',
                     showCancelButton: true,
                     confirmButtonText: '¡Sí, estoy seguro!',
                     cancelButtonText: 'Cancelar'
                 }).then(async res => {
                     if (res.value) {
-                        const fueAprobado = await aprobar_cedu(elId);
+                        const fueAprobado = await aprobar_cedu(elId, true);
                         if (fueAprobado === true) {
                             cargarCEdu();
                         }
@@ -114,6 +111,43 @@ let llenarContenido = () => {
 
             contenedorBtnAprobar.appendChild(btn_aprobar);
             contenedor_card.appendChild(div_dato);
+
+            let btn_rechazar = document.createElement('button');
+            btn_rechazar.classList.add('btn');
+            btn_rechazar.type = 'button';
+            btn_rechazar.textContent = 'Rechazar';
+            btn_rechazar.dataset.idCEdu = obj['_id'];
+
+            btn_rechazar.addEventListener('click', function () {
+                const elId = this.dataset.idCEdu;
+                Swal.fire({
+                    title: '¿Está seguro que desea rechazar el centro educativo?',
+                    text: 'Esta acción no se puede revertir',
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: '¡Sí, estoy seguro!',
+                    cancelButtonText: 'Cancelar'
+                }).then(async res => {
+                    if (res.value) {
+                        const fueRechazado = await aprobar_cedu(elId, false);
+                        if (fueRechazado === true) {
+                            cargarCEdu();
+                        }
+                    } else {
+                        return false;
+                    }
+                });
+            });
+
+
+
+let espacioVacio = document.createElement('span');
+                espacioVacio.innerHTML = '&nbsp;';
+            
+			contenedorBotones.appendChild(btn_aprobar);
+            contenedorBotones.appendChild(espacioVacio);
+            contenedorBotones.appendChild(btn_rechazar);
+
             card.appendChild(centro_nombre);
             contenedor_card.appendChild(telefono);
             contenedor_card.appendChild(correo);
@@ -121,7 +155,7 @@ let llenarContenido = () => {
             contenedor_card.appendChild(direccion);
             contenedor_card.appendChild(fechaSolicitud);
             contenedor_card.appendChild(diasSolicitud);
-            contenedor_card.appendChild(contenedorBtnAprobar);
+            contenedor_card.appendChild(contenedorBotones);
             contenedor_card.appendChild(verMas);
 
 
