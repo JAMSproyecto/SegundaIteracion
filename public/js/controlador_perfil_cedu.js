@@ -163,6 +163,9 @@ let calificarMEP = () => {
 
     let botonCalificarCentro = document.createElement('button');
     botonCalificarCentro.innerText = 'Calificar';
+    botonCalificarCentro.classList.add('btn');
+    botonCalificarCentro.classList.add('btn--amarillo');
+  
 
     bloqueCalificacionMep.appendChild(botonCalificarCentro);
 
