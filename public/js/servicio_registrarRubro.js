@@ -103,8 +103,7 @@ let actualizar_rubro = (prubro, pid) => {
           title: 'Se han modificado los datos de manera exitosa',
           text: msg.message,
           onAfterClose: function () {
-
-            window.location.replace('#');
+            window.location.replace('./agregar_rubros_a_evaluar.html');
           }
         });
       } else {
@@ -200,7 +199,10 @@ console.log("pcantidad_activos: " + pcantidad_activos);
       swal.fire({
         type: 'success',
         title: 'Proceso realizado con éxito',
-        text: res.msg
+        text: res.msg,
+        onAfterClose: function () {
+          window.location.replace('./agregar_rubros_a_evaluar.html');
+        }
       });
 
     });
@@ -239,7 +241,10 @@ let desactivar_rubro = (pid) => {
     swal.fire({
       type: 'success',
       title: 'Proceso realizado con éxito',
-      text: res.msg
+      text: res.msg,
+      onAfterClose: function () {
+        window.location.replace('./agregar_rubros_a_evaluar.html');
+      }
     });
 
   });
@@ -269,7 +274,10 @@ let eliminar_rubro = (pid) => {
     swal.fire({
       type: 'success',
       title: 'Proceso realizado con éxito',
-      text: res.msg
+      text: res.msg,
+      onAfterClose: function () {
+        window.location.replace('./agregar_rubros_a_evaluar.html');
+      }
     });
 
   });
