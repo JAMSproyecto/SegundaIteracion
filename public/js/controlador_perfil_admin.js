@@ -44,7 +44,6 @@ let llenarContenido = () => {
             card.classList.add('contenedor_cards_principal');
 
             let contenedor_card = document.createElement('div');
-            contenedor_card.classList.add('contenedor_dato');
 
 
             let centro_nombre = document.createElement('h1');
@@ -58,8 +57,11 @@ let llenarContenido = () => {
                 diasSolicitud = '<span>' + obj['solicitudDiasHabiles'] + '</span>';
             }
 
+            let contenedorListaDetallada = document.createElement('div');
+			contenedorListaDetallada.style = 'box-sizing: border-box; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; -ms-overflow-style: -ms-autohiding-scrollbar; padding: 0 10px;';
+			
             let listaDetallada = document.createElement('table');
-            listaDetallada.style = 'border: none;';
+            listaDetallada.style = 'border: 0px solid transparent;overflow-x: hidden;width: 100%;';
             const objListaDetallada = [
                 { "dt": "Teléfono:", "dd": obj['telefono'] },
                 { "dt": "Correo electrónico:", "dd": obj['correo'] },
@@ -78,14 +80,15 @@ let llenarContenido = () => {
                     const obj2 = objListaDetallada[key];
 
                     let elTr = document.createElement('tr');
-                    elTr.innerHTML = '<td style="text-align: right; font-weight:600;vertical-align: top;">' + obj2.dt + '</td>' +
-                        '<td style="padding-left:15px;vertical-align: bottom;">' + obj2.dd + '</td>';
+                    elTr.innerHTML = '<td style="text-align: right; font-weight:600;vertical-align: top;margin:auto;width:auto;"><p>' + obj2.dt + '</p></td>' +
+                        '<td style="padding-left:15px;vertical-align: bottom;"><p>' + obj2.dd + '</p></td>';
                     elBody.appendChild(elTr);
                 }
 
                 listaDetallada.appendChild(elBody);
             }
 
+contenedorListaDetallada.appendChild(listaDetallada);
 
             let verMas = document.createElement('p');
             verMas.style = 'text-align:right; width:100%;';
@@ -165,7 +168,7 @@ let llenarContenido = () => {
             contenedorBotones.appendChild(espacioVacio);
             contenedorBotones.appendChild(btn_rechazar);
 
-            contenedor_card.appendChild(listaDetallada);
+            contenedor_card.appendChild(contenedorListaDetallada);
             contenedor_card.appendChild(contenedorBotones);
             contenedor_card.appendChild(verMas);
 

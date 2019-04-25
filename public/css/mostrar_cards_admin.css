@@ -24,13 +24,13 @@
 
 @media screen and (min-width: 40em) {
   #cards_admin .contenedor_cards_principal {
-    max-width: calc(49% - 1em);
+    max-width: calc(40% - 1em);
   }
 }
 
 @media screen and (min-width: 60em) {
   #cards_admin .contenedor_cards_principal {
-    max-width: calc(29% - 1em);
+    max-width: calc(33% - 1em);
   }
 }
 
@@ -69,6 +69,12 @@
   font-size: 30px;
   margin: 31px 0px;
 }
+
+
+
+/* -----------------------------------------------------*/
+
+
 
 .btn_cards {
   position: relative;
@@ -132,15 +138,14 @@
   top: 50%;
   border-radius: 50%;
   padding: 50%;
-  width: 32px; /* Safari */
-  height: 32px; /* Safari */
+  width: 32px;
+  height: 32px;
   background-color: rgb(137, 137, 137);
   opacity: 0;
   transform: translate(-50%, -50%) scale(1);
   transition: opacity 1s, transform 0.5s;
 }
 
-/* Hover, Focus */
 .btn_cards:hover {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   background-color: rgb(230, 230, 230);
@@ -165,7 +170,6 @@
   opacity: 0.3;
 }
 
-/* Active */
 .btn_cards:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
@@ -176,7 +180,6 @@
   transition: transform 0s;
 }
 
-/* Disabled */
 .btn_cards:disabled {
   color: rgba(0, 0, 0, 0.38);
   background-color: rgba(0, 0, 0, 0.12);
@@ -189,8 +192,6 @@
   opacity: 0;
 }
 
-/* -----------------------------------------------------*/
-
 .btn_cards.btn_cards--celeste {
   color: rgb(255, 255, 255);
   background-color: rgb(23, 155, 215);
@@ -201,6 +202,8 @@
 } 
 
 
+
+/* -----------------------------------------------------*/
 
 
 
@@ -225,6 +228,7 @@
 }
 
 
+.contenedor_filtrar_cards select,
 .contenedor_filtrar_cards input  {
   background: #fff;
   background-clip: padding-box;
@@ -242,6 +246,7 @@
   font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+.contenedor_filtrar_cards select:focus,
 .contenedor_filtrar_cards input:focus {
   background-color: #fff;
   border-color: #80bdff;
@@ -250,6 +255,7 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.contenedor_filtrar_cards select[disabled],
 .contenedor_filtrar_cards input[disabled] {
   background-color: rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.54);
@@ -257,11 +263,13 @@
   opacity: 1;
 }
 
+.contenedor_filtrar_cards select[readonly],
 .contenedor_filtrar_cards input[readonly] {
   border-color: rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.54);
 }
 
+.contenedor_filtrar_cards select:focus:invalid,
 .contenedor_filtrar_cards input:focus:invalid {
   border-color: #ea1c0d;
   color: #f44336;
