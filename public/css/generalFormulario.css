@@ -333,9 +333,9 @@ button.btn--amarillo {
     min-width: 136px;
     min-height: 43px;
     text-overflow: ellipsis;
-    color: rgb(var(--pure-material-onprimary-rgb, 55, 55, 55));
+    color: #fff;
 background-image:none;
-	background-color: rgb(var(--pure-material-primary-rgb, 241, 217, 129));	
+	background-color: #179bd7;	
     font-size: 1rem;
     font-weight: 600;
     line-height: 36px;
