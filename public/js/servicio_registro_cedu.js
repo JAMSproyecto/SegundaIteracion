@@ -36,40 +36,27 @@ let registrarCentroEducativo = (pNombre, pNombreComercial, pCedulaJuridica, pCor
         cache: false
     });
 
-    request.done(function (res) {
-        if ('object' == typeof (res)) {
+    request.done(res => {
+        if ('object' == typeof res) {
             if (res.success) {
-                swal.fire({
+                Swal.fire({
                     type: 'success',
-                    title: 'Registro exitoso',
-                    html: 'El centro educativo se registrado de forma correcta',
+                    title: res.message
                     onAfterClose: function () {
                         window.location.replace("credenciales.html");
                     }
                 });
             } else {
                 Swal.fire({
-                    toast: false,
                     type: 'error',
-                    position: 'top',
-                    animation: false,
-                    customClass: 'animated tada',
-                    showConfirmButton: true,
-                    text: res.message
+                    title: res.message
                 });
-
             }
         } else {
-            Swal.fire({
-                toast: false,
-                type: 'error',
-                position: 'top',
-                animation: false,
-                customClass: 'animated tada',
-                showConfirmButton: true,
-                text: 'Error al obtener la respuesta'
-            });
-
+			Swal.fire({
+				type: 'error',
+				title: 'Error al obtener la respuesta'
+			});
         }
     });
 
