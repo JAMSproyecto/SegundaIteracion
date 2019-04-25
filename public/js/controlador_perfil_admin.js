@@ -76,6 +76,42 @@ let llenarContenido = () => {
                 irAlPerfil(obj['_id']);
             }, false);
             verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+            //se crea el boton para aprobar el centro educativo Creado por Johan 
+            let btn_aprobar = document.createElement('button');
+            btn_aprobar.type = 'button';
+            btn_aprobar.textContent = 'Aprobar';
+            btn_aprobar.dataset.idCEdu = obj['_id'];
+            //se llama la función para aprobar el centro educativo 
+            //con un seewtAlert para confimar si quiere aprobarlo 
+            btn_aprobar.addEventListener('click', function(){
+                Swal.fire({
+                    title: '¿Está seguro que desea aprobar el centro educativo?',
+                    text: "Ésta acción no se puede revertir",
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, estoy seguro!'
+                  }).then((result) => {
+                    if (result.value) {
+                        aprobar_cedu( this.dataset.idCEdu);
+                        Swal.fire(
+                        {
+                            text: '¡Centro educativo aprobado con éxito!',
+                            type: 'success'
+                        }
+                          )
+                     cargarCEdu();
+                    }else{
+                        Swal.fire(
+                            {
+                                text: '¡Centro educativo no fue aprobado!',
+                                type: 'info'
+                            }
+                        )
+                  }
+            });
+         });
 
             card.appendChild(centro_nombre);
             contenedor_card.appendChild(telefono);
@@ -84,7 +120,9 @@ let llenarContenido = () => {
             contenedor_card.appendChild(direccion);
             contenedor_card.appendChild(fechaSolicitud);
             contenedor_card.appendChild(diasSolicitud);
+            contenedor_card.appendChild(btn_aprobar);
             contenedor_card.appendChild(verMas);
+            
 
             card.appendChild(contenedor_card);
             CardsCentros.appendChild(card);
@@ -113,6 +151,8 @@ let cargarCEdu = () => {
         }
     });
 };
+
+
 
 window.onload = () => {
     cargarCEdu();

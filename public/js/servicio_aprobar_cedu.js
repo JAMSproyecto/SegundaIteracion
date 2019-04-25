@@ -2,15 +2,15 @@
 
 /**
  * Aprobar centro educativo
- * @param  {Number} pIdCentro
+ * @param  {Number} pIdCedu
  */
-let aprobar_cedu = (pIdCentro) => {
-    if ('undefined' == typeof pIdCentro || null === pIdCentro) {
+let aprobar_cedu = (pIdCedu) => {
+    if ('undefined' == typeof pIdCedu || null === pIdCedu) {
         throw new Error('Error al aprobar el centro educativo: El identificador no puede estar vacio');
     }
 
     let request = $.ajax({
-        url: 'http://127.0.0.1:4000/api/aprobar_centro_educativo/' + pIdCentro,
+        url: 'http://127.0.0.1:4000/api/aprobar_centro_educativo/' + pIdCedu,
         method: 'GET',
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
