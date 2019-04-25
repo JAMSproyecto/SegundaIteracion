@@ -9,9 +9,10 @@
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="./css/reset.min.css">
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
-    <link rel="stylesheet" href="./css/estiloBasico.css">
+    <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
 
     <link rel="stylesheet" href="./css/mostrar_cards.css">
 
@@ -21,39 +22,39 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-            <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
-                    <div class="bloqueHeader__iconolateral">
-                        <span onclick="menuNavVisible(true); return false;">&#9776;</span>
-                    </div>
-                    <div class="bloqueLogo__admin bloqueHeader__logo">
-                            <a href="perfil_admin.html">
-                                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                                </a>
-                    </div>
-                </div>
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+            <div class="bloqueHeader__iconolateral">
+                <span onclick="menuNavVisible(true); return false;">&#9776;</span>
+            </div>
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <a href="perfil_admin.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
+            </div>
+        </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
                 <div class="bloqueHeader__nombreCed">
                     <span class="titulo_centro_educativo"></span>
                 </div>
-                
+
                 <div class="header__nav">
-                        <div class="menu__palanca menu__palanca__izq">
-                            <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
-                                <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
-                                <span class="menu__palanca__btn__intercalar"></span>
-                            </a>
-                            <ul id="menuOpciones" class="menu_opciones">
-                                <li>
-                                    <a href="javascript:void(0)">Ver perfil</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Modificar perfil</a>
-                                </li>
-                                <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
-                            </ul>
-                        </div>
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                            <span class="menu__palanca__btn__intercalar"></span>
+                        </a>
+                        <ul id="menuOpciones" class="menu_opciones">
+                            <li>
+                                <a href="javascript:void(0)">Ver perfil</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Modificar perfil</a>
+                            </li>
+                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                        </ul>
                     </div>
+                </div>
             </div>
         </div>
         <div class="bloqueHeader__filaAbajo">
@@ -127,20 +128,18 @@
                 <h1>Centros educativos</h1>
             </div>
             <div class="tabla__responsive">
-              <div>
+                <div class="filtar">
                     <label for="filtrar_cards">Búsqueda por nombre</label>
                     <input type="text" name="" id="filtrar_cards">
-              </div>  
-              <div>
-                  <label for="select_etiquetas">Filtro por etiquetas</label>
-                  <select id="select_etiquetas"></select>
-                  <option value=""> </option>
-              </div>
-
-
-                <div id="cards_centros">
-
                 </div>
+                <div class="etiquetas">
+                    <label for="select_etiquetas">Filtro por etiquetas</label>
+                    <select id="select_etiquetas"></select>
+                    <option value=""> </option>
+                </div>
+            </div>
+            <div id="cards_centros">
+
             </div>
         </section>
     </main>
@@ -214,7 +213,7 @@
 
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/jquery-3.3.1.min.js"></script>
-	<script src="./js/combux.js"></script>
+    <script src="./js/combux.js"></script>
 
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controladorListar.js"></script>

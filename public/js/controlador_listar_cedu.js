@@ -86,22 +86,24 @@ let llenarContenido = () => {
                 let div_card = document.createElement('div');
                 div_card.classList.add('contenedor_cards');
 
+                let div_dato = document.createElement('div');
+                div_dato.classList.add('contenedor_dato');
 
                 let centro_nombre = document.createElement('h1');
                 centro_nombre.innerHTML = obj['nombre'];
 
 
                 let telefono = document.createElement('p');
-                telefono.innerHTML = 'Teléfono: ' + obj['telefono'];
+                telefono.innerHTML = '<strong>Teléfono:</strong> ' + obj['telefono'];
 
                 let correo = document.createElement('p');
-                correo.innerHTML = 'Correo: ' + obj['correo'];
+                correo.innerHTML = '<strong>Correo:</strong> '+ obj['correo'];
 
                 let provincia = document.createElement('p');
-                provincia.innerHTML = 'Provincia: ' + obj['provincia'];
+                provincia.innerHTML = '<strong>Provincia:</strong> ' + obj['provincia'];
 
                 let direccion = document.createElement('p');
-                direccion.innerHTML = 'Dirección: ' + obj['direccion'];
+                direccion.innerHTML = '<strong>Dirección:</strong> ' + obj['direccion'];
 
                 let calificacionMEP = document.createElement('p');
 
@@ -111,27 +113,36 @@ let llenarContenido = () => {
 
                 calificacionPadres.innerHTML = '<strong class="Calificacion ">Calificación de los padres de familia: </strong>' + '<p class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</p>';
 
-                let verMas = document.createElement('a');
+
+                let div_button = document.createElement('div');
+                div_button.classList.add('contenedor_boton');
+
+                let verMas = document.createElement('button');
+                verMas.textContent = 'ver más';
+             
+                
                 verMas.addEventListener('click', () => {
                     irAlPerfil(obj['_id']);
                 }, false);
-                verMas.innerHTML = '<i class="fas fa-id-card"></i>';
+             
 
-
-                let espacioVacio = document.createElement('p');
-                espacioVacio.innerHTML = '&nbsp;';
-
+                
                 card.appendChild(centro_nombre);
-                div_card.appendChild(telefono);
-                div_card.appendChild(correo);
-                div_card.appendChild(provincia);
-                div_card.appendChild(direccion);
-                div_card.appendChild(espacioVacio);
-                div_card.appendChild(calificacionMEP);
-                div_card.appendChild(calificacionPadres);
-                div_card.appendChild(verMas);
+                card.appendChild(div_dato);
+                card.appendChild(verMas);
+               
+                div_button.appendChild(verMas);
+                div_dato.appendChild(telefono);
+                div_dato.appendChild(correo);
+                div_dato.appendChild(provincia);
+                div_dato.appendChild(direccion);
+
+                div_dato.appendChild(calificacionMEP);
+                div_dato.appendChild(calificacionPadres);
+                div_dato.appendChild(verMas);
 
                 card.appendChild(div_card);
+                
                 CardsCentros.appendChild(card);
 
             }

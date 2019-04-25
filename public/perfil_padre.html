@@ -18,122 +18,123 @@
 </head>
 
 <body>
-        <header class="bloqueHeader">
-                <div class="bloqueHeader__nombreInstitucion">
-                   
-                    <div class="bloqueHeader__logo">
-                            <a href="principal_padres.html">
-                                    <img src="./imgs/logo_mep.png" class="imagen_mep">
-                                </a>
+    <header class="bloqueHeader">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
+            </div>
+        </div>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+                <div class="bloqueHeader__nombreCed">
+                    <span class="titulo_centro_educativo"></span>
+                </div>
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
+                            <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
+                            <span class="menu__palanca__btn__intercalar"></span>
+                        </a>
+                        <ul id="menuOpciones" class="menu_opciones">
+                            <li>
+                                <a href="./actualizarDatosPadre.html">Modificar perfil</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li>
+                                <a href="principal_padres.html">Centros educativos</a>
+                            </li>
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="bloqueHeader__filaArriba">
-                    <div class="bloqueHeader__contendorArriba">
-        
-                        <div class="bloqueHeader__nombreCed">
-                            <span class="titulo_centro_educativo"></span>
-                        </div>
-        
-                        <div class="header__nav">
-                            <div class="menu__palanca menu__palanca__izq">
-                                <a id="btnMenuPalanca" class="menu__palanca__btn" href="javascript:void(0)">
-                                    <span id="lblNombreUsuario" class="menu__palanca__nombre"></span>
-                                    <span class="menu__palanca__btn__intercalar"></span>
-                                </a>
-                                <ul id="menuOpciones" class="menu_opciones">
-                                    <li>
-                                        <a href="./perfil_padre.html">Ver perfil</a>
-                                    </li>
-                                    <li>
-                                        <a href="./actualizarDatosPadre.html">Modificar perfil</a>
-                                    </li>
-                                    <li class="separador"><a href="javascript:void(0)"></a></li>
-                                    <li>
-                                        <a href="javascript:void(0)">Cuenta de usuario</a>
-                                    </li>
-                                    <li class="separador"><a href="javascript:void(0)"></a></li>
-                                    <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bloqueHeader__filaAbajo">
-                    <div class="bloqueHeader__contenedorAbajo">
-        
-                    </div>
-                </div>
-               
-            </header>
-        
+            </div>
+        </div>
+        <div class="bloqueHeader__filaAbajo">
+            <div class="bloqueHeader__contenedorAbajo">
+
+            </div>
+        </div>
+
+    </header>
+
     <main>
-        <section class="lista_centros">
-            <div class=" grey padres">
-                <h2>Datos Personales</h2>
-                <div class="bloque_izquierdo">
-                    <img src="./imgs/profile.jpg" alt="">
+        <section class="bloquePerfil-PF">
+            <div class="bloquePerfil-PF__contenedor">
+                <div class="tituloPrincipal-PF ">
+                    <h1>Datos Personales</h1>
                 </div>
-                <div class="bloque_derecho">
-                    <div class="nombre">
-                        <strong>
-                            Nombre del Padre:
-                        </strong>
-                        <span id="nombre_completo_padre"></span>
+                <div class="bloquePerfil-PF__columnas">
+                    <div class="bloquePerfil-PF__columIzquierda">
+                        <img src="./imgs/profile.jpg" alt="">
                     </div>
 
-                    <div class="correo">
-                        <strong>
-                            Correo padre:
-                        </strong>
-                        <span id="correo_padre"></span>
-                    </div>
+                    <div class="bloquePerfil-PF__columDerecha">
+                        <div class="dato">
+                            <strong>
+                                Nombre del Padre:
+                            </strong>
+                            <span id="nombre_completo_padre"></span>
+                        </div>
 
-                    <div class="telefono">
-                        <strong>
-                            Telefono del Padre:
-                        </strong>
-                        <span id="telefono_padre"></span>
-                    </div>
+                        <div class="dato">
+                            <strong>
+                                Correo padre:
+                            </strong>
+                            <span id="correo_padre"></span>
+                        </div>
 
-                    <div class="cedula">
-                        <strong>
-                            Cedula:
-                        </strong>
-                        <span id="identificacion_padre"></span>
-                    </div>
+                        <div class="dato">
+                            <strong>
+                                Telefono del Padre:
+                            </strong>
+                            <span id="telefono_padre"></span>
+                        </div>
 
-                    <div class="provincia">
-                        <strong>
-                            Provincia:
-                        </strong>
-                        <span id="provincia_padre"></span>
-                    </div>
+                        <div class="dato">
+                            <strong>
+                                Cedula:
+                            </strong>
+                            <span id="identificacion_padre"></span>
+                        </div>
 
-                    <div class="canton">
-                        <strong>
-                            Cantón:
-                        </strong>
-                        <span id="canton_padre"></span>
-                    </div>
+                        <div class="dato">
+                            <strong>
+                                Provincia:
+                            </strong>
+                            <span id="provincia_padre"></span>
+                        </div>
 
-                    <div class="distrito">
-                        <strong>
-                            Distrito:
-                        </strong>
-                        <span id="distrito_padre"></span>
-                        </p>
-                    </div>
+                        <div class="dato">
+                            <strong>
+                                Cantón:
+                            </strong>
+                            <span id="canton_padre"></span>
+                        </div>
 
-                    <div class="distrito">
-                        <strong>
-                            Edad:
-                        </strong>
-                        <span id="edad_padre"></span>
-                        </p>
+                        <div class="dato">
+                            <strong>
+                                Distrito:
+                            </strong>
+                            <span id="distrito_padre"></span>
+                            </p>
+                        </div>
+
+                        <div class="dato">
+                            <strong>
+                                Edad:
+                            </strong>
+                            <span id="edad_padre"></span>
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
         </section>
-        <button id="btn_modificar_datos">Modificar Perfil</button>
+       <!-- <button id="btn_modificar_datos">Modificar Perfil</button>--> 
     </main>
 
     <footer>
