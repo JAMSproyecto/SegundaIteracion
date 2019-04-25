@@ -17,9 +17,14 @@
 .bloqueInformacion{
   background: #f9f9f9; 
   display: flow-root;
+  height: 350px;
 }
 
 /*Lo agregó Marlon*/
+#tabla__servicios{
+  margin-top: 80px;
+}
+
 .datoCard {
   padding-top: 20px;
   text-align: center; 
@@ -97,7 +102,11 @@
 /*estilo servicios*/
 .bloqueServicios{
   background: #179bd7;
+  text-align: center;
+  height: 350px; 
 }
+
+
 .servicio p {
   margin-top: 5px;
   text-align: center;
@@ -279,9 +288,6 @@ button.fc-button:focus {
     background: #fff;
     box-shadow: 0 0 2px #cfcfcf;
 }
-
-
-
 
 
 
