@@ -32,13 +32,13 @@ let llenarContenido = () => {
     //Limpiamos antes de añadir los cards:
     CardsAdmin.innerHTML = '';
 
-let encontroResultados = false;
+    let encontroResultados = false;
 
     elContenedor.forEach(obj => {
 
         if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
-			
-			encontroResultados = true;
+
+            encontroResultados = true;
 
             let card = document.createElement('div');
             card.classList.add('contenedor_cards_principal');
@@ -175,10 +175,10 @@ let encontroResultados = false;
 
         }
     });
-	
-	if(encontroResultados === false){
-		CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #cdcdcd;">¡No se encontraron resultados!</h2></a>';
-	}
+
+    if (encontroResultados === false) {
+        CardsAdmin.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #cdcdcd;">¡No se encontraron resultados!</h2></a>';
+    }
 };
 
 let cargarPagina = () => {
