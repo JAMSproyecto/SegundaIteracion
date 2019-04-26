@@ -67,7 +67,9 @@ body{
 
 .bloqueHeader .bloqueHeader__logo {
   float: left;
-
+  
+  /* Para que no quede pegado al ícono de menú hamburguesa */
+  padding-left: 4%;
 }
 
 .bloqueHeader .bloqueHeader__logo img {
@@ -89,7 +91,11 @@ body{
   padding: 24px 0px;
   color: #fff;
   font-size: 17px;
-  margin-left: 14%;
+  
+  /* La forma correcta de calcular el margin-left es obteniendo el largo de la barra anaranjada [width: 18% + el padding: 16px] y sumarle el padding-left que desea en la barra azul.
+  La formula a pata sería: 12% + 16px + 15px 
+  */
+  margin-left: calc(18% + 31px);
 }
 
 .bloqueHeader .bloqueHeader__btnCerrar {

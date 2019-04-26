@@ -8,6 +8,7 @@ let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
+    localStorage.setItem('centroEstaPendiente', 'true');
 
     const tipoUsuario = localStorage.getItem('tipoUsuario');
     switch (tipoUsuario.toLowerCase()) {
@@ -91,12 +92,13 @@ let llenarContenido = () => {
 contenedorListaDetallada.appendChild(listaDetallada);
 
             let verMas = document.createElement('p');
-            verMas.style = 'text-align:right; width:100%;';
+            verMas.style = 'text-align: right; width: 100%; padding: 2px 15px;position: absolute;bottom: 0;right: 0;';
             let verMas_a = document.createElement('a');
             verMas_a.addEventListener('click', () => {
                 irAlPerfil(obj['_id']);
             }, false);
-            verMas_a.innerHTML = 'Ver más...';
+            verMas_a.style = 'text-decoration: none;';
+            verMas_a.innerHTML = '<i class="fas fa-share"></i> Ver más...';
             verMas.appendChild(verMas_a);
 
 

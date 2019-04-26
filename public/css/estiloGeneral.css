@@ -83,3 +83,30 @@ h2 {
 }
 
 
+.text__left {
+  text-align: left;
+}
+
+.text__center {
+  text-align: center;
+}
+
+.text__right {
+  text-align: right;
+}
+
+.float__left {
+  float: left;
+}
+
+.float__right {
+  float: right;
+}
+
+.mb__15 {
+  margin-bottom: 15px;
+}
+
+
+
+

@@ -4,6 +4,7 @@ const CardsCentros = document.querySelector('#cards_centros');
 const FiltroCards = document.querySelector('#filtrar_cards');
 const selectEtiquetas = document.querySelector('#select_etiquetas')
 const tipoUsuario = localStorage.getItem('tipoUsuario');
+const has = Object.prototype.hasOwnProperty;
 
 const HtmlEstrellaAmarilla = '<i class="fas fa-star" style="color: rgb(255, 203, 49);"></i>';
 const HtmlEstrellaGris = '<i class="far fa-star" style="color: rgb(50, 50, 50);"></i>';
@@ -14,6 +15,7 @@ let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
+	localStorage.setItem('centroEstaPendiente', 'false');
 
     switch (tipoUsuario.toLowerCase()) {
         case 'superadmin':
@@ -28,7 +30,7 @@ let irAlPerfil = (idCEdu) => {
     }
 };
 
-//Agregado por Marlon. 4/22 - Modificado por Jeison 4/23
+
 let llenarSelectEtiquetas = () => {
     selectEtiquetas.innerHTML = '<option value="" selected="selected">Ninguno</option>';
 
@@ -72,6 +74,8 @@ let llenarContenido = () => {
     //Limpiamos antes de añadir los cards:
     CardsCentros.innerHTML = '';
 
+    let encontroResultados = false;
+
     elContenedor.forEach(obj => {
 
         //Filtro por etiqueta:
@@ -80,77 +84,88 @@ let llenarContenido = () => {
             //Búsqueda por nombre del centro educativo:
             if (cantFiltros < 1 || combux.contiene(filtros, obj['nombre'])) {
 
+                encontroResultados = true;
+
                 let card = document.createElement('div');
                 card.classList.add('contenedor_cards_principal');
 
-                let div_card = document.createElement('div');
-                div_card.classList.add('contenedor_cards');
 
-                let div_dato = document.createElement('div');
-                div_dato.classList.add('contenedor_dato');
+                let contenedor_card = document.createElement('div');
+
 
                 let centro_nombre = document.createElement('h1');
-                centro_nombre.innerHTML = obj['nombre'];
+                centro_nombre.innerHTML = '<span>' + obj['nombre'] + '</span>';
 
 
-                let telefono = document.createElement('p');
-                telefono.innerHTML = '<strong>Teléfono:</strong> ' + obj['telefono'];
 
-                let correo = document.createElement('p');
-                correo.innerHTML = '<strong>Correo:</strong> '+ obj['correo'];
+                let contenedorListaDetallada = document.createElement('div');
+                contenedorListaDetallada.style = 'box-sizing: border-box; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; -ms-overflow-style: -ms-autohiding-scrollbar; padding: 0 10px;';
 
-                let provincia = document.createElement('p');
-                provincia.innerHTML = '<strong>Provincia:</strong> ' + obj['provincia'];
-
-                let direccion = document.createElement('p');
-                direccion.innerHTML = '<strong>Dirección:</strong> ' + obj['direccion'];
-
-                let calificacionMEP = document.createElement('p');
-
-                calificacionMEP.innerHTML = '<strong class="Calificacion ">Calificación MEP: </strong>' + '<p class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionMEP']) + '</p>';
-
-                let calificacionPadres = document.createElement('p');
-
-                calificacionPadres.innerHTML = '<strong class="Calificacion ">Calificación de los padres de familia: </strong>' + '<p class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</p>';
+                let listaDetallada = document.createElement('table');
+                listaDetallada.style = 'border: 0px solid transparent;overflow-x: hidden;width: 100%;';
+                const objListaDetallada = [
+                    { "dt": "Teléfono:", "dd": obj['telefono'] },
+                    { "dt": "Correo electrónico:", "dd": obj['correo'] },
+                    { "dt": "Provincia:", "dd": obj['provincia'] },
+                    { "dt": "Dirección:", "dd": obj['direccion'] },
+                    { "dt": "Calificación MEP:", "dd": '<span class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionMEP']) + '</span>' },
+                    { "dt": "Calificación de los padres de familia:", "dd": '<span class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</span>' }
+                ];
 
 
-                let div_button = document.createElement('div');
-                div_button.classList.add('contenedor_boton');
+                const cantListaDetallada = Object.keys(objListaDetallada).length;
+                if (cantListaDetallada > 0) {
+                    let elBody = document.createElement('tbody');
+                    let key;
+                    for (key in objListaDetallada) {
+                        if (!has.call(objListaDetallada, key)) continue;
+                        const obj2 = objListaDetallada[key];
 
-                let verMas = document.createElement('button');
-                verMas.textContent = 'ver más';
-             
-                
-                verMas.addEventListener('click', () => {
+                        let elTr = document.createElement('tr');
+                        elTr.innerHTML = '<td style="text-align: right; font-weight:600;vertical-align: top;margin:auto;width:auto;"><p>' + obj2.dt + '</p></td>' +
+                            '<td style="padding-left:15px;vertical-align: bottom;"><p>' + obj2.dd + '</p></td>';
+                        elBody.appendChild(elTr);
+                    }
+
+                    listaDetallada.appendChild(elBody);
+                }
+
+                contenedorListaDetallada.appendChild(listaDetallada);
+
+
+                let verMas = document.createElement('p');
+                verMas.style = 'text-align: right; width: 100%; padding: 2px 15px;position: absolute;bottom: 0;right: 0;';
+                let verMas_a = document.createElement('a');
+                verMas_a.addEventListener('click', () => {
                     irAlPerfil(obj['_id']);
                 }, false);
-             
+                verMas_a.style = 'text-decoration: none;';
+                verMas_a.innerHTML = '<i class="fas fa-share"></i> Ver más...';
+                verMas.appendChild(verMas_a);
 
-                
+
+                contenedor_card.appendChild(contenedorListaDetallada);
+                contenedor_card.appendChild(verMas);
+
                 card.appendChild(centro_nombre);
-                card.appendChild(div_dato);
-               
-               
-                div_button.appendChild(verMas);
-                div_dato.appendChild(telefono);
-                div_dato.appendChild(correo);
-                div_dato.appendChild(provincia);
-                div_dato.appendChild(direccion);
-
-                div_dato.appendChild(calificacionMEP);
-                div_dato.appendChild(calificacionPadres);
-                div_dato.appendChild(verMas);
-
-                card.appendChild(div_card);
-                
+                card.appendChild(contenedor_card);
                 CardsCentros.appendChild(card);
+                //-----------------------------------------------------------------------------//
+
 
             }
         }
     });
+
+
+    if (encontroResultados === false) {
+        CardsCentros.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #cdcdcd;">¡No se encontraron resultados!</h2></a>';
+    }
 };
 
-let cargarCEdu = () => {
+let cargarPagina = () => {
+
+    CardsCentros.innerHTML = '<a style="margin:0 auto; text-align:center;text-decoration: none;" href="javascript:void(0);"><h2 style="color: #007bff;">Cargando...</h2></a>';
 
     listarCEdu((pSuccess, pMessage) => {
 
@@ -179,8 +194,11 @@ if (selectEtiquetas) {
 }
 
 window.onload = () => {
-    cargarCEdu();
+    cargarPagina();
     llenarSelectEtiquetas();
-
+    if (FiltroCards) {
+        FiltroCards.select();
+        FiltroCards.focus();
+    }
 };
 
