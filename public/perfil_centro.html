@@ -6,7 +6,9 @@
     <title>MEP</title>
     <script src="./js/administrador_sesion.js"></script>
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <link rel="stylesheet" href="css/reset.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/estiloGeneral.css">
@@ -18,6 +20,7 @@
     <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="css/estilosCE.css" />
     <link rel="stylesheet" href="./css/headerGeneral.css" />
+
     <link rel="stylesheet" href="./css/iconos.css">
 </head>
 
@@ -56,8 +59,6 @@
                             <li>
                                 <a href="javascript:void(0)">Modificar perfil</a>
                             </li>
-                           
-                           
                             <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
@@ -143,13 +144,23 @@
                 <div class="contenedor contenido">
                     <section>
                         <div>
-                            <h2 class="titulo__secundario">Calificaciones</h2>
+                            <h2 class="titulo__secundario">Rankings</h2>
+                            <div class="tabla__responsive" style="margin-top:30px;">
+                                <table class="tabla tabla__minimalista" id="tblRankings" style="max-width: 900px;">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="tblAddComentario tabla__responsive">
-                            <table class="tabla tabla__minimalista" id="tblComentarios">
-                                <tbody>
-                                </tbody>
-                            </table>
+                        <div style="margin-top:30px;">
+                            <div>
+                                <h2 class="titulo__secundario">Calificaciones de los padres de familia</h2>
+                            </div>
+                            <div class="tblAddComentario tabla__responsive">
+                                <table class="tabla tabla__minimalista" id="tblComentarios">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </section>
                     <section>
@@ -162,7 +173,7 @@
             </div>
         </div>
 
-        </section>
+
         <section class="bloqueInformacion">
             <div class="bloqueInformacion_contenedor">
                 <div id="contenedorNoticias">
@@ -186,7 +197,6 @@
                 </div>
             </div>
 
-
         </section>
 
         <section class="bloqueServicios">
@@ -199,13 +209,9 @@
                     <div id="tabla__servicios">
 
                     </div>
-
                 </div>
             </div>
-
-
         </section>
-
 
     </main>
 
@@ -218,10 +224,11 @@
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
+                                class="fa fas fa-phone" style="color: #e6e4d9;"></i> Tel&eacute;fono: 22246688</a></li>
 
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                                class="fa fas fa-envelope-square" style="color: #e6e4d9;"></i> Correo
+                            electr&oacute;nico:
                             educacion@ucenfotec.com</a></li>
                 </ul>
                 <ul class="footer__lista__top">
@@ -272,9 +279,6 @@
 
 
 
-
-
-
     <script src="./js/controlador_nav.js"></script>
 
     <script src="./js/sweetalert2.all.min.js"></script>
@@ -294,7 +298,6 @@
     <script src="./js/calendario.js"></script>
 
     <script src="./js/controlador_perfil_cedu.js"></script>
-
 
 
 </body>
