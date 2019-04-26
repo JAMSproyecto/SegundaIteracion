@@ -238,7 +238,7 @@
   color: rgba(0, 0, 0, 0.8);
   display: inline-block;
   width: 100%;
-  max-width:300px;
+  max-width:400px;
   padding: 8px 16px;
   line-height: 1.5;
   -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
@@ -279,6 +279,7 @@
 
 .contenedor_filtrar_cards label {
   display: inline-block;
+  display: block;
   line-height: 2;
   font-size: 20px;
 }
