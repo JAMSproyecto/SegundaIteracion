@@ -460,23 +460,32 @@ select:not(.error_input):focus,
 }
 
 .filtrar_formulario{
-    float: left;
+    margin: 0 auto;
+    display: table;
+    width: 91%;
 }
 
-
+.filtrar_formulario label{
+    margin-left: 30px;
+}
 
 .filtrar_formulario input{
     display: inline-block;
-    width: 300px;
+    width: 233px;
 }
 .bloqueFiltro_cita{
-    float: right;
+    display: table-cell;
 }
 
-.bloqueCita{
-    display: flow-root;
-}
+
 
 .bloqueBoton_cita{
-    float: right;
+    margin-right: 29px;
+}
+
+#busqueda{
+    background: #179bd7;
+    border: 0px;
+    padding: 10px 20px;
+    color: #fff;
 }
