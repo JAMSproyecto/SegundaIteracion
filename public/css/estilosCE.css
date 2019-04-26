@@ -198,6 +198,7 @@
   background: #fff;
   width: 300px;
   height: 100px;
+  position:relative;
 }
 
 .servicio:hover{
@@ -206,11 +207,15 @@
 
 .servicio span {
   font-size: 20px;
-  /* position: absolute; */
+  position: absolute;
   left: 58;
   right: 2;
-  position: relative;
-  top: 10px;
+  /* position: relative; */
+  top: 35px;
+  left: 85px;
+  /* right: 20%; */
+  /* margin-right: 24px; */
+  /* padding-right: 113px; */
 }
 
 
@@ -397,8 +402,9 @@ button.fc-button:focus {
 .fc-unthemed th, 
 .fc-unthemed thead {
   border-color: #ddd;
-  padding: 7px 0;
-  border-style: groove;
+  padding: 10px 0;
+  /* border-style: groove; */
+  text-align: center;
 
 }
 
@@ -421,9 +427,9 @@ button.fc-button:focus {
 
 
 .contenedor_btn{
-  position: relative;
-  top: 21px;
-  left: 10px;
+  position: absolute;
+  top: 70%;
+  left: 77%;
 
 }
 /*estilos calificación mep */
