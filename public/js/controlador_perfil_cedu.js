@@ -10,9 +10,10 @@ const div_noticias = document.querySelector('#tabla__noticias');
 const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
 const bloqueCalificacion = document.querySelector('#bloqueCalificacion');
-const tblComentarios = document.querySelector('#tblComentarios');
+const tblComentarios = document.querySelector('#tblComentarios tbody');
 
-
+let id;
+let perfil = {};
 
 const noticias = listar_todas_noticias();
 
@@ -340,8 +341,8 @@ let mostrar_noticias = () => {
 };
 
 //creado por Johan para las crads servicios 
-let cards_servicios = (id) => {
-  let servicio = obtener_servicios_por_id(id);
+let cards_servicios = (pId) => {
+  let servicio = obtener_servicios_por_id(pId);
 
   const cantidadServicios = Object.keys(servicio).length || servicio.length;
 
@@ -495,7 +496,17 @@ let cards_servicios = (id) => {
   }
 };
 
-window.onload = () => {
+
+let cargarPerfil = () => {
+  if ('undefined' == typeof id || null === id) {
+    throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
+  }
+
+  perfil = get_obtenerPerfil(id);
+};
+
+
+window.onload = async () => {
 
   if (bloqueCalificacion) {
     switch (localStorage.getItem('centroEstaPendiente')) {
@@ -505,8 +516,6 @@ window.onload = () => {
         break;
     }
   }
-
-  let id;
 
   switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
     case 'superadmin':
@@ -539,11 +548,8 @@ window.onload = () => {
       break;
   }
 
-  if ('undefined' == typeof id || null === id) {
-    throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
-  }
+const noUsar = await cargarPerfil();
 
-  const perfil = get_obtenerPerfil(id);
   console.log('perfil: ', perfil);
   if ('undefined' !== typeof perfil.nombre) {
     document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
@@ -561,7 +567,10 @@ window.onload = () => {
   mostrar_noticias();
   cards_servicios(id);
   cargarCalificaciones(id);
-  mostrar_resennia(perfil.referenciaHistorica);
+
+  if ('undefined' !== typeof perfil.referenciaHistorica) {
+    mostrar_resennia(perfil.referenciaHistorica);
+  }
 
 };
 
