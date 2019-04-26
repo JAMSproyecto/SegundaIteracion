@@ -4,6 +4,8 @@
   padding: 0;
   color: #253b80;
   font-size: 30px;
+  width: 90%;
+  margin: 0 auto;
 }
 /*estilos resennia*/
 #bloqueResennia{
@@ -29,9 +31,9 @@
 
 /*Lo agregó Marlon*/
 #tabla__servicios{
-  margin-top: 80px;
-  overflow-y: scroll;
+  margin-top: 20px;
   max-height: 210px;
+  position: relative;
 }
 
 #tabla__actividades{
@@ -94,6 +96,11 @@
 .titulo{
   font-weight: bold;
   font-size: 20px;
+  margin-left: 10%x;
+  position: relative;
+  top: 10px;
+  margin-left: 33%;
+
 }
 
 
@@ -111,46 +118,53 @@
   padding: 10px;
   max-width: 320px;
   max-height: 180px;
+  position: relative;
 }
 
 .actividad {
-  display: inline-block;
-  width: 320px;
+  display: inline-table;
+  width: 343px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
   /* padding: 50px 20px; */
   /* display: table-cell; */
   border-radius: 12px;
-  height: 180px;
+  height: 178px;
   background: #fff;
   text-align: center;
   padding: 10px;
   max-width: 320px;
   max-height: 180px;
+  position: relative;
 }
 
 
 .detalles__actividad {
-margin-top: 15px;
+  top: 66%;
+  margin-top: 15px;
+  position: absolute;
+  left: 13%;
 }
 
 .dato_card{
-  margin: 5px;
+  position: relative;
+  top: 12px;
+  font-size: 14px;
 }
 
-.fa-calendar-check {
-  font-size: 51px;
-  color: #253b80;
-  float: left;
-  padding-left: 10px;
-  padding-top: 30px;
+
+.dato_informacion{
+    position: relative;
+    top: 41px;
+   
 }
+
 
 .actividad_izq{
   padding-top: 10px;
   font-size: 15px;
-  text-align: right;
-  padding-right: 10px;
+  text-transform: capitalize;
+ 
 }
 
 .informacion{
@@ -177,13 +191,14 @@ margin-top: 15px;
 
 .servicio {
   border: 1px solid #2d3436;
- padding: 20px;
+  padding: 20px;
   box-shadow: 0 0 3px #78909c;
   margin: 10px;
   display: inline-block;
-  border-radius: 12px; 
+  border-radius: 12px;
   background: #fff;
   width: 300px;
+  height: 100px;
 }
 
 .servicio:hover{
@@ -192,6 +207,11 @@ margin-top: 15px;
 
 .servicio span {
   font-size: 20px;
+  /* position: absolute; */
+  left: 58;
+  right: 2;
+  position: relative;
+  top: 10px;
 }
 
 
@@ -389,3 +409,18 @@ button.fc-button:focus {
 }
 
 
+.tituloActividad{
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10%x;
+  position: relative;
+  top: 10px;
+  margin-left: 10%;
+}
+
+
+.contenedor_btn{
+  position: relative;
+  top: 26px;
+
+}

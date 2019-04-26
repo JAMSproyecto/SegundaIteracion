@@ -51,19 +51,18 @@ let crearActividades = () => {
       div_datos.classList.add('actividad_izq');
 
       let strong = document.createElement('strong');
-      strong.classList.add('titulo');
+      strong.classList.add('tituloActividad');
 
-
-
-
-
+  
       let lugar = document.createElement('p');
+      lugar.classList.add('lugar');
       lugar.classList.add('dato_card');
 
       let fecha = document.createElement('p');
       fecha.classList.add('dato_card');
 
       let hora = document.createElement('p');
+      hora.classList.add('hora');
       hora.classList.add('dato_card');
 
       //Agregado por Marlon, para que muestre los datos faltantes
@@ -72,13 +71,13 @@ let crearActividades = () => {
       let detalles = document.createElement('p');
       detalles.classList.add('detalles__actividad');
 
-      lugar.innerHTML = 'Lugar: ' + obj.lugar;
+      lugar.innerHTML = '<strong>Lugar: </strong>' + obj.lugar;
       detalles.innerHTML = obj.detalles;
       //Termina lo agregado por Marlon
 
       strong.innerHTML = obj.actividad;
       fecha.innerHTML = obj.fecha;
-      hora.innerHTML = `Hora: ${obj.hora_inicio} - ${obj.finaliza}`;
+      hora.innerHTML = `<strong>Hora: </strong> ${obj.hora_inicio} - ${obj.finaliza}`;
 
 
       actividad.appendChild(strong);
@@ -291,7 +290,7 @@ let mostrar_noticias = () => {
         titulo_noticia.innerHTML = objeto.tema;
         titulo_noticia.classList.add('titulo');
 
-        let iconoNoticia = document.createElement('p');
+        let iconoNoticia = document.createElement('div');
         iconoNoticia.innerHTML = '<i class="far fa-newspaper"></i>';
 
         let contenedor_noticias = document.createElement('div');
@@ -303,7 +302,7 @@ let mostrar_noticias = () => {
 
         let info_noticia = document.createElement('p');
         info_noticia.innerHTML = objeto.informacion;
-        info_noticia.classList.add('dato_card');
+        info_noticia.classList.add('dato_informacion');
         // bloques += '<div class="noticia">';
         // bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
         // bloques += '<i class="far fa-newspaper"></i>';

@@ -31,14 +31,14 @@
     color: #253b80;
     
 }
-
+/*
 
 .fas:hover{
     color: #179bd7;
     font-weight: bold;
 font-weight: 900;
  
-}
+}*/
 
 
 .fa-trash-alt:hover{
@@ -52,18 +52,34 @@ font-weight: 900;
     font-size: 25px;
     color: #fff;
     background: #17c0eb;
-    padding: 5px;
+    padding: 10px;
     border-radius: 20px;
     float: left;
+    position: relative;
+    /* right: 0; */
+    left: 10px;
+    
   }
 
   .fa-newspaper{
-    font-size: 51px;
+    font-size: 65px;
+    color: #253b80;
+    /* float: left; */
+    padding-left: 19px;
+    position: absolute;
+    bottom: 56%;
+    left: 0;
+
+}
+
+
+.fa-calendar-check {
+    font-size: 61px;
     color: #253b80;
     float: left;
     padding-left: 10px;
-    padding-top: 40px;
-}
+    padding-top: 18px;
+  }
 
 .fat {
     position: relative;
