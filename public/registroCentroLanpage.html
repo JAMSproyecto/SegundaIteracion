@@ -20,11 +20,13 @@
 
 </head>
 
-<header class="bloqueHeader">
+    <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
+    visualiza el menu el los header-->
+    <header class="bloqueHeader">
         <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
 
             <div class="bloqueLogo__admin bloqueHeader__logo">
-                    <a href="index.html"><img src="./imgs/logo_mep.png" class="imagen_mep"></a> 
+                 <a href="index.html"><img src="./imgs/logo_mep.png" class="imagen_mep"></a> 
             </div>
         </div>
         <div class="bloqueHeader__filaArriba">
@@ -34,18 +36,20 @@
 
                 <div class="header__nav">
                     <div class="menu__palanca menu__palanca__izq">
+                        <a class="menu__palanca__btn" href="index.html">P&aacute;gina principal</a>
                         <a class="menu__palanca__btn" href="registro_padres.html">Registrarse como padre de familia</a>
-                        <a class="menu__palanca__btn" href="registroCentroLanpage.html">Registrarse como centro
-                            educativo</a>
                         <a class="btn" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-   
-    <main class="formulario">
-            <section id="informacionGeneral">
+   <section id="main">
+    <main class="formulario mb__15">
+           <div class="text__center">
+                    <h1>Registro de centros educativos</h1>
+                </div>
+		   <section id="informacionGeneral">
 
                 <div class="text__center">
                     <h2>Informaci&oacute;n general</h2>
@@ -223,11 +227,13 @@
             <div class="mb__15">
                 <hr class="estilo1">
             </div>
-            <div class="bloqueBoton text__center mb__15">
-                <button class="btn btn--amarillo btn--celeste mb__15" id="btnRegistrar">Registrar</button>
+            <div class="text__center mb__15">
+                <button class="btn btn--celeste mb__15" id="btnRegistrar">Registrar</button>
             </div>
 
         </main>
+
+</section>
 
 
     <footer>
