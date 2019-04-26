@@ -31,7 +31,7 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
@@ -73,9 +73,9 @@
             </div>
         </div>
         <div class="bloqueHeader__filaAbajo">
-            <div class="bloqueHeader__contenedorAbajo">
-
-            </div>
+                <div class="bloqueHeader__contenedorAbajo">
+                        <strong>Les da la Bienvenida</strong>
+                    </div>
         </div>
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
             <p class="nav__cerrar">
@@ -112,8 +112,8 @@
                 </li>
                 <li><a href="#"> Etiquetas de búsqueda</a>
                     <ul>
-                        <li><a href="#">Registrar etiquetas</a></li>
-                        <li><a href="#">Listar etiquetas</a>
+                        <li><a href="registrar_etiquetas.html">Registrar etiquetas</a></li>
+                        <li><a href="agregar_rubros_a_evaluar.html">Listar etiquetas</a>
                         </li>
                     </ul>
                 </li>
@@ -127,15 +127,7 @@
                     </ul>
 
                 </li>
-                <li>
-                    <a class="reporte">Reportes</a>
-                    <ul>
-                        <li><a href="#">Ranking:Padres de familia</a></li>
-                        <li><a href="#">Ranking:MEP</a></li>
-                        <li><a href="#">Visitas a centros educativos</a></li>
-                        <li><a href="#">Bitácora transaccional</a></li>
-                    </ul>
-                </li>
+             
             </ul>
         </nav>
     </header>

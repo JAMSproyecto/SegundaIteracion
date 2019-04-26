@@ -38,13 +38,13 @@
             <div class="bloqueLogo__admin  bloqueLogo__padre bloqueHeader__logo">
                 <img src="./imgs/logo_mep.png" class="imagen_mep">
             </div>
-          
+
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
-          
+
                 <div class="bloqueHeader__nombreCed">
-				    <!-- Nota: le puse quemado el margin-left porque la clase bloqueAdmin altera el tamaño de bloqueHeader__nombreInstitucion -->
+                    <!-- Nota: le puse quemado el margin-left porque la clase bloqueAdmin altera el tamaño de bloqueHeader__nombreInstitucion -->
                     <span class="titulo_centro_educativo" style="margin-left: calc(12% + 31px);"></span>
                 </div>
 
@@ -76,214 +76,219 @@
                 <strong>Les da la Bienvenida</strong>
             </div>
         </div>
-</header>
+    </header>
+    <main class="mainCE ">
+        <h1 class="titulo_centro_educativo"></h1>
+        <section id="bloqueResennia">
+            <div>
+                <h2 class="titulo__secundario">Reseña histórica</h2>
+                <p id='mostrarResennia'></p>
+            </div>
+        </section>
 
-        <main>
-            <h1 class="titulo_centro_educativo"></h1>
 
-            <section id="bloqueResennia">
-                <div>
-                    <h2 class="titulo__secundario">Reseña histórica</h2>
-                    <p id='mostrarResennia'></p>
+        <div class="my__60">
+            <div class="contenedor cuerpo">
+                <div class="contenedor contenido">
+                    <section class="conentedor_calificacion_padre">
+
+                        <div>
+                            <h2 class="titulo__secundario">Calific&aacute; nuestra instituci&oacute;n</h2>
+                        </div>
+
+                        <div class="tblAddComentario tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblAddComentario">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="estrellas">
+                                                <div class="estrellas__cuerpo">
+                                                    <input type="radio" name="estrella" class="estrella__1" value="1"
+                                                        id="estrella1"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__1" for="estrella1"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__2" value="2"
+                                                        id="estrella2"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__2" for="estrella2"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__3" value="3"
+                                                        id="estrella3"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__3" for="estrella3"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__4" value="4"
+                                                        id="estrella4"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__4" for="estrella4"><i></i></label> <input
+                                                        type="radio" name="estrella" class="estrella__5" value="5"
+                                                        id="estrella5"
+                                                        onchange="marcarEstrella(event); return false;" /> <label
+                                                        class="estrella__5" for="estrella5"><i></i></label>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea id="txtEditorComentario" maxlength="500" rows="1"
+                                                placeholder="Haz un comentario..."></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+
+                                            <div class="text__right">
+                                                <button type="button" class="btn btn--amarillo"
+                                                    id="btnCalificarPadre">Calificar</button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <h2 class="titulo__secundario">Calificaciones</h2>
+                        </div>
+                        <div class="tabla__responsive">
+                            <table class="tabla tabla__minimalista" id="tblComentarios">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
+        </div>
 
-
-            <div class="my__60">
-                <div class="contenedor cuerpo">
-                    <div class="contenedor contenido">
-                        <section class="conentedor_calificacion_padre">
-
-                            <div>
-                                <h2 class="titulo__secundario">Calific&aacute; nuestra instituci&oacute;n</h2>
-                            </div>
-
-                            <div class="tblAddComentario tabla__responsive">
-                                <table class="tabla tabla__minimalista" id="tblAddComentario">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="estrellas">
-                                                    <div class="estrellas__cuerpo">
-                                                        <input type="radio" name="estrella" class="estrella__1"
-                                                            value="1" id="estrella1"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__1" for="estrella1"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__2" value="2"
-                                                            id="estrella2"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__2" for="estrella2"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__3" value="3"
-                                                            id="estrella3"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__3" for="estrella3"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__4" value="4"
-                                                            id="estrella4"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__4" for="estrella4"><i></i></label> <input
-                                                            type="radio" name="estrella" class="estrella__5" value="5"
-                                                            id="estrella5"
-                                                            onchange="marcarEstrella(event); return false;" /> <label
-                                                            class="estrella__5" for="estrella5"><i></i></label>
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <textarea id="txtEditorComentario" maxlength="500" rows="1"
-                                                    placeholder="Haz un comentario..."></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-
-                                                <div class="text__right">
-                                                    <button type="button" class="btn btn--amarillo"
-                                                        id="btnCalificarPadre">Calificar</button>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
-					<section>
-					 <div>
-						<h2 class="titulo__secundario">Calificaciones</h2>
-					</div>
-					<div class="tabla__responsive">
-						<table class="tabla tabla__minimalista" id="tblComentarios">
-							<tbody></tbody>
-						</table>
+        <section class="bloqueInformacion">
+            <div class="bloqueInformacion_contenedor">
+                <section id="contenedorNoticias">
+                    <div>
+                        <h2 class="titulo__secundario">Noticias</h2>
                     </div>
-                    </section>
-                </div>
-            </div>
-            </div>
-
-            <section class="bloqueInformacion">
-                    <section id="contenedorNoticias">
-                        <div>
-                            <h2 class="titulo__secundario">Noticias</h2>
-                        </div>
-                        <div class="tabla__noticias">
-                            <div id="tabla__noticias"></div>
-                        </div>
-                        <div class="tabla__noticias">
-                            <div id="tabla__noticias"></div>
-                        </div>
-                    </section>
-                    <section id="contenedorActividades">
-                        <div>
-                            <h2 class="titulo__secundario">Actividades</h2>
-                        </div>
-                        <div class="tabla__actividades">
-                            <div id="tabla__actividades" class="contenedor__actividades"></div>
-                        </div>
-                    </section>
+                    <div class="tabla__noticias">
+                        <div id="tabla__noticias"></div>
+                    </div>
+                    <div class="tabla__noticias">
+                        <div id="tabla__noticias"></div>
+                    </div>
+                </section>
+                <section id="contenedorActividades">
+                    <div>
+                        <h2 class="titulo__secundario">Actividades</h2>
+                    </div>
+                    <div class="tabla__actividades">
+                        <div id="tabla__actividades" class="contenedor__actividades"></div>
+                    </div>
                 </section>
 
+            </div>
 
-                <section class="bloqueServicios">
-                        <div class="bloqueServicios__titulo">
-                            <h2 class="titulo__secundario_servicios">Nuestros servicios</h2>
-                        </div>
-                        <div class="tabla__servicios">
-            
-                            <div id="tabla__servicios">
-                               
-                            </div>
-            
-                        </div>
-                    </section>
+        </section>
 
-        </main>
 
-        <footer>
-            <div class="footer__cuerpo">
-                <div class="footer__flex">
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Contacto</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="fa fas fa-phone"></i> Tel&eacute;fono:
-                                22246688</a></li>
-                        
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                    class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
-                                educacion@ucenfotec.com</a></li>
-                    </ul>
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Direcci&oacute;n</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
-                                Jos&eacute;,
-                                Barrio Cristo
-                                Rey</a></li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24,
-                                calle
-                                12</a></li>
-                    </ul>
-                    <ul class="footer__lista__top">
-                        <li>
-                            <h4 class="footer__lista__header">Citas</h4>
-                        </li>
-                        <li><a class="footer__ancla__generica footer__ancla__lista" id="lnk_calendario"
-                                href='javascript:void(0);'><i class="far fa-calendar-alt"></i> Agendar</a></li>
-                    </ul>
-                    <section class="footer__social__seccion footer__flex">
-                        <span class="footer__social__traslapar footer__social__conectate">
-                            Conectate <span class="footer__social__pequeno">con</span> nosotros
-                        </span>
-                        <span class="footer__social__traslapar footer__social__iconos__envoltura">
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Facebook"><i class="fab fa-facebook-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Twitter"><i class="fab fa-twitter-square"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Youtube"><i class="fab fa-youtube"></i></a>
-                            <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
-                                title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
-                        </span>
-                    </section>
-                    <section class="footer__inferior__seccion footer__flex">
-                        <div class="footer__inferior__envoltura">
-                            <i class="fa fa-copyright"></i> 2019
-                            <address class="footer__direccion__compania">JAMS</address>
-                            <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
-                        </div>
-                        <div class="footer__inferior__envoltura">
-                            <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
-                                class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
-                        </div>
-                    </section>
+        <section class="bloqueServicios">
+            <div class="bloqueServicios__titulo">
+                <h2 class="titulo__secundario_servicios">Nuestros servicios</h2>
+            </div>
+            <div class="bloqueServicios_contenedor">
+                <div class="tabla__servicios">
+
+                    <div id="tabla__servicios">
+
+                    </div>
+
                 </div>
             </div>
-        </footer>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer__cuerpo">
+            <div class="footer__flex">
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Contacto</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                            22246688</a></li>
+
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                            educacion@ucenfotec.com</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Direcci&oacute;n</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>San
+                            Jos&eacute;,
+                            Barrio Cristo
+                            Rey</a></li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'>Av 24,
+                            calle
+                            12</a></li>
+                </ul>
+                <ul class="footer__lista__top">
+                    <li>
+                        <h4 class="footer__lista__header">Citas</h4>
+                    </li>
+                    <li><a class="footer__ancla__generica footer__ancla__lista" id="lnk_calendario"
+                            href='javascript:void(0);'><i class="far fa-calendar-alt"></i> Agendar</a></li>
+                </ul>
+                <section class="footer__social__seccion footer__flex">
+                    <span class="footer__social__traslapar footer__social__conectate">
+                        Conectate <span class="footer__social__pequeno">con</span> nosotros
+                    </span>
+                    <span class="footer__social__traslapar footer__social__iconos__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
+                                class="fab fa-twitter-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
+                    </span>
+                </section>
+                <section class="footer__inferior__seccion footer__flex">
+                    <div class="footer__inferior__envoltura">
+                        <i class="fa fa-copyright"></i> 2019
+                        <address class="footer__direccion__compania">JAMS</address>
+                        <span class="footer__inferior__derechos"> - Todos los derechos reservados </span>
+                    </div>
+                    <div class="footer__inferior__envoltura">
+                        <a class="footer__ancla__generica" href="javascript:void(0);">Condiciones</a> | <a
+                            class="footer__ancla__generica" href="javascript:void(0);">Privacidad</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </footer>
 
 
-        <script src="./js/controlador_nav.js"></script>
+    <script src="./js/controlador_nav.js"></script>
 
-        <script src="./js/sweetalert2.all.min.js"></script>
-        <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
 
-        <script src="./js/servicios_cita.js"></script>
-        <script src="./js/servicio_noticia.js"></script>
-        <script src="./js/servicio_servicios.js"></script>
-        <script src="./js/servicio_registrar_actividad.js"></script>
-        <script src="./js/servicio_perfil_cedu.js"></script>
+    <script src="./js/servicios_cita.js"></script>
+    <script src="./js/servicio_noticia.js"></script>
+    <script src="./js/servicio_servicios.js"></script>
+    <script src="./js/servicio_registrar_actividad.js"></script>
+    <script src="./js/servicio_perfil_cedu.js"></script>
 
-        <script src="./js/controlador_perfil_cedu.js"></script>
+    <script src="./js/controlador_perfil_cedu.js"></script>
 
 
 </body>
