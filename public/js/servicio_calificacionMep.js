@@ -47,13 +47,16 @@ let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacio
                 }
             }
 
-            swal.fire({
+            Swal.fire({
                 type: 'success',
                 title: res.msg,
-                html: '<p>La calificación total es:</p><p><span class="plataformaEstrella">' + estrellasMepHtml + '</span></p> '
+                html: '<p>La calificación total es:</p><p><span class="plataformaEstrella">' + estrellasMepHtml + '</span></p> ',
+                onAfterClose: () => {
+                     location.replace('./perfilCentroAdmin.html');
+                }
             });
         } else {
-            swal.fire({
+            Swal.fire({
                 type: 'error',
                 title: res.msg,
                 text: 'Error al registrar'
