@@ -899,3 +899,24 @@ module.exports.rechazar_centro_educativo = async (pId, res) => {
     }
 };
 
+//POR FAVOR JEISON NO BORRAR !
+//para traer los centros educativos que tienen lista de utiles 
+module.exports.obtener_nombre_centro_por_id = (req, res) => {
+    ModelCEdu.findOne({ _id: req.body.id }).then(resultado => {
+        if (resultado) {
+            res.json(
+                {
+                    success: true,
+                    message: resultado
+                }
+            )
+        } else {
+            res.json(
+                {
+                    success: false,
+                    message: 'No se encontró el centro educativo'
+                }
+            )
+        }
+    });
+};

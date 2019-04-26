@@ -148,7 +148,7 @@ let buscar_por_id = (id) => {
 
 
 //para buscar centro por id que esta en la lista de utiles
-let buscar_centro_por_id = (id) => {
+let buscar_nombre_centro_por_id = (id) => {
     if ('undefined' == typeof id || null === id) {
         throw new Error('Error al obtener el perfil: El identificador no puede estar vacio');
     }
@@ -156,7 +156,7 @@ let buscar_centro_por_id = (id) => {
   let centro = [];
 
   let request = $.ajax({
-    url: "http://localhost:4000/api/obtener_centro_por_id/" + id,
+    url: "http://localhost:4000/api/obtener_nombre_centro_por_id/" + id,
     type: "GET",
     data: {
     },
