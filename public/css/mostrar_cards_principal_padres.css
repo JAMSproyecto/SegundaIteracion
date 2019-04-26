@@ -237,6 +237,7 @@
   color: rgba(0, 0, 0, 0.8);
   display: block;
   width: 100%;
+  max-width:100%;
   padding: 8px 16px;
   line-height: 1.5;
   -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
