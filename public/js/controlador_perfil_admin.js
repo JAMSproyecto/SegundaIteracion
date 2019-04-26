@@ -172,7 +172,7 @@ contenedorListaDetallada.appendChild(listaDetallada);
 
             contenedor_card.appendChild(contenedorListaDetallada);
             contenedor_card.appendChild(contenedorBotones);
-            contenedor_card.appendChild(verMas);
+            //contenedor_card.appendChild(verMas);
 
             card.appendChild(centro_nombre);
             card.appendChild(contenedor_card);
