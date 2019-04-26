@@ -1,6 +1,6 @@
 'use strict';
 
-let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacionRubro1, prubro2, pcalificacionRubro2,prubro3, pcalificacionRubro3,prubro4, pcalificacionRubro4,prubro5, pcalificacionRubro5,prubro6, pcalificacionRubro6,prubro7, pcalificacionRubro7,prubro8, pcalificacionRubro8,prubro9, pcalificacionRubro9,prubro10, pcalificacionRubro10) => {
+let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacionRubro1, prubro2, pcalificacionRubro2, prubro3, pcalificacionRubro3, prubro4, pcalificacionRubro4, prubro5, pcalificacionRubro5, prubro6, pcalificacionRubro6, prubro7, pcalificacionRubro7, prubro8, pcalificacionRubro8, prubro9, pcalificacionRubro9, prubro10, pcalificacionRubro10) => {
     let request = $.ajax({
         url: "http://localhost:4000/api/registrar_calificacionMEP",
         method: "POST",
@@ -34,23 +34,36 @@ let registrar_calificacionMEP = (pidCentro, pestrellasMep, prubro1, pcalificacio
 
     request.done(res => {
         if (res.success) {
+
+            const HtmlEstrellaAmarilla = '<i class="fas fa-star" style="color: rgb(255, 203, 49);"></i>';
+            const HtmlEstrellaGris = '<i class="far fa-star" style="color: rgb(50, 50, 50);"></i>';
+
+            let TOP = 5, i = 0, estrellasMepHtml = '';
+            for (; i < TOP; ++i) {
+                if (i < pestrellasMep) {
+                    estrellasMepHtml += HtmlEstrellaAmarilla;
+                } else {
+                    estrellasMepHtml += HtmlEstrellaGris;
+                }
+            }
+
             swal.fire({
                 type: 'success',
                 title: res.msg,
-                text: 'La calificación total es: ' + pestrellasMep + ' '
+                html: '<p>La calificación total es:</p><p><span class="plataformaEstrella">' + estrellasMepHtml + '</span></p> '
             });
         } else {
             swal.fire({
-            type: 'error',
-            title: res.msg,
-            text: 'Error al registrar'
-            });  
+                type: 'error',
+                title: res.msg,
+                text: 'Error al registrar'
+            });
         }
     });
     request.fail(function (jqXHR, textStatus) {
-		console.error('Ocurrió un error al registrar la calificación');    
+        console.error('Ocurrió un error al registrar la calificación');
     });
-}; 
+};
 
 
 let listar_calificacion_CEdu = (pId) => {
