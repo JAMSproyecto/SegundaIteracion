@@ -15,7 +15,7 @@ let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
-	localStorage.setItem('centroEstaPendiente', false);
+	localStorage.setItem('centroEstaPendiente', 'false');
 
     switch (tipoUsuario.toLowerCase()) {
         case 'superadmin':

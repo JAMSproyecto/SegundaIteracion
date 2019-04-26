@@ -8,7 +8,7 @@ let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
-    localStorage.setItem('centroEstaPendiente', true);
+    localStorage.setItem('centroEstaPendiente', 'true');
 
     const tipoUsuario = localStorage.getItem('tipoUsuario');
     switch (tipoUsuario.toLowerCase()) {

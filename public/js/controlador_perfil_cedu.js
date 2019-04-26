@@ -498,8 +498,9 @@ let cards_servicios = (id) => {
 
 window.onload = () => {
 	
+console.log('centroEstaPendiente: ', localStorage.getItem('centroEstaPendiente'));
 switch (localStorage.getItem('centroEstaPendiente')) {
-	case false:
+	case 'false' : bloqueCalificacion.style= 'display:block;';
 	break;
 	default:  bloqueCalificacion.style= 'display:none;';
 	break;
