@@ -9,6 +9,7 @@ const mostrarActividad = document.querySelector('#tabla__actividades');
 const div_noticias = document.querySelector('#tabla__noticias');
 const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
+const bloqueCalificacion = document.querySelector('#bloqueCalificacion');
 
 
 
@@ -496,6 +497,14 @@ let cards_servicios = (id) => {
 };
 
 window.onload = () => {
+	
+switch (localStorage.getItem('centroEstaPendiente')) {
+	case false:
+	break;
+	default:  bloqueCalificacion.style= 'display:none;';
+	break;
+}
+	
   let id;
 
   switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
