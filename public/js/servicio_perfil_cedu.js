@@ -15,9 +15,9 @@ let get_obtenerPerfil = (pId) => {
 
   request.done(function (res) {
     if (res.success) {
-      perfil = res.message;
+      perfil = res.message[0];
     } else {
-      console.error(res.message);
+      console.log(res.message);
     }
   });
 

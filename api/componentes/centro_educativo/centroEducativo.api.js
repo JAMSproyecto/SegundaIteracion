@@ -125,6 +125,33 @@ let obtenerDias = (pFecha, soloHabiles) => {
     }
 };
 
+let formatearFecha = (pFecha) => {
+    if (pFecha.length > 0) {
+        const fecha = new Date(pFecha);
+        const anio = fecha.getFullYear();
+        let dia_mes = fecha.getDate();
+        let mes = fecha.getMonth();
+        let h = fecha.getHours();
+        let m = fecha.getMinutes();
+        mes += 1;
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        if (dia_mes < 10) {
+            dia_mes = '0' + dia_mes;
+        }
+        if (h < 10) {
+            h = '0' + h;
+        }
+        if (m < 10) {
+            m = '0' + m;
+        }
+        return dia_mes + '/' + mes + '/' + anio + ' ' + h + ':' + m;
+    } else {
+        return '';
+    }
+};
+
 module.exports.registrar_centro_educativo = async (req, res) => {
     try {
 
@@ -499,23 +526,269 @@ module.exports.obtener_centros_educativos_sin_aprobar = async (req, res) => {
 };
 
 
-module.exports.obtener_centro_por_id = (req, res) => {
-    ModelCEdu.findOne({ _id: req.body.id }).then(resultado => {
-        if (resultado) {
-            res.json(
-                {
-                    success: true,
-                    message: resultado
+let listarCalificacionesPadre = (pId) => {
+    return new Promise((resolve, reject) => {
+        try {
+
+            //Este filtro valida el tipo de dato al usar aggregate, es decir: si idCentro es un int, entonces pId debe ser un int.
+            const filtroCalificacion = { idCentro: pId };
+            // const filtroCalificacion = { idCentro: { $eq: pId } };
+
+            const seleccionar = { _id: 1, idPadre: 1, idCentro: 1, calificacion: 1, comentario: 1, fecha: 1, eliminado: 1, padreFamilia: 1 };
+
+            ModelCalificacionPadre.aggregate([{
+                $lookup: {
+                    from: 'padres_familia_',
+                    let: { pIdPadre: '$idPadre' },
+                    pipeline: [
+                        {
+                            $match:
+                            {
+                                $expr:
+                                {
+                                    $and:
+                                        [
+                                            { $eq: ['$_id', '$$pIdPadre'] }
+                                        ]
+                                }
+                            }
+                        },
+                        { $project: { _id: 0, nombre: 1, segundoNombre: 1, apellido: 1, segundoApellido: 1 } }
+                    ],
+                    as: 'padreFamilia'
                 }
-            )
+            },
+            { $sort: { fecha: 1 } },
+            { $project: seleccionar },
+            { $match: filtroCalificacion }
+            ]).exec((err, resultado) => {
+                if (err) {
+                    console.log(Tiza.bold.yellow.bgBlack('No se pudo obtener la calificación del padre: '));
+                    console.log(Tiza.bold.yellow.bgBlack(err));
+                    resolve([]);
+                } else {
+
+                    const cantidadResutados = Object.keys(resultado).length;
+                    if (cantidadResutados > 0) {
+
+                        let listarResultado = [];
+                        const has = Object.prototype.hasOwnProperty;
+                        let key;
+                        for (key in resultado) {
+                            if (!has.call(resultado, key)) continue;
+
+                            //Si eliminado = true entonces manda vacio el campo de comentario.
+                            let elComentario = '';
+                            if (false === resultado[key]['eliminado']) {
+                                elComentario = resultado[key]['comentario'] || '';
+                            }
+
+                            let nombrePadre = resultado[key]['padreFamilia'][0].nombre.trim();
+
+                            //Si acaso existe el segundo nombre del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer nombre:
+                            if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoNombre && resultado[key]['padreFamilia'][0].segundoNombre.length > 0) {
+                                nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoNombre.trim();
+                            }
+
+                            //Añadimos el primer apellido del padreFamilia
+                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].apellido.trim();
+
+                            //Si acaso existe el segundo apellido del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer apellido:
+                            if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoApellido && resultado[key]['padreFamilia'][0].segundoApellido.length > 0) {
+                                nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoApellido.trim();
+                            }
+
+
+                            listarResultado.push({
+                                'idCalificacion': resultado[key]['_id'] || 0,
+                                'idCentro': resultado[key]['idCentro'] || 0,
+                                'idPadre': resultado[key]['idPadre'] || 0,
+                                'nombrePadre': nombrePadre || '',
+                                'calificacion': resultado[key]['calificacion'] || 0,
+                                'comentario': elComentario,
+                                'fecha': resultado[key]['fecha'] || '',
+                                'fechaEs': formatearFecha(resultado[key]['fecha'] || '')
+                            });
+                        }
+
+                        resolve(listarResultado);
+                    } else {
+                        resolve([]);
+                    }
+
+                }
+            });
+        } catch (err) {
+            console.log(Tiza.bold.yellow.bgBlack('Error:'));
+            console.log(Tiza.bold.yellow.bgBlack(err.message));
+            reject(new DOMException(`No se pudo obtener la calificación, ocurrió el siguiente error: #${err.message}`));
+        }
+    });
+};
+
+
+module.exports.obtener_centro_por_id = (req, res) => {
+
+    const miId = parseInt(req.body.id, 10);
+    const filtroCEdu = { _id: miId };
+
+    ModelCEdu.aggregate([{
+        $lookup: {
+            from: 'usuarios_', // model que se va a anexar.
+            localField: 'correo', // [ donde esto en el model centro_educativo_ 
+            foreignField: 'correo', // exista en el model usuario_ ]
+            as: 'cuenta' // Nombre que va a aparecer en el resultado.
+        }
+    },
+    { $match: filtroCEdu }
+    ]).exec(async (err, entradas) => {
+        if (err) {
+            console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos: '));
+            console.log(Tiza.bold.yellow.bgBlack(err));
+            res.json({
+                success: false,
+                message: 'Error al encontrar los datos'
+            });
         } else {
-            console.log(Tiza.bold.yellow.bgBlack(`No se encontró el centro educativo #${req.body.id}`));
-            res.json(
-                {
+
+            //Filtramos los que están activos:
+            const resultado = entradas.filter(entrada => {
+                return entrada.cuenta.some(obj => obj.activo === true);
+            });
+
+            const cantResultados = Object.keys(resultado).length;
+
+            if (cantResultados > 0) {
+                try {
+
+                    let calificacionesMEP = await ModelCalificacionMEP.find({ 'calificacionTotal': { $ne: '' } }, { '_id': 0 }).select('idCentro calificacionTotal');
+
+                    const cantCalificacionesMEP = Object.keys(calificacionesMEP).length;
+
+
+
+                    const calificacionesPadre = await ModelCalificacionPadre.find({}, { _id: 0 }).select('idCentro calificacion');
+
+                    const cantCalificacionesPadre = Object.keys(calificacionesPadre).length;
+
+
+                    let listarResultado = [];
+                    const has = Object.prototype.hasOwnProperty;
+                    let key;
+                    for (key in resultado) {
+                        if (!has.call(resultado, key)) continue;
+
+                        let calificacionMEP = '0';
+                        if (cantCalificacionesMEP > 0) {
+                            let keyCalMEP;
+                            for (keyCalMEP in calificacionesMEP) {
+                                if (!has.call(calificacionesMEP, keyCalMEP)) continue;
+                                if (resultado[key]['_id'] === calificacionesMEP[keyCalMEP]['idCentro']) {
+                                    calificacionMEP = calificacionesMEP[keyCalMEP]['calificacionTotal'];
+                                    break;
+                                }
+                            }
+                        }
+                        //------------------------------------
+
+                        let calificacionPadres = '0';
+                        if (cantCalificacionesPadre > 0) {
+                            let keyCalPadre;
+                            let arrCalPadre = [];
+                            for (keyCalPadre in calificacionesPadre) {
+                                if (!has.call(calificacionesPadre, keyCalPadre)) continue;
+                                if (resultado[key]['_id'] === calificacionesPadre[keyCalPadre]['idCentro']) {
+                                    arrCalPadre.push({ calificacion: calificacionesPadre[keyCalPadre]['calificacion'] });
+                                }
+                            }
+
+                            const elRankingPadres = await RankingPadres.get(arrCalPadre);
+                            if (elRankingPadres < 0) {
+                                console.log(Tiza.bold.yellow.bgBlack('Error: No se pudo obtener la calificación del padre'));
+                                res.json({
+                                    success: false,
+                                    message: 'Error al encontrar los datos'
+                                });
+                            } else {
+                                calificacionPadres = '' + elRankingPadres;
+                            }
+                        }
+
+                        //------------------------------------
+
+
+                        let listaCalificacionesPadre = await listarCalificacionesPadre(miId);
+
+                        console.log(listaCalificacionesPadre);
+
+
+
+                        //------------------------------------
+
+
+                        let laProvincia = '';
+                        let elCanton = '';
+                        let elDistrito = '';
+                        let laDireccion = '';
+
+                        if (resultado[key]['direccion']) {
+                            resultado[key]['direccion'].forEach(obj2 => {
+                                if ('undefined' != typeof obj2['idProvincia']) {
+                                    laProvincia = ObtenerProvCantDist.getProvincia(obj2['idProvincia']);
+                                }
+                                if ('undefined' != typeof obj2['idCanton']) {
+                                    elCanton = ObtenerProvCantDist.getCanton(obj2['idCanton']);
+                                }
+                                if ('undefined' != typeof obj2['idDistrito']) {
+                                    elDistrito = ObtenerProvCantDist.getDistrito(obj2['idDistrito']);
+                                }
+                                if ('undefined' != typeof obj2['sennas']) {
+                                    laDireccion = obj2['sennas'];
+                                }
+
+                            });
+                        }
+
+                        listarResultado.push({
+                            '_id': resultado[key]['_id'] || 0,
+                            'fotoCentro': resultado[key]['fotoCentro'] || '',
+                            'nombre': resultado[key]['nombre'] || '',
+                            'nombreComercial': resultado[key]['nombreComercial'] || '',
+                            'referenciaHistorica': resultado[key]['referenciaHistorica'] || '',
+                            'direccion': laDireccion,
+                            'provincia': laProvincia,
+                            'canton': elCanton,
+                            'distrito': elDistrito,
+                            'telefono': resultado[key]['telefono'] || 0,
+                            'correo': resultado[key]['correo'] || '',
+                            'calificacionMEP': parseInt(calificacionMEP, 10),
+                            'calificacionPadres': parseInt(calificacionPadres, 10),
+                            'etiquetas': resultado[key]['etiquetas'] || '',
+                            'tipoInstitucion': resultado[key]['tipoInstitucion'] || '',
+                            'listaCalificacionPadres': listaCalificacionesPadre || []
+                        });
+
+                    }
+
+                    res.json({
+                        success: true,
+                        message: listarResultado
+                    });
+
+                } catch (err2) {
+                    console.log(Tiza.bold.yellow.bgBlack('Error al obtener los centros educativos: '));
+                    console.log(Tiza.bold.yellow.bgBlack(err2));
+                    res.json({
+                        success: false,
+                        message: 'Error al encontrar los datos'
+                    });
+                }
+            } else {
+                res.json({
                     success: false,
                     message: 'No se encontraron datos'
-                }
-            )
+                });
+            }
         }
     });
 };
