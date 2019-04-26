@@ -605,14 +605,15 @@ let cargarCalificacionesPadres = async (esPadre) => {
         tr.appendChild(td);
 
 
-        //rankings
-        if (tblRankings) {
-          tblRankings.innerHTML = `<tr><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">MEP</p></td><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">Padres de familia</p></td></tr> <tr><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionMEP)}</p></td><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionPadres)}</p></td></tr>`;
-        }
 
 
       } else {
         tr.innerHTML = '<p style="color: #9f9f9f;text-align: center;font-size: 15px;">¡Aún no hay calificaciones!</p>';
+      }
+
+      //rankings
+      if (tblRankings) {
+        tblRankings.innerHTML = `<tr><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">MEP</p></td><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">Padres de familia</p></td></tr> <tr><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionMEP)}</p></td><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionPadres)}</p></td></tr>`;
       }
 
       tblComentarios.appendChild(tr);
