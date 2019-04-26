@@ -15,7 +15,7 @@ let elContenedor = [];
 
 let irAlPerfil = (idCEdu) => {
     localStorage.setItem('verPerfilCEdu', idCEdu);
-	localStorage.setItem('centroEstaPendiente', 'false');
+    localStorage.setItem('centroEstaPendiente', 'false');
 
     switch (tipoUsuario.toLowerCase()) {
         case 'superadmin':
@@ -28,6 +28,37 @@ let irAlPerfil = (idCEdu) => {
             console.error('El tipo de usuario no tiene página de redirección');
             break;
     }
+};
+
+
+
+let ordenarPor = (path, reverse, primer, then) => {
+    let get = function (obj, path) {
+        if (path) {
+            path = path.split('.');
+            let i = 0;
+            let len = path.length - 1;
+            for (; i < len; i++) {
+                obj = obj[path[i]];
+            }
+            return obj[path[len]];
+        }
+        return obj;
+    },
+        prime = function (obj) {
+            return primer ? primer(get(obj, path)) : get(obj, path);
+        };
+
+    return function (a, b) {
+        let A = prime(a),
+            B = prime(b);
+
+        return (
+            (A < B) ? -1 :
+                (A > B) ? 1 :
+                    (typeof then === 'function') ? then(a, b) : 0
+        ) * [1, -1][+!!reverse];
+    };
 };
 
 
@@ -175,6 +206,19 @@ let cargarPagina = () => {
                 FiltroCards.value = '';
                 FiltroCards.addEventListener('keyup', llenarContenido);
                 elContenedor = pMessage;
+
+                switch (tipoUsuario.toLowerCase()) {
+                    case 'superadmin':
+                        elContenedor.sort(ordenarPor('calificacionMEP', true, null));
+                        break;
+                    case 'padrefamilia':
+                        elContenedor.sort(ordenarPor('calificacionPadres', true, null));
+                        break;
+                    default:
+                        elContenedor.sort(ordenarPor('nombre', false, null));
+                        break;
+                }
+
                 llenarContenido();
 
             } else {

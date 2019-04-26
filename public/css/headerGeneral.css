@@ -95,7 +95,7 @@ body{
   font-size: 17px;
   
   /* La forma correcta de calcular el margin-left es obteniendo el largo de la barra anaranjada [width: 18% + el padding: 16px] y sumarle el padding-left que desea en la barra azul.
-  La formula a pata sería: 12% + 16px + 15px 
+  La formula a pata sería: 18% + 16px + 15px 
   */
   margin-left: calc(18% + 31px);
 }

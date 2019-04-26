@@ -54,7 +54,6 @@ let crearActividades = () => {
       let strong = document.createElement('strong');
       strong.classList.add('tituloActividad');
 
-  
       let lugar = document.createElement('p');
       lugar.classList.add('lugar');
       lugar.classList.add('dato_card');
@@ -496,15 +495,16 @@ let cards_servicios = (id) => {
 };
 
 window.onload = () => {
-	
-console.log('centroEstaPendiente: ', localStorage.getItem('centroEstaPendiente'));
-switch (localStorage.getItem('centroEstaPendiente')) {
-	case 'false' : bloqueCalificacion.style= 'display:block;';
-	break;
-	default:  bloqueCalificacion.style= 'display:none;';
-	break;
-}
-	
+
+  if (bloqueCalificacion) {
+    switch (localStorage.getItem('centroEstaPendiente')) {
+      case 'false': bloqueCalificacion.style = 'display:block;';
+        break;
+      default: bloqueCalificacion.style = 'display:none;';
+        break;
+    }
+  }
+
   let id;
 
   switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
@@ -543,7 +543,7 @@ switch (localStorage.getItem('centroEstaPendiente')) {
   }
 
   const perfil = get_obtenerPerfil(id);
-
+  console.log('perfil: ', perfil);
   if ('undefined' !== typeof perfil.nombre) {
     document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
   }
