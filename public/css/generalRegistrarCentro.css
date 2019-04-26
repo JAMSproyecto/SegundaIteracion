@@ -26,7 +26,14 @@ main {
     -o-border-radius: 4px;
     -ms-border-radius: 4px;
     border-radius: 4px;
+    margin-bottom: 45px;
 }
+
+.mb_15{
+    padding-bottom: 25px;
+
+};
+
 
 main.formulario fieldset.error_input, main.formulario input.error_input, main.formulario select.error_input, main.formulario textarea.error_input {
     border-color: #eb3b5a;
