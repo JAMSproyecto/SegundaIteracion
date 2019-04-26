@@ -19,7 +19,6 @@
 
     <link rel="stylesheet" href="./css/estiloBasico.css">
     <link rel="stylesheet" href="./css/generalRegistrarCentro.css">
-<link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="./css/indicador_de_progreso.css">
 </head>
 
@@ -133,19 +132,21 @@
     </header>
 
     <section id="main">
-        <div class="text__center">
-            <h1 class="titulo__principal">Registro de centros educativos</h1>
-        </div>
 
-        <div class="barra_progreso">
+        <div class="barra_progreso" style="display:none;">
             <ul class="indicador_de_progreso">
                 <li id="progreso1" class="en_progreso"><span class="burbuja"></span></li>
                 <li id="progreso2" class=""><span class="burbuja"></span></li>
                 <li id="progreso3" class=""><span class="burbuja"></span></li>
             </ul>
         </div>
-
-        <main class="formulario">
+	
+		 <div class="text__center">
+            <h1 class="titulo__principal">Registro de centros educativos</h1>
+        </div>
+        <main class="formulario mb__15">
+	
+		
             <section id="informacionGeneral">
 
                 <div class="text__center">
@@ -211,7 +212,7 @@
                     </div>
                     <div class="text__center">
                         <label for="sltNiveles">Oferta acad&eacute;mica:</label>
-                        <p>Puede seleccionar una o m&aacute;s</p>
+                        <p>Puede seleccionar una o m&aacute;s opciones</p>
                         <select id="sltNiveles" multiple>
                             <option value="Preescolar">Preescolar</option>
                             <option value="Primaria">Primaria</option>
@@ -219,14 +220,11 @@
                             <option value="Superior">Superior</option>
                         </select>
                     </div>
-
-                    <div class="text__center">
-                            <label for="sltNiveles">Etiquetas de búsqueda</label>
-                            <p>Puede seleccionar una o más</p>
-                            <select id="select_etiquetas" multiple>
-                            </select>
-                        </div>
-
+					<div class="text__center">
+                            <label for="select_etiquetas">Etiquetas de búsqueda</label>
+                            <p>Puede seleccionar una o m&aacute;s opciones</p>
+                            <select id="select_etiquetas" multiple></select>
+                    </div>
                     <div class="text__center">
                         <label for="txtResenna">Rese&ntilde;a hist&oacute;rica:</label>
                         <textarea id="txtResenna"></textarea>
@@ -324,13 +322,13 @@
                 <hr class="estilo1">
             </div>
 
-
+ <div class="text__center mb__15">
+            <button class="btn btn--celeste mb__15" id="btnRegistrar">Registrar</button>
+        </div>
 
 
         </main>
-        <div class="bloqueBoton text__center mb__15">
-            <button class="btn btn--amarillo btn--celeste mb__15" id="btnRegistrar">Registrar</button>
-        </div>
+       
     </section>
 
     <footer>
@@ -409,7 +407,6 @@
     <script src="./js/promise/es6-promise.auto.min.js"></script>
     <!-- /Promise -->
 
-    <script src="./js/general.js"></script>
     <script src="./js/funciones_autenticacion.js"></script>
     <script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
     <script src="./js/direccionUbicacion/controlador.js"></script>
