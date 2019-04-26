@@ -95,7 +95,7 @@ let mostrar_datos = () => {
             //para buscar el titulo del centro si es super admin se quema el titulo en el codigo 
             let tipoUsuario = localStorage.getItem('tipoUsuario');
             if (tipoUsuario === 'SuperAdmin') {
-                let centro = buscar_centro_por_id(lista_utiles[i]['codigo']);
+                let centro = buscar_nombre_centro_por_id(lista_utiles[i]['codigo']);
                 th_centro.classList.remove('ocultar');
                 titulo.innerHTML = 'MEP';
                 if(centro.nombre){

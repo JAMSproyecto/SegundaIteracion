@@ -32,5 +32,9 @@ Router.route('/rechazar_centro_educativo/:id').get((req, res) => {
     API.rechazar_centro_educativo(req.body.id, res);
 });
 
+Router.route('/obtener_nombre_centro_por_id/:id').get((req, res) => {
+    API.obtener_nombre_centro_por_id(req, res);
+});
+
 module.exports = Router;
 
