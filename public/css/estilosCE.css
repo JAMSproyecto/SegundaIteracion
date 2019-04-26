@@ -39,8 +39,6 @@
   max-height: 250px;
 }
 
-
-/*Estilos del scrollable
 #tabla__noticias{
   overflow-y: scroll;
   max-height: 250px;
@@ -49,21 +47,22 @@
 
 #tabla__noticias::-webkit-scrollbar-track, #tabla__actividades::-webkit-scrollbar-track, #tabla__servicios::-webkit-scrollbar-track
 {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: rgba(245, 245, 245, 0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 
 #tabla__noticias::-webkit-scrollbar, #tabla__actividades::-webkit-scrollbar, #tabla__servicios::-webkit-scrollbar
 {
-	width: 10px;
-	background-color: rgba(245, 245, 245, 0.3);
+	width: 12px;
+	background-color: #F5F5F5;
 }
 
 #tabla__noticias::-webkit-scrollbar-thumb, #tabla__actividades::-webkit-scrollbar-thumb, #tabla__servicios::-webkit-scrollbar-thumb{
-	background-color: rgba(120, 144, 156, 0.2);
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #78909c;
 }
-
-Fin del estilos del scrollable*/
 
 
 .datoCard {
@@ -98,8 +97,7 @@ Fin del estilos del scrollable*/
 }
 
 
-.noticia,
-.actividad {
+.noticia {
   display:inline-table;
   width: 320px;
   box-shadow: 0 0 3px #78909c;
@@ -115,6 +113,21 @@ Fin del estilos del scrollable*/
   max-height: 180px;
 }
 
+.actividad {
+  display: inline-block;
+  width: 320px;
+  box-shadow: 0 0 3px #78909c;
+  margin: 19px;
+  /* padding: 50px 20px; */
+  /* display: table-cell; */
+  border-radius: 12px;
+  height: 180px;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+  max-width: 320px;
+  max-height: 180px;
+}
 
 
 .detalles__actividad {
