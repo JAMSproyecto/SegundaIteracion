@@ -8,7 +8,7 @@
     <title>MEP</title>
 
     <link href="./imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
     <link rel="stylesheet" href="./css/reset.min.css">
 
     <link rel="stylesheet" href="./css/headerGeneral.css" />
@@ -16,59 +16,60 @@
 
     <link rel="stylesheet" href="./css/estiloBasico.css">
     <link rel="stylesheet" href="./css/generalRegistrarCentro.css">
-<link rel="stylesheet" href="./css/generalFormulario.css">
+    <link rel="stylesheet" href="./css/generalFormulario.css">
     <link rel="stylesheet" href="./css/indicador_de_progreso.css">
 </head>
 
 <body>
-    <header>
-        <div class="column__arriba">
-            <nav class="menu__arriba">
-                <div class="colum__abajo">
-                    <nav class="menu__registrarse">
-                        <ul>
-                            <li> <a class="registrarse" href="index.html">P&aacute;gina principal</a></li>
-                            <li><a href="registroCentroLanpage.html">Registrarse como centro educativo</a></li>
-                            <li>
-							<a class="btn btn--amarillo" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>
-							</li>
-                        </ul>
-                    </nav>
+    <header class="bloqueHeader">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
+
+            <div class="bloqueLogo__admin bloqueHeader__logo">
+                <img src="./imgs/logo_mep.png" class="imagen_mep">
+            </div>
+        </div>
+        <div class="bloqueHeader__filaArriba">
+            <div class="bloqueHeader__contendorArriba">
+
+
+
+                <div class="header__nav">
+                    <div class="menu__palanca menu__palanca__izq">
+                        <a class="menu__palanca__btn" href="registro_padres.html">Registrarse como padre de familia</a>
+                        <a class="menu__palanca__btn" href="registroCentroLanpage.html">Registrarse como centro
+                            educativo</a>
+                        <a class="btn" href="./inicio_sesion.html">Iniciar sesi&oacute;n</a>
+                    </div>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
-  
 
     <main class="formulario">
-
-            <div class="text_center">
-                    <h1>Registro de padres de familia</h1>
-                </div>
         <section id="informacionGeneral">
-            <div class="text_center">
+            <div class="text__center">
                 <h2>Informaci&oacute;n general</h2>
             </div>
-            <div class="datos_izq text_center">
-                <div class="text_center">
+            <div class="datos_izq text__center">
+                <div class="text__center">
                     <label for="txt_nombre">Nombre:</label>
                     <input type="text" id="txt_nombre">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="txt_segundo_nombre">Segundo nombre:</label>
                     <input type="text" id="txt_segundo_nombre">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="txt_apellido">Apellido:</label>
                     <input type="text" id="txt_apellido">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="txt_segundo_apellido">Segundo Apellido:</label>
                     <input type="text" id="txt_segundo_apellido">
                 </div>
             </div>
-            <div class="datos_der text_center">
-                <div class="text_center">
+            <div class="datos_der text__center">
+                <div class="text__center">
                     <label for="lbl_tipo_id">Tipo de identificación:</label>
                     <input list="tipo_id" id="lbl_tipo_id">
                     <datalist id="tipo_id">
@@ -76,15 +77,15 @@
                         <option value="Pasaporte">
                         <option value="DNI">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="num_identidad">Número de identificación:</label>
                     <input type="number" id="num_identidad">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="txt_nacionalidad">Nacionalidad:</label>
                     <input type="text" id="txt_nacionalidad">
                 </div>
-                <div class="text_center">
+                <div class="text__center">
                     <label for="fecha_nacimiento">Fecha de nacimiento:</label>
                     <input type="date" id="fecha_nacimiento">
                 </div>
@@ -92,68 +93,69 @@
 
             <div id="contacto">
 
-                <div class="datos_izq text_center">
+                <div class="datos_izq text__center">
 
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="num_cel">Teléfono celular:</label>
                         <input type="number" id="num_cel">
                     </div>
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="num_casa">Teléfono de domicilio:</label>
                         <input type="number" id="num_casa">
                     </div>
                 </div>
-                <div class=" datos_der text_center">
-                    <div class="text_center">
+                <div class=" datos_der text__center">
+                    <div class="text__center">
                         <label for="email_correo">Correo electrónico:</label>
                         <input type="email" id="email_correo">
                     </div>
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="email_correo2">Redigite su correo electrónico:</label>
                         <input type="email" id="email_correo2">
                     </div>
 
                 </div>
             </div>
-
-            <div class="bloque_registro text_center">
+        </section>
+        <section id="informacionGeneral">
+            <div class="bloque_registro text__center">
                 <h2 class="titulo">Dirección</h2>
-                <div class="datos_izq text_center">
+                <div class="datos_izq text__center">
                     <div>
                         <label for="slt_provincias">Provincia</label>
                         <select id="slt_provincias">
                             <option disabled selected value="">Seleccione una provincia...</option>
-						</select>
+                        </select>
                     </div>
                     <div>
                         <label for="slt_cantones">Cantón</label>
                         <select id="slt_cantones">
                             <option disabled selected value="">Seleccione un cant&oacute;n...</option>
-						</select>
+                        </select>
                     </div>
                     <div>
                         <label for="slt_distritos">Distrito</label>
                         <select id="slt_distritos">
                             <option disabled selected value="">Seleccione un distrito...</option>
-						</select>
+                        </select>
                     </div>
                 </div>
-                <div class="datos_der text_center">
+                <div class="datos_der text__center">
                     <div>
                         <label for="txt_direccion">Dirección con señas:</label>
                         <textarea id="txt_direccion" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
-
-
-            <div id="estudiante"  class="text_center">
-			<div class="text_center">
-                <h2>Informaci&oacute;n de estudiantes</h2>
-            </div>
+        </section>
+        <section id="informacionGeneral">
+            <div id="estudiante" class="text__center">
+                <div class="text__center">
+                    <h2>Informaci&oacute;n de estudiantes</h2>
+                </div>
                 <div class="hijos">
                     <label for="slt_hijos">Cantidad de hijos</label>
-                    <select id="slt_hijos">
+                    <select id="slt_hijos" class="text__center">
                         <option value="">0</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -161,31 +163,30 @@
                         <option value="">4</option>
                     </select>
                 </div>
-                <div class="datos_izq text_center">
-                    <div class="text_center">
+                <div class="datos_izq text__center">
+                    <div class="text__center">
                         <label for="txt_nombre_hijo">Nombre del hijo:</label>
                         <input type="text" id="txt_nombre_hijo">
                     </div>
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="num_edad_hijo">Edad:</label>
                         <input type="number" id="num_edad_hijo">
                     </div>
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="txt_nombre_hijo2">Nombre del hijo:</label>
                         <input type="text" id="txt_nombre_hijo2">
                     </div>
 
-                    <div class="text_center">
+                    <div class="text__center">
                         <label for="num_edad_hijo2">Edad:</label>
                         <input type="number" id="num_edad_hijo2">
                     </div>
                 </div>
-                <div class="datos_der text_center">
+                <div class="datos_der text__center">
                     <div>
                         <label for="txt_nombre_hijo3">Nombre del hijo:</label>
                         <input type="text" id="txt_nombre_hijo3">
                     </div>
-
                     <div>
                         <label for="num_edad_hijo3">Edad:</label>
                         <input type="number" id="num_edad_hijo3">
@@ -194,18 +195,16 @@
                         <label for="txt_nombre_hijo4">Nombre del hijo:</label>
                         <input type="text" id="txt_nombre_hijo4">
                     </div>
-
                     <div>
                         <label for="num_edad_hijo4">Edad:</label>
                         <input type="number" id="num_edad_hijo4">
                     </div>
-
                 </div>
             </div>
 
         </section>
 
-        <div class="text_center mb_15">
+        <div class="text__center mb_15">
             <button class="btn btn--amarillo" id="boton_registrar">Registrar</button>
         </div>
     </main>
@@ -216,8 +215,9 @@
                     <li>
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
-                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
-                    
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
+
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
                                 class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
                             educacion@ucenfotec.com</a></li>
@@ -279,4 +279,5 @@
 <script src="js/controlador_direccion_reg_padre.js"></script>
 <script src="js/controlador_registro_padre.js"></script>
 <script src="js/servicio_registro_padre.js"></script>
+
 </html>
