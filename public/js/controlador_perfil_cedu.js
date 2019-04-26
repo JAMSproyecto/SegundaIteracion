@@ -300,7 +300,7 @@ let mostrar_noticias = () => {
 
         let fecha_noticia = document.createElement('p');
         fecha_noticia.innerHTML = objeto.fecha;
-        fecha_noticia.classList.add('dato_card');
+        fecha_noticia.classList.add('dato_fecha');
 
         let info_noticia = document.createElement('p');
         info_noticia.innerHTML = objeto.informacion;

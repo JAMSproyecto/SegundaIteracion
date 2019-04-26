@@ -97,65 +97,64 @@
   font-weight: bold;
   font-size: 20px;
   margin-left: 10%x;
-  position: relative;
-  top: 10px;
-  margin-left: 33%;
+  position: absolute;
+  top: 16%;
+  /* margin-left: 33%; */
+  left: 39%;
 
 }
 
 
 .noticia {
-  display:inline-table;
-  width: 320px;
+  display: inline-table;
+  width: 274px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
-  /* padding: 50px 20px; */
-  /* display: table-cell; */
   border-radius: 12px;
-  height: 180px;
+  height: 200px;
   background: #fff;
   text-align: center;
   padding: 10px;
   max-width: 320px;
-  max-height: 180px;
+  /* max-height: 180px; */
   position: relative;
 }
 
 .actividad {
   display: inline-table;
-  width: 343px;
+  width: 258px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
-  /* padding: 50px 20px; */
-  /* display: table-cell; */
   border-radius: 12px;
-  height: 178px;
+  height: 200px;
   background: #fff;
   text-align: center;
   padding: 10px;
   max-width: 320px;
-  max-height: 180px;
+  /* max-height: 180px; */
   position: relative;
 }
 
 
 .detalles__actividad {
   top: 66%;
-  margin-top: 15px;
+  margin-top: 0px;
   position: absolute;
-  left: 13%;
+  left: 5%;
 }
 
 .dato_card{
   position: relative;
   top: 12px;
-  font-size: 14px;
+  font-size: 12px;
+  /* right: -12px; */
+  /* left: 33px; */
 }
 
 
 .dato_informacion{
-    position: relative;
-    top: 41px;
+  position: absolute;
+  top: 55%;
    
 }
 
@@ -421,7 +420,8 @@ button.fc-button:focus {
 
 .contenedor_btn{
   position: relative;
-  top: 26px;
+  top: 21px;
+  left: 10px;
 
 }
 /*estilos calificación mep */
@@ -438,3 +438,61 @@ button.fc-button:focus {
 }
 
 /*fin estilos calificación mep */
+
+.titulo__secundario_servicios{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  /* padding: 14px 49px; */
+  text-align: center;
+  margin: 0;
+  padding-top: 19px;
+}
+
+
+
+.bloqueInformacion_contenedor{
+
+  padding: 20px 0;
+}
+
+
+.bloqueServicios_contenedor,
+.bloqueInformacion_contenedor
+{
+  width: 88%;
+  margin: 0 auto;
+}
+
+
+.dato_fecha{
+  font-size: 13px;
+  position: absolute;
+  left: 47%;
+  top: 28%;
+
+}
+
+.ser__alimentacion{
+  padding: 0 15px;
+}
+
+
+.ser__salud{
+  padding: 0 5px;
+}
+
+.ser__estudio{
+  padding: 0px 11px;
+}
+
+
+.ser__musica{
+  padding: 0 10px;
+}
+
+
+
+.ser__cientifico{
+  padding: 0 38px;
+}
