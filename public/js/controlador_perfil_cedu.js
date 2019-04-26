@@ -362,7 +362,7 @@ let cards_servicios = (pId) => {
       //funcion para msotrar la descripción del servicio 
       btn_descripcion.addEventListener('click', function () {
         Swal.fire({
-          title: '<strong>Descripción de la noticia:</strong>',
+          title: '<strong>Descripción del servicio:</strong>',
           type: 'info',
           html:
             '<b>' + descripcion + '</b>',
@@ -370,7 +370,7 @@ let cards_servicios = (pId) => {
           showCancelButton: false,
           focusConfirm: false,
           confirmButtonText:
-            '<i class="fas fa-reply-all"></i> Regresar ',
+            ' Regresar ',
           confirmButtonAriaLabel: 'Thumbs up, great!',
           cancelButtonText:
             '<i class="fa fa-thumbs-down"></i>',
