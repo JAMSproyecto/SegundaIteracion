@@ -31,8 +31,9 @@ main {
 
 .mb_15{
     padding-bottom: 25px;
-
 };
+
+
 
 
 main.formulario fieldset.error_input, main.formulario input.error_input, main.formulario select.error_input, main.formulario textarea.error_input {
@@ -148,3 +149,6 @@ main section .datos_izq input, main section .datos_izq fieldset, main section .d
 }
 
 
+.select_hijos {
+    margin: auto;
+};
