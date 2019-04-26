@@ -10,6 +10,7 @@ const div_noticias = document.querySelector('#tabla__noticias');
 const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
 const bloqueCalificacion = document.querySelector('#bloqueCalificacion');
+const tblComentarios = document.querySelector('#tblComentarios');
 
 
 
@@ -22,7 +23,7 @@ let mostrar_resennia = (resennia) => {
     if ('undefined' !== typeof resennia && null !== resennia) {
       mostrarResennia.innerHTML = resennia;
     } else {
-      console.log(resennia);
+      console.log('No se encontró ninguna reseña');
       mostrarResennia.innerHTML = '';
     }
   } else {
