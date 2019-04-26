@@ -58,10 +58,11 @@ font-weight: 900;
   }
 
   .fa-newspaper{
-    font-size: 67px;
+    font-size: 51px;
     color: #253b80;
     float: left;
-    padding-left: 29px;
+    padding-left: 10px;
+    padding-top: 40px;
 }
 
 .fat {

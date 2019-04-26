@@ -43,12 +43,17 @@ let crearActividades = () => {
       let actividad = document.createElement('div');
       actividad.classList.add('actividad');
 
+      let iconoActividad = document.createElement('p');
+      iconoActividad.innerHTML = '<i class="far fa-calendar-check"></i>';
+
+
+      let div_datos = document.createElement('div');
+      div_datos.classList.add('actividad_izq');
 
       let strong = document.createElement('strong');
       strong.classList.add('titulo');
 
-      let iconoActividad = document.createElement('p');
-    iconoActividad.innerHTML= '<i class="far fa-calendar-check"></i>';
+
 
 
 
@@ -74,19 +79,21 @@ let crearActividades = () => {
       strong.innerHTML = obj.actividad;
       fecha.innerHTML = obj.fecha;
       hora.innerHTML = `Hora: ${obj.hora_inicio} - ${obj.finaliza}`;
-      
-      actividad.appendChild(iconoActividad);
+
+
       actividad.appendChild(strong);
-      actividad.appendChild(lugar);
-      actividad.appendChild(fecha);
-      actividad.appendChild(hora);
+      actividad.appendChild(iconoActividad);
+      div_datos.appendChild(lugar);
+      div_datos.appendChild(fecha);
+      div_datos.appendChild(hora);
 
       //Agregado por Marlon
 
-      actividad.appendChild(detalles);
+      div_datos.appendChild(detalles);
       //Termina lo agregado por Marlon
 
 
+      actividad.appendChild(div_datos);
       mostrarActividad.appendChild(actividad);
     })
 
@@ -172,7 +179,7 @@ let calificarMEP = () => {
     botonCalificarCentro.innerText = 'Calificar';
     botonCalificarCentro.classList.add('btn');
     botonCalificarCentro.classList.add('btn--amarillo');
-  
+
 
     bloqueCalificacionMep.appendChild(botonCalificarCentro);
 
@@ -218,16 +225,16 @@ let calificarMEP = () => {
         if (result.value) {
           let values = [];
           values = (result.value);
-		  
-		  const cantValores = values.length;
+
+          const cantValores = values.length;
           let sumValues = 0;
-		  
+
           for (let i = 0; i < 10; i++) {
-			  if ((i+1) > cantValores) {
+            if ((i + 1) > cantValores) {
               values.push(0);
-            }else{
-			  values[i] = parseInt(values[i], 10);
-			}
+            } else {
+              values[i] = parseInt(values[i], 10);
+            }
             sumValues += values[i];
           }
           let prom = (sumValues / cantValores);
@@ -254,7 +261,7 @@ let calificarMEP = () => {
               'El centro ha recibido una calificación total de: ' + prom + ', para total de: ' + estrellasMep + ' estrellas',
             confirmButtonText: 'Aceptar'
           });
-		  
+
           registrar_calificacionMEP(idCentro, estrellasMep, rubrosActivos[0], values[0], rubrosActivos[1], values[1], rubrosActivos[2], values[2], rubrosActivos[3], values[3], rubrosActivos[4], values[4], rubrosActivos[5], values[5], rubrosActivos[6], values[6], rubrosActivos[7], values[7], rubrosActivos[8], values[8], rubrosActivos[9], values[9]);
         }
       });
@@ -274,19 +281,50 @@ let mostrar_noticias = () => {
   if (noticias) {
     if ('object' == typeof noticias && Object.keys(noticias).length > 0) {
 
-      let bloques = '';
+      // let bloques = '';
       noticias.forEach(function (objeto) {
-        bloques += '<div class="noticia">';
-        bloques += '<i class="far fa-newspaper"></i>';
-        bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
-        bloques += '<p class="dato_card">Fecha: ' + objeto.fecha + '</p>';
 
-        bloques += '<p class="dato_card"> ' + objeto.informacion + '</p>';
+        let bloque_noticia = document.createElement('div');
+        bloque_noticia.classList.add('noticia');
+
+        let titulo_noticia = document.createElement('h3');
+        titulo_noticia.innerHTML = objeto.tema;
+        titulo_noticia.classList.add('titulo');
+
+        let iconoNoticia = document.createElement('p');
+        iconoNoticia.innerHTML = '<i class="far fa-newspaper"></i>';
+
+        let contenedor_noticias = document.createElement('div');
+        contenedor_noticias.classList.add('actividad_izq');
+
+        let fecha_noticia = document.createElement('p');
+        fecha_noticia.innerHTML = objeto.fecha;
+        fecha_noticia.classList.add('dato_card');
+
+        let info_noticia = document.createElement('p');
+        info_noticia.innerHTML = objeto.informacion;
+        info_noticia.classList.add('dato_card');
+        // bloques += '<div class="noticia">';
+        // bloques += ' <h3 class="titulo">' + objeto.tema + '</h3>';
+        // bloques += '<i class="far fa-newspaper"></i>';
+        //bloques += '<p class="dato_card">Fecha: ' + objeto.fecha + '</p>';
+
+        //   bloques += '<p class="dato_card"> ' + objeto.informacion + '</p>';
 
 
-        bloques += '</div>';
+        //  bloques += '</div>';
+        contenedor_noticias.appendChild(fecha_noticia);
+        contenedor_noticias.appendChild(info_noticia);
+
+
+
+        bloque_noticia.appendChild(titulo_noticia);
+        bloque_noticia.appendChild(iconoNoticia);
+        bloque_noticia.appendChild(contenedor_noticias);
+        div_noticias.appendChild(bloque_noticia);
+
       });
-      div_noticias.innerHTML = bloques;
+      // div_noticias.innerHTML = bloques;
     } else {
       let bloques = '';
       bloques += '<div class="noticia">';
