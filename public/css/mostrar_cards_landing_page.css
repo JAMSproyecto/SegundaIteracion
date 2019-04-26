@@ -1,4 +1,4 @@
-#cards_centros {
+.cards_landing_page {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 100px;
@@ -6,7 +6,7 @@
   padding: 0 15px;
 }
 
-#cards_centros .contenedor_cards_principal {
+.cards_landing_page .contenedor_cards_principal {
   flex: 1 0 500px;
   box-sizing: border-box;
   margin: 1rem auto 2em;
@@ -23,24 +23,30 @@
 }
 
 @media screen and (min-width: 40em) {
-  #cards_centros .contenedor_cards_principal {
-    max-width: calc(40% - 1em);
+  .cards_landing_page .contenedor_cards_principal {
+    max-width: 85%;
+  }
+}
+
+@media screen and (min-width: 50em) {
+  .cards_landing_page .contenedor_cards_principal {
+    max-width: calc(75% - 1em);    max-width: 100%;
   }
 }
 
 @media screen and (min-width: 60em) {
-  #cards_centros .contenedor_cards_principal {
-    max-width: calc(33% - 1em);
+  .cards_landing_page .contenedor_cards_principal {
+    max-width: calc(50% - 1em);    max-width: 100%;
   }
 }
 
-#cards_centros .contenedor_cards_principal > p,
-#cards_centros .contenedor_cards_principal > div,
-#cards_centros .contenedor_cards_principal > span {
+.cards_landing_page .contenedor_cards_principal > p,
+.cards_landing_page .contenedor_cards_principal > div,
+.cards_landing_page .contenedor_cards_principal > span {
   padding: 1.4em;
 }
 
-#cards_centros .contenedor_cards_principal > h1 {
+.cards_landing_page .contenedor_cards_principal > h1 {
   font-weight: 700;
   background: #253b80;
   color: #fff;
@@ -50,21 +56,21 @@
   text-align: center;
 }
 
-#cards_centros .contenedor_cards_principal a {
+.cards_landing_page .contenedor_cards_principal a {
   color: #007bff;
   text-decoration: none;
   text-decoration: underline;
   background-color: transparent;
 }
 
-#cards_centros .contenedor_cards_principal a:hover,
-#cards_centros .contenedor_cards_principal a:focus {
+.cards_landing_page .contenedor_cards_principal a:hover,
+.cards_landing_page .contenedor_cards_principal a:focus {
   color: #0062cc;
   text-decoration: underline;
   cursor: pointer;
 }
 
-#cards_centros .contenedor_cards_principal .contenedor_btn_cards {
+.cards_landing_page .contenedor_cards_principal .contenedor_btn_cards {
   text-align: center;
   font-size: 30px;
   margin: 31px 0px;
@@ -211,7 +217,7 @@
 	width:100%;
 	padding: 5px 3%;
 	text-align:center;
-	margin-bottom:50px;
+	margin-bottom:0;
 }
 
 
