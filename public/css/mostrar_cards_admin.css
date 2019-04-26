@@ -218,13 +218,13 @@
 
 @media screen and (min-width: 40em) {
   .contenedor_filtrar_cards {
-    padding: 5px 15%;
+    padding: 5px 5%;
   }
 }
 
 @media screen and (min-width: 60em) {
   .contenedor_filtrar_cards {
-    padding: 5px 20%;
+    padding: 5px 5%;
   }
 }
 
@@ -236,9 +236,9 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.8);
-  display: block;
+  display: inline-block;
   width: 100%;
-  max-width:100%;
+  max-width:300px;
   padding: 8px 16px;
   line-height: 1.5;
   -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
@@ -284,7 +284,9 @@
 }
 
 
-
+.contenedor_filtrar_cards div:nth-child(1) {
+	float:left;
+}
 
 
 
