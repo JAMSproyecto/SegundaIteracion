@@ -449,3 +449,34 @@ select:not(.error_input):focus,
     display: block;
     float: right;
 }
+
+.fechas{
+    display: table;
+}
+
+.controlador_fech_inicio,
+.controlador_fech_final{
+    display: table-cell;
+}
+
+.filtrar_formulario{
+    float: left;
+}
+
+
+
+.filtrar_formulario input{
+    display: inline-block;
+    width: 300px;
+}
+.bloqueFiltro_cita{
+    float: right;
+}
+
+.bloqueCita{
+    display: flow-root;
+}
+
+.bloqueBoton_cita{
+    float: right;
+}
