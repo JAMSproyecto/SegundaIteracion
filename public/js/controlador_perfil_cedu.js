@@ -295,7 +295,7 @@ let mostrar_noticias = () => {
         iconoNoticia.innerHTML = '<i class="far fa-newspaper"></i>';
 
         let contenedor_noticias = document.createElement('div');
-        contenedor_noticias.classList.add('actividad_izq');
+        contenedor_noticias.classList.add('noticia_izq');
 
         let fecha_noticia = document.createElement('p');
         fecha_noticia.innerHTML = objeto.fecha;

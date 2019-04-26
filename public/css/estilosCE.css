@@ -1,4 +1,10 @@
 
+
+.mainCE .titulo__secundario{
+  padding: 0;
+  color: #253b80;
+  font-size: 30px;
+}
 /*estilos resennia*/
 #bloqueResennia{
   width: 90%;
@@ -11,6 +17,7 @@
   font-style: italic;
     font-size: 18px;
 }
+
 /*fin estilos resennia*/
 
 
@@ -90,8 +97,9 @@
 }
 
 
-.noticia {
-  display: inline-block;
+.noticia,
+.actividad {
+  display:inline-table;
   width: 320px;
   box-shadow: 0 0 3px #78909c;
   margin: 19px;
@@ -106,21 +114,6 @@
   max-height: 180px;
 }
 
-.actividad {
-  display: inline-block;
-  width: 320px;
-  box-shadow: 0 0 3px #78909c;
-  margin: 19px;
-  /* padding: 50px 20px; */
-  /* display: table-cell; */
-  border-radius: 12px;
-  height: 180px;
-  background: #fff;
-  text-align: center;
-  padding: 10px;
-  max-width: 320px;
-  max-height: 180px;
-}
 
 
 .detalles__actividad {
@@ -346,9 +339,39 @@ button.fc-button:focus {
 
 
 
+.fc table{
+
+  width: 679px;
+  box-sizing: border-box;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1em;
+}
 
 
 
+.fc-unthemed .fc-content, 
+.fc-unthemed .fc-divider, 
+.fc-unthemed .fc-list-heading td, 
+.fc-unthemed .fc-list-view, 
+.fc-unthemed .fc-popover, 
+.fc-unthemed .fc-row, 
+.fc-unthemed tbody, 
+.fc-unthemed td, 
+.fc-unthemed th, 
+.fc-unthemed thead {
+  border-color: #ddd;
+  padding: 7px 0;
+  border-style: groove;
 
+}
+
+.fc-unthemed td.fc-today {
+  /* background: rgba(255, 96, 0, 0.1); */
+  /* background: #3498db; */
+  /* padding: 10px; */
+  background: rgb(11, 152, 224,0.5);
+}
 
 
