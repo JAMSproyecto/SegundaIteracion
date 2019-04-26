@@ -218,15 +218,11 @@
 
 @media screen and (min-width: 40em) {
   .contenedor_filtrar_cards {
-    padding: 5px 15%;
+    padding: 5px 5%;
   }
 }
 
-@media screen and (min-width: 60em) {
-  .contenedor_filtrar_cards {
-    padding: 5px 20%;
-  }
-}
+
 
 
 .contenedor_filtrar_cards select,
@@ -236,9 +232,9 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.8);
-  display: block;
-  width: 100%;
-  max-width:100%;
+  display: inline-block;
+  width: 300px;
+  max-width: 100%;
   padding: 8px 16px;
   line-height: 1.5;
   -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
@@ -283,6 +279,15 @@
   font-size: 20px;
 }
 
+
+.contenedor_filtrar_cards .filtrar{
+  float: left;
+}
+
+
+.etiquetas{
+  float: right;
+}
 
 
 

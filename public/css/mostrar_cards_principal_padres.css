@@ -236,9 +236,9 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.8);
-  display: block;
-  width: 100%;
-  max-width:100%;
+  display: inline-block;
+  width: 300px;
+  max-width: 100%;
   padding: 8px 16px;
   line-height: 1.5;
   -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
@@ -246,6 +246,7 @@
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
   font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 }
 
 .contenedor_filtrar_cards select:focus,
@@ -286,5 +287,9 @@
 
 
 
-
+.contenedor_filtrar_cards .filtar input{
+  
+  width: 300px;
+  display: inline-block;
+}
 

@@ -105,11 +105,11 @@ let llenarContenido = () => {
                 listaDetallada.style = 'border: 0px solid transparent;overflow-x: hidden;width: 100%;';
                 const objListaDetallada = [
                     { "dt": "Teléfono:", "dd": obj['telefono'] },
-                    { "dt": "Correo electrónico:", "dd": obj['correo'] },
+                    { "dt": "Correo:", "dd": obj['correo'] },
                     { "dt": "Provincia:", "dd": obj['provincia'] },
                     { "dt": "Dirección:", "dd": obj['direccion'] },
                     { "dt": "Calificación MEP:", "dd": '<span class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionMEP']) + '</span>' },
-                    { "dt": "Calificación de los padres de familia:", "dd": '<span class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</span>' }
+                    { "dt": "Calificación padres de familia:", "dd": '<span class="plataformaEstrella">' + obtenerHtmlEstrellas(obj['calificacionPadres']) + '</span>' }
                 ];
 
 
