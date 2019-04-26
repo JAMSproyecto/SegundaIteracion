@@ -55,9 +55,12 @@ font-weight: 900;
     padding: 10px;
     border-radius: 20px;
     float: left;
-    position: relative;
+    position: absolute;
     /* right: 0; */
-    left: 10px;
+    /* left: -23px; */
+    right: 73%;
+    /* bottom: -10px; */
+    top: 28%;
     
   }
 

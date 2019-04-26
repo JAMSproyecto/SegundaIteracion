@@ -56,15 +56,17 @@
                         </a>
                         <ul id="menuOpciones" class="menu_opciones">
                             <li><a href="perfil_padre.html">Ver perfil</a></li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
+                           
+                           
                                 <a href="./actualizarDatosPadre.html">Modificar perfil</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            <li>
+                                    <a href="listarUtilesPadre.html">Ver lista de útiles</a>
+                                </li>
                             <li>
                                 <a href="principal_padres.html">Centros educativos</a>
                             </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
+                            
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -77,12 +79,25 @@
             </div>
         </div>
     </header>
-    <main class="mainCE ">
+
+    <main class="mainCE">
+
         <h1 class="titulo_centro_educativo"></h1>
         <section id="bloqueResennia">
             <div>
                 <h2 class="titulo__secundario">Reseña histórica</h2>
                 <p id='mostrarResennia'></p>
+            </div>
+        </section>
+
+        <section style="width: 90%; margin: 0 auto; text-align: center; padding: 30px 0;">
+            <div>
+                <h2 class="titulo__secundario">Rankings</h2>
+                <div class="tabla__responsive" style="margin-top:30px;">
+                    <table class="tabla tabla__minimalista" id="tblRankings" style="max-width: 900px;">
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -93,7 +108,8 @@
                     <section class="conentedor_calificacion_padre">
 
                         <div>
-                            <h2 class="titulo__secundario">Calific&aacute; nuestra instituci&oacute;n</h2>
+                            <h2 id="tituloAddComentario" class="titulo__secundario">Calific&aacute; nuestra
+                                instituci&oacute;n</h2>
                         </div>
 
                         <div class="tblAddComentario tabla__responsive">
@@ -148,10 +164,12 @@
                                 </tbody>
                             </table>
                         </div>
+
+
                     </section>
                     <section>
                         <div>
-                            <h2 class="titulo__secundario">Calificaciones</h2>
+                            <h2 class="titulo__secundario">Calificaciones de los padres de familia</h2>
                         </div>
                         <div class="tabla__responsive">
                             <table class="tabla tabla__minimalista" id="tblComentarios">
@@ -216,11 +234,12 @@
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-phone"></i> Tel&eacute;fono:
+                                class="fa fas fa-phone" style="color: #e6e4d9;"></i> Tel&eacute;fono:
                             22246688</a></li>
 
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                                class="fa fas fa-envelope-square" style="color: #e6e4d9;"></i> Correo
+                            electr&oacute;nico:
                             educacion@ucenfotec.com</a></li>
                 </ul>
                 <ul class="footer__lista__top">

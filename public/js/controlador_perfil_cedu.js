@@ -11,6 +11,17 @@ const Lnk_Cita = document.querySelector('#lnk_calendario');
 const tablaServicios = document.querySelector('#tabla__servicios');
 const bloqueCalificacion = document.querySelector('#bloqueCalificacion');
 const tblComentarios = document.querySelector('#tblComentarios tbody');
+const tblRankings = document.querySelector('#tblRankings tbody');
+const tituloAddComentario = document.querySelector('#tituloAddComentario');
+
+const tipoUsuario = localStorage.getItem('tipoUsuario');
+const miId = localStorage.getItem('id');
+
+const HtmlEstrellaAmarilla = '<i class="fas fa-star" style="color: rgb(255, 203, 49);"></i>';
+const HtmlEstrellaGris = '<i class="far fa-star" style="color: rgb(50, 50, 50);"></i>';
+
+const cssCal_contenedor = `-webkit-box-shadow: 0 3px 12px rgba(27, 31, 35, .15); -moz-box-shadow: 0 3px 12px rgba(27, 31, 35, .15); -khtml-box-shadow: 0 3px 12px rgba(27, 31, 35, .15); -o-box-shadow: 0 3px 12px rgba(27, 31, 35, .15); -ms-box-shadow: 0 3px 12px rgba(27, 31, 35, .15); box-shadow: 0 3px 12px rgba(27, 31, 35, .15); border: 1px solid rgba(27, 31, 35, .15); -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; border-radius: 4px; margin-top: 0px; margin-bottom: 10px;padding: 10px 15px;`;
+
 
 let id;
 let perfil = {};
@@ -18,6 +29,50 @@ let perfil = {};
 const noticias = listar_todas_noticias();
 
 let calificacionSeleccionada = 0;
+
+
+
+let obtenerHtmlEstrellas = (pCantidad) => {
+  let TOP = 5, i = 0, resultado = '', laCantidad = parseInt('' + pCantidad, 10);
+  for (; i < TOP; ++i) {
+    if (i < laCantidad) {
+      resultado += HtmlEstrellaAmarilla;
+    } else {
+      resultado += HtmlEstrellaGris;
+    }
+  }
+  return resultado;
+};
+
+let ordenarPor = (path, reverse, primer, then) => {
+  let get = function (obj, path) {
+    if (path) {
+      path = path.split('.');
+      let i = 0;
+      let len = path.length - 1;
+      for (; i < len; i++) {
+        obj = obj[path[i]];
+      }
+      return obj[path[len]];
+    }
+    return obj;
+  },
+    prime = function (obj) {
+      return primer ? primer(get(obj, path)) : get(obj, path);
+    };
+
+  return function (a, b) {
+    let A = prime(a),
+      B = prime(b);
+
+    return (
+      (A < B) ? -1 :
+        (A > B) ? 1 :
+          (typeof then === 'function') ? then(a, b) : 0
+    ) * [1, -1][+!!reverse];
+  };
+};
+
 
 let mostrar_resennia = (resennia) => {
   if (mostrarResennia) {
@@ -124,10 +179,6 @@ let marcarEstrella = (event) => {
   calificacionSeleccionada = checkCount;
 };
 
-let cargarCalificaciones = (pId) => {
-
-};
-
 let agregarCalificacion = () => {
   const elComentario = TxtEditorComentario.value.trim();
 
@@ -146,14 +197,25 @@ let agregarCalificacion = () => {
   } else {
 
     asignar_calificacion_padre(calificacionSeleccionada, elComentario,
-      (pSuccess, pMessage, pIdPadre, pIdCentro) => {
+      async (pSuccess, pMessage, pIdPadre, pIdCentro) => {
         if (pSuccess) {
           console.log(pMessage);
           console.log("pIdPadre: " + pIdPadre);
           console.log("pIdCentro: " + pIdCentro);
-          alert(pMessage);
 
-          // TODO: Listar las calificaciones (buscar_calificaciones_padre_por_idCentro).
+          const noUsar = await cargarPerfil();
+
+
+          TblAddComentario.innerHTML = '';
+          cargarCalificacionesPadres(true);
+
+          Swal.fire({
+            type: 'success',
+            title: pMessage
+          });
+
+
+          // TODO: Listar las calificaciones
 
 
         } else {
@@ -168,9 +230,6 @@ let agregarCalificacion = () => {
 };
 
 let calificarMEP = () => {
-
-  const tipoUsuario = localStorage.getItem('tipoUsuario');
-  console.log(tipoUsuario);
 
   if (tipoUsuario === 'SuperAdmin') {
     let idCentro = localStorage.getItem('verPerfilCEdu');
@@ -359,22 +418,18 @@ let cards_servicios = (pId) => {
       let btn_descripcion = document.createElement('button');
       btn_descripcion.textContent = 'ver más';
       btn_descripcion.classList.add('btn_servico');
+      btn_descripcion.style = 'cursor:pointer;';
+
       //funcion para msotrar la descripción del servicio 
       btn_descripcion.addEventListener('click', function () {
         Swal.fire({
           title: '<strong>Descripción del servicio:</strong>',
           type: 'info',
-          html:
-            '<b>' + descripcion + '</b>',
-          showCloseButton: true,
+          html: '<b>' + descripcion + '</b>',
+          showCloseButton: false,
           showCancelButton: false,
           focusConfirm: false,
-          confirmButtonText:
-            ' Regresar ',
-          confirmButtonAriaLabel: 'Thumbs up, great!',
-          cancelButtonText:
-            '<i class="fa fa-thumbs-down"></i>',
-          cancelButtonAriaLabel: 'Thumbs down',
+          confirmButtonText: 'Regresar'
         })
       });
 
@@ -497,12 +552,88 @@ let cards_servicios = (pId) => {
 };
 
 
-let cargarPerfil = () => {
+let cargarCalificacionesPadres = async (esPadre) => {
+
+  const existenDatos = Object.keys(perfil).length;
+
+
+  if (bloqueCalificacionMep) {
+    if (existenDatos > 0 && 'undefined' != typeof perfil.calificacionMEP) {
+      if (perfil.calificacionMEP > 0) {
+        bloqueCalificacionMep.innerHTML = `<p style="color: #9f9f9f;text-align: center;font-size: 15px;">¡Ya has calificado a esta institución!</p><p style="text-align:center;margin:15px auto 0;">${obtenerHtmlEstrellas(perfil.calificacionMEP)}</p>`;
+      }
+    }
+  }
+
+
+  if (tblComentarios) {
+
+
+    let esteUsuarioYaComento = false;
+    let calificacionHecha = '';
+
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
+
+    if (existenDatos > 0) {
+
+      let listado = perfil.listaCalificacionPadres;
+
+      if (Object.keys(listado).length > 0) {
+        listado.sort(ordenarPor('fecha', true, null));
+
+        listado.forEach(obj4 => {
+
+          let tdConjunto = document.createElement('div');
+          tdConjunto.style = cssCal_contenedor;
+          tdConjunto.id = obj4.idPadre;
+
+          tdConjunto.innerHTML = `<p><span style="font-weight: 600;color: #333;">${obj4.nombrePadre}</span>&nbsp;&nbsp;<span style="font-weight: 400;font-style: italic;color: #9f9f9f;">${obj4.fechaEs}</span></p><p style="padding:5px 0;"><span>${obtenerHtmlEstrellas(obj4.calificacion)}</span></p><p style="font-weight: 400;color: #444;padding-left:20px;">${obj4.comentario}</p>`;
+
+
+          td.appendChild(tdConjunto);
+
+          if (esPadre) {
+            if (obj4.idPadre == miId) {
+              esteUsuarioYaComento = true;
+              calificacionHecha = `<p style="text-align:center;margin:0 auto;padding:5px 0;"><span>${obtenerHtmlEstrellas(obj4.calificacion)}</span></p><p style="font-weight: 400;color: #444;padding-left:20px;text-align:center;margin:0 auto;">${obj4.comentario}</p>`;
+            }
+          }
+
+        });
+
+        tr.appendChild(td);
+
+
+
+
+      } else {
+        tr.innerHTML = '<p style="color: #9f9f9f;text-align: center;font-size: 15px;">¡Aún no hay calificaciones!</p>';
+      }
+
+      //rankings
+      if (tblRankings) {
+        tblRankings.innerHTML = `<tr><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">MEP</p></td><td><p style="text-align:center;margin:0 auto;font-weight: 600;color: #333;">Padres de familia</p></td></tr> <tr><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionMEP)}</p></td><td><p style="text-align:center;margin:0 auto;">${obtenerHtmlEstrellas(perfil.calificacionPadres)}</p></td></tr>`;
+      }
+
+      tblComentarios.appendChild(tr);
+    }
+
+
+    if (esteUsuarioYaComento) {
+      tituloAddComentario.innerText = 'Calificación';
+      TblAddComentario.innerHTML = '<div style="' + cssCal_contenedor + '"><p style="color: #9f9f9f;text-align: center;font-size: 15px;margin-top:15px;">Ya has calificado a esta institución:</p><p style="padding-top:6px;">' + calificacionHecha + '</p><p style="padding:6px;float: none;text-align: right;"><button style="float: none;background: #179bd7;color: #fff;border: 2px solid #179bd7;border-radius: 5px;cursor: pointer;">Editar</button></p></div>';
+    }
+
+  }
+};
+
+let cargarPerfil = async () => {
   if ('undefined' == typeof id || null === id) {
     throw new Error('Error al cargar el perfil: El identificador no puede estar vacio');
   }
 
-  perfil = get_obtenerPerfil(id);
+  perfil = await get_obtenerPerfil(id);
 };
 
 
@@ -517,7 +648,7 @@ window.onload = async () => {
     }
   }
 
-  switch (localStorage.getItem("tipoUsuario").toLowerCase()) {
+  switch (tipoUsuario.toLowerCase()) {
     case 'superadmin':
       id = localStorage.getItem('verPerfilCEdu');
       if (TblAddComentario) {
@@ -548,14 +679,32 @@ window.onload = async () => {
       break;
   }
 
-const noUsar = await cargarPerfil();
+  const noUsar = await cargarPerfil();
 
-  console.log('perfil: ', perfil);
+  //console.log('perfil: ', perfil);
+
   if ('undefined' !== typeof perfil.nombre) {
     document.querySelector('.titulo_centro_educativo').innerHTML = perfil.nombre;
   }
 
-  let tipoUsuario = localStorage.getItem("tipoUsuario");
+
+
+
+  switch (tipoUsuario.toLowerCase()) {
+    case 'superadmin':
+      cargarCalificacionesPadres(false);
+      break;
+    case 'centroeducativo':
+      cargarCalificacionesPadres(false);
+      break;
+    case 'padrefamilia':
+      cargarCalificacionesPadres(true);
+      break;
+    default:
+      break;
+  }
+
+
 
   if (tipoUsuario == 'CentroEducativo') {
     crearCalendario(id);
@@ -566,11 +715,12 @@ const noUsar = await cargarPerfil();
 
   mostrar_noticias();
   cards_servicios(id);
-  cargarCalificaciones(id);
+
 
   if ('undefined' !== typeof perfil.referenciaHistorica) {
     mostrar_resennia(perfil.referenciaHistorica);
   }
+
 
 };
 

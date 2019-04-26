@@ -579,25 +579,31 @@ let listarCalificacionesPadre = (pId) => {
 
                             //Si eliminado = true entonces manda vacio el campo de comentario.
                             let elComentario = '';
-                            if (false === resultado[key]['eliminado']) {
-                                elComentario = resultado[key]['comentario'] || '';
+                            let nombrePadre = '';
+
+                            if ('undefined' != typeof resultado[key]) {
+
+                                if ('boolean' == typeof resultado[key]['eliminado'] && false === resultado[key]['eliminado']) {
+                                    elComentario = resultado[key]['comentario'] || '';
+                                }
+								
+                                if ('undefined' != typeof resultado[key]['padreFamilia']) {
+                                    nombrePadre = resultado[key]['padreFamilia'][0].nombre.trim();
+
+                                    //Si acaso existe el segundo nombre del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer nombre:
+                                    if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoNombre && resultado[key]['padreFamilia'][0].segundoNombre.length > 0) {
+                                        nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoNombre.trim();
+                                    }
+
+                                    //Añadimos el primer apellido del padreFamilia
+                                    nombrePadre += ' ' + resultado[key]['padreFamilia'][0].apellido.trim();
+
+                                    //Si acaso existe el segundo apellido del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer apellido:
+                                    if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoApellido && resultado[key]['padreFamilia'][0].segundoApellido.length > 0) {
+                                        nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoApellido.trim();
+                                    }
+                                }
                             }
-
-                            let nombrePadre = resultado[key]['padreFamilia'][0].nombre.trim();
-
-                            //Si acaso existe el segundo nombre del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer nombre:
-                            if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoNombre && resultado[key]['padreFamilia'][0].segundoNombre.length > 0) {
-                                nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoNombre.trim();
-                            }
-
-                            //Añadimos el primer apellido del padreFamilia
-                            nombrePadre += ' ' + resultado[key]['padreFamilia'][0].apellido.trim();
-
-                            //Si acaso existe el segundo apellido del padreFamilia (ya que es opcional) entonces lo añadimos seguidamente del primer apellido:
-                            if ('undefined' !== typeof resultado[key]['padreFamilia'][0].segundoApellido && resultado[key]['padreFamilia'][0].segundoApellido.length > 0) {
-                                nombrePadre += ' ' + resultado[key]['padreFamilia'][0].segundoApellido.trim();
-                            }
-
 
                             listarResultado.push({
                                 'idCalificacion': resultado[key]['_id'] || 0,

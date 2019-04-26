@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="./css/fontawesome/all.min.css">
     <link rel="stylesheet" href="./css/footer.css">
 
-
     <link rel="stylesheet" href="./css/fullcalendar/core/main.min.css">
     <link rel="stylesheet" href="./css/fullcalendar/daygrid/main.min.css">
     <link rel="stylesheet" href="./css/tablaDatos.css" />
@@ -35,10 +34,10 @@
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
             <div class="bloqueHeader__logo">
-                    <a href="perfil_admin.html">
-                        <img src="./imgs/logo_mep.png" class="imagen_mep">
-                    </a>
-                </div>
+                <a href="perfil_admin.html">
+                    <img src="./imgs/logo_mep.png" class="imagen_mep">
+                </a>
+            </div>
         </div>
         <div class="bloqueHeader__filaArriba">
             <div class="bloqueHeader__contendorArriba">
@@ -55,12 +54,12 @@
                         </a>
                         <ul id="menuOpciones" class="menu_opciones">
                             <li>
-                                <a href="javascript:void(0)">Ver perfil</a>
+                                <a href="perfil_admin.html">Ver perfil</a>
                             </li>
                             <li>
                                 <a href="listaCEdu.html">Centros educativos</a>
                             </li>
-                           
+                            <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -68,9 +67,9 @@
             </div>
         </div>
         <div class="bloqueHeader__filaAbajo">
-                <div class="bloqueHeader__contenedorAbajo">
-                        <strong>Les da la Bienvenida</strong>
-                    </div>
+            <div class="bloqueHeader__contenedorAbajo">
+                <strong>Les da la Bienvenida</strong>
+            </div>
         </div>
         <nav class="bloqueHeader__menuLateral nav" id="mySidenav">
             <p class="nav__cerrar">
@@ -122,12 +121,12 @@
                     </ul>
 
                 </li>
-             
+
             </ul>
         </nav>
     </header>
-    <main>
-        
+    <main class="mainCE">
+
         <h1 class="titulo_centro_educativo"></h1>
 
         <section id="bloqueResennia">
@@ -136,77 +135,75 @@
                 <p id='mostrarResennia'></p>
             </div>
         </section>
-        
-		<!-- No cambiar el id bloqueCalificacion: se utiliza en el js de forma dinámica -->
+
+        <!-- No cambiar el id bloqueCalificacion: se utiliza en el js de forma dinámica -->
         <section id="bloqueCalificacion">
 
             <div>
                 <h2 class="titulo__secundario">Calific&aacute; nuestra instituci&oacute;n</h2>
             </div>
-        
+
             <div id="bloque_calificarMEP"></div>
-        
+
         </section>
 
         <section class="bloqueServicios">
-                <div class="bloqueServicios__titulo">
-                    <h2 class="titulo__secundario_servicios">Nuestros servicios</h2>
+            <div class="bloqueServicios__titulo">
+                <h2 class="titulo__secundario_servicios">Nuestros servicios</h2>
+            </div>
+            <div class="tabla__servicios">
+
+                <div id="tabla__servicios">
+
                 </div>
-                <div class="tabla__servicios">
-    
-                    <div id="tabla__servicios">
-                       
-                    </div>
-    
-                </div>
-            </section>
+
+            </div>
+        </section>
 
         <section class="bloqueInformacion">
-                <section id="contenedorNoticias">
-                    <div>
-                        <h2 class="titulo__secundario">Noticias</h2>
-                    </div>
-                    <div class="tabla__noticias">
-                        <div id="tabla__noticias"></div>
-                    </div>
-                    <div class="tabla__noticias">
-                        <div id="tabla__noticias"></div>
-                    </div>
-                </section>
-                <section id="contenedorActividades">
-                    <div>
-                        <h2 class="titulo__secundario">Actividades</h2>
-                    </div>
-                    <div class="tabla__actividades">
-                        <div id="tabla__actividades" class="contenedor__actividades"></div>
-                    </div>
-                </section>
+            <section id="contenedorNoticias">
+                <div>
+                    <h2 class="titulo__secundario">Noticias</h2>
+                </div>
+                <div class="tabla__noticias">
+                    <div id="tabla__noticias"></div>
+                </div>
+                <div class="tabla__noticias">
+                    <div id="tabla__noticias"></div>
+                </div>
             </section>
+            <section id="contenedorActividades">
+                <div>
+                    <h2 class="titulo__secundario">Actividades</h2>
+                </div>
+                <div class="tabla__actividades">
+                    <div id="tabla__actividades" class="contenedor__actividades"></div>
+                </div>
+            </section>
+        </section>
         <div class="bloque_calendario">
             <div id="calendario">
 
             </div>
         </div>
     </main>
-</body>
 
 
 
 
-
-</main>
-
-<footer>
+    <footer>
         <div class="footer__cuerpo">
             <div class="footer__flex">
                 <ul class="footer__lista__top">
                     <li>
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
-                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
-                    
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
-                                class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
+                                class="fa fas fa-phone" style="color: #e6e4d9;"></i> Tel&eacute;fono: 22246688</a></li>
+
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-envelope-square" style="color: #e6e4d9;"></i> Correo
+                            electr&oacute;nico:
                             educacion@ucenfotec.com</a></li>
                 </ul>
                 <ul class="footer__lista__top">
@@ -225,18 +222,18 @@
                         Conectate <span class="footer__social__pequeno">con</span> nosotros
                     </span>
                     <span class="footer__social__traslapar footer__social__iconos__envoltura">
-                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Pinterest"><i
-                                class="fab fa-pinterest-square"></i></a>
-                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Facebook"><i
-                                class="fab fa-facebook-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Facebook"><i class="fab fa-facebook-square"></i></a>
                         <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Twitter"><i
                                 class="fab fa-twitter-square"></i></a>
-                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Instagram"><i
-                                class="fab fa-instagram"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Youtube"><i
                                 class="fab fa-youtube"></i></a>
-                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank" title="Google Plus"><i
-                                class="fab fa-google-plus-square"></i></a>
+                        <a class="footer__ancla__generica" href="javascript:void(0);" target="_blank"
+                            title="Google Plus"><i class="fab fa-google-plus-square"></i></a>
                     </span>
                 </section>
                 <section class="footer__inferior__seccion footer__flex">
@@ -255,33 +252,33 @@
     </footer>
 
 
-<script src="./js/controlador_nav.js"></script>
+    <script src="./js/controlador_nav.js"></script>
 
-<script src="./js/sweetalert2.all.min.js"></script>
-<script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
 
 
-<script src="./js/moment-with-locales.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="./js/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
-<script src="js/servicios_cita.js"></script>
-<script src="./js/fullcalendar/core/main.min.js"></script>
-<script src="./js/fullcalendar/daygrid/main.min.js"></script>
-<script src="./js/fullcalendar/core/locales-all.min.js"></script>
+    <script src="js/servicios_cita.js"></script>
+    <script src="./js/fullcalendar/core/main.min.js"></script>
+    <script src="./js/fullcalendar/daygrid/main.min.js"></script>
+    <script src="./js/fullcalendar/core/locales-all.min.js"></script>
 
-<script src="js/servicio_noticia.js"></script>
+    <script src="js/servicio_noticia.js"></script>
 
-<script src="./js/servicio_registrar_actividad.js"></script>
-<script src="./js/servicio_servicios.js"></script>
+    <script src="./js/servicio_registrar_actividad.js"></script>
+    <script src="./js/servicio_servicios.js"></script>
 
-<script src="js/calendario.js"></script>
-<script src="js/servicio_aprobar_cedu.js"></script>
-<script src="js/servicio_perfil_cedu.js"></script>
-<script src="js/servicio_registrarRubro.js"></script>
-<script src="js/servicio_calificacionMep.js"></script>
-<script src="js/controlador_perfil_cedu.js"></script>
+    <script src="js/calendario.js"></script>
+    <script src="js/servicio_aprobar_cedu.js"></script>
+    <script src="js/servicio_perfil_cedu.js"></script>
+    <script src="js/servicio_registrarRubro.js"></script>
+    <script src="js/servicio_calificacionMep.js"></script>
+    <script src="js/controlador_perfil_cedu.js"></script>
 
-<!--<script src="js/controlador_listar_citas.js"></script>-->
+    <!--<script src="js/controlador_listar_citas.js"></script>-->
 
 
 </body>

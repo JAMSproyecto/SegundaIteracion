@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./css/headerGeneral.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/estilosPadres.css" />
+    <link rel="stylesheet" href="./css/tablas.css">
+    <link rel="stylesheet" href="./css/estiloGeneral.css">
 
 </head>
 
@@ -61,80 +63,40 @@
 
     </header>
 
-    <main>
-        <section class="bloquePerfil-PF">
-            <div class="bloquePerfil-PF__contenedor">
-                <div class="tituloPrincipal-PF ">
-                    <h1>Datos personales</h1>
-                </div>
-                <div class="bloquePerfil-PF__columnas">
-                    <div class="bloquePerfil-PF__columIzquierda">
-                        <img src="./imgs/profile.jpg" alt="">
-                    </div>
-
-                    <div class="bloquePerfil-PF__columDerecha">
-                        <div class="dato">
-                            <strong>
-                                Nombre:
-                            </strong>
-                            <span id="nombre_completo_padre"></span>
-                        </div>
-
-                        <div class="dato">
-                            <strong>
-                                Correo electr&oacute;nico:
-                            </strong>
-                            <span id="correo_padre"></span>
-                        </div>
-
-                        <div class="dato">
-                            <strong>
-                                Tel&eacute;fono:
-                            </strong>
-                            <span id="telefono_padre"></span>
-                        </div>
-
-                        <div class="dato">
-                            <strong>
-                                C&eacute;dula:
-                            </strong>
-                            <span id="identificacion_padre"></span>
-                        </div>
-
-                        <div class="dato">
-                            <strong>
-                                Provincia:
-                            </strong>
-                            <span id="provincia_padre"></span>
-                        </div>
-
-                     <!--   <div class="dato">
-                            <strong>
-                                Cantón:
-                            </strong>
-                            <span id="canton_padre"></span>
-                        </div>
-
-                        <div class="dato">
-                            <strong>
-                                Distrito:
-                            </strong>
-                            <span id="distrito_padre"></span>
-                            </p>
-                        </div>-->
-
-                        <div class="dato">
-                            <strong>
-                                Edad:
-                            </strong>
-                            <span id="edad_padre"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <main id='main'>
+        <section>
+            <div class="tituloPrincipal">
+                    <h1 >Lista de útiles</h1>
             </div>
+           
+            <h2 id="titulo" class="tituloPrincipal"></h2>
+           
+                <div class="bloqueFiltro">
+                    <label for="txt_filtrar">Filtrar</label>
+                    <input type="text" id="txt_filtrar">
+                </div>
+           
+                    <table id="tbl_lista_utiles">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Año</th>
+                                <th>Agregar </th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                                <th>Estado</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
         </section>
-       <!-- <button id="btn_modificar_datos">Modificar Perfil</button>--> 
+
+
+        
+
     </main>
 
     <footer>
@@ -194,17 +156,14 @@
             </div>
         </div>
     </footer>
-
     <script src="./js/controlador_nav.js"></script>
-
-    <script src="./js/sweetalert2.all.min.js"></script>
-    <script src="./js/jquery-3.3.1.min.js"></script>
-	
-<script src="./js/direccionUbicacion/provinciaCantonDistrito.js"></script>
-<script src="./js/direccionUbicacion/controladorListar.js"></script>
-
-<script src="./js/servicio_perfil_padres.js"></script>
-<script src="./js/controlador_perfil_padre.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/servicio_listar_cedu.js"></script>
+    <script src="js/servicio_lista_utiles.js"></script>
+    <script src="js/controlador_listar_lista_utiles.js"></script>
 
 </body>
+
 </html>
