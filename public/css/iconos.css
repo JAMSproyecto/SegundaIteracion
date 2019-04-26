@@ -57,7 +57,9 @@ font-weight: 900;
     float: left;
     position: relative;
     /* right: 0; */
-    left: 10px;
+    /* left: -23px; */
+    right: 41px;
+    bottom: 25px;
     
   }
 
