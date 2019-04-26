@@ -138,7 +138,8 @@ let llenarContenido = () => {
                 verMas_a.addEventListener('click', () => {
                     irAlPerfil(obj['_id']);
                 }, false);
-                verMas_a.innerHTML = 'Ver más...';
+                verMas_a.style = 'text-decoration: none;';
+                verMas_a.innerHTML = '<i class="fas fa-share"></i> Ver más...';
                 verMas.appendChild(verMas_a);
 
 
