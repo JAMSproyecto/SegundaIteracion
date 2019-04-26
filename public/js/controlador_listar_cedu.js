@@ -133,7 +133,7 @@ let llenarContenido = () => {
 
 
                 let verMas = document.createElement('p');
-                verMas.style = 'text-align: right; width: 100%; padding: 2px 15px;position: absolute;bottom: 0px;right: 0px;';
+                verMas.style = 'text-align: right; width: 100%; padding: 2px 15px;position: absolute;bottom: 0;right: 0;';
                 let verMas_a = document.createElement('a');
                 verMas_a.addEventListener('click', () => {
                     irAlPerfil(obj['_id']);
