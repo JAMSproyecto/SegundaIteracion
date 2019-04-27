@@ -121,14 +121,25 @@ window.addEventListener('load', () => {
             }
             else{
                 let citas = tabla_citas.querySelectorAll('tr');
-
+                let citasEscondidas = 0;
                 citas.forEach((e,k)=>{
                     let cita = moment(`${e.children[4].innerText} ${e.children[5].innerText}`, 'DD-MM-YYYY hh:mm');
-                    if(!cita.isBetween(inicio, fin))
+                    if(!cita.isBetween(inicio, fin)){
                         e.classList.add('invisible');
+                        citasEscondidas++;
+                    }
                     else
                         e.classList.remove('invisible');
                 });
+
+                if(citasEscondidas === 0){
+                    swal.fire(
+                        {
+                            type: 'warning',
+                            title: 'No se encontraron citas'
+                        }
+                    );
+                }
             }
 
     

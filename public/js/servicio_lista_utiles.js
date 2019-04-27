@@ -45,8 +45,14 @@ let registrar_lista_utiles = (ptipo,pnombre,panno) => {
 
 //para obtener la lista de utiles por el id del centro
 let obtener_lista_utiles = () => {
-  let coleccion_utiles = []
-  let codigo = localStorage.getItem('id');
+  let coleccion_utiles = [];
+  let codigo = '';
+  let tipoUsuario = localStorage.getItem('tipoUsuario');
+  if (tipoUsuario.toLowerCase() === 'padrefamilia') {
+    codigo = localStorage.getItem('verPerfilCEdu');
+  }else{
+    codigo = localStorage.getItem('id');
+  }
   let request = $.ajax({
     url: "http://localhost:4000/api/listar_lista_utiles/"+codigo,
     method: "GET",

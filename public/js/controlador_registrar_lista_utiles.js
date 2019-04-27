@@ -86,8 +86,13 @@ window.onload = () => {
             input_tipo.selectedIndex = 0;
             bloqueOcultar.classList.add('ocultar');
             bloqueOcultar2.classList.add('ocultar');
-            let nombre = response.nombre_centro;
-            titulo_centro.innerHTML = nombre;
+            if(response){
+                let nombre = response.nombre_centro;
+                titulo_centro.innerHTML = nombre;
+            }else{
+                titulo_centro.classList.add('ocultar');
+            }
+            
         }
     } else {
         console.error('No se encontró el tipo de usuario');
