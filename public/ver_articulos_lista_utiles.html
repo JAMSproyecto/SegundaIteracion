@@ -30,12 +30,12 @@
     <!---se cambio el nombre de las clases del menú de arriba, asi como se cambio la manera en que se
     visualiza el menu el los header-->
     <header class="bloqueHeader">
-        <div class="bloqueHeader__nombreInstitucion">
+        <div class="bloqueAdmin bloqueHeader__nombreInstitucion">
             <div class="bloqueHeader__iconolateral">
                 <span onclick="menuNavVisible(true); return false;">&#9776;</span>
             </div>
 
-            <div class="bloqueHeader__logo">
+            <div class="bloqueAdmin__logo bloqueHeader__logo">
                 <a href="perfil_centro.html">
                     <img src="./imgs/logo_mep.png" class="imagen_mep">
                 </a>
@@ -57,16 +57,8 @@
                         </a>
                         <ul id="menuOpciones" class="menu_opciones">
                             <li>
-                                <a href="javascript:void(0)">Ver perfil</a>
+                                <a href="perfil_centro.html">Ver perfil</a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)">Modificar perfil</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
-                            <li>
-                                <a href="javascript:void(0)">Cuenta de usuario</a>
-                            </li>
-                            <li class="separador"><a href="javascript:void(0)"></a></li>
                             <li><a id="boton_cerrar" href="javascript:void(0)">Cerrar sesi&oacute;n</a></li>
                         </ul>
                     </div>
@@ -116,7 +108,7 @@
                 <li><a class="utiles" href="javascript:void(0)"> Citas</a>
                     <ul>
                         <li>
-                            <a href="lista_citas.html">listar citas
+                            <a href="lista_citas.html">Lista de citas
                             </a></li>
                     </ul>
                 </li>
@@ -185,8 +177,9 @@
                     <li>
                         <h4 class="footer__lista__header">Contacto</h4>
                     </li>
-                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
-                    
+                    <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
+                                class="fa fas fa-phone"></i> Tel&eacute;fono: 22246688</a></li>
+
                     <li><a class="footer__ancla__generica footer__ancla__lista" href='javascript:void(0);'><i
                                 class="fa fas fa-envelope-square"></i> Correo electr&oacute;nico:
                             educacion@ucenfotec.com</a></li>

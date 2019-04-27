@@ -315,12 +315,6 @@ let calificarMEP = () => {
             }
           }
 
-          Swal.fire({
-            title: 'Calificación completada',
-            html:
-              'El centro ha recibido una calificación total de: ' + prom + ', para total de: ' + estrellasMep + ' estrellas',
-            confirmButtonText: 'Aceptar'
-          });
 
           registrar_calificacionMEP(idCentro, estrellasMep, rubrosActivos[0], values[0], rubrosActivos[1], values[1], rubrosActivos[2], values[2], rubrosActivos[3], values[3], rubrosActivos[4], values[4], rubrosActivos[5], values[5], rubrosActivos[6], values[6], rubrosActivos[7], values[7], rubrosActivos[8], values[8], rubrosActivos[9], values[9]);
         }
