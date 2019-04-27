@@ -86,7 +86,8 @@ window.onload = () => {
             input_tipo.selectedIndex = 0;
             bloqueOcultar.classList.add('ocultar');
             bloqueOcultar2.classList.add('ocultar');
-            if(response){
+            if(response.nombre_centro == 'undefined'){
+                
                 let nombre = response.nombre_centro;
                 titulo_centro.innerHTML = nombre;
             }else{
