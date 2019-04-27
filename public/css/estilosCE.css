@@ -312,7 +312,7 @@ button.fc-button:focus {
   height: -webkit-max-content;
   height: max-content;
   flex-wrap: wrap;
-  width: 88%;
+
   margin: 0 auto;
 }
 
