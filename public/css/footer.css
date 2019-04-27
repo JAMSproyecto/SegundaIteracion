@@ -22,7 +22,7 @@ footer a {
 
 footer .footer__ancla__generica,
 footer .footer__ancla__generica:visited {
-    color: #e6e4d9;
+    color: #e6e4d9 !important;
 	text-decoration: none;
 }
 
