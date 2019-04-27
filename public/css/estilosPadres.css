@@ -21,7 +21,9 @@
     height: 348px;
 }
 
-
+.invisible {
+    display: none;
+};
 
 .bloquePerfil-PF__columnas{
     display: flow-root;
